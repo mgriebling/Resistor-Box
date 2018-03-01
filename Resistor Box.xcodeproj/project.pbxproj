@@ -13,6 +13,8 @@
 		2F2F2C5A2036156300DD98AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C582036156300DD98AE /* Main.storyboard */; };
 		2F2F2C5C2036156300DD98AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5B2036156300DD98AE /* Assets.xcassets */; };
 		2F2F2C5F2036156300DD98AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */; };
+		2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C66203617B000DD98AE /* Resistors.swift */; };
+		2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8FE842048268F000841AF /* ResistorImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		2F2F2C5B2036156300DD98AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F2F2C5E2036156300DD98AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F2F2C602036156300DD98AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F2F2C66203617B000DD98AE /* Resistors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resistors.swift; sourceTree = "<group>"; };
+		2FF8FE842048268F000841AF /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		2F2F2C512036156300DD98AE /* Resistor Box */ = {
 			isa = PBXGroup;
 			children = (
+				2FF8FE842048268F000841AF /* ResistorImage.swift */,
 				2F2F2C522036156300DD98AE /* AppDelegate.swift */,
 				2F2F2C542036156300DD98AE /* FirstViewController.swift */,
 				2F2F2C562036156300DD98AE /* SecondViewController.swift */,
@@ -63,6 +68,7 @@
 				2F2F2C5B2036156300DD98AE /* Assets.xcassets */,
 				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
 				2F2F2C602036156300DD98AE /* Info.plist */,
+				2F2F2C66203617B000DD98AE /* Resistors.swift */,
 			);
 			path = "Resistor Box";
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */,
+				2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */,
 				2F2F2C572036156300DD98AE /* SecondViewController.swift in Sources */,
 				2F2F2C532036156300DD98AE /* AppDelegate.swift in Sources */,
 				2F2F2C552036156300DD98AE /* FirstViewController.swift in Sources */,
