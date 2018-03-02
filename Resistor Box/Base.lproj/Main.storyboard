@@ -13,7 +13,7 @@
         <!--Resistor Substitution-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="ResistorViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,10 +25,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-eD-5sP">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Result: 34.5K, error; 0.02%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHL-ZZ-0Dl">
-                                                <rect key="frame" x="0.0" y="176" width="375" height="23.5"/>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U5d-hG-mTJ">
+                                                <rect key="frame" x="0.0" y="173.5" width="375" height="2"/>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHL-ZZ-0Dl">
+                                                <rect key="frame" x="0.0" y="175.5" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -39,10 +42,13 @@
                                         <rect key="frame" x="0.0" y="199.5" width="375" height="199"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWp-MI-h8N">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="172.5"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Result: 34.5K, error; 0.02%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-2K-5rY">
-                                                <rect key="frame" x="0.0" y="175.5" width="375" height="23.5"/>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-ir-Dq6">
+                                                <rect key="frame" x="0.0" y="172.5" width="375" height="2"/>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-2K-5rY">
+                                                <rect key="frame" x="0.0" y="174.5" width="375" height="24.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -53,10 +59,13 @@
                                         <rect key="frame" x="0.0" y="398.5" width="375" height="199.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ez4-ta-HSI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Result: 34.5K, error; 0.02%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm2-do-EDN">
-                                                <rect key="frame" x="0.0" y="176" width="375" height="23.5"/>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kqe-hp-ABL">
+                                                <rect key="frame" x="0.0" y="169.5" width="375" height="2.5"/>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm2-do-EDN">
+                                                <rect key="frame" x="0.0" y="172" width="375" height="27.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -79,10 +88,13 @@
                     <tabBarItem key="tabBarItem" title="Resistor Substitution" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="parallelLabel" destination="pm2-do-EDN" id="eZu-M6-fEO"/>
+                        <outlet property="parallelProgress" destination="Kqe-hp-ABL" id="43a-NV-oTg"/>
                         <outlet property="parallelResistors" destination="Ez4-ta-HSI" id="gzT-F5-9iA"/>
                         <outlet property="seriesLabel" destination="CHL-ZZ-0Dl" id="ezD-iF-8e7"/>
                         <outlet property="seriesParallelLabel" destination="kkw-2K-5rY" id="0nD-sP-bk8"/>
+                        <outlet property="seriesParallelProgress" destination="aQY-ir-Dq6" id="gBX-FT-Qaj"/>
                         <outlet property="seriesParallelResistors" destination="dWp-MI-h8N" id="HOQ-4P-Bqf"/>
+                        <outlet property="seriesProgress" destination="U5d-hG-mTJ" id="3eh-1j-P3F"/>
                         <outlet property="seriesResistors" destination="tGS-eD-5sP" id="KIp-ON-Mff"/>
                     </connections>
                 </viewController>

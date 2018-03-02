@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class ResistorViewController: UIViewController {
 
     @IBOutlet weak var seriesResistors: UIImageView! {
         didSet {
@@ -16,6 +16,7 @@ class FirstViewController: UIViewController {
         }
     }
     @IBOutlet weak var seriesLabel: UILabel!
+    @IBOutlet weak var seriesProgress: UIProgressView!
     
     @IBOutlet weak var seriesParallelResistors: UIImageView!  {
         didSet {
@@ -23,6 +24,7 @@ class FirstViewController: UIViewController {
         }
     }
     @IBOutlet weak var seriesParallelLabel: UILabel!
+    @IBOutlet weak var seriesParallelProgress: UIProgressView!
     
     @IBOutlet weak var parallelResistors: UIImageView! {
         didSet {
@@ -30,35 +32,42 @@ class FirstViewController: UIViewController {
         }
     }
     @IBOutlet weak var parallelLabel: UILabel!
+    @IBOutlet weak var parallelProgress: UIProgressView!
     
-    func updateSeriesResistors (_ error: Double, r1: Double, r2: Double, r3: Double) {
+    func updateSeriesResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
         let r1v = Resistors.stringFrom(r1)
         let r2v = Resistors.stringFrom(r2)
         let r3v = Resistors.stringFrom(r3)
         let rt = Resistors.stringFrom(r1+r2+r3)
         DispatchQueue.main.async {
             self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, valu3: r3v)
-            self.seriesLabel.text = "Best result: \(rt); error: \(error)% with 1% resistors"
+            self.seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
         DispatchQueue.global().async {
+            var progress : Float = 0.0
+            DispatchQueue.main.async {
+                self.seriesLabel.text = "Finding best solution..."
+                self.seriesProgress.setProgress(progress, animated: true)
+            }
             let x = Resistors.computeSeries(100.2) { (error, r1, r2, r3) in
-                self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3)
+                self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
+                progress += 0.1
+                DispatchQueue.main.async {
+                    self.seriesProgress.setProgress(progress, animated: true)
+                }
             }
             print(x)
-            self.updateSeriesResistors(x[4], r1: x[0], r2: x[1], r3: x[2])
+            self.updateSeriesResistors(x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
+            DispatchQueue.main.async {
+                self.seriesProgress.isHidden = true
+            }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
