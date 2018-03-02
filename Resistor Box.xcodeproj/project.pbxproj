@@ -60,15 +60,15 @@
 		2F2F2C512036156300DD98AE /* Resistor Box */ = {
 			isa = PBXGroup;
 			children = (
-				2FF8FE842048268F000841AF /* ResistorImage.swift */,
 				2F2F2C522036156300DD98AE /* AppDelegate.swift */,
+				2F2F2C66203617B000DD98AE /* Resistors.swift */,
 				2F2F2C542036156300DD98AE /* FirstViewController.swift */,
 				2F2F2C562036156300DD98AE /* SecondViewController.swift */,
 				2F2F2C582036156300DD98AE /* Main.storyboard */,
-				2F2F2C5B2036156300DD98AE /* Assets.xcassets */,
 				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
+				2FF8FE842048268F000841AF /* ResistorImage.swift */,
+				2F2F2C5B2036156300DD98AE /* Assets.xcassets */,
 				2F2F2C602036156300DD98AE /* Info.plist */,
-				2F2F2C66203617B000DD98AE /* Resistors.swift */,
 			);
 			path = "Resistor Box";
 			sourceTree = "<group>";

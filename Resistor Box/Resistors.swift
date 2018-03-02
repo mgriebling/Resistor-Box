@@ -141,7 +141,7 @@ class Resistors {
         return Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return 1.0 / (1.0/r1 + 1.0/r2 + 1.0/r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
-            // exit early if a solution is unlikely
+            // exit early if a solution has been found
             return current - x == 0
         })
     }
@@ -152,7 +152,7 @@ class Resistors {
         return Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + 1.0 / (1.0/r2 + 1.0/r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
-            // exit early if a solution is unlikely
+            // exit early if a solution is unlikely or has been found
             return r1 > x || current - x == 0
         })
     }
