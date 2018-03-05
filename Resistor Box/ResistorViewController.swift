@@ -16,7 +16,7 @@ class ResistorViewController: UIViewController {
         }
     }
     @IBOutlet weak var seriesLabel: UILabel!
-    @IBOutlet weak var seriesProgress: UIProgressView!
+    @IBOutlet weak var seriesActivity: UIActivityIndicatorView!
     
     @IBOutlet weak var seriesParallelResistors: UIImageView!  {
         didSet {
@@ -24,7 +24,7 @@ class ResistorViewController: UIViewController {
         }
     }
     @IBOutlet weak var seriesParallelLabel: UILabel!
-    @IBOutlet weak var seriesParallelProgress: UIProgressView!
+    @IBOutlet weak var seriesParallelActivity: UIActivityIndicatorView!
     
     @IBOutlet weak var parallelResistors: UIImageView! {
         didSet {
@@ -32,7 +32,8 @@ class ResistorViewController: UIViewController {
         }
     }
     @IBOutlet weak var parallelLabel: UILabel!
-    @IBOutlet weak var parallelProgress: UIProgressView!
+    @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
+
     
     func updateSeriesResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
         let r1v = Resistors.stringFrom(r1)
@@ -48,23 +49,16 @@ class ResistorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
+        seriesLabel.text = "Finding best solution..."
+        seriesActivity.startAnimating()
         DispatchQueue.global().async {
-            var progress : Float = 0.0
-            DispatchQueue.main.async {
-                self.seriesLabel.text = "Finding best solution..."
-                self.seriesProgress.setProgress(progress, animated: true)
-            }
             let x = Resistors.computeSeries(100.2) { (error, r1, r2, r3) in
                 self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
-                progress += 0.1
-                DispatchQueue.main.async {
-                    self.seriesProgress.setProgress(progress, animated: true)
-                }
             }
             print(x)
             self.updateSeriesResistors(x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
             DispatchQueue.main.async {
-                self.seriesProgress.isHidden = true
+                self.seriesActivity.stopAnimating()
             }
         }
     }

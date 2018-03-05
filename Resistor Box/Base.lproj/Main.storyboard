@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Resistor Substitution-->
+        <!--Calibration-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="ResistorViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,83 +18,132 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eAa-3O-KON">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-fW-IJR">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="4AH-f8-96V">
+                                    <stackView opaque="NO" contentMode="redraw" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="4AH-f8-96V">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-eD-5sP">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-eD-5sP">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="EjO-Jo-FFA"/>
+                                                </constraints>
                                             </imageView>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U5d-hG-mTJ">
-                                                <rect key="frame" x="0.0" y="173.5" width="375" height="2"/>
-                                            </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHL-ZZ-0Dl">
-                                                <rect key="frame" x="0.0" y="175.5" width="375" height="24"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="SQv-TS-CCE">
+                                                <rect key="frame" x="0.0" y="179.5" width="375" height="20"/>
+                                                <subviews>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xDp-GK-2CU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="95u-Bd-8sD"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" ambiguous="YES" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHL-ZZ-0Dl">
+                                                        <rect key="frame" x="30" y="0.0" width="345" height="20"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="CHL-ZZ-0Dl" firstAttribute="leading" secondItem="xDp-GK-2CU" secondAttribute="trailing" id="jew-51-tax"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="SQv-TS-CCE" firstAttribute="top" secondItem="tGS-eD-5sP" secondAttribute="bottom" id="Ob0-Sd-SWN"/>
+                                            <constraint firstItem="SQv-TS-CCE" firstAttribute="leading" secondItem="4AH-f8-96V" secondAttribute="leading" id="QZI-Ez-Hjb"/>
+                                            <constraint firstAttribute="trailing" secondItem="SQv-TS-CCE" secondAttribute="trailing" id="lR0-nz-jIP"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9L9-wl-j49">
-                                        <rect key="frame" x="0.0" y="199.5" width="375" height="199"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9L9-wl-j49">
+                                        <rect key="frame" x="0.0" y="199.5" width="375" height="198.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWp-MI-h8N">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="172.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="179" id="FMB-lb-0oG"/>
+                                                </constraints>
                                             </imageView>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-ir-Dq6">
-                                                <rect key="frame" x="0.0" y="172.5" width="375" height="2"/>
-                                            </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-2K-5rY">
-                                                <rect key="frame" x="0.0" y="174.5" width="375" height="24.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4D-Nm-7aX">
+                                                <rect key="frame" x="0.0" y="179" width="375" height="19.5"/>
+                                                <subviews>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-W1-i6J">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="19.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="1Mb-Km-Wn3"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dC-it-Gzl">
+                                                        <rect key="frame" x="30" y="0.0" width="345" height="19.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="7dC-it-Gzl" firstAttribute="leading" secondItem="HFp-W1-i6J" secondAttribute="trailing" id="aut-ZN-zGv"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-s7-By5">
-                                        <rect key="frame" x="0.0" y="398.5" width="375" height="199.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-s7-By5">
+                                        <rect key="frame" x="0.0" y="398" width="375" height="200"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ez4-ta-HSI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="6qG-uk-lch"/>
+                                                </constraints>
                                             </imageView>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kqe-hp-ABL">
-                                                <rect key="frame" x="0.0" y="169.5" width="375" height="2.5"/>
-                                            </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm2-do-EDN">
-                                                <rect key="frame" x="0.0" y="172" width="375" height="27.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBD-C6-SJL">
+                                                <rect key="frame" x="0.0" y="180" width="375" height="20"/>
+                                                <subviews>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nGK-oB-LcE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
+                                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-tS-x7N">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="5e1-tS-x7N" firstAttribute="leading" secondItem="nGK-oB-LcE" secondAttribute="leading" id="7k0-0b-3bM"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Ez4-ta-HSI" secondAttribute="bottom" constant="20" symbolic="YES" id="5lN-3p-Nfj"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
-                                <variation key="heightClass=compact" axis="horizontal"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="eAa-3O-KON" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="Brs-xx-gu4"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="eAa-3O-KON" secondAttribute="bottom" id="LWR-MQ-fXS"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="eAa-3O-KON" secondAttribute="trailing" id="Ri7-QT-RaP"/>
-                            <constraint firstItem="eAa-3O-KON" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="oiV-XE-xbL"/>
+                            <constraint firstItem="8NR-fW-IJR" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="ZC5-7X-UEc"/>
+                            <constraint firstItem="8NR-fW-IJR" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="aIn-Xs-0vY"/>
+                            <constraint firstAttribute="trailing" secondItem="8NR-fW-IJR" secondAttribute="trailing" id="bgM-mq-FWG"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="8NR-fW-IJR" secondAttribute="bottom" id="i8w-7j-ys0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Resistor Substitution" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Calibration" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="parallelLabel" destination="pm2-do-EDN" id="eZu-M6-fEO"/>
-                        <outlet property="parallelProgress" destination="Kqe-hp-ABL" id="43a-NV-oTg"/>
+                        <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
+                        <outlet property="parallelLabel" destination="5e1-tS-x7N" id="KDz-Uk-Zk1"/>
                         <outlet property="parallelResistors" destination="Ez4-ta-HSI" id="gzT-F5-9iA"/>
+                        <outlet property="seriesActivity" destination="xDp-GK-2CU" id="3rS-2H-Xe9"/>
                         <outlet property="seriesLabel" destination="CHL-ZZ-0Dl" id="ezD-iF-8e7"/>
-                        <outlet property="seriesParallelLabel" destination="kkw-2K-5rY" id="0nD-sP-bk8"/>
-                        <outlet property="seriesParallelProgress" destination="aQY-ir-Dq6" id="gBX-FT-Qaj"/>
+                        <outlet property="seriesParallelActivity" destination="HFp-W1-i6J" id="rIT-DN-6gl"/>
+                        <outlet property="seriesParallelLabel" destination="7dC-it-Gzl" id="b9b-2W-N7B"/>
                         <outlet property="seriesParallelResistors" destination="dWp-MI-h8N" id="HOQ-4P-Bqf"/>
-                        <outlet property="seriesProgress" destination="U5d-hG-mTJ" id="3eh-1j-P3F"/>
                         <outlet property="seriesResistors" destination="tGS-eD-5sP" id="KIp-ON-Mff"/>
                     </connections>
                 </viewController>
@@ -159,7 +208,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
