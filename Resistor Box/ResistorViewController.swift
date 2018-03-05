@@ -34,6 +34,9 @@ class ResistorViewController: UIViewController {
     @IBOutlet weak var parallelLabel: UILabel!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
 
+    @IBOutlet weak var desiredValue: UITextField! {
+        didSet { desiredValue.delegate = self }
+    }
     
     func updateSeriesResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
         let r1v = Resistors.stringFrom(r1)
@@ -49,10 +52,16 @@ class ResistorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
+        desiredValue.text = "103.7Ω"
+        calculateOptimalValues(desiredValue)
+    }
+
+    @IBAction func calculateOptimalValues(_ sender: UITextField) {
         seriesLabel.text = "Finding best solution..."
         seriesActivity.startAnimating()
+        let r = Resistors.parseString(sender.text ?? "0Ω")
         DispatchQueue.global().async {
-            let x = Resistors.computeSeries(100.2) { (error, r1, r2, r3) in
+            let x = Resistors.computeSeries(r) { (error, r1, r2, r3) in
                 self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
             }
             print(x)
@@ -62,6 +71,14 @@ class ResistorViewController: UIViewController {
             }
         }
     }
+}
 
+extension ResistorViewController : UITextFieldDelegate {
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
 
