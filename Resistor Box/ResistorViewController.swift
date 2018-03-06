@@ -38,6 +38,10 @@ class ResistorViewController: UIViewController {
         didSet { desiredValue.delegate = self }
     }
     
+    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
+         view.endEditing(true)
+    }
+    
     func updateSeriesResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
         let r1v = Resistors.stringFrom(r1)
         let r2v = Resistors.stringFrom(r2)
@@ -45,7 +49,10 @@ class ResistorViewController: UIViewController {
         let rt = Resistors.stringFrom(r1+r2+r3)
         DispatchQueue.main.async {
             self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, valu3: r3v)
-            self.seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 3
+            let errorString = formatter.string(from: NSNumber(value: error))!
+            self.seriesLabel.text = "\(label) Result: \(rt); error: \(errorString)% with 1% resistors"
         }
     }
     

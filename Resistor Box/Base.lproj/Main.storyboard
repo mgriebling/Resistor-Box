@@ -151,13 +151,18 @@
                         <viewLayoutGuide key="safeArea" id="aj3-AK-e4t"/>
                     </view>
                     <navigationItem key="navigationItem" title="Enter Desired Value" id="zFu-l7-pXi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="3GH-e0-023"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="3GH-e0-023">
+                            <connections>
+                                <segue destination="nY4-0o-YKu" kind="unwind" unwindAction="returnToResistorView:" id="rL8-jt-SbK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="pickerView" destination="7S5-sN-rTY" id="H4A-hA-JcX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU5-4R-qIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nY4-0o-YKu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2298" y="-322"/>
         </scene>
