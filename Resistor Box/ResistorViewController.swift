@@ -51,15 +51,31 @@ class ResistorViewController: UIViewController {
             self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, valu3: r3v)
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 3
+            formatter.minimumIntegerDigits = 1
             let errorString = formatter.string(from: NSNumber(value: error))!
             self.seriesLabel.text = "\(label) Result: \(rt); error: \(errorString)% with 1% resistors"
+        }
+    }
+    
+    func updateSeriesParallelResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
+        let r1v = Resistors.stringFrom(r1)
+        let r2v = Resistors.stringFrom(r2)
+        let r3v = Resistors.stringFrom(r3)
+        let rt = Resistors.stringFrom(r1+r2+r3)
+        DispatchQueue.main.async {
+            self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, valu3: r3v)
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 3
+            formatter.minimumIntegerDigits = 1
+            let errorString = formatter.string(from: NSNumber(value: error))!
+            self.seriesParallelLabel.text = "\(label) Result: \(rt); error: \(errorString)% with 1% resistors"
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
-        desiredValue.text = "103.7Ω"
+        desiredValue.text = "10Ω"
         calculateOptimalValues(desiredValue)
     }
 
@@ -71,10 +87,19 @@ class ResistorViewController: UIViewController {
             let x = Resistors.computeSeries(r.0) { (error, r1, r2, r3) in
                 self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
             }
-            print(x)
             self.updateSeriesResistors(x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
             DispatchQueue.main.async {
                 self.seriesActivity.stopAnimating()
+            }
+        }
+        seriesParallelActivity.startAnimating()
+        DispatchQueue.global().async {
+            let x = Resistors.computeSeriesParallel(r.0) { (error, r1, r2, r3) in
+                self.updateSeriesParallelResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
+            }
+            self.updateSeriesParallelResistors(x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
+            DispatchQueue.main.async {
+                self.seriesParallelActivity.stopAnimating()
             }
         }
     }

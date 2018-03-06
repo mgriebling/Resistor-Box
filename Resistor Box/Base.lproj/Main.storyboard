@@ -113,7 +113,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calibration" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Calibration" id="acW-dT-cKf">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="desiredValue" destination="00e-gV-jOZ" id="nJz-dv-IPH"/>
                         <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
@@ -137,9 +139,9 @@
         <!--Enter Desired Value-->
         <scene sceneID="ypV-Ev-t3p">
             <objects>
-                <viewController id="sVG-US-5Sm" customClass="NumberPickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="sVG-US-5Sm" customClass="NumberPickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9QZ-dQ-jCS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-sN-rTY">
@@ -157,6 +159,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="300"/>
                     <connections>
                         <outlet property="pickerView" destination="7S5-sN-rTY" id="H4A-hA-JcX"/>
                     </connections>
