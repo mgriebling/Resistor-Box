@@ -28,10 +28,6 @@ public class ResistorImage : NSObject {
         context.scaleBy(x: resizedFrame.width / 153, y: resizedFrame.height / 55)
 
 
-
-        //// Image Declarations
-        let image = UIImage(named: "image.png")!
-
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: 2, y: 37))
@@ -44,13 +40,6 @@ public class ResistorImage : NSObject {
         bezierPath.addCurve(to: CGPoint(x: 119, y: 53), controlPoint1: CGPoint(x: 103, y: 21), controlPoint2: CGPoint(x: 119, y: 55))
         bezierPath.addCurve(to: CGPoint(x: 127, y: 37), controlPoint1: CGPoint(x: 119, y: 51), controlPoint2: CGPoint(x: 127, y: 37))
         bezierPath.addLine(to: CGPoint(x: 151, y: 37))
-        context.saveGState()
-        bezierPath.addClip()
-        context.translateBy(x: 2, y: -47)
-        context.scaleBy(x: 1, y: -1)
-        context.translateBy(x: 0, y: -image.size.height)
-        context.draw(image.cgImage!, in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-        context.restoreGState()
         UIColor.black.setStroke()
         bezierPath.lineWidth = 3
         bezierPath.lineCapStyle = .round
