@@ -71,11 +71,17 @@ class ResistorViewController: UIViewController {
             }
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // remove the keypad when tapping on the background
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 }
 
 extension ResistorViewController : UITextFieldDelegate {
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
