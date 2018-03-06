@@ -61,7 +61,7 @@ class ResistorViewController: UIViewController {
         seriesActivity.startAnimating()
         let r = Resistors.parseString(sender.text ?? "0Ω")
         DispatchQueue.global().async {
-            let x = Resistors.computeSeries(r) { (error, r1, r2, r3) in
+            let x = Resistors.computeSeries(r.0) { (error, r1, r2, r3) in
                 self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
             }
             print(x)
@@ -72,11 +72,40 @@ class ResistorViewController: UIViewController {
         }
     }
     
+    @IBAction func editingDidBegin(_ sender: UITextField) {
+        performSegue(withIdentifier: "PresentPicker", sender: sender)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // remove the keypad when tapping on the background
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PresentPicker" {
+            let destNav = segue.destination
+            if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
+                vc.value = desiredValue.text
+                vc.callback = { [weak self] newValue in
+                    self?.desiredValue.text = newValue
+                    self?.calculateOptimalValues(self!.desiredValue)
+                    self?.view.endEditing(true)
+                }
+            }
+            let popPC = destNav.popoverPresentationController
+            popPC?.delegate = self
+        }
+    }
+
+}
+
+extension ResistorViewController : UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
 }
 
 extension ResistorViewController : UITextFieldDelegate {
