@@ -113,8 +113,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calibration" id="acW-dT-cKf">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    <tabBarItem key="tabBarItem" title="Calibration" image="Resistor" id="acW-dT-cKf">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="desiredValue" destination="00e-gV-jOZ" id="nJz-dv-IPH"/>
@@ -202,7 +202,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Second" image="Op Amp" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,4 +245,8 @@
             <point key="canvasLocation" x="1576" y="-321.13943028485761"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Op Amp" width="97" height="85"/>
+        <image name="Resistor" width="153" height="55"/>
+    </resources>
 </document>
