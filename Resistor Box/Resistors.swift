@@ -40,17 +40,15 @@ class Resistors {
     static func computeValuesFor(_ rpc : [Double], minimum: Double, maximum: Double, name: String) {
         var r = [Double]()
         var scale = minimum
-        outer:
-        while scale < 100.0*MEG {
+        r.append(SHORT)
+        outer: while scale < 100.0*MEG {
             for resistor in rpc {
                 if resistor*scale > maximum { break outer }
                 r.append(resistor*scale)
             }
             scale *= 10
         }
-        
-        // also add OPEN and SHORT
-        r.append(OPEN); r.append(SHORT)
+        r.append(OPEN)
         rInv[name] = r
     }
     
@@ -111,13 +109,13 @@ class Resistors {
         outerLoop: for i in rInv["1%"]! {
             for j in rInv["1%"]! {
                 loop: for k in rInv["1%"]! {
-                    if Re < 0.001 { break outerLoop }  // abort processing
                     let Rt = algorithm(i, j, k)
                     if abort(Rt, i, j, k) { break loop }
                     let error = fabs(Rt-x)
                     if error < Re {
                         Ri = i; Rj = j; Rk = k; Re = error
                         Resistors.callback(Re, Ri, Rj, Rk)
+                        if error < 1e-10 { break outerLoop }  // abort processing
                     }
                 }
             }

@@ -28,10 +28,14 @@ class NumberPickerViewController: UIViewController {
         picker.valueChangeCallback = { [weak self] picker in
             guard let wself = self else { return }
             let unit = picker.getSelectedLabel(picker: wself.pickerView)
-            let value = picker.value
-            let rvalue = "\(value)\(unit)"
-            wself.callback(rvalue)
-            print("Set picker to \(rvalue)")
+            wself.value = "\(picker.value)\(unit)"
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DispatchQueue.main.async {
+            self.callback(self.value!)
         }
     }
 
