@@ -89,18 +89,19 @@ class Resistors {
         }
     }
     
-    static func parseString(_ s: String) -> Double {
+    static func parseString(_ s: String) -> (Double, String) {
         // Identify the resistor value from the passed string
         var subRs = s.trimmingCharacters(in: CharacterSet.whitespaces)
         var scale = 1.0
+        var suffix = "Ω"
         
-        if subRs.hasSuffix("Ω") { subRs.removeLast() }
-        if subRs.hasSuffix("m") { subRs.removeLast(); scale = 1.0/K }
+        if subRs.hasSuffix("Ω") { subRs.removeLast(); suffix = "Ω" }
+        if subRs.hasSuffix("m") { subRs.removeLast(); scale = 1.0/K; suffix = "mΩ" }
         subRs = subRs.uppercased()
-        if subRs.hasSuffix("K")  { subRs.removeLast(); scale = K }
-        if subRs.hasSuffix("M")  { subRs.removeLast(); scale = MEG }
-        if subRs.hasSuffix("MEG")  { subRs.removeLast(3); scale = MEG }
-        return (Double(subRs) ?? 0)*scale
+        if subRs.hasSuffix("K")  { subRs.removeLast(); scale = K; suffix = "KΩ"  }
+        if subRs.hasSuffix("M")  { subRs.removeLast(); scale = MEG; suffix = "MΩ"  }
+        if subRs.hasSuffix("MEG")  { subRs.removeLast(3); scale = MEG; suffix = "MΩ"  }
+        return ((Double(subRs) ?? 0)*scale, suffix)
     }
     
     static func compute(_ x: Double, withAlgorithm algorithm: (Double, Double, Double) -> (Double), abortAlgorithm abort: (Double, Double, Double, Double) -> Bool) -> [Double] {
