@@ -49,13 +49,13 @@ class ResistorViewController: UIViewController {
         return f
     }
     
-    let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue", qos: .background)
+    let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
-    func updateSeriesResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
+    func updateSeriesResistors (_ result: Double, error: Double, r1: Double, r2: Double, r3: Double, label: String) {
         let r1v = Resistors.stringFrom(r1)
         let r2v = Resistors.stringFrom(r2)
         let r3v = Resistors.stringFrom(r3)
-        let rt = Resistors.stringFrom(r1+r2+r3)
+        let rt = Resistors.stringFrom(result)
         DispatchQueue.main.async {
             self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
             let errorString = ResistorViewController.formatter.string(from: NSNumber(value: error))!
@@ -63,11 +63,11 @@ class ResistorViewController: UIViewController {
         }
     }
     
-    func updateSeriesParallelResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
+    func updateSeriesParallelResistors (_ result: Double, error: Double, r1: Double, r2: Double, r3: Double, label: String) {
         let r1v = Resistors.stringFrom(r1)
         let r2v = Resistors.stringFrom(r2)
         let r3v = Resistors.stringFrom(r3)
-        let rt = Resistors.stringFrom(r1+r2*r3/(r2+r3))
+        let rt = Resistors.stringFrom(result)
         DispatchQueue.main.async {
             self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
             let errorString = ResistorViewController.formatter.string(from: NSNumber(value: error))!
@@ -76,11 +76,12 @@ class ResistorViewController: UIViewController {
     }
     
     @IBAction func cancelCalculations(_ sender: Any) {
+        print("Cancelled calculation")
         Resistors.cancelCalculations = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
         desiredValue.text = "10Ω"
         Resistors.initInventory()   // build up the values
@@ -90,23 +91,28 @@ class ResistorViewController: UIViewController {
     @IBAction func calculateOptimalValues(_ sender: UITextField) {
         let r = Resistors.parseString(sender.text ?? "0Ω")
         seriesActivity.startAnimating()
+        Resistors.cancelCalculations = false
         backgroundQueue.async {
-            let x = Resistors.computeSeries(r.0) { (error, r1, r2, r3) in
-                self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
+            print("Starting series calculations...")
+            let x = Resistors.computeSeries(r.0) { (value, error, r1, r2, r3) in
+                self.updateSeriesResistors(value, error:error, r1:r1, r2: r2, r3: r3, label: "Working")
             }
-            self.updateSeriesResistors(x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
             DispatchQueue.main.async {
+                self.updateSeriesResistors(x[3], error:x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
                 self.seriesActivity.stopAnimating()
+                print("Finished series calculations...")
             }
         }
         seriesParallelActivity.startAnimating()
         backgroundQueue.async {
-            let x = Resistors.computeSeriesParallel(r.0) { (error, r1, r2, r3) in
-                self.updateSeriesParallelResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
+            print("Starting series/parallel calculations...")
+            let x = Resistors.computeSeriesParallel(r.0) { (value, error, r1, r2, r3) in
+                self.updateSeriesParallelResistors(value, error:error, r1:r1, r2: r2, r3: r3, label: "Working")
             }
-            self.updateSeriesParallelResistors(x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
             DispatchQueue.main.async {
+                self.updateSeriesParallelResistors(x[3], error:x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
                 self.seriesParallelActivity.stopAnimating()
+                print("Finished series/parallel calculations...")
             }
         }
     }

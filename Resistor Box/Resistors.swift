@@ -16,7 +16,7 @@ class Resistors {
     static let K     = 1.0e3
     
     static var rInv = [String: [Double]]()  // dictionary of resistor values organized by name
-    static var callback : (Double, Double, Double, Double) -> () = { a, b, c, d in  }
+    static var callback : (Double, Double, Double, Double, Double) -> () = { a, b, c, d, e in  }
     static var cancelCalculations = false   // allow user to abort calculations
     
     static let r1pc = [  // 1% minimum: 1 ohm, maximum: 10M ohm
@@ -103,59 +103,62 @@ class Resistors {
         return ((Double(subRs) ?? 0)*scale, suffix)
     }
     
-    static func compute(_ x: Double, withAlgorithm algorithm: (Double, Double, Double) -> (Double), abortAlgorithm abort: (Double, Double, Double, Double) -> Bool) -> [Double] {
+    static func compute(_ x: Double, withAlgorithm algorithm: (Double, Double, Double) -> (Double), abortAlgorithm abort: (Double, Double, Double, Double) -> Bool, algoText: String) -> [Double] {
         var Re = 1.0e100  // very large error to start
-        var Ri, Rj, Rk : Double
-        Ri = 0; Rj = 0; Rk = 0
+        var Ri, Rj, Rk, Rt : Double
+        var callbackCount : Int = 0
+        Ri = 0; Rj = 0; Rk = 0; Rt = 0
         Resistors.cancelCalculations = false
         outerLoop: for i in rInv["1%"]! {
             for j in rInv["1%"]! {
                 loop: for k in rInv["1%"]! {
-                    let Rt = algorithm(i, j, k)
+                    Rt = algorithm(i, j, k)
+                    let error = fabs(Rt-x)/x
                     if abort(Rt, i, j, k) { break loop }
                     if Resistors.cancelCalculations { break outerLoop }
-                    let error = fabs(Rt-x)
                     if error < Re {
                         Ri = i; Rj = j; Rk = k; Re = error
-                        Resistors.callback(Re, Ri, Rj, Rk)
+                        print("Found lower error: \(Re) for \(x); \(i), \(j), \(k) for \(algoText)")
+                        if callbackCount % 100 == 0 { Resistors.callback(Rt, 100.0*Re, Ri, Rj, Rk) }  // avoid too many updates
                         if error < 1e-10 { break outerLoop }  // abort processing
+                        callbackCount += 1
                     }
                 }
             }
         }
         
-        let Rt = algorithm(Ri, Rj, Rk)
-        return [Ri, Rj, Rk, Rt, x != 0 ? (100.0*fabs(x - Rt)/x) : fabs(x - Rt)]
+        Resistors.callback(Rt, Re, Ri, Rj, Rk)
+        return [Ri, Rj, Rk, Rt, x != 0 ? (100.0*Re) : fabs(x - Rt)]
     }
     
-    static func computeSeries(_ x : Double, callback : @escaping (Double, Double, Double, Double) -> ()) -> [Double] {
+    static func computeSeries(_ x : Double, callback : @escaping (Double, Double, Double, Double, Double) -> ()) -> [Double] {
         Resistors.callback = callback
         return Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2 + r3
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return r3 > x
-        })
+        }, algoText: "Series")
     }
     
-    static func computeParallel(_ x : Double, callback : @escaping (Double, Double, Double, Double) -> ()) -> [Double] {
+    static func computeParallel(_ x : Double, callback : @escaping (Double, Double, Double, Double, Double) -> ()) -> [Double] {
         Resistors.callback = callback
         return Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return 1.0 / (1.0/r1 + 1.0/r2 + 1.0/r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution has been found
             return false
-        })
+        }, algoText: "Series-Parallel")
     }
     
-    static func computeSeriesParallel(_ x : Double, callback : @escaping (Double, Double, Double, Double) -> ()) -> [Double] {
+    static func computeSeriesParallel(_ x : Double, callback : @escaping (Double, Double, Double, Double, Double) -> ()) -> [Double] {
         Resistors.callback = callback
         return Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2*r3/(r2+r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return r1 > x || current > x
-        })
+        }, algoText: "Parallel")
     }
     
 }
