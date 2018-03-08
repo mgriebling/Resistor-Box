@@ -49,6 +49,8 @@ class ResistorViewController: UIViewController {
         return f
     }
     
+    let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue", qos: .background)
+    
     func updateSeriesResistors (_ error: Double, r1: Double, r2: Double, r3: Double, label: String) {
         let r1v = Resistors.stringFrom(r1)
         let r2v = Resistors.stringFrom(r2)
@@ -73,6 +75,10 @@ class ResistorViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelCalculations(_ sender: Any) {
+        Resistors.cancelCalculations = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
@@ -82,10 +88,9 @@ class ResistorViewController: UIViewController {
     }
 
     @IBAction func calculateOptimalValues(_ sender: UITextField) {
-        seriesLabel.text = "Finding best solution..."
-        seriesActivity.startAnimating()
         let r = Resistors.parseString(sender.text ?? "0Ω")
-        DispatchQueue.global().async {
+        seriesActivity.startAnimating()
+        backgroundQueue.async {
             let x = Resistors.computeSeries(r.0) { (error, r1, r2, r3) in
                 self.updateSeriesResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
             }
@@ -95,7 +100,7 @@ class ResistorViewController: UIViewController {
             }
         }
         seriesParallelActivity.startAnimating()
-        DispatchQueue.global().async {
+        backgroundQueue.async {
             let x = Resistors.computeSeriesParallel(r.0) { (error, r1, r2, r3) in
                 self.updateSeriesParallelResistors(error, r1:r1, r2: r2, r3: r3, label: "Working")
             }
@@ -123,8 +128,8 @@ class ResistorViewController: UIViewController {
                 vc.value = desiredValue.text
                 vc.callback = { [weak self] newValue in
                     self?.desiredValue.text = newValue
-                    self?.calculateOptimalValues(self!.desiredValue)
                     self?.view.endEditing(true)
+                    self?.calculateOptimalValues(self!.desiredValue)
                 }
             }
             let popPC = destNav.popoverPresentationController

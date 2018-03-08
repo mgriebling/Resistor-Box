@@ -17,6 +17,7 @@ class Resistors {
     
     static var rInv = [String: [Double]]()  // dictionary of resistor values organized by name
     static var callback : (Double, Double, Double, Double) -> () = { a, b, c, d in  }
+    static var cancelCalculations = false   // allow user to abort calculations
     
     static let r1pc = [  // 1% minimum: 1 ohm, maximum: 10M ohm
         10.0, 10.2, 10.5, 10.7, 11.0, 11.3, 11.5, 11.8, 12.1, 12.4, 12.7, 13.0,
@@ -106,11 +107,13 @@ class Resistors {
         var Re = 1.0e100  // very large error to start
         var Ri, Rj, Rk : Double
         Ri = 0; Rj = 0; Rk = 0
+        Resistors.cancelCalculations = false
         outerLoop: for i in rInv["1%"]! {
             for j in rInv["1%"]! {
                 loop: for k in rInv["1%"]! {
                     let Rt = algorithm(i, j, k)
                     if abort(Rt, i, j, k) { break loop }
+                    if Resistors.cancelCalculations { break outerLoop }
                     let error = fabs(Rt-x)
                     if error < Re {
                         Ri = i; Rj = j; Rk = k; Re = error

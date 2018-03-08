@@ -22,17 +22,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-fW-IJR">
                                 <rect key="frame" x="0.0" y="20" width="375" height="554"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIf-bl-tTg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DIf-bl-tTg">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desired Value: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X02-Si-XAG">
-                                                <rect key="frame" x="0.0" y="0.0" width="129" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Desired Value: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X02-Si-XAG">
+                                                <rect key="frame" x="0.0" y="0.0" width="133.5" height="30"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="67.9Ω" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00e-gV-jOZ">
-                                                <rect key="frame" x="129" y="0.0" width="246" height="18"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="67.9Ω" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00e-gV-jOZ">
+                                                <rect key="frame" x="141.5" y="0.0" width="100" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="2GD-eN-Deq"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
@@ -41,20 +44,31 @@
                                                     <action selector="editingDidBegin:" destination="9pv-A4-QxB" eventType="editingDidBegin" id="5e4-gO-FJy"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwh-Pi-GD3">
+                                                <rect key="frame" x="249.5" y="0.0" width="125.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="q9P-WJ-tlE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelCalculations:" destination="9pv-A4-QxB" eventType="touchUpInside" id="8k3-4Q-4Ou"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="redraw" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4AH-f8-96V">
-                                        <rect key="frame" x="0.0" y="18" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="30" width="375" height="109"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-eD-5sP">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xDp-GK-2CU">
-                                                <rect key="frame" x="0.0" y="64.5" width="375" height="51.5"/>
+                                                <rect key="frame" x="0.0" y="65" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHL-ZZ-0Dl">
-                                                <rect key="frame" x="0.0" y="116" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="85" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -62,17 +76,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="redraw" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9L9-wl-j49">
-                                        <rect key="frame" x="0.0" y="158" width="375" height="178.5"/>
+                                        <rect key="frame" x="0.0" y="139" width="375" height="175"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWp-MI-h8N">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-W1-i6J">
-                                                <rect key="frame" x="0.0" y="128.5" width="375" height="26"/>
+                                                <rect key="frame" x="0.0" y="131" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dC-it-Gzl">
-                                                <rect key="frame" x="0.0" y="154.5" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="151" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -80,17 +94,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-s7-By5">
-                                        <rect key="frame" x="0.0" y="336.5" width="375" height="217.5"/>
+                                        <rect key="frame" x="0.0" y="314" width="375" height="240"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ez4-ta-HSI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="193.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nGK-oB-LcE">
-                                                <rect key="frame" x="0.0" y="193.5" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="196" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-tS-x7N">
-                                                <rect key="frame" x="0.0" y="193.5" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="216" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -276,7 +290,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="djQ-JM-4jc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Divider" image="Resistor" id="PtU-dt-8LQ"/>
+                    <tabBarItem key="tabBarItem" title="Divider" image="Divider2" id="PtU-dt-8LQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlM-vM-JZT" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,6 +298,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Divider2" width="54" height="25"/>
         <image name="Op Amp" width="28" height="25"/>
         <image name="Resistor" width="69" height="25"/>
     </resources>
