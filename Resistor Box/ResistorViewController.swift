@@ -37,6 +37,7 @@ class ResistorViewController: UIViewController {
     @IBOutlet weak var desiredValue: UITextField! {
         didSet { desiredValue.delegate = self }
     }
+    @IBOutlet weak var cancelButton: UIButton!
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
          view.endEditing(true)
@@ -85,35 +86,57 @@ class ResistorViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         desiredValue.text = "10Ω"
         Resistors.initInventory()   // build up the values
+        cancelButton.isEnabled = false
         calculateOptimalValues(desiredValue)
     }
+    
+    // make sure these variables are retained
+    var r = (0.0, "")
+    var x = [Double]()
+    var y = [Double]()
+    var finished : Int = 0
 
     @IBAction func calculateOptimalValues(_ sender: UITextField) {
-        let r = Resistors.parseString(sender.text ?? "0Ω")
+        r = Resistors.parseString(sender.text ?? "0Ω")
         seriesActivity.startAnimating()
+        seriesParallelActivity.startAnimating()
         Resistors.cancelCalculations = false
+        cancelButton.isEnabled = true
+        desiredValue.isEnabled = false
+        finished = 0
         backgroundQueue.async {
             print("Starting series calculations...")
-            let x = Resistors.computeSeries(r.0) { (value, error, r1, r2, r3) in
+            self.x = Resistors.computeSeries(self.r.0, callback: { (value, error, r1, r2, r3) in
                 self.updateSeriesResistors(value, error:error, r1:r1, r2: r2, r3: r3, label: "Working")
-            }
-            DispatchQueue.main.async {
-                self.updateSeriesResistors(x[3], error:x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
-                self.seriesActivity.stopAnimating()
-                print("Finished series calculations...")
-            }
+            }, done: { x in
+                DispatchQueue.main.async {
+                    self.updateSeriesResistors(x[3], error:x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
+                    self.seriesActivity.stopAnimating()
+                    print("Finished series calculations...")
+                    self.finished += 1
+                    if self.finished == 2 {
+                        self.cancelButton.isEnabled = false
+                        self.desiredValue.isEnabled = true
+                    }
+                }
+            })
         }
-        seriesParallelActivity.startAnimating()
         backgroundQueue.async {
             print("Starting series/parallel calculations...")
-            let x = Resistors.computeSeriesParallel(r.0) { (value, error, r1, r2, r3) in
+            self.y = Resistors.computeSeriesParallel(self.r.0, callback: { (value, error, r1, r2, r3) in
                 self.updateSeriesParallelResistors(value, error:error, r1:r1, r2: r2, r3: r3, label: "Working")
-            }
-            DispatchQueue.main.async {
-                self.updateSeriesParallelResistors(x[3], error:x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
-                self.seriesParallelActivity.stopAnimating()
-                print("Finished series/parallel calculations...")
-            }
+            }, done: { x in
+                DispatchQueue.main.async {
+                    self.updateSeriesParallelResistors(self.y[3], error:self.y[4], r1: self.y[0], r2: self.y[1], r3: self.y[2], label: "Best")
+                    self.seriesParallelActivity.stopAnimating()
+                    print("Finished series/parallel calculations...")
+                    self.finished += 1
+                    if self.finished == 2 {
+                        self.cancelButton.isEnabled = false
+                        self.desiredValue.isEnabled = true
+                    }
+                }
+            })
         }
     }
     

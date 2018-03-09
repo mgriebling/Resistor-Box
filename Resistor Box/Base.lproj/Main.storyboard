@@ -131,6 +131,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Fwh-Pi-GD3" id="GHf-eo-B9H"/>
                         <outlet property="desiredValue" destination="00e-gV-jOZ" id="nJz-dv-IPH"/>
                         <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
                         <outlet property="parallelLabel" destination="5e1-tS-x7N" id="KDz-Uk-Zk1"/>
