@@ -24,7 +24,9 @@ class NumberPickerViewController: UIViewController {
         pickerView.delegate = picker
         pickerView.dataSource = picker
         let r = Resistors.parseString(value ?? "0Ω")
-        picker.set(pickerView, toCurrentValue: Decimal(r.0), label: r.1)
+        
+        // normalize the value
+        picker.set(pickerView, toCurrentValue: Decimal(r.1), label: r.2)
         picker.valueChangeCallback = { [weak self] picker in
             guard let wself = self else { return }
             let unit = picker.getSelectedLabel(picker: wself.pickerView)
@@ -33,10 +35,8 @@ class NumberPickerViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        callback(self.value!)
         super.viewWillDisappear(animated)
-        DispatchQueue.main.async {
-            self.callback(self.value!)
-        }
     }
 
 }

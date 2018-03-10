@@ -52,28 +52,46 @@ class ResistorViewController: UIViewController {
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
-    func updateSeriesResistors (_ result: Double, error: Double, r1: Double, r2: Double, r3: Double, label: String) {
-        let r1v = Resistors.stringFrom(r1)
-        let r2v = Resistors.stringFrom(r2)
-        let r3v = Resistors.stringFrom(r3)
-        let rt = Resistors.stringFrom(result)
-        DispatchQueue.main.async {
-            self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
-            let errorString = ResistorViewController.formatter.string(from: NSNumber(value: error))!
-            self.seriesLabel.text = "\(label) Result: \(rt); error: \(errorString)% with 1% resistors"
-        }
+    func updateSeriesResistors (_ x : [Double], label: String) {
+        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
+        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
+        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
+        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
+        seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
+        seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
     }
     
-    func updateSeriesParallelResistors (_ result: Double, error: Double, r1: Double, r2: Double, r3: Double, label: String) {
-        let r1v = Resistors.stringFrom(r1)
-        let r2v = Resistors.stringFrom(r2)
-        let r3v = Resistors.stringFrom(r3)
-        let rt = Resistors.stringFrom(result)
-        DispatchQueue.main.async {
-            self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-            let errorString = ResistorViewController.formatter.string(from: NSNumber(value: error))!
-            self.seriesParallelLabel.text = "\(label) Result: \(rt); error: \(errorString)% with 1% resistors"
-        }
+    func updateSeriesParallelResistors (_ x : [Double], label: String) {
+        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
+        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
+        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
+        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
+        seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
+        seriesParallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+    }
+    
+    func updateParallelResistors (_ x : [Double], label: String) {
+        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
+        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
+        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
+        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
+        parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: r1v, value2: r2v, value3: r3v)
+        parallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+    }
+    
+    func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
+        if calculating1 { updateSeriesResistors(x, label: label) }
+        if calculating2 { updateSeriesParallelResistors(y, label: label) }
+        if calculating3 { updateParallelResistors(z, label: label) }
+    }
+    
+    func enableGUI () {
+        let done = !calculating1 && !calculating2
+        cancelButton.isEnabled = !done
+        desiredValue.isEnabled = done
     }
     
     @IBAction func cancelCalculations(_ sender: Any) {
@@ -84,57 +102,92 @@ class ResistorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
-        desiredValue.text = "10Ω"
         Resistors.initInventory()   // build up the values
-        cancelButton.isEnabled = false
+        r = (10, 10, "Ω")
         calculateOptimalValues(desiredValue)
     }
     
+    func stopTimer() {
+        if !calculating1 && !calculating2 && !calculating3 {
+            timedTask?.invalidate() // stop update timer if done
+            timedTask = nil
+        }
+    }
+    
     // make sure these variables are retained
-    var r = (0.0, "")
+    var r = (0.0, 0.0, "") {
+        didSet {
+            DispatchQueue.main.async {
+                self.desiredValue.text = Resistors.stringFrom(self.r.0)
+            }
+        }
+    }
     var x = [Double]()
     var y = [Double]()
-    var finished : Int = 0
+    var z = [Double]()
+    var timedTask : Timer?
+    var calculating1 = false
+    var calculating2 = false
+    var calculating3 = false
 
     @IBAction func calculateOptimalValues(_ sender: UITextField) {
-        r = Resistors.parseString(sender.text ?? "0Ω")
+        guard !(calculating1 || calculating2 || calculating3) else { print("ERROR!!!!!!"); return }
+        calculating1 = true; calculating2 = true; calculating3 = true
         seriesActivity.startAnimating()
         seriesParallelActivity.startAnimating()
+        parallelActivity.startAnimating()
+        enableGUI()
         Resistors.cancelCalculations = false
-        cancelButton.isEnabled = true
-        desiredValue.isEnabled = false
-        finished = 0
+        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.refreshGUI(self.x, y: self.y, z: self.z, label: "Working")
+        }
+        timedTask?.fire()     // refresh GUI to start
         backgroundQueue.async {
             print("Starting series calculations...")
-            self.x = Resistors.computeSeries(self.r.0, callback: { (value, error, r1, r2, r3) in
-                self.updateSeriesResistors(value, error:error, r1:r1, r2: r2, r3: r3, label: "Working")
-            }, done: { x in
-                DispatchQueue.main.async {
-                    self.updateSeriesResistors(x[3], error:x[4], r1: x[0], r2: x[1], r3: x[2], label: "Best")
-                    self.seriesActivity.stopAnimating()
+            Resistors.computeSeries(self.r.0, callback: { values in
+                self.x = values   // update working values
+            }, done: { s in
+                self.x = s
+                self.calculating1 = false
+                self.stopTimer()
+                DispatchQueue.main.async { [weak self] in
+                    self?.updateSeriesResistors(s, label: "Best")
+                    self?.seriesActivity.stopAnimating()
+                    self?.enableGUI()
                     print("Finished series calculations...")
-                    self.finished += 1
-                    if self.finished == 2 {
-                        self.cancelButton.isEnabled = false
-                        self.desiredValue.isEnabled = true
-                    }
                 }
             })
         }
         backgroundQueue.async {
             print("Starting series/parallel calculations...")
-            self.y = Resistors.computeSeriesParallel(self.r.0, callback: { (value, error, r1, r2, r3) in
-                self.updateSeriesParallelResistors(value, error:error, r1:r1, r2: r2, r3: r3, label: "Working")
-            }, done: { x in
-                DispatchQueue.main.async {
-                    self.updateSeriesParallelResistors(self.y[3], error:self.y[4], r1: self.y[0], r2: self.y[1], r3: self.y[2], label: "Best")
-                    self.seriesParallelActivity.stopAnimating()
+            Resistors.computeSeriesParallel(self.r.0, callback: { values in
+                self.y = values   // update working values
+            }, done: { sp in
+                self.y = sp        // final answer update
+                self.calculating2 = false
+                self.stopTimer()
+                DispatchQueue.main.async { [weak self] in
+                    self?.updateSeriesParallelResistors(sp, label: "Best")
+                    self?.seriesParallelActivity.stopAnimating()
+                    self?.enableGUI()
                     print("Finished series/parallel calculations...")
-                    self.finished += 1
-                    if self.finished == 2 {
-                        self.cancelButton.isEnabled = false
-                        self.desiredValue.isEnabled = true
-                    }
+                }
+            })
+        }
+        backgroundQueue.async {
+            print("Starting parallel calculations...")
+            Resistors.computeParallel(self.r.0, callback: { values in
+                self.z = values   // update working values
+            }, done: { p in
+                self.z = p        // final answer update
+                print("Parallel answer = \(p)")
+                self.calculating3 = false
+                self.stopTimer()
+                DispatchQueue.main.async { [weak self] in
+                    self?.updateParallelResistors(p, label: "Best")
+                    self?.parallelActivity.stopAnimating()
+                    self?.enableGUI()
+                    print("Finished parallel calculations...")
                 }
             })
         }
@@ -156,9 +209,11 @@ class ResistorViewController: UIViewController {
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
                 vc.value = desiredValue.text
                 vc.callback = { [weak self] newValue in
-                    self?.desiredValue.text = newValue
-                    self?.view.endEditing(true)
-                    self?.calculateOptimalValues(self!.desiredValue)
+                    guard let wself = self else { return }
+                    print("Setting value = \(newValue)")
+                    wself.r = Resistors.parseString(newValue)
+                    wself.calculateOptimalValues(wself.desiredValue)
+                    wself.view.endEditing(true)
                 }
             }
             let popPC = destNav.popoverPresentationController
