@@ -16,6 +16,7 @@ class Resistors {
     static let K     = 1.0e3
     
     static var rInv = [String: [Double]]()  // dictionary of resistor values organized by name
+    static var active : String = ""         // currently active resistor collection
     static var cancelCalculations = false   // allow user to abort calculations
     
     static let r1pc = [  // 1% minimum: 1 ohm, maximum: 10M ohm
@@ -64,6 +65,7 @@ class Resistors {
             
             // build up the 1% collection
             computeValuesFor(r1pc, minimum: 1, maximum: 10.0*MEG, name: "1%")
+            Resistors.active = "1%"
         }
     }
     
@@ -107,9 +109,9 @@ class Resistors {
         var Re = 1.0e100  // very large error to start
         var Ri, Rj, Rk, Rt : Double
         Ri = 0; Rj = 0; Rk = 0; Rt = 0
-        outerLoop: for i in rInv["1%"]! {
-            for j in rInv["1%"]! {
-                loop: for k in rInv["1%"]! {
+        outerLoop: for i in rInv[active]! {
+            for j in rInv[active]! {
+                loop: for k in rInv[active]! {
                     Rt = algorithm(i, j, k)
                     let error = x != 0 ? 100.0*fabs(Rt-x)/x : Rt
                     if abort(Rt, i, j, k) { break loop }

@@ -58,8 +58,10 @@ class ResistorViewController: UIViewController {
         let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
-        seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
-        seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+        UIView.animate(withDuration: 0.5) {
+            self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
+            self.seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+        }
     }
     
     func updateSeriesParallelResistors (_ x : [Double], label: String) {
@@ -68,8 +70,10 @@ class ResistorViewController: UIViewController {
         let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
-        seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-        seriesParallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+        UIView.animate(withDuration: 0.5) {
+            self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
+            self.seriesParallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+        }
     }
     
     func updateParallelResistors (_ x : [Double], label: String) {
@@ -78,8 +82,10 @@ class ResistorViewController: UIViewController {
         let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
-        parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-        parallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+        UIView.animate(withDuration: 0.5) {
+            self.parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: r1v, value2: r2v, value3: r3v)
+            self.parallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+        }
     }
     
     func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
@@ -210,7 +216,6 @@ class ResistorViewController: UIViewController {
                 vc.value = desiredValue.text
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
-                    print("Setting value = \(newValue)")
                     wself.r = Resistors.parseString(newValue)
                     wself.calculateOptimalValues(wself.desiredValue)
                     wself.view.endEditing(true)
@@ -226,6 +231,7 @@ class ResistorViewController: UIViewController {
 extension ResistorViewController : UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        // allows popover to appear for iPhone-style devices
         return .none
     }
     

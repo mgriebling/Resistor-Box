@@ -26,13 +26,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Value: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X02-Si-XAG">
-                                                <rect key="frame" x="0.0" y="0.0" width="174.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="67.9Ω" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00e-gV-jOZ">
-                                                <rect key="frame" x="174.5" y="0.0" width="99.5" height="30"/>
+                                                <rect key="frame" x="383" y="0.0" width="0.0" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="2GD-eN-Deq"/>
                                                 </constraints>
@@ -44,7 +44,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwh-Pi-GD3">
-                                                <rect key="frame" x="274" y="0.0" width="101" height="30"/>
+                                                <rect key="frame" x="375" y="0.0" width="0.0" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="q9P-WJ-tlE"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="zOv-Wb-9uz"/>
@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1088.8" y="359.37031484257875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -236,6 +236,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="ZJw-zx-wXu" kind="relationship" relationship="viewControllers" id="c7y-av-q7y"/>
+                        <segue destination="gqK-ve-sEa" kind="relationship" relationship="viewControllers" id="poU-pL-Mj4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -295,12 +296,144 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlM-vM-JZT" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="746"/>
+            <point key="canvasLocation" x="1089" y="1078"/>
+        </scene>
+        <!--Resistor Collections-->
+        <scene sceneID="rhp-r7-TWf">
+            <objects>
+                <viewController id="btv-rp-Zck" customClass="EditViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Exh-Jl-dKn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vq4-NG-Xaj">
+                                <rect key="frame" x="0.0" y="347" width="375" height="271"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ie6-5k-QET">
+                                    <size key="itemSize" width="116" height="52"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCell" id="Q6W-F5-fwB" customClass="ResistorCollectionViewCell" customModule="Resistor_Box" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="116" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="116" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Resistor" translatesAutoresizingMaskIntoConstraints="NO" id="n4N-e4-d7T">
+                                                    <rect key="frame" x="2" y="0.0" width="107" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="resistor" destination="n4N-e4-d7T" id="u0e-e2-RXk"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1IA-UK-Y7S">
+                                <rect key="frame" x="0.0" y="20" width="375" height="283"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyCell" textLabel="Za9-eh-X9d" imageView="3Uh-s1-SQZ" style="IBUITableViewCellStyleDefault" id="K0j-oT-4mL">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K0j-oT-4mL" id="MiB-Z9-yHQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Za9-eh-X9d">
+                                                    <rect key="frame" x="93" y="0.0" width="267" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Resistor Collection" id="3Uh-s1-SQZ">
+                                                    <rect key="frame" x="15" y="0.0" width="63" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WW6-Cy-rj0">
+                                <rect key="frame" x="0.0" y="303" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Delete" id="0SD-F8-IJs">
+                                        <connections>
+                                            <action selector="deleteResistors:" destination="btv-rp-Zck" id="Vca-HO-hhC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lux-Fh-G4K"/>
+                                    <barButtonItem title="Resistors in Collection" id="AgN-Em-0ER">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Qiz-Yz-POh"/>
+                                    <barButtonItem systemItem="add" id="OKk-Tx-iqY">
+                                        <connections>
+                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="PresentPicker" popoverAnchorBarButtonItem="OKk-Tx-iqY" id="hI6-Fe-dBt">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="dl4-e2-eW6"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Resistor Collections" id="KXU-e4-OGa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="e3Z-Rt-rZ4"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="deleteBarButton" destination="0SD-F8-IJs" id="ExO-Vg-iu5"/>
+                        <outlet property="resistorSets" destination="1IA-UK-Y7S" id="GTy-BE-fgq"/>
+                        <outlet property="resistors" destination="Vq4-NG-Xaj" id="M9G-hx-UV9"/>
+                        <outlet property="resistorsTitle" destination="AgN-Em-0ER" id="fW6-6P-xzm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9N-A8-ecm" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-311.19999999999999" y="744.3778110944528"/>
+        </scene>
+        <!--Edit Resistors-->
+        <scene sceneID="zv3-Rd-VFn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gqK-ve-sEa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Edit Resistors" image="Divider2" id="kd9-MY-Oy1"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xHc-Q3-7WB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="btv-rp-Zck" kind="relationship" relationship="rootViewController" id="0ew-Vv-g8Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yoP-gr-3j9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1074" y="744"/>
         </scene>
     </scenes>
     <resources>
         <image name="Divider2" width="54" height="25"/>
         <image name="Op Amp" width="28" height="25"/>
         <image name="Resistor" width="69" height="25"/>
+        <image name="Resistor Collection" width="86" height="59"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hI6-Fe-dBt"/>
+    </inferredMetricsTieBreakers>
 </document>
