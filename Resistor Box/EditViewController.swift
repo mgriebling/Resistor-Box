@@ -18,8 +18,8 @@ class EditViewController: UIViewController {
         didSet { resistors.dataSource = self; resistors.delegate = self }
     }
     
-    @IBOutlet weak var resistorsTitle: UIBarButtonItem! {
-        didSet { resistorsTitle.title = Resistors.active + " Resistors" }
+    @IBOutlet weak var resistorsTitle: UIButton! {
+        didSet { resistorsTitle.setTitle(Resistors.active + " Resistors", for: .normal) }
     }
     
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
@@ -52,6 +52,7 @@ class EditViewController: UIViewController {
 
         // remove the selected resistors from the collection
         resistors.deleteItems(at: resistorArray)
+        resistorSets.reloadData()           // refresh resistor quantities
         deleteBarButton.isEnabled = false
     }
     
@@ -61,7 +62,7 @@ class EditViewController: UIViewController {
         if let index = keys.index(of: Resistors.active) {
             let pos = IndexPath(row: index, section: 0)
             resistorSets.selectRow(at: pos, animated: false, scrollPosition: .none)
-            resistorsTitle.title = Resistors.active + " Resistors"
+            resistorsTitle.setTitle(Resistors.active + " Resistors", for: .normal)
         }
     }
     
@@ -88,6 +89,10 @@ class EditViewController: UIViewController {
                     }
                 }
             }
+            let popPC = destNav.popoverPresentationController
+            popPC?.delegate = self
+        } else if segue.identifier == "AddCollection" {
+            let destNav = segue.destination
             let popPC = destNav.popoverPresentationController
             popPC?.delegate = self
         }

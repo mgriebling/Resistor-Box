@@ -35,7 +35,7 @@ class NumberPickerViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        callback(self.value!)
+        callback(self.value ?? "")
         super.viewWillDisappear(animated)
     }
 

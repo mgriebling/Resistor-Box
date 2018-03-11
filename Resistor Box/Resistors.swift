@@ -38,19 +38,30 @@ class Resistors {
         10.0, 12.0, 15.0, 18.0, 22.0, 27.0, 33.0, 39.0, 47.0, 56.0, 68.0, 82.0
     ]
     
-    static func computeValuesFor(_ rpc : [Double], minimum: Double, maximum: Double, name: String) {
+    static public func computeValuesFor(_ rpc : [Double], minimum: Double, maximum: Double) -> [Double] {
         var r = [Double]()
-        var scale = minimum
+        let min = rpc.first!
+        var scale = 1.0
+        
+        // determine scaling factor
+        while min * scale > minimum { scale /= 10.0 }
+        
+        // calculate the required resistors
         r.append(SHORT)
         outer: while scale < 100.0*MEG {
             for resistor in rpc {
-                if resistor*scale > maximum { break outer }
-                r.append(resistor*scale)
+                let value = resistor*scale
+                if value > maximum { break outer }
+                if value >= minimum { r.append(resistor*scale) }
             }
             scale *= 10
         }
         r.append(OPEN)
-        rInv[name] = r
+        return r
+    }
+    
+    static func computeValuesFor(_ rpc : [Double], minimum: Double, maximum: Double, name: String) {
+        rInv[name] = computeValuesFor(rpc, minimum: minimum, maximum: maximum)
     }
     
     static func clearInventory() { rInv = [String: [Double]]() }
@@ -105,7 +116,7 @@ class Resistors {
         return (value*scale, value, suffix)
     }
     
-    static func compute(_ x: Double, withAlgorithm algorithm: (Double, Double, Double) -> (Double), abortAlgorithm abort: (Double, Double, Double, Double) -> Bool, callback : ([Double]) -> (), label: String) -> [Double] {
+    static func compute(_ x: Double, withAlgorithm algorithm: (Double, Double, Double) -> (Double), abortAlgorithm abort: (Double, Double, Double, Double) -> Bool, callback : ([Double]) -> ()) -> [Double] {
         var Re = 1.0e100  // very large error to start
         var Ri, Rj, Rk, Rt : Double
         Ri = 0; Rj = 0; Rk = 0; Rt = 0
@@ -129,32 +140,47 @@ class Resistors {
     }
     
     static func computeSeries(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+        if let index = rInv[active]!.index(of: x) {
+            // return the obvious solution
+            let Rs = rInv[active]![index]
+            done([Rs, SHORT, SHORT, Rs, 0]); return
+        }
         let result = Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2 + r3
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return r3 > x
-        }, callback: callback, label: "Series")
+        }, callback: callback)
         done(result)
     }
     
     static func computeParallel(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+        if let index = rInv[active]!.index(of: x) {
+            // return the obvious solution
+            let Rs = rInv[active]![index]
+            done([Rs, OPEN, OPEN, Rs, 0]); return
+        }
         let result = Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return 1.0 / (1.0/r1 + 1.0/r2 + 1.0/r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
-            // exit early if a solution has been found
+            // exit early if a solution is unlikely
             return false
-        }, callback: callback, label: "Parallel")
+        }, callback: callback)
         done(result)
     }
     
     static func computeSeriesParallel(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+        if let index = rInv[active]!.index(of: x) {
+            // return the obvious solution
+            let Rs = rInv[active]![index]
+            done([Rs, SHORT, OPEN, Rs, 0]); return
+        }
         let result = Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2*r3/(r2+r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return r1 > x || current > x
-        }, callback: callback, label: "Series/Parallel")
+        }, callback: callback)
         done(result)
     }
     

@@ -21,6 +21,7 @@
 		2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8FE842048268F000841AF /* ResistorImage.swift */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
 		47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */; };
+		47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		2FF8FE842048268F000841AF /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorCollectionViewCell.swift; sourceTree = "<group>"; };
+		47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGeneratorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				2F2F2C542036156300DD98AE /* ResistorViewController.swift */,
 				2F2F2C562036156300DD98AE /* SecondViewController.swift */,
 				47CE31D620547454007AB17B /* EditViewController.swift */,
+				47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */,
 				2F2F2C582036156300DD98AE /* Main.storyboard */,
 				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
 				2F1573D2204EC3D400E948B5 /* NumberPicker.swift */,
@@ -167,6 +170,7 @@
 				47CE31D720547454007AB17B /* EditViewController.swift in Sources */,
 				2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */,
 				2F1573D9204EC7CD00E948B5 /* NumberPickerViewController.swift in Sources */,
+				47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */,
 				2F1573D5204EC48D00E948B5 /* String+Char.swift in Sources */,
 				2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */,
 				2F2F2C572036156300DD98AE /* SecondViewController.swift in Sources */,
