@@ -105,9 +105,8 @@ class ResistorViewController: UIViewController {
         Resistors.cancelCalculations = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewDidLoad() {
+        super.viewDidLoad()
         Resistors.initInventory()   // build up the values
         r = (10, 10, "Ω")
         calculateOptimalValues(desiredValue)

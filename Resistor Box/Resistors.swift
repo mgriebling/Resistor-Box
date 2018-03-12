@@ -116,11 +116,13 @@ class Resistors {
         return (value*scale, value, suffix)
     }
     
-    static func compute(_ x: Double, withAlgorithm algorithm: (Double, Double, Double) -> (Double), abortAlgorithm abort: (Double, Double, Double, Double) -> Bool, callback : ([Double]) -> ()) -> [Double] {
+    static func compute(_ x: Double, range: CountableRange<Int>, withAlgorithm algorithm: (Double, Double, Double) -> (Double),
+                        abortAlgorithm abort: (Double, Double, Double, Double) -> Bool, callback : ([Double]) -> ()) -> [Double] {
         var Re = 1.0e100  // very large error to start
         var Ri, Rj, Rk, Rt : Double
         Ri = 0; Rj = 0; Rk = 0; Rt = 0
-        outerLoop: for i in rInv[active]! {
+        outerLoop: for idex in range {
+            let i = rInv[active]![idex]
             for j in rInv[active]! {
                 loop: for k in rInv[active]! {
                     Rt = algorithm(i, j, k)
@@ -130,7 +132,7 @@ class Resistors {
                     if error < Re {
                         Ri = i; Rj = j; Rk = k; Re = error
                         callback([Ri, Rj, Rk, Rt, Re])
-                        if error < 1e-10 { break outerLoop }  // abort processing
+                        if error < 1e-8 { break outerLoop }  // abort processing
                     }
                 }
             }
@@ -145,7 +147,8 @@ class Resistors {
             let Rs = rInv[active]![index]
             done([Rs, SHORT, SHORT, Rs, 0]); return
         }
-        let result = Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
+        let r = rInv[active]!.indices
+        let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2 + r3
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
@@ -160,7 +163,14 @@ class Resistors {
             let Rs = rInv[active]![index]
             done([Rs, OPEN, OPEN, Rs, 0]); return
         }
-        let result = Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
+        // outer loop start from near x value
+        let index = rInv[active]!.index { value -> Bool in
+            // find index of next largest value
+            if value > x { return true }
+            return false
+        }
+        let r = CountableRange(index!...rInv[active]!.index(after: index!))
+        let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return 1.0 / (1.0/r1 + 1.0/r2 + 1.0/r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
@@ -175,7 +185,14 @@ class Resistors {
             let Rs = rInv[active]![index]
             done([Rs, SHORT, OPEN, Rs, 0]); return
         }
-        let result = Resistors.compute(x, withAlgorithm: { (r1, r2, r3) -> (Double) in
+        // outer loop start from near x value
+        let index = rInv[active]!.index { value -> Bool in
+            // find index of next largest value
+            if value > x { return true }
+            return false
+        }
+        let r = CountableRange(index!-1...rInv[active]!.index(after: index!))
+        let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2*r3/(r2+r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely

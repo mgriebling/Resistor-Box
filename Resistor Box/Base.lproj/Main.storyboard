@@ -58,6 +58,9 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="HHJ-FX-6eN"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4AH-f8-96V">
                                         <rect key="frame" x="0.0" y="30" width="375" height="109"/>
@@ -115,16 +118,19 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="4AH-f8-96V" firstAttribute="top" secondItem="DIf-bl-tTg" secondAttribute="bottom" id="2Wm-my-UMp"/>
+                                    <constraint firstAttribute="trailing" secondItem="4AH-f8-96V" secondAttribute="trailing" id="D3d-t8-9eZ"/>
                                     <constraint firstItem="tGS-eD-5sP" firstAttribute="height" secondItem="Ez4-ta-HSI" secondAttribute="height" multiplier="1:3" id="SGH-tE-EcM"/>
+                                    <constraint firstItem="4AH-f8-96V" firstAttribute="leading" secondItem="8NR-fW-IJR" secondAttribute="leading" id="Tbf-9P-Fo6"/>
                                     <constraint firstItem="tGS-eD-5sP" firstAttribute="height" secondItem="dWp-MI-h8N" secondAttribute="height" multiplier="1:2" id="Z71-ZW-Uid"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="8NR-fW-IJR" secondAttribute="trailing" id="Fbf-lT-za2"/>
                             <constraint firstItem="8NR-fW-IJR" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="ZC5-7X-UEc"/>
                             <constraint firstItem="8NR-fW-IJR" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="aIn-Xs-0vY"/>
-                            <constraint firstAttribute="trailing" secondItem="8NR-fW-IJR" secondAttribute="trailing" id="bgM-mq-FWG"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="8NR-fW-IJR" secondAttribute="bottom" id="i8w-7j-ys0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
