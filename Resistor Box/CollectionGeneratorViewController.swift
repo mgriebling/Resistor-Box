@@ -16,6 +16,7 @@ class CollectionGeneratorViewController: UIViewController {
     @IBOutlet weak var startLabel: UIButton!
     @IBOutlet weak var endLabel: UIButton!
     @IBOutlet weak var selectedPercent: UISegmentedControl!
+    @IBOutlet weak var estimatedNumber: UILabel!
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
         // return to here from exit segue
@@ -32,6 +33,18 @@ class CollectionGeneratorViewController: UIViewController {
         nameField.text = "My \(tolerance)"
         startLabel.setTitle("10Ω", for: .normal)
         endLabel.setTitle("10MΩ", for: .normal)
+        updateTotalResistors(tolerance)
+    }
+    
+    func updateTotalResistors(_ tolerance: String) {
+        let start : [Double]
+        switch tolerance {
+        case "1%": start = Resistors.r1pc
+        case "5%": start = Resistors.r5pc
+        default:   start = Resistors.r10pc
+        }
+        let collection = Resistors.computeValuesFor(start, minimum: 10, maximum: 10*Resistors.MEG)
+        estimatedNumber.text = "Estimated number of resistors: \(collection.count)"
     }
     
     @IBAction func saveCollection(_ sender: Any) {
@@ -53,6 +66,8 @@ class CollectionGeneratorViewController: UIViewController {
                     } else {
                         self.endLabel.setTitle(newValue, for: .normal)
                     }
+                    let selected = self.selectedPercent.titleForSegment(at: self.selectedPercent.selectedSegmentIndex)!
+                    self.updateTotalResistors(selected)
                 }
             }
             let popPC = destNav.popoverPresentationController

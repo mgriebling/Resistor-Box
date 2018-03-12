@@ -28,13 +28,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Value: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X02-Si-XAG">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="174.5" height="30"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="67.9Ω" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00e-gV-jOZ">
-                                                <rect key="frame" x="383" y="0.0" width="0.0" height="30"/>
+                                                <rect key="frame" x="174.5" y="0.0" width="99.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="2GD-eN-Deq"/>
                                                 </constraints>
@@ -46,7 +46,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwh-Pi-GD3">
-                                                <rect key="frame" x="375" y="0.0" width="0.0" height="30"/>
+                                                <rect key="frame" x="274" y="0.0" width="101" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="q9P-WJ-tlE"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="zOv-Wb-9uz"/>
@@ -326,6 +326,7 @@
                     <size key="freeformSize" width="375" height="300"/>
                     <connections>
                         <outlet property="endLabel" destination="2BL-YF-vuR" id="EA7-FG-HKc"/>
+                        <outlet property="estimatedNumber" destination="pyd-GA-bQS" id="TEY-iL-dOP"/>
                         <outlet property="nameField" destination="2r0-BE-lSk" id="MK3-5q-lQF"/>
                         <outlet property="selectedPercent" destination="7BP-I2-q6b" id="F52-UA-qVK"/>
                         <outlet property="startLabel" destination="OOP-Tw-EeF" id="wgb-5Y-trt"/>
