@@ -60,7 +60,7 @@ class ResistorViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+            self.seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -72,7 +72,7 @@ class ResistorViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.seriesParallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+            self.seriesParallelLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -84,7 +84,7 @@ class ResistorViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.parallelLabel.text = "\(label) Result: \(rt); error: \(error)% with 1% resistors"
+            self.parallelLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -95,7 +95,7 @@ class ResistorViewController: UIViewController {
     }
     
     func enableGUI () {
-        let done = !calculating1 && !calculating2
+        let done = !calculating1 && !calculating2 && !calculating3
         cancelButton.isEnabled = !done
         desiredValue.isEnabled = done
     }

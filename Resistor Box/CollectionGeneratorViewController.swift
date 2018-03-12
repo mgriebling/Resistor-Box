@@ -43,7 +43,9 @@ class CollectionGeneratorViewController: UIViewController {
         case "5%": start = Resistors.r5pc
         default:   start = Resistors.r10pc
         }
-        let collection = Resistors.computeValuesFor(start, minimum: 10, maximum: 10*Resistors.MEG)
+        let minimum = Resistors.parseString(startLabel.title(for: .normal) ?? "10Ω")
+        let maximum = Resistors.parseString(endLabel.title(for: .normal) ?? "10MΩ")
+        let collection = Resistors.computeValuesFor(start, minimum: minimum.0, maximum: maximum.0)
         estimatedNumber.text = "Estimated number of resistors: \(collection.count)"
     }
     
