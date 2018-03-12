@@ -132,7 +132,7 @@ class Resistors {
                     if error < Re {
                         Ri = i; Rj = j; Rk = k; Re = error
                         callback([Ri, Rj, Rk, Rt, Re])
-                        if error < 1e-8 { break outerLoop }  // abort processing
+                        if error < 1e-10 { break outerLoop }  // abort processing
                     }
                 }
             }
@@ -186,12 +186,17 @@ class Resistors {
             done([Rs, SHORT, OPEN, Rs, 0]); return
         }
         // outer loop start from near x value
-        let index = rInv[active]!.index { value -> Bool in
+        let sindex = rInv[active]!.index { value -> Bool in
             // find index of next largest value
-            if value > x { return true }
+            if value > x*0.9 { return true }
             return false
         }
-        let r = CountableRange(index!-1...rInv[active]!.index(after: index!))
+        let eindex = rInv[active]!.index { value -> Bool in
+            // find index of next largest value
+            if value > x*1.1 { return true }
+            return false
+        }
+        let r = CountableRange(sindex!...eindex!)
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2*r3/(r2+r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
