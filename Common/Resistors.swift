@@ -142,12 +142,19 @@ class Resistors {
     }
     
     static func computeSeries(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
-        if let index = rInv[active]!.index(of: x) {
+        let rArray = rInv[active]!
+        if let index = rArray.index(of: x) {
             // return the obvious solution
-            let Rs = rInv[active]![index]
+            let Rs = rArray[index]
             done([Rs, SHORT, SHORT, Rs, 0]); return
         }
-        let r = rInv[active]!.indices
+        let last = rArray.index(rArray.endIndex, offsetBy: -2)
+        let rlast = rArray[last]
+        if rlast*3 < x {
+            // check for values that are too large
+            done([rlast, rlast, rlast, 3*rlast, 100.0*fabs(x-3*rlast)/x]); return
+        }
+        let r = rArray.indices
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r1 + r2 + r3
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
@@ -158,18 +165,30 @@ class Resistors {
     }
     
     static func computeParallel(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
-        if let index = rInv[active]!.index(of: x) {
+        let rArray = rInv[active]!
+        if let index = rArray.index(of: x) {
             // return the obvious solution
-            let Rs = rInv[active]![index]
+            let Rs = rArray[index]
             done([Rs, OPEN, OPEN, Rs, 0]); return
         }
+        let last = rArray.index(rArray.endIndex, offsetBy: -2)
+        let rlast = rArray[last]
+        if rlast < x {
+            // check for values that are too large
+            done([rlast, OPEN, OPEN, rlast, 100.0*fabs(x-rlast)/x]); return
+        }
         // outer loop start from near x value
-        let index = rInv[active]!.index { value -> Bool in
+        let sindex = rArray.index { value -> Bool in
             // find index of next largest value
-            if value > x { return true }
+            if value > x*0.9 { return true }
             return false
         }
-        let r = CountableRange(index!...rInv[active]!.index(after: index!))
+        let eindex = rArray.index { value -> Bool in
+            // find index of next largest value
+            if value > x*1.1 { return true }
+            return false
+        }
+        let r = CountableRange(sindex!...eindex!)
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return 1.0 / (1.0/r1 + 1.0/r2 + 1.0/r3)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
@@ -180,18 +199,25 @@ class Resistors {
     }
     
     static func computeSeriesParallel(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
-        if let index = rInv[active]!.index(of: x) {
+        let rArray = rInv[active]!
+        if let index = rArray.index(of: x) {
             // return the obvious solution
-            let Rs = rInv[active]![index]
+            let Rs = rArray[index]
             done([Rs, SHORT, OPEN, Rs, 0]); return
         }
+        let last = rArray.index(rArray.endIndex, offsetBy: -2)
+        let rlast = rArray[last]
+        if rlast*2 < x {
+            // check for values that are too large
+            done([rlast, rlast, OPEN, 2*rlast, 100.0*fabs(x-2*rlast)/x]); return
+        }
         // outer loop start from near x value
-        let sindex = rInv[active]!.index { value -> Bool in
+        let sindex = rArray.index { value -> Bool in
             // find index of next largest value
             if value > x*0.9 { return true }
             return false
         }
-        let eindex = rInv[active]!.index { value -> Bool in
+        let eindex = rArray.index { value -> Bool in
             // find index of next largest value
             if value > x*1.1 { return true }
             return false

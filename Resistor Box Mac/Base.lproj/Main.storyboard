@@ -686,7 +686,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Resistor Box" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="ResistorBox" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -733,19 +733,19 @@
         <!--Calibration-->
         <scene sceneID="i62-P9-QNu">
             <objects>
-                <viewController title="Calibration" id="jS1-Xf-pAW" customClass="ResistorViewMController" customModule="Resistor_Box_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Calibration" id="jS1-Xf-pAW" customClass="ResistorViewController" customModule="Resistor_Box_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fHr-z4-2cw">
-                        <rect key="frame" x="0.0" y="0.0" width="583" height="794"/>
+                        <rect key="frame" x="0.0" y="0.0" width="598" height="761"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillProportionally" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2h-mH-Qkf">
-                                <rect key="frame" x="0.0" y="0.0" width="583" height="794"/>
+                                <rect key="frame" x="0.0" y="20" width="598" height="721"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUB-ZG-kwb">
-                                        <rect key="frame" x="20" y="747" width="543" height="47"/>
+                                        <rect key="frame" x="20" y="699" width="558" height="22"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rPm-C0-qx7">
-                                                <rect key="frame" x="-2" y="15" width="92" height="17"/>
+                                                <rect key="frame" x="-2" y="2" width="92" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Desired Value:" id="CRq-br-rip">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -753,7 +753,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iwc-0z-dUj">
-                                                <rect key="frame" x="96" y="12" width="339" height="22"/>
+                                                <rect key="frame" x="96" y="0.0" width="354" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xyY-oo-3XE">
                                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="YGI-Is-gQe">
                                                         <real key="minimum" value="0.0"/>
@@ -768,7 +768,7 @@
                                                 </connections>
                                             </textField>
                                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vin-Ko-5ZI">
-                                                <rect key="frame" x="443" y="9" width="39" height="26"/>
+                                                <rect key="frame" x="458" y="-3" width="39" height="26"/>
                                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Ω" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="0Mo-Ny-KQT">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -782,11 +782,14 @@
                                                 </comboBoxCell>
                                             </comboBox>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4q7-ts-vSb">
-                                                <rect key="frame" x="487" y="10" width="56" height="25"/>
+                                                <rect key="frame" x="502" y="-2" width="56" height="25"/>
                                                 <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TrP-hH-l9b">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="cancelCalculations:" target="jS1-Xf-pAW" id="cJE-0r-TBY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <visibilityPriorities>
@@ -802,21 +805,21 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RJe-qn-Eub">
-                                        <rect key="frame" x="67" y="596" width="450" height="151"/>
+                                    <stackView distribution="fillProportionally" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RJe-qn-Eub">
+                                        <rect key="frame" x="0.0" y="564" width="598" height="135"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DHp-5I-Cme">
-                                                <rect key="frame" x="0.0" y="53" width="450" height="98"/>
+                                                <rect key="frame" x="274" y="37" width="50" height="98"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="98" id="3Ra-OL-oR0"/>
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="00l-Us-yol"/>
                                             </imageView>
-                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="d2w-mN-PFK">
-                                                <rect key="frame" x="217" y="29" width="16" height="16"/>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="d2w-mN-PFK">
+                                                <rect key="frame" x="291" y="21" width="16" height="16"/>
                                             </progressIndicator>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="asw-fb-scd">
-                                                <rect key="frame" x="184" y="0.0" width="82" height="21"/>
+                                                <rect key="frame" x="258" y="0.0" width="82" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working..." id="Cfx-GJ-bgj">
                                                     <font key="font" metaFont="system" size="17"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -835,18 +838,18 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHr-uh-ZUd">
-                                        <rect key="frame" x="67" y="347" width="450" height="249"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHr-uh-ZUd">
+                                        <rect key="frame" x="0.0" y="331" width="598" height="233"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YhU-A2-qZ0">
-                                                <rect key="frame" x="0.0" y="53" width="450" height="196"/>
+                                                <rect key="frame" x="274" y="37" width="50" height="196"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eqA-Vh-uTA"/>
                                             </imageView>
-                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-WI-1Yk">
-                                                <rect key="frame" x="217" y="29" width="16" height="16"/>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-WI-1Yk">
+                                                <rect key="frame" x="291" y="21" width="16" height="16"/>
                                             </progressIndicator>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zQx-Ka-EbJ">
-                                                <rect key="frame" x="184" y="0.0" width="82" height="21"/>
+                                                <rect key="frame" x="258" y="0.0" width="82" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working..." id="csD-AF-7vz">
                                                     <font key="font" metaFont="system" size="17"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -865,18 +868,18 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWo-57-Osx">
-                                        <rect key="frame" x="67" y="0.0" width="450" height="347"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWo-57-Osx">
+                                        <rect key="frame" x="0.0" y="0.0" width="598" height="331"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i16-ck-V9a">
-                                                <rect key="frame" x="0.0" y="53" width="450" height="294"/>
+                                                <rect key="frame" x="274" y="37" width="50" height="294"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="n8t-56-GL5"/>
                                             </imageView>
-                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="q7C-KH-ZhN">
-                                                <rect key="frame" x="217" y="29" width="16" height="16"/>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="q7C-KH-ZhN">
+                                                <rect key="frame" x="291" y="21" width="16" height="16"/>
                                             </progressIndicator>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RbO-ri-HtB">
-                                                <rect key="frame" x="184" y="0.0" width="82" height="21"/>
+                                                <rect key="frame" x="258" y="0.0" width="82" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working..." id="cPz-AS-ltL">
                                                     <font key="font" metaFont="system" size="17"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -897,10 +900,16 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BHr-uh-ZUd" secondAttribute="trailing" id="31A-ka-j8A"/>
+                                    <constraint firstItem="RJe-qn-Eub" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" id="9vX-OS-bXc"/>
                                     <constraint firstItem="DHp-5I-Cme" firstAttribute="height" secondItem="i16-ck-V9a" secondAttribute="height" multiplier="1:3" id="9zP-FX-i7I"/>
                                     <constraint firstItem="DHp-5I-Cme" firstAttribute="height" secondItem="YhU-A2-qZ0" secondAttribute="height" multiplier="1:2" id="AaZ-uF-aeO"/>
                                     <constraint firstItem="pUB-ZG-kwb" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" constant="20" symbolic="YES" id="FI3-Lj-Nfq"/>
+                                    <constraint firstItem="kWo-57-Osx" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" id="LvC-uB-2qr"/>
+                                    <constraint firstAttribute="trailing" secondItem="kWo-57-Osx" secondAttribute="trailing" id="TNn-DO-LJ8"/>
                                     <constraint firstAttribute="trailing" secondItem="pUB-ZG-kwb" secondAttribute="trailing" constant="20" symbolic="YES" id="Wh5-S6-byx"/>
+                                    <constraint firstItem="BHr-uh-ZUd" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" id="m6R-gF-iks"/>
+                                    <constraint firstAttribute="trailing" secondItem="RJe-qn-Eub" secondAttribute="trailing" id="xab-ys-G5O"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -918,19 +927,30 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="e2h-mH-Qkf" firstAttribute="leading" secondItem="fHr-z4-2cw" secondAttribute="leading" id="AAv-65-O1C"/>
-                            <constraint firstAttribute="bottom" secondItem="e2h-mH-Qkf" secondAttribute="bottom" id="Ygy-dT-i6S"/>
-                            <constraint firstItem="e2h-mH-Qkf" firstAttribute="top" secondItem="fHr-z4-2cw" secondAttribute="top" id="ram-AW-Gtn"/>
+                            <constraint firstAttribute="bottom" secondItem="e2h-mH-Qkf" secondAttribute="bottom" constant="20" symbolic="YES" id="Ygy-dT-i6S"/>
+                            <constraint firstItem="e2h-mH-Qkf" firstAttribute="top" secondItem="fHr-z4-2cw" secondAttribute="top" constant="20" symbolic="YES" id="ram-AW-Gtn"/>
                             <constraint firstAttribute="trailing" secondItem="e2h-mH-Qkf" secondAttribute="trailing" id="zFK-VU-Dqd"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="4q7-ts-vSb" id="qK3-6T-XUt"/>
                         <outlet property="desiredValue" destination="Iwc-0z-dUj" id="sb7-tj-1nf"/>
                         <outlet property="ohmsSelector" destination="vin-Ko-5ZI" id="RXT-eR-GTy"/>
+                        <outlet property="parallelActivity" destination="q7C-KH-ZhN" id="RBD-dr-g8N"/>
+                        <outlet property="parallelLabel" destination="RbO-ri-HtB" id="OGo-hh-b8Q"/>
+                        <outlet property="parallelProgress" destination="q7C-KH-ZhN" id="MZM-zn-Qyx"/>
+                        <outlet property="parallelResistors" destination="i16-ck-V9a" id="7Br-Ev-r6B"/>
+                        <outlet property="seriesActivity" destination="d2w-mN-PFK" id="nmK-6m-etd"/>
+                        <outlet property="seriesLabel" destination="asw-fb-scd" id="14h-pX-Dfq"/>
+                        <outlet property="seriesParallelActivity" destination="d2w-mN-PFK" id="5bQ-XD-yOa"/>
+                        <outlet property="seriesParallelLabel" destination="zQx-Ka-EbJ" id="fgI-2L-ZxU"/>
+                        <outlet property="seriesParallelResistors" destination="YhU-A2-qZ0" id="XCc-ck-Ams"/>
+                        <outlet property="seriesResistors" destination="DHp-5I-Cme" id="cx2-UF-AZp"/>
                     </connections>
                 </viewController>
                 <customObject id="FaL-kq-tV2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="424"/>
+            <point key="canvasLocation" x="730" y="352"/>
         </scene>
         <!--Edit Resistors-->
         <scene sceneID="Wj3-7P-Ufn">
@@ -944,7 +964,7 @@
                                 <rect key="frame" x="0.0" y="312" width="450" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="XEl-dA-73Y">
-                                    <rect key="frame" x="1" y="23" width="448" height="241"/>
+                                    <rect key="frame" x="1" y="0.0" width="448" height="264"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Gt1-C8-wKx" viewBased="YES" id="TgR-LV-b6N">
@@ -1025,7 +1045,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="R8z-85-dpo">
-                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="WlD-8o-zSG">
@@ -1056,11 +1076,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="WpT-9a-R1m">
-                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="2Be-aV-fnZ">
-                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
