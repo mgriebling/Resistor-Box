@@ -48,7 +48,7 @@
 		2F2F2C5E2036156300DD98AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F2F2C602036156300DD98AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2F2C66203617B000DD98AE /* Resistors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resistors.swift; sourceTree = "<group>"; };
-		2FC933142056B2C700FE9688 /* Resistor Box Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resistor Box Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FC933142056B2C700FE9688 /* Resistor Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resistor Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC933162056B2C700FE9688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC933182056B2C700FE9688 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FC9331A2056B2C700FE9688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				2F2F2C4F2036156300DD98AE /* Resistor Box.app */,
-				2FC933142056B2C700FE9688 /* Resistor Box Mac.app */,
+				2FC933142056B2C700FE9688 /* Resistor Box.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,7 +181,7 @@
 			);
 			name = "Resistor Box Mac";
 			productName = "Resistor Box Mac";
-			productReference = 2FC933142056B2C700FE9688 /* Resistor Box Mac.app */;
+			productReference = 2FC933142056B2C700FE9688 /* Resistor Box.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -460,7 +460,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.Resistor-Box-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Resistor Box";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
 			};
@@ -479,7 +479,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.Resistor-Box-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Resistor Box";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
 			};
