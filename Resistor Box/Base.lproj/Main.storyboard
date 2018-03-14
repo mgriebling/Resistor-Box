@@ -111,25 +111,13 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="9L9-wl-j49" firstAttribute="leading" secondItem="8NR-fW-IJR" secondAttribute="leading" id="A4e-JH-3sb"/>
-                                    <constraint firstAttribute="trailing" secondItem="9L9-wl-j49" secondAttribute="trailing" id="BKw-hM-rHd"/>
-                                    <constraint firstAttribute="trailing" secondItem="4AH-f8-96V" secondAttribute="trailing" id="D3d-t8-9eZ"/>
                                     <constraint firstItem="tGS-eD-5sP" firstAttribute="height" secondItem="Ez4-ta-HSI" secondAttribute="height" multiplier="1:3" id="SGH-tE-EcM"/>
-                                    <constraint firstItem="4AH-f8-96V" firstAttribute="leading" secondItem="8NR-fW-IJR" secondAttribute="leading" id="Tbf-9P-Fo6"/>
                                     <constraint firstItem="tGS-eD-5sP" firstAttribute="height" secondItem="dWp-MI-h8N" secondAttribute="height" multiplier="1:2" id="Z71-ZW-Uid"/>
-                                    <constraint firstAttribute="trailing" secondItem="tOj-s7-By5" secondAttribute="trailing" id="bD6-mY-PEG"/>
-                                    <constraint firstItem="tOj-s7-By5" firstAttribute="leading" secondItem="8NR-fW-IJR" secondAttribute="leading" id="xxb-xO-4JO"/>
                                 </constraints>
                                 <variation key="heightClass=compact" axis="horizontal" distribution="fillProportionally">
                                     <mask key="constraints">
-                                        <exclude reference="D3d-t8-9eZ"/>
-                                        <exclude reference="Tbf-9P-Fo6"/>
                                         <exclude reference="SGH-tE-EcM"/>
                                         <exclude reference="Z71-ZW-Uid"/>
-                                        <exclude reference="A4e-JH-3sb"/>
-                                        <exclude reference="BKw-hM-rHd"/>
-                                        <exclude reference="bD6-mY-PEG"/>
-                                        <exclude reference="xxb-xO-4JO"/>
                                     </mask>
                                 </variation>
                             </stackView>
