@@ -375,7 +375,7 @@
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
                                         <connections>
-                                            <action selector="editingDidBegin:" destination="9pv-A4-QxB" eventType="editingDidBegin" id="W9D-wc-aAr"/>
+                                            <action selector="updateValues:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="XD0-1y-H81"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guN-Ps-7OQ">
@@ -392,21 +392,45 @@
                                     <constraint firstAttribute="height" constant="30" id="Afa-ej-2G5"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ena-ix-0kY">
+                                <rect key="frame" x="0.0" y="58" width="370" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ri-8c-9IO">
+                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10KΩ" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-wT-0Rf">
+                                        <rect key="frame" x="148.5" y="0.0" width="221.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
+                                        <connections>
+                                            <action selector="updateValues:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="YO0-K6-FaD"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Zec-96-nZF"/>
+                                    <constraint firstItem="gUJ-wT-0Rf" firstAttribute="leading" secondItem="8ri-8c-9IO" secondAttribute="trailing" constant="8" symbolic="YES" id="wTl-8x-cjd"/>
+                                </constraints>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9DM-ba-Fxn">
-                                <rect key="frame" x="0.0" y="58" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9mu-HZ-5B8">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="261"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ib3-JE-fIO">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uik-RD-lHJ">
-                                                <rect key="frame" x="0.0" y="238" width="375" height="19"/>
+                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvU-3K-etO">
-                                                <rect key="frame" x="0.0" y="257" width="375" height="23"/>
+                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -414,17 +438,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-sZ-Xy5">
-                                        <rect key="frame" x="0.0" y="280" width="375" height="280"/>
+                                        <rect key="frame" x="0.0" y="261" width="375" height="261"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-TY-zb0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nnu-GM-H36">
-                                                <rect key="frame" x="0.0" y="238" width="375" height="19"/>
+                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th7-S9-Jni">
-                                                <rect key="frame" x="0.0" y="257" width="375" height="23"/>
+                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -444,13 +468,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ena-ix-0kY" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="1aJ-iR-fMc"/>
                             <constraint firstItem="9DM-ba-Fxn" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="6mA-TN-hN0"/>
-                            <constraint firstItem="9DM-ba-Fxn" firstAttribute="top" secondItem="8aA-iD-Ajx" secondAttribute="bottom" constant="8" symbolic="YES" id="Fgu-uO-4UH"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="8aA-iD-Ajx" secondAttribute="trailing" constant="5" id="N2K-4p-ITT"/>
                             <constraint firstItem="8aA-iD-Ajx" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="atw-Cv-jHD"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="9DM-ba-Fxn" secondAttribute="trailing" id="dR4-Xw-f2a"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="9DM-ba-Fxn" secondAttribute="trailing" id="dqH-lo-Ojd"/>
+                            <constraint firstItem="9DM-ba-Fxn" firstAttribute="top" secondItem="ena-ix-0kY" secondAttribute="bottom" constant="8" symbolic="YES" id="ipB-nn-wlz"/>
                             <constraint firstItem="9DM-ba-Fxn" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="lMi-VB-FlN"/>
+                            <constraint firstItem="ena-ix-0kY" firstAttribute="top" secondItem="8aA-iD-Ajx" secondAttribute="bottom" constant="8" symbolic="YES" id="oxu-SP-phx"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="ena-ix-0kY" secondAttribute="trailing" constant="5" id="r6I-2Y-KNc"/>
                             <constraint firstItem="8aA-iD-Ajx" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="vf3-Fd-ikP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
@@ -465,6 +492,7 @@
                         <outlet property="invertingGainImage" destination="DlR-TY-zb0" id="uMT-VB-y7n"/>
                         <outlet property="invertingGainIndicator" destination="Nnu-GM-H36" id="yTh-zT-4qy"/>
                         <outlet property="invertingGainLabel" destination="Th7-S9-Jni" id="IMw-Mp-mj8"/>
+                        <outlet property="minResistance" destination="gUJ-wT-0Rf" id="iGM-Hj-nIx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

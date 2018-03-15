@@ -164,9 +164,14 @@ class Resistors {
         done(result)
     }
     
-    static func computeGain (_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+    static func computeGain (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
-        let r = rArray.indices
+        let sindex = rArray.index { value -> Bool in
+            // find index of next largest value
+            if value > start { return true }
+            return false
+        }!
+        let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return 1.0 + r2/r1
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
@@ -176,9 +181,14 @@ class Resistors {
         done(result)
     }
     
-    static func computeInvertingGain (_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+    static func computeInvertingGain (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
-        let r = rArray.indices
+        let sindex = rArray.index { value -> Bool in
+            // find index of next largest value
+            if value > start { return true }
+            return false
+            }!
+        let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             return r2/r1
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in

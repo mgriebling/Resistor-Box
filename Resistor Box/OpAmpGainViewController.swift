@@ -10,7 +10,7 @@ import UIKit
 
 class OpAmpGainViewController: UIViewController {
     
-    @IBOutlet weak var desiredValue: UITextField!
+    @IBOutlet weak var desiredValue: UITextField! { didSet { desiredValue.delegate = self }}
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var gainImage: UIImageView!
     @IBOutlet weak var gainIndicator: UIActivityIndicatorView!
@@ -18,10 +18,20 @@ class OpAmpGainViewController: UIViewController {
     @IBOutlet weak var invertingGainImage: UIImageView!
     @IBOutlet weak var invertingGainIndicator: UIActivityIndicatorView!
     @IBOutlet weak var invertingGainLabel: UILabel!
+    @IBOutlet weak var minResistance: UITextField! { didSet { minResistance.delegate = self } }
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue2", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
-    var gain : Double = 2.5
+    var gain : Double = 2.5 {
+        didSet {
+            desiredValue.text = ResistorViewController.formatter.string(from: NSNumber(value: gain))
+        }
+    }
+    var minR = (10_000.0, 10.0, "KΩ") {
+        didSet {
+            minResistance.text = Resistors.stringFrom(minR.0)
+        }
+    }
     var calculating1 = false
     var calculating2 = false
     var x = [Double]()
@@ -48,6 +58,12 @@ class OpAmpGainViewController: UIViewController {
             self.invertingGainImage.image = ResistorImage.imageOfOpAmpGain(value1: r1v, value2: r2v)
             self.invertingGainLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
+    }
+    
+    @IBAction func updateValues(_ sender: Any) {
+        gain = Double(desiredValue.text!) ?? 1
+        minR = Resistors.parseString(minResistance.text ?? "10KΩ")
+        calculateOptimalValues()
     }
     
     func refreshGUI (_ x : [Double], y : [Double], label : String) {
@@ -92,7 +108,7 @@ class OpAmpGainViewController: UIViewController {
         timedTask?.fire()     // refresh GUI to start
         backgroundQueue.async {
             print("Starting gain calculations...")
-            Resistors.computeGain(self.gain, callback: { values in
+            Resistors.computeGain(self.gain, start: self.minR.0, callback: { values in
                 self.x = values   // update working values
             }, done: { s in
                 self.x = s
@@ -108,7 +124,7 @@ class OpAmpGainViewController: UIViewController {
         }
         backgroundQueue.async {
             print("Starting inverting gain calculations...")
-            Resistors.computeInvertingGain(self.gain, callback: { values in
+            Resistors.computeInvertingGain(self.gain, start: self.minR.0, callback: { values in
                 self.y = values   // update working values
             }, done: { sp in
                 self.y = sp        // final answer update
@@ -122,6 +138,22 @@ class OpAmpGainViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // remove the keypad when tapping on the background
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
+    
+}
+
+
+extension OpAmpGainViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }
