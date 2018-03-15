@@ -164,6 +164,30 @@ class Resistors {
         done(result)
     }
     
+    static func computeGain (_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+        let rArray = rInv[active]!
+        let r = rArray.indices
+        let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
+            return 1.0 + r2/r1
+        }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
+            // exit early if a solution is unlikely
+            return false  // don't use r3
+        }, callback: callback)
+        done(result)
+    }
+    
+    static func computeInvertingGain (_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+        let rArray = rInv[active]!
+        let r = rArray.indices
+        let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
+            return r2/r1
+        }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
+            // exit early if a solution is unlikely
+            return false  // don't use r3
+        }, callback: callback)
+        done(result)
+    }
+    
     static func computeParallel(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
         if let index = rArray.index(of: x) {
