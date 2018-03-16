@@ -34,9 +34,7 @@ class ResistorViewController: UIViewController {
     @IBOutlet weak var parallelLabel: UILabel!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
 
-    @IBOutlet weak var desiredValue: UITextField! {
-        didSet { desiredValue.delegate = self }
-    }
+    @IBOutlet weak var desiredValue: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
@@ -109,7 +107,7 @@ class ResistorViewController: UIViewController {
         super.viewDidLoad()
         Resistors.initInventory()   // build up the values
         r = (10, 10, "Ω")
-        calculateOptimalValues(desiredValue)
+        calculateOptimalValues()
     }
     
     func stopTimer() {
@@ -123,7 +121,7 @@ class ResistorViewController: UIViewController {
     var r = (0.0, 0.0, "") {
         didSet {
             DispatchQueue.main.async {
-                self.desiredValue.text = Resistors.stringFrom(self.r.0)
+                self.desiredValue.setTitle(Resistors.stringFrom(self.r.0), for: .normal)
             }
         }
     }
@@ -135,7 +133,7 @@ class ResistorViewController: UIViewController {
     var calculating2 = false
     var calculating3 = false
 
-    @IBAction func calculateOptimalValues(_ sender: UITextField) {
+    func calculateOptimalValues() {
         guard !(calculating1 || calculating2 || calculating3) else { print("ERROR!!!!!!"); return }
         calculating1 = true; calculating2 = true; calculating3 = true
         seriesActivity.startAnimating()
@@ -211,12 +209,12 @@ class ResistorViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PresentPicker" {
             let destNav = segue.destination
-            if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = desiredValue.text
+            if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
+                vc.value = desiredValue.title(for: .normal)
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.r = Resistors.parseString(newValue)
-                    wself.calculateOptimalValues(wself.desiredValue)
+                    wself.calculateOptimalValues()
                     wself.view.endEditing(true)
                 }
             }
@@ -232,15 +230,6 @@ extension ResistorViewController : UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // allows popover to appear for iPhone-style devices
         return .none
-    }
-    
-}
-
-extension ResistorViewController : UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
 }

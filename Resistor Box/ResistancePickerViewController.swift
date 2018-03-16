@@ -1,5 +1,5 @@
 //
-//  NumberPickerViewController.swift
+//  ResistancePickerViewController.swift
 //  Resistor Box
 //
 //  Created by Michael Griebling on 2018-03-06.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NumberPickerViewController: UIViewController {
+class ResistancePickerViewController: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
     

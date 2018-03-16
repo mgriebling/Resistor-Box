@@ -69,7 +69,7 @@ class EditViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PresentPicker" {
             let destNav = segue.destination
-            if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
+            if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
                 vc.callback = { newValue in
                     let newR = Resistors.parseString(newValue)
                     if let _ = Resistors.rInv[Resistors.active]?.index(of: newR.0) { return } // ensure active collection is valid & no duplicates

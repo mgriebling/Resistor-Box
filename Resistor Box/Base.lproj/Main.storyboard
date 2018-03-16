@@ -30,15 +30,16 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="67.9Ω" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00e-gV-jOZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFk-eP-aY7">
                                         <rect key="frame" x="141.5" y="0.0" width="159.5" height="30"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
+                                        <state key="normal" title="10KΩ"/>
                                         <connections>
-                                            <action selector="editingDidBegin:" destination="9pv-A4-QxB" eventType="editingDidBegin" id="5e4-gO-FJy"/>
+                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="PresentPicker" popoverAnchorView="jFk-eP-aY7" id="xIt-DP-D4f">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
-                                    </textField>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwh-Pi-GD3">
                                         <rect key="frame" x="309" y="0.0" width="61" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
@@ -149,7 +150,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="Fwh-Pi-GD3" id="GHf-eo-B9H"/>
-                        <outlet property="desiredValue" destination="00e-gV-jOZ" id="nJz-dv-IPH"/>
+                        <outlet property="desiredValue" destination="jFk-eP-aY7" id="vN0-g4-DIO"/>
                         <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
                         <outlet property="parallelLabel" destination="5e1-tS-x7N" id="KDz-Uk-Zk1"/>
                         <outlet property="parallelResistors" destination="Ez4-ta-HSI" id="gzT-F5-9iA"/>
@@ -159,9 +160,6 @@
                         <outlet property="seriesParallelLabel" destination="7dC-it-Gzl" id="b9b-2W-N7B"/>
                         <outlet property="seriesParallelResistors" destination="dWp-MI-h8N" id="HOQ-4P-Bqf"/>
                         <outlet property="seriesResistors" destination="tGS-eD-5sP" id="KIp-ON-Mff"/>
-                        <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="PresentPicker" popoverAnchorView="00e-gV-jOZ" id="m9j-YW-xwG">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -171,7 +169,7 @@
         <!--Enter Desired Value-->
         <scene sceneID="ypV-Ev-t3p">
             <objects>
-                <viewController modalPresentationStyle="pageSheet" id="sVG-US-5Sm" customClass="NumberPickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="sVG-US-5Sm" customClass="ResistancePickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9QZ-dQ-jCS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,21 +367,21 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2.5" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lk6-eC-eez">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7O-01-V0Q">
                                         <rect key="frame" x="134" y="0.0" width="167" height="30"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
+                                        <state key="normal" title="2.5"/>
                                         <connections>
-                                            <action selector="updateValues:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="XD0-1y-H81"/>
+                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditGain" popoverAnchorView="b7O-01-V0Q" id="nhP-iN-jrc">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
-                                    </textField>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guN-Ps-7OQ">
                                         <rect key="frame" x="309" y="0.0" width="61" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <action selector="cancelCalculations:" destination="9pv-A4-QxB" eventType="touchUpInside" id="2ZM-Ij-tKY"/>
                                             <action selector="cancelCalculations:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ro6-jV-rEt"/>
                                         </connections>
                                     </button>
@@ -401,19 +399,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10KΩ" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-wT-0Rf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-aG-xWz">
                                         <rect key="frame" x="148.5" y="0.0" width="221.5" height="30"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
+                                        <state key="normal" title="10KΩ"/>
                                         <connections>
-                                            <action selector="updateValues:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="YO0-K6-FaD"/>
+                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditResistance" popoverAnchorView="dCw-aG-xWz" id="bOP-6T-7JU">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
-                                    </textField>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Zec-96-nZF"/>
-                                    <constraint firstItem="gUJ-wT-0Rf" firstAttribute="leading" secondItem="8ri-8c-9IO" secondAttribute="trailing" constant="8" symbolic="YES" id="wTl-8x-cjd"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9DM-ba-Fxn">
@@ -485,14 +483,14 @@
                     <tabBarItem key="tabBarItem" title="Op Amp Gain" image="Op Amp" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="cancelButton" destination="guN-Ps-7OQ" id="uEy-Cl-dxE"/>
-                        <outlet property="desiredValue" destination="Lk6-eC-eez" id="8Ta-TZ-tsr"/>
                         <outlet property="gainImage" destination="Ib3-JE-fIO" id="gvJ-qV-hvB"/>
                         <outlet property="gainIndicator" destination="uik-RD-lHJ" id="fxv-Hw-u9o"/>
                         <outlet property="gainLabel" destination="NvU-3K-etO" id="LJi-W7-qcJ"/>
+                        <outlet property="gainValue" destination="b7O-01-V0Q" id="Bdq-IM-fGz"/>
                         <outlet property="invertingGainImage" destination="DlR-TY-zb0" id="uMT-VB-y7n"/>
                         <outlet property="invertingGainIndicator" destination="Nnu-GM-H36" id="yTh-zT-4qy"/>
                         <outlet property="invertingGainLabel" destination="Th7-S9-Jni" id="IMw-Mp-mj8"/>
-                        <outlet property="minResistance" destination="gUJ-wT-0Rf" id="iGM-Hj-nIx"/>
+                        <outlet property="minResistance" destination="dCw-aG-xWz" id="V2B-Fs-pdc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -625,14 +623,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Za9-eh-X9d">
-                                                    <rect key="frame" x="100" y="0.0" width="260" height="43.5"/>
+                                                    <rect key="frame" x="94" y="0.0" width="266" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Resistor Collection" id="3Uh-s1-SQZ">
-                                                    <rect key="frame" x="15" y="0.0" width="70" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="64" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -737,12 +735,12 @@
     </scenes>
     <resources>
         <image name="Divider2" width="54" height="25"/>
-        <image name="Edit" width="54" height="25"/>
+        <image name="Edit" width="33" height="25"/>
         <image name="Op Amp" width="28" height="25"/>
         <image name="Resistor" width="69" height="25"/>
-        <image name="Resistor Collection" width="81" height="50"/>
+        <image name="Resistor Collection" width="81" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6D2-rb-0aL"/>
+        <segue reference="nhP-iN-jrc"/>
     </inferredMetricsTieBreakers>
 </document>

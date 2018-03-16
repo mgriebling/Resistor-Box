@@ -60,7 +60,7 @@ class CollectionGeneratorViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectStart" || segue.identifier == "SelectEnd" {
             let destNav = segue.destination
-            if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
+            if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
                 vc.value = segue.identifier == "SelectStart" ? startLabel.titleLabel!.text : endLabel.titleLabel!.text
                 vc.callback = { newValue in
                     if segue.identifier == "SelectStart" {

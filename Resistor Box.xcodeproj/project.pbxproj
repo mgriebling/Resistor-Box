@@ -10,7 +10,7 @@
 		2F1573D3204EC3D400E948B5 /* NumberPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D2204EC3D400E948B5 /* NumberPicker.swift */; };
 		2F1573D5204EC48D00E948B5 /* String+Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D4204EC48D00E948B5 /* String+Char.swift */; };
 		2F1573D7204EC4F700E948B5 /* Decimal+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */; };
-		2F1573D9204EC7CD00E948B5 /* NumberPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D8204EC7CD00E948B5 /* NumberPickerViewController.swift */; };
+		2F1573D9204EC7CD00E948B5 /* ResistancePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D8204EC7CD00E948B5 /* ResistancePickerViewController.swift */; };
 		2F2F2C532036156300DD98AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C522036156300DD98AE /* AppDelegate.swift */; };
 		2F2F2C552036156300DD98AE /* ResistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C542036156300DD98AE /* ResistorViewController.swift */; };
 		2F2F2C572036156300DD98AE /* OpAmpGainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */; };
@@ -38,7 +38,7 @@
 		2F1573D2204EC3D400E948B5 /* NumberPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPicker.swift; sourceTree = "<group>"; };
 		2F1573D4204EC48D00E948B5 /* String+Char.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Char.swift"; sourceTree = "<group>"; };
 		2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal+Double.swift"; sourceTree = "<group>"; };
-		2F1573D8204EC7CD00E948B5 /* NumberPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerViewController.swift; sourceTree = "<group>"; };
+		2F1573D8204EC7CD00E948B5 /* ResistancePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistancePickerViewController.swift; sourceTree = "<group>"; };
 		2F2F2C4F2036156300DD98AE /* Resistor Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resistor Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2F2C522036156300DD98AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F2F2C542036156300DD98AE /* ResistorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 				2F2F2C582036156300DD98AE /* Main.storyboard */,
 				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
 				2F1573D2204EC3D400E948B5 /* NumberPicker.swift */,
-				2F1573D8204EC7CD00E948B5 /* NumberPickerViewController.swift */,
+				2F1573D8204EC7CD00E948B5 /* ResistancePickerViewController.swift */,
 				47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */,
 				2FF8FE842048268F000841AF /* ResistorImage.swift */,
 				2FC933282056B4B900FE9688 /* Includes.swift */,
@@ -253,7 +253,7 @@
 				47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */,
 				47CE31D720547454007AB17B /* EditViewController.swift in Sources */,
 				2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */,
-				2F1573D9204EC7CD00E948B5 /* NumberPickerViewController.swift in Sources */,
+				2F1573D9204EC7CD00E948B5 /* ResistancePickerViewController.swift in Sources */,
 				2FC933292056B4B900FE9688 /* Includes.swift in Sources */,
 				47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */,
 				2F1573D5204EC48D00E948B5 /* String+Char.swift in Sources */,

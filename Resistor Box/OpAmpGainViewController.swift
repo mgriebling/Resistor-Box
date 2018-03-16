@@ -10,7 +10,8 @@ import UIKit
 
 class OpAmpGainViewController: UIViewController {
     
-    @IBOutlet weak var desiredValue: UITextField! { didSet { desiredValue.delegate = self }}
+    @IBOutlet weak var gainValue: UIButton!
+    @IBOutlet weak var minResistance: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var gainImage: UIImageView!
     @IBOutlet weak var gainIndicator: UIActivityIndicatorView!
@@ -18,18 +19,17 @@ class OpAmpGainViewController: UIViewController {
     @IBOutlet weak var invertingGainImage: UIImageView!
     @IBOutlet weak var invertingGainIndicator: UIActivityIndicatorView!
     @IBOutlet weak var invertingGainLabel: UILabel!
-    @IBOutlet weak var minResistance: UITextField! { didSet { minResistance.delegate = self } }
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue2", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
     var gain : Double = 2.5 {
         didSet {
-            desiredValue.text = ResistorViewController.formatter.string(from: NSNumber(value: gain))
+            gainValue.setTitle(ResistorViewController.formatter.string(from: NSNumber(value: gain)), for: .normal)
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
         didSet {
-            minResistance.text = Resistors.stringFrom(minR.0)
+            minResistance.setTitle(Resistors.stringFrom(minR.0), for: .normal)
         }
     }
     var calculating1 = false
@@ -61,8 +61,8 @@ class OpAmpGainViewController: UIViewController {
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        gain = Double(desiredValue.text!) ?? 1
-        minR = Resistors.parseString(minResistance.text ?? "10KΩ")
+        gain = Double(gainValue.title(for: .normal)!) ?? 1
+        minR = Resistors.parseString(minResistance.title(for: .normal) ?? "10KΩ")
         calculateOptimalValues()
     }
     
@@ -74,7 +74,7 @@ class OpAmpGainViewController: UIViewController {
     func enableGUI () {
         let done = !calculating1 && !calculating2
         cancelButton.isEnabled = !done
-        desiredValue.isEnabled = done
+        gainValue.isEnabled = done
     }
     
     func stopTimer() {
@@ -146,14 +146,43 @@ class OpAmpGainViewController: UIViewController {
         super.touchesBegan(touches, with: event)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditResistance" {
+            let destNav = segue.destination
+            if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
+                vc.value = minResistance.title(for: .normal)
+                vc.callback = { [weak self] newValue in
+                    guard let wself = self else { return }
+                    wself.minR = Resistors.parseString(newValue)
+                    wself.calculateOptimalValues()
+                    wself.view.endEditing(true)
+                }
+            }
+            let popPC = destNav.popoverPresentationController
+            popPC?.delegate = self
+        } else if segue.identifier == "EditGain" {
+            let destNav = segue.destination
+            if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
+                vc.value = minResistance.title(for: .normal)
+                vc.callback = { [weak self] newValue in
+                    guard let wself = self else { return }
+                    wself.minR = Resistors.parseString(newValue)
+                    wself.calculateOptimalValues()
+                    wself.view.endEditing(true)
+                }
+            }
+            let popPC = destNav.popoverPresentationController
+            popPC?.delegate = self
+        }
+    }
+    
 }
 
-
-extension OpAmpGainViewController : UITextFieldDelegate {
+extension OpAmpGainViewController : UIPopoverPresentationControllerDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        // allows popover to appear for iPhone-style devices
+        return .none
     }
     
 }
