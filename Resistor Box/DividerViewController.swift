@@ -1,30 +1,31 @@
 //
-//  SecondViewController.swift
+//  DividerViewController.swift
 //  Resistor Box
 //
-//  Created by Michael Griebling on 2018-02-15.
+//  Created by Michael Griebling on 2018-03-16.
 //  Copyright © 2018 Solinst Canada. All rights reserved.
 //
 
 import UIKit
 
-class OpAmpGainViewController: UIViewController {
-    
-    @IBOutlet weak var gainValue: UIButton!
+class DividerViewController: UIViewController {
+
+    @IBOutlet weak var divisionRatio: UIButton!
     @IBOutlet weak var minResistance: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var gainImage: UIImageView!
-    @IBOutlet weak var gainIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var gainLabel: UILabel!
-    @IBOutlet weak var invertingGainImage: UIImageView!
-    @IBOutlet weak var invertingGainIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var invertingGainLabel: UILabel!
+    
+    @IBOutlet weak var divider1Image: UIImageView!
+    @IBOutlet weak var divider1Activity: UIActivityIndicatorView!
+    @IBOutlet weak var divider1Label: UILabel!
+    @IBOutlet weak var divider2Image: UIImageView!
+    @IBOutlet weak var divider2Activity: UIActivityIndicatorView!
+    @IBOutlet weak var divider2Label: UILabel!
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue2", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
-    var gain : Double = 2.5 {
+    var divider : Double = 0.5 {
         didSet {
-            gainValue.setTitle(ResistorViewController.formatter.string(from: NSNumber(value: gain)), for: .normal)
+            divisionRatio.setTitle(ResistorViewController.formatter.string(from: NSNumber(value: divider)), for: .normal)
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
@@ -41,43 +42,43 @@ class OpAmpGainViewController: UIViewController {
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
     }
     
-    func updateGainResistors (_ x : [Double], label: String) {
+    func updateDivider1Resistors (_ x : [Double], label: String) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
         let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[3]))!
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
-            self.gainImage.image = ResistorImage.imageOfOpAmpGain2(value1: r1v, value2: r2v)
-            self.gainLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.divider1Image.image = ResistorImage.imageOfVoltageDivider(value1: r1v, value2: r2v)
+            self.divider1Label.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
-    func updateInvertingGainResistors (_ x : [Double], label: String) {
+    func updateDivider2Resistors (_ x : [Double], label: String) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
-        let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: -x[3]))!
+        let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[3]))!
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
-            self.invertingGainImage.image = ResistorImage.imageOfOpAmpGain(value1: r1v, value2: r2v)
-            self.invertingGainLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.divider2Image.image = ResistorImage.imageOfVoltageDivider(value1: r1v, value2: r2v)
+            self.divider2Label.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        gain = Double(gainValue.title(for: .normal)!) ?? 1
+        divider = Double(divisionRatio.title(for: .normal)!) ?? 0.5
         minR = Resistors.parseString(minResistance.title(for: .normal) ?? "10KΩ")
         calculateOptimalValues()
     }
     
     func refreshGUI (_ x : [Double], y : [Double], label : String) {
-        if calculating1 { updateGainResistors(x, label: label) }
-        if calculating2 { updateInvertingGainResistors(y, label: label) }
+        if calculating1 { updateDivider1Resistors(x, label: label) }
+        if calculating2 { updateDivider2Resistors(y, label: label) }
     }
     
     func enableGUI () {
         let done = !calculating1 && !calculating2
         cancelButton.isEnabled = !done
-        gainValue.isEnabled = done
+        divisionRatio.isEnabled = done
     }
     
     func stopTimer() {
@@ -92,7 +93,7 @@ class OpAmpGainViewController: UIViewController {
         Resistors.initInventory()   // build up the values
         calculateOptimalValues()
     }
-
+    
     @IBAction func cancelCalculations(_ sender: Any) {
         print("Cancelled calculation")
         Resistors.cancelCalculations = true
@@ -101,8 +102,8 @@ class OpAmpGainViewController: UIViewController {
     func calculateOptimalValues () {
         guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
         calculating1 = true; calculating2 = true
-        gainIndicator.startAnimating()
-        invertingGainIndicator.startAnimating()
+        divider1Activity.startAnimating()
+        divider2Activity.startAnimating()
         enableGUI()
         Resistors.cancelCalculations = false
         timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -110,34 +111,34 @@ class OpAmpGainViewController: UIViewController {
         }
         timedTask?.fire()     // refresh GUI to start
         backgroundQueue.async {
-            print("Starting gain calculations...")
-            Resistors.computeGain(self.gain, start: self.minR.0, callback: { values in
+            print("Starting divider 1 calculations...")
+            Resistors.computeDivider(self.divider, start: self.minR.0, callback: { values in
                 self.x = values   // update working values
             }, done: { s in
                 self.x = s
                 self.calculating1 = false
                 self.stopTimer()
                 DispatchQueue.main.async { [weak self] in
-                    self?.updateGainResistors(s, label: "Best")
-                    self?.gainIndicator.stopAnimating()
+                    self?.updateDivider1Resistors(s, label: "Best")
+                    self?.divider1Activity.stopAnimating()
                     self?.enableGUI()
-                    print("Finished gain calculations...")
+                    print("Finished divider 1 calculations...")
                 }
             })
         }
         backgroundQueue.async {
-            print("Starting inverting gain calculations...")
-            Resistors.computeInvertingGain(self.gain, start: self.minR.0, callback: { values in
+            print("Starting divider 2 calculations...")
+            Resistors.computeDivider(self.divider, start: self.minR.0, callback: { values in
                 self.y = values   // update working values
             }, done: { sp in
                 self.y = sp        // final answer update
                 self.calculating2 = false
                 self.stopTimer()
                 DispatchQueue.main.async { [weak self] in
-                    self?.updateInvertingGainResistors(sp, label: "Best")
-                    self?.invertingGainIndicator.stopAnimating()
+                    self?.updateDivider2Resistors(sp, label: "Best")
+                    self?.divider2Activity.stopAnimating()
                     self?.enableGUI()
-                    print("Finished inverting gain calculations...")
+                    print("Finished divider 2 calculations...")
                 }
             })
         }
@@ -159,10 +160,10 @@ class OpAmpGainViewController: UIViewController {
         } else if segue.identifier == "EditGain" {
             let destNav = segue.destination
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = gainValue.title(for: .normal)
+                vc.value = divisionRatio.title(for: .normal)
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
-                    wself.gain = Double(newValue) ?? 1
+                    wself.divider = Double(newValue) ?? 1
                     wself.calculateOptimalValues()
                 }
             }
@@ -173,7 +174,7 @@ class OpAmpGainViewController: UIViewController {
     
 }
 
-extension OpAmpGainViewController : UIPopoverPresentationControllerDelegate {
+extension DividerViewController : UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // allows popover to appear for iPhone-style devices
@@ -181,4 +182,3 @@ extension OpAmpGainViewController : UIPopoverPresentationControllerDelegate {
     }
     
 }
-
