@@ -58,7 +58,7 @@ class EditViewController: UIViewController {
     
     func selectActiveResistorSet() {
         // highlight the active resistor set
-        let keys = sortedKeys()
+        let keys = EditViewController.sortedKeys()
         if let index = keys.index(of: Resistors.active) {
             let pos = IndexPath(row: index, section: 0)
             resistorSets.selectRow(at: pos, animated: false, scrollPosition: .none)
@@ -115,13 +115,13 @@ extension EditViewController : UITableViewDataSource {
         return Resistors.rInv.count
     }
     
-    func getNumber(_ s: String) -> Double? {
+    static func getNumber(_ s: String) -> Double? {
         return Double(s.filter({ ch -> Bool in
             return CharacterSet.decimalDigits.contains(ch.unicodeScalar)
         }))
     }
     
-    func sortedKeys () -> [String] {
+    static func sortedKeys () -> [String] {
         let keys = Resistors.rInv.keys.sorted { (first, second) -> Bool in
             // prefer numerical sorting order if possible
             if let number1 = getNumber(first) {
@@ -138,7 +138,7 @@ extension EditViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
-        let keys = sortedKeys()
+        let keys = EditViewController.sortedKeys()
         let key = keys[keys.index(keys.startIndex, offsetBy: indexPath.row)]
         cell.textLabel?.text = key + " Resistors (\(Resistors.rInv[key]!.count-2))"
         return cell
@@ -149,7 +149,7 @@ extension EditViewController : UITableViewDataSource {
 extension EditViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let keys = sortedKeys()
+        let keys = EditViewController.sortedKeys()
         let key = keys[keys.index(keys.startIndex, offsetBy: indexPath.row)]
         Resistors.active = key
         selectActiveResistorSet()
@@ -164,7 +164,7 @@ extension EditViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let keys = sortedKeys()
+            let keys = EditViewController.sortedKeys()
             let key = keys[keys.index(keys.startIndex, offsetBy: indexPath.row)]
             Resistors.rInv.removeValue(forKey: key)
             tableView.beginUpdates()

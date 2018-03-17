@@ -12,7 +12,7 @@ class CollectionViewController: UIViewController {
 
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var picker = CollectionPicker(Resistors.active, items: Resistors.rInv.keys.sorted())
+    var picker = CollectionPicker(Resistors.active, items: EditViewController.sortedKeys())
     
     public var value : String?
     public var callback : (String) -> () = { arg in }
