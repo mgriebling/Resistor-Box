@@ -8,7 +8,7 @@
 
 import Foundation
 
-// resistor parallal algorithm
+// parallel resistance operator definition
 infix operator ⧦ : MultiplicationPrecedence
 fileprivate func ⧦ (r1 : Double, r2 : Double) -> Double { return (r1*r2)/(r1+r2) }
 
@@ -70,18 +70,68 @@ class Resistors {
     
     static func clearInventory() { rInv = [String: [Double]]() }
     
-    static func initInventory() {
+    static func name() -> URL {
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileName = "ResistorBox"
+        return docPath.appendingPathComponent(fileName).appendingPathExtension("rbox")
+    }
+    
+    static public func writeInventory() {
+        let fname = name()
+        let data = NSKeyedArchiver.archivedData(withRootObject: rInv)
+        do {
+            try data.write(to: fname)
+        } catch {
+            print("Couldn't write file")
+        }
+    }
+    
+    static func getNumber(_ s: String) -> Double? {
+        return Double(s.filter({ ch -> Bool in
+            return CharacterSet.decimalDigits.contains(ch.unicodeScalar)
+        }))
+    }
+    
+    static public func sortedKeys () -> [String] {
+        let keys = Resistors.rInv.keys.sorted { (first, second) -> Bool in
+            // prefer numerical sorting order if possible
+            if let number1 = getNumber(first) {
+                if let number2 = getNumber(second) {
+                    return number1 < number2
+                }
+            }
+            
+            // otherwise use strings
+            return first < second
+        }
+        return keys
+    }
+    
+    static public func initInventory() {
+        // attempt to read from the App's directory
+        let fname = name()
+        if FileManager.default.fileExists(atPath: fname.path) {
+            // read the resistor file
+            
+            if let inventory = NSKeyedUnarchiver.unarchiveObject(withFile: fname.path) as? [String: [Double]] {
+                rInv = inventory
+            }
+        }
+ 
         if rInv.count == 0 {
             // build up the 10% collection
-            computeValuesFor(r10pc, minimum: 2.2, maximum: 1.0*MEG, name: "10%")
+            computeValuesFor(r10pc, minimum: 1, maximum: 10.0*MEG, name: "10%")
             
             // build up the 5% collection
-            computeValuesFor(r5pc, minimum: 1, maximum: 56.0*MEG, name: "5%")
+            computeValuesFor(r5pc, minimum: 1, maximum: 10.0*MEG, name: "5%")
             
             // build up the 1% collection
             computeValuesFor(r1pc, minimum: 1, maximum: 10.0*MEG, name: "1%")
-            Resistors.active = "1%"
+            
+            // write out values
+            writeInventory()
         }
+        Resistors.active = sortedKeys().first!
     }
     
     static func stringFrom(_ r: Double) -> String {

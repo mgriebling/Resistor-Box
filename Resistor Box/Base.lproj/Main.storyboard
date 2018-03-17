@@ -411,7 +411,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="uip-jo-BgN">
                             <connections>
-                                <segue destination="5cW-bu-49C" kind="unwind" unwindAction="returnToResistorView:" id="4rD-KF-8Jc"/>
+                                <segue destination="5cW-bu-49C" kind="unwind" identifier="ExitEditor" unwindAction="returnToResistorView:" id="4rD-KF-8Jc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -996,6 +996,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="cZl-m2-oc7"/>
         <segue reference="nVq-P9-Qni"/>
-        <segue reference="xIt-DP-D4f"/>
+        <segue reference="hk2-fp-Gwn"/>
     </inferredMetricsTieBreakers>
 </document>

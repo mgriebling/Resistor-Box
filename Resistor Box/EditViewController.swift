@@ -28,6 +28,7 @@ class EditViewController: UIViewController {
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
         // return to here from exit segue
+        resistorSets.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,14 +41,21 @@ class EditViewController: UIViewController {
         deleteBarButton.isEnabled = selectedResistors.count > 0
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // save any changes made during editing
+        Resistors.writeInventory()
+    }
+    
     @IBAction func deleteResistors(_ sender: Any) {
         var resistorArray = [IndexPath]()
         resistorArray.append(contentsOf: selectedResistors)
         
         // remove the selected resistors from the data structure
         for r in selectedResistors {
-            Resistors.rInv[Resistors.active]?.remove(at: r.row)
-            selectedResistors.remove(r)
+            // Note: offset by one because we don't show SHORTs
+            Resistors.rInv[Resistors.active]?.remove(at: r.row+1)
         }
 
         // remove the selected resistors from the collection
@@ -58,11 +66,12 @@ class EditViewController: UIViewController {
     
     func selectActiveResistorSet() {
         // highlight the active resistor set
-        let keys = EditViewController.sortedKeys()
+        let keys = Resistors.sortedKeys()
         if let index = keys.index(of: Resistors.active) {
             let pos = IndexPath(row: index, section: 0)
             resistorSets.selectRow(at: pos, animated: false, scrollPosition: .none)
             resistorsTitle.setTitle(Resistors.active + " Resistors", for: .normal)
+            resistors.reloadData()
         }
     }
     
@@ -115,30 +124,9 @@ extension EditViewController : UITableViewDataSource {
         return Resistors.rInv.count
     }
     
-    static func getNumber(_ s: String) -> Double? {
-        return Double(s.filter({ ch -> Bool in
-            return CharacterSet.decimalDigits.contains(ch.unicodeScalar)
-        }))
-    }
-    
-    static func sortedKeys () -> [String] {
-        let keys = Resistors.rInv.keys.sorted { (first, second) -> Bool in
-            // prefer numerical sorting order if possible
-            if let number1 = getNumber(first) {
-                if let number2 = getNumber(second) {
-                    return number1 < number2
-                }
-            }
-
-            // otherwise use strings
-            return first < second
-        }
-        return keys
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
-        let keys = EditViewController.sortedKeys()
+        let keys = Resistors.sortedKeys()
         let key = keys[keys.index(keys.startIndex, offsetBy: indexPath.row)]
         cell.textLabel?.text = key + " Resistors (\(Resistors.rInv[key]!.count-2))"
         return cell
@@ -149,7 +137,7 @@ extension EditViewController : UITableViewDataSource {
 extension EditViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let keys = EditViewController.sortedKeys()
+        let keys = Resistors.sortedKeys()
         let key = keys[keys.index(keys.startIndex, offsetBy: indexPath.row)]
         Resistors.active = key
         selectActiveResistorSet()
@@ -164,7 +152,7 @@ extension EditViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let keys = EditViewController.sortedKeys()
+            let keys = Resistors.sortedKeys()
             let key = keys[keys.index(keys.startIndex, offsetBy: indexPath.row)]
             Resistors.rInv.removeValue(forKey: key)
             tableView.beginUpdates()

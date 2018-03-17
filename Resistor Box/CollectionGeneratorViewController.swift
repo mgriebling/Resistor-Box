@@ -22,6 +22,8 @@ class CollectionGeneratorViewController: UIViewController {
         // return to here from exit segue
     }
     
+    var collection = [Double]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,17 +41,33 @@ class CollectionGeneratorViewController: UIViewController {
     func updateTotalResistors(_ tolerance: String) {
         let start : [Double]
         switch tolerance {
-        case "1%": start = Resistors.r1pc
-        case "5%": start = Resistors.r5pc
-        default:   start = Resistors.r10pc
+        case "1%":  start = Resistors.r1pc
+        case "5%":  start = Resistors.r5pc
+        case "10%": start = Resistors.r10pc
+        default:    start = Resistors.r1pc
         }
         let minimum = Resistors.parseString(startLabel.title(for: .normal) ?? "10Ω")
         let maximum = Resistors.parseString(endLabel.title(for: .normal) ?? "10MΩ")
-        let collection = Resistors.computeValuesFor(start, minimum: minimum.0, maximum: maximum.0)
+        collection = Resistors.computeValuesFor(start, minimum: minimum.0, maximum: maximum.0)
         estimatedNumber.text = "Estimated number of resistors: \(collection.count)"
     }
     
     @IBAction func saveCollection(_ sender: Any) {
+        // ensure we have a unique name
+        var name = nameField.text!
+        var count = 1
+        while let _ = Resistors.sortedKeys().index(of: name) {
+            name = nameField.text! + " \(count)"
+            count += 1
+        }
+        
+        // add the resistors to the main inventory
+        Resistors.rInv[name] = collection
+        Resistors.writeInventory()          // save to disk
+        collection = []
+        
+        // exit this pop-up
+        performSegue(withIdentifier: "ExitEditor", sender: self)
     }
     
     @IBAction func newToleranceSelected(_ sender: UISegmentedControl) {
