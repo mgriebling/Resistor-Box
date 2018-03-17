@@ -201,6 +201,41 @@
             </objects>
             <point key="canvasLocation" x="2337" y="-254"/>
         </scene>
+        <!--Enter Desired Value-->
+        <scene sceneID="85N-Tb-3C5">
+            <objects>
+                <viewController modalPresentationStyle="pageSheet" id="jbh-G2-5Zb" customClass="NumberPickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DKN-N5-Xi9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CbI-6e-Haw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Pbb-25-gja"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Enter Desired Value" id="X0f-W4-6Bf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="DjX-TH-miB">
+                            <connections>
+                                <segue destination="Rjs-VE-wM4" kind="unwind" unwindAction="returnToResistorView:" id="x1S-eW-eWZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="300"/>
+                    <connections>
+                        <outlet property="pickerView" destination="CbI-6e-Haw" id="yhu-9b-mq4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OTn-Ud-JJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Rjs-VE-wM4" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2462" y="408"/>
+        </scene>
         <!--Resistor Collection-->
         <scene sceneID="GkT-fC-SDg">
             <objects>
@@ -362,17 +397,17 @@
                                 <rect key="frame" x="0.0" y="20" width="370" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Gain: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcq-By-Uvl">
-                                        <rect key="frame" x="0.0" y="0.0" width="126" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7O-01-V0Q">
-                                        <rect key="frame" x="134" y="0.0" width="167" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7O-01-V0Q">
+                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="2.5"/>
                                         <connections>
-                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditGain" popoverAnchorView="b7O-01-V0Q" id="nhP-iN-jrc">
+                                            <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditGain" popoverAnchorView="b7O-01-V0Q" id="z5Z-Mi-q3c">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -393,14 +428,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ena-ix-0kY">
                                 <rect key="frame" x="0.0" y="58" width="370" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ri-8c-9IO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ri-8c-9IO">
                                         <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-aG-xWz">
-                                        <rect key="frame" x="148.5" y="0.0" width="221.5" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-aG-xWz">
+                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="10KΩ"/>
                                         <connections>
@@ -408,6 +443,10 @@
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcu-9b-7kx">
+                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -466,9 +505,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="b7O-01-V0Q" firstAttribute="width" secondItem="dCw-aG-xWz" secondAttribute="width" id="0df-4a-61s"/>
                             <constraint firstItem="ena-ix-0kY" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="1aJ-iR-fMc"/>
                             <constraint firstItem="9DM-ba-Fxn" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="6mA-TN-hN0"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="8aA-iD-Ajx" secondAttribute="trailing" constant="5" id="N2K-4p-ITT"/>
+                            <constraint firstItem="mcq-By-Uvl" firstAttribute="width" secondItem="8ri-8c-9IO" secondAttribute="width" id="SxZ-Bg-oNr"/>
                             <constraint firstItem="8aA-iD-Ajx" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="atw-Cv-jHD"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="9DM-ba-Fxn" secondAttribute="trailing" id="dR4-Xw-f2a"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="9DM-ba-Fxn" secondAttribute="trailing" id="dqH-lo-Ojd"/>
@@ -497,6 +538,156 @@
             </objects>
             <point key="canvasLocation" x="750" y="338"/>
         </scene>
+        <!--Divider-->
+        <scene sceneID="uuV-Tb-3bK">
+            <objects>
+                <viewController id="acr-ZN-D4c" customClass="DividerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cRj-4V-SB4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9qR-Sh-iJd">
+                                <rect key="frame" x="0.0" y="20" width="370" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Ratio: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-vK-Zqp">
+                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIA-tB-7rA">
+                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="0.5"/>
+                                        <connections>
+                                            <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditGain" popoverAnchorView="pIA-tB-7rA" id="nVq-P9-Qni">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0u-mb-7Co">
+                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="Cancel"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="amm-ew-IOe"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-la-Oxg">
+                                <rect key="frame" x="0.0" y="58" width="370" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ2-Z2-c16">
+                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ms-qh-Kuz">
+                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="10KΩ"/>
+                                        <connections>
+                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditResistance" popoverAnchorView="2Ms-qh-Kuz" id="per-S7-xvl">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKK-Gh-eaS">
+                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wgY-Gm-pzo"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sz8-4M-Hou">
+                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="6Dv-Jm-Zl0">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="261"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-9R-ujH">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                                            </imageView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y6c-8c-Tpt">
+                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
+                                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwG-vW-HTB">
+                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kRa-W3-qeH">
+                                        <rect key="frame" x="0.0" y="261" width="375" height="261"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-tZ-trm">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                                            </imageView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pG1-LA-LTK">
+                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
+                                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-u4-MKz">
+                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pjV-9R-ujH" firstAttribute="height" secondItem="18Q-tZ-trm" secondAttribute="height" id="gqx-kX-ZuZ"/>
+                                </constraints>
+                                <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually">
+                                    <mask key="constraints">
+                                        <exclude reference="gqx-kX-ZuZ"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sz8-4M-Hou" firstAttribute="leading" secondItem="CBZ-vM-U4v" secondAttribute="leading" id="579-dV-qzc"/>
+                            <constraint firstItem="pIA-tB-7rA" firstAttribute="width" secondItem="2Ms-qh-Kuz" secondAttribute="width" id="6oe-GT-Acp"/>
+                            <constraint firstItem="mWe-la-Oxg" firstAttribute="top" secondItem="9qR-Sh-iJd" secondAttribute="bottom" constant="8" symbolic="YES" id="90F-CM-xfI"/>
+                            <constraint firstItem="sz8-4M-Hou" firstAttribute="top" secondItem="mWe-la-Oxg" secondAttribute="bottom" constant="8" symbolic="YES" id="E24-Pe-Yvu"/>
+                            <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="sz8-4M-Hou" secondAttribute="trailing" id="EsF-BY-4T3"/>
+                            <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="sz8-4M-Hou" secondAttribute="trailing" id="QOl-ak-U4O"/>
+                            <constraint firstItem="9qR-Sh-iJd" firstAttribute="top" secondItem="CBZ-vM-U4v" secondAttribute="top" id="WQa-so-gt3"/>
+                            <constraint firstItem="sz8-4M-Hou" firstAttribute="bottom" secondItem="CBZ-vM-U4v" secondAttribute="bottom" id="WZl-R4-wO7"/>
+                            <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="9qR-Sh-iJd" secondAttribute="trailing" constant="5" id="gOM-Yy-wk1"/>
+                            <constraint firstItem="mWe-la-Oxg" firstAttribute="leading" secondItem="CBZ-vM-U4v" secondAttribute="leading" id="keP-rl-UQA"/>
+                            <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="mWe-la-Oxg" secondAttribute="trailing" constant="5" id="kvD-sl-DEz"/>
+                            <constraint firstItem="9qR-Sh-iJd" firstAttribute="leading" secondItem="CBZ-vM-U4v" secondAttribute="leading" id="rL7-Aq-fk0"/>
+                            <constraint firstItem="1Lu-vK-Zqp" firstAttribute="width" secondItem="sQ2-Z2-c16" secondAttribute="width" id="rcu-ev-RT8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CBZ-vM-U4v"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Divider" image="Divider2" id="v9u-e1-em8"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="k0u-mb-7Co" id="YyI-8F-cQD"/>
+                        <outlet property="divider1Activity" destination="Y6c-8c-Tpt" id="eTI-JP-80i"/>
+                        <outlet property="divider1Image" destination="pjV-9R-ujH" id="oxR-iA-DQh"/>
+                        <outlet property="divider1Label" destination="rwG-vW-HTB" id="Y8S-Q8-SAV"/>
+                        <outlet property="divider2Activity" destination="pG1-LA-LTK" id="beA-Yh-YLF"/>
+                        <outlet property="divider2Image" destination="18Q-tZ-trm" id="Pqp-op-OXa"/>
+                        <outlet property="divider2Label" destination="pWE-u4-MKz" id="naz-hw-uLY"/>
+                        <outlet property="divisionRatio" destination="pIA-tB-7rA" id="sWh-CH-5DB"/>
+                        <outlet property="minResistance" destination="2Ms-qh-Kuz" id="Xr0-l4-9KA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qts-0G-J8T" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="1013"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -509,7 +700,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="ZJw-zx-wXu" kind="relationship" relationship="viewControllers" id="c7y-av-q7y"/>
+                        <segue destination="acr-ZN-D4c" kind="relationship" relationship="viewControllers" id="Fs0-k3-OLQ"/>
                         <segue destination="gqK-ve-sEa" kind="relationship" relationship="viewControllers" id="poU-pL-Mj4"/>
                     </connections>
                 </tabBarController>
@@ -534,43 +725,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Tx-dD-YjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1574" y="-253"/>
-        </scene>
-        <!--Divider-->
-        <scene sceneID="yk2-XZ-SV5">
-            <objects>
-                <viewController id="ZJw-zx-wXu" customClass="OpAmpGainViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xuY-I8-UVx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Third View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LlH-cd-hAp">
-                                <rect key="frame" x="106" y="312" width="163" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gu8-qj-j5h">
-                                <rect key="frame" x="79.5" y="363" width="215" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="gu8-qj-j5h" firstAttribute="top" secondItem="LlH-cd-hAp" secondAttribute="bottom" constant="8" symbolic="YES" id="KyW-mz-tst"/>
-                            <constraint firstItem="gu8-qj-j5h" firstAttribute="centerX" secondItem="LlH-cd-hAp" secondAttribute="centerX" id="heH-ls-RFk"/>
-                            <constraint firstAttribute="centerX" secondItem="LlH-cd-hAp" secondAttribute="centerX" id="tQI-bi-jw9"/>
-                            <constraint firstAttribute="centerY" secondItem="LlH-cd-hAp" secondAttribute="centerY" id="vgD-r0-VWb"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="djQ-JM-4jc"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Divider" image="Divider2" id="PtU-dt-8LQ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TlM-vM-JZT" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="1021"/>
         </scene>
         <!--Resistor Collections-->
         <scene sceneID="rhp-r7-TWf">
@@ -732,6 +886,24 @@
             </objects>
             <point key="canvasLocation" x="-676" y="1514"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a2Z-iA-Ld3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uer-tE-O0T" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OHQ-Fj-wa9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jbh-G2-5Zb" kind="relationship" relationship="rootViewController" id="U2e-83-qDt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sUI-K9-Ukc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1574" y="409"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Divider2" width="54" height="25"/>
@@ -741,6 +913,7 @@
         <image name="Resistor Collection" width="81" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nhP-iN-jrc"/>
+        <segue reference="nVq-P9-Qni"/>
+        <segue reference="per-S7-xvl"/>
     </inferredMetricsTieBreakers>
 </document>

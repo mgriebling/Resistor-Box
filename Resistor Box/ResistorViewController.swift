@@ -38,7 +38,6 @@ class ResistorViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
-         view.endEditing(true)
     }
     
     static var formatter : NumberFormatter {
@@ -198,12 +197,6 @@ class ResistorViewController: UIViewController {
     
     @IBAction func editingDidBegin(_ sender: UITextField) {
         performSegue(withIdentifier: "PresentPicker", sender: sender)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // remove the keypad when tapping on the background
-        view.endEditing(true)
-        super.touchesBegan(touches, with: event)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

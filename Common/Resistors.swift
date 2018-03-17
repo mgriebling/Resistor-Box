@@ -164,6 +164,23 @@ class Resistors {
         done(result)
     }
     
+    static func computeDivider (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+        let rArray = rInv[active]!
+        let sindex = rArray.index { value -> Bool in
+            // find index of next largest value
+            if value > start { return true }
+            return false
+            }!
+        let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
+        let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
+            return r2/(r1+r2)
+        }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
+            // exit early if a solution is unlikely
+            return r3 > 1  // ignore r3
+        }, callback: callback)
+        done(result)
+    }
+    
     static func computeGain (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
         let sindex = rArray.index { value -> Bool in
@@ -176,7 +193,7 @@ class Resistors {
             return 1.0 + r2/r1
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
-            return false  // don't use r3
+            return r3 > 1  // ignore r3
         }, callback: callback)
         done(result)
     }
@@ -193,7 +210,7 @@ class Resistors {
             return r2/r1
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
-            return false  // don't use r3
+            return r3 > 1  // ignore r3
         }, callback: callback)
         done(result)
     }
