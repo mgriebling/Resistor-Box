@@ -24,18 +24,28 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DIf-bl-tTg">
                                 <rect key="frame" x="0.0" y="20" width="370" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Value: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X02-Si-XAG">
-                                        <rect key="frame" x="0.0" y="0.0" width="133.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Total: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X02-Si-XAG">
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFk-eP-aY7">
-                                        <rect key="frame" x="141.5" y="0.0" width="159.5" height="30"/>
+                                        <rect key="frame" x="135" y="0.0" width="128" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="10KΩ"/>
                                         <connections>
                                             <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="PresentPicker" popoverAnchorView="jFk-eP-aY7" id="xIt-DP-D4f">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-Cw-Gr9" userLabel="My 1%">
+                                        <rect key="frame" x="271" y="0.0" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="1%"/>
+                                        <connections>
+                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorView="Qka-Cw-Gr9" id="cZl-m2-oc7">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -150,6 +160,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="Fwh-Pi-GD3" id="GHf-eo-B9H"/>
+                        <outlet property="collectionButton" destination="Qka-Cw-Gr9" id="IMH-k6-A5S"/>
                         <outlet property="desiredValue" destination="jFk-eP-aY7" id="vN0-g4-DIO"/>
                         <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
                         <outlet property="parallelLabel" destination="5e1-tS-x7N" id="KDz-Uk-Zk1"/>
@@ -166,7 +177,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Enter Desired Value-->
+        <!--Select Resistance-->
         <scene sceneID="ypV-Ev-t3p">
             <objects>
                 <viewController modalPresentationStyle="pageSheet" id="sVG-US-5Sm" customClass="ResistancePickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
@@ -182,7 +193,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aj3-AK-e4t"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Enter Desired Value" id="zFu-l7-pXi">
+                    <navigationItem key="navigationItem" title="Select Resistance" id="zFu-l7-pXi">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="3GH-e0-023">
                             <connections>
                                 <segue destination="nY4-0o-YKu" kind="unwind" unwindAction="returnToResistorView:" id="rL8-jt-SbK"/>
@@ -201,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="2337" y="-254"/>
         </scene>
-        <!--Enter Desired Value-->
+        <!--Select Desired Value-->
         <scene sceneID="85N-Tb-3C5">
             <objects>
                 <viewController modalPresentationStyle="pageSheet" id="jbh-G2-5Zb" customClass="NumberPickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
@@ -217,7 +228,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Pbb-25-gja"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Enter Desired Value" id="X0f-W4-6Bf">
+                    <navigationItem key="navigationItem" title="Select Desired Value" id="X0f-W4-6Bf">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="DjX-TH-miB">
                             <connections>
                                 <segue destination="Rjs-VE-wM4" kind="unwind" unwindAction="returnToResistorView:" id="x1S-eW-eWZ"/>
@@ -235,6 +246,41 @@
                 <exit id="Rjs-VE-wM4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2462" y="408"/>
+        </scene>
+        <!--Select Collection-->
+        <scene sceneID="AVm-Ya-c9k">
+            <objects>
+                <viewController modalPresentationStyle="pageSheet" id="bPn-3E-5Ah" customClass="CollectionViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3kN-DH-yWv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stg-ei-sZB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YLm-MZ-LCx"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Collection" id="Lt6-A0-wqr">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="yW5-Mr-DNb">
+                            <connections>
+                                <segue destination="VRD-lY-n0K" kind="unwind" unwindAction="returnToResistorView:" id="oy5-yz-8ju"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="300"/>
+                    <connections>
+                        <outlet property="pickerView" destination="stg-ei-sZB" id="Iib-bB-MNL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bLI-I4-QLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VRD-lY-n0K" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2418" y="1060"/>
         </scene>
         <!--Resistor Collection-->
         <scene sceneID="GkT-fC-SDg">
@@ -396,14 +442,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8aA-iD-Ajx">
                                 <rect key="frame" x="0.0" y="20" width="370" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Gain: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcq-By-Uvl">
-                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Gain (x): " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcq-By-Uvl">
+                                        <rect key="frame" x="0.0" y="0.0" width="154" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7O-01-V0Q">
-                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
+                                        <rect key="frame" x="162" y="0.0" width="139" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="2.5"/>
                                         <connections>
@@ -428,14 +474,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ena-ix-0kY">
                                 <rect key="frame" x="0.0" y="58" width="370" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ri-8c-9IO">
-                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ri-8c-9IO">
+                                        <rect key="frame" x="0.0" y="0.0" width="154" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-aG-xWz">
-                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
+                                        <rect key="frame" x="162" y="0.0" width="139" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="10KΩ"/>
                                         <connections>
@@ -444,9 +490,15 @@
                                             </segue>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcu-9b-7kx">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbF-VO-NIf" userLabel="My 1%">
                                         <rect key="frame" x="309" y="0.0" width="61" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="1%"/>
+                                        <connections>
+                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorView="mbF-VO-NIf" id="tFt-bN-5YR">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -524,6 +576,7 @@
                     <tabBarItem key="tabBarItem" title="Op Amp Gain" image="Op Amp" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="cancelButton" destination="guN-Ps-7OQ" id="uEy-Cl-dxE"/>
+                        <outlet property="collectionButton" destination="mbF-VO-NIf" id="GKj-Wj-Hs4"/>
                         <outlet property="gainImage" destination="Ib3-JE-fIO" id="gvJ-qV-hvB"/>
                         <outlet property="gainIndicator" destination="uik-RD-lHJ" id="fxv-Hw-u9o"/>
                         <outlet property="gainLabel" destination="NvU-3K-etO" id="LJi-W7-qcJ"/>
@@ -549,14 +602,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9qR-Sh-iJd">
                                 <rect key="frame" x="0.0" y="20" width="370" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Ratio: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-vK-Zqp">
-                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Ratio(x): " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-vK-Zqp">
+                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIA-tB-7rA">
-                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
+                                        <rect key="frame" x="161.5" y="0.0" width="139.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="0.5"/>
                                         <connections>
@@ -581,14 +634,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-la-Oxg">
                                 <rect key="frame" x="0.0" y="58" width="370" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ2-Z2-c16">
-                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ2-Z2-c16">
+                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ms-qh-Kuz">
-                                        <rect key="frame" x="148.5" y="0.0" width="152.5" height="30"/>
+                                        <rect key="frame" x="161.5" y="0.0" width="139.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="10KΩ"/>
                                         <connections>
@@ -597,9 +650,15 @@
                                             </segue>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKK-Gh-eaS">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="to8-Hg-2cz" userLabel="My 1%">
                                         <rect key="frame" x="309" y="0.0" width="61" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="1%"/>
+                                        <connections>
+                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorView="to8-Hg-2cz" id="eFZ-0h-b4d">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -677,6 +736,7 @@
                     <tabBarItem key="tabBarItem" title="Divider" image="Divider2" id="v9u-e1-em8"/>
                     <connections>
                         <outlet property="cancelButton" destination="k0u-mb-7Co" id="YyI-8F-cQD"/>
+                        <outlet property="collectionButton" destination="to8-Hg-2cz" id="U5o-aQ-a1Z"/>
                         <outlet property="divider1Activity" destination="Y6c-8c-Tpt" id="eTI-JP-80i"/>
                         <outlet property="divider1Image" destination="pjV-9R-ujH" id="oxR-iA-DQh"/>
                         <outlet property="divider1Label" destination="rwG-vW-HTB" id="Y8S-Q8-SAV"/>
@@ -907,6 +967,24 @@
             </objects>
             <point key="canvasLocation" x="1574" y="409"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Y2C-t4-zbu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bB8-Rf-5E2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mrn-f7-fPt">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bPn-3E-5Ah" kind="relationship" relationship="rootViewController" id="5OD-Bz-Y0W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M67-dM-zMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1574" y="1060"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Divider2" width="54" height="25"/>
@@ -916,7 +994,8 @@
         <image name="Resistor Collection" width="81" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cZl-m2-oc7"/>
         <segue reference="nVq-P9-Qni"/>
-        <segue reference="per-S7-xvl"/>
+        <segue reference="xIt-DP-D4f"/>
     </inferredMetricsTieBreakers>
 </document>

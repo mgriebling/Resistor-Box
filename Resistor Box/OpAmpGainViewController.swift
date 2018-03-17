@@ -12,6 +12,7 @@ class OpAmpGainViewController: UIViewController {
     
     @IBOutlet weak var gainValue: UIButton!
     @IBOutlet weak var minResistance: UIButton!
+    @IBOutlet weak var collectionButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var gainImage: UIImageView!
     @IBOutlet weak var gainIndicator: UIActivityIndicatorView!
@@ -49,7 +50,7 @@ class OpAmpGainViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.gainImage.image = ResistorImage.imageOfOpAmpGain2(value1: r1v, value2: r2v, value3: r3v)
-            self.gainLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.gainLabel.text = "\(label) Gain: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -61,7 +62,7 @@ class OpAmpGainViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.invertingGainImage.image = ResistorImage.imageOfOpAmpGain(value1: r1v, value2: r2v, value3: r3v)
-            self.invertingGainLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.invertingGainLabel.text = "\(label) Gain: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -80,6 +81,8 @@ class OpAmpGainViewController: UIViewController {
         let done = !calculating1 && !calculating2
         cancelButton.isEnabled = !done
         gainValue.isEnabled = done
+        minResistance.isEnabled = done
+        collectionButton.isEnabled = done
     }
     
     func stopTimer() {
@@ -146,8 +149,11 @@ class OpAmpGainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditResistance" {
-            let destNav = segue.destination
+        let destNav = segue.destination
+        let popPC = destNav.popoverPresentationController
+        popPC?.delegate = self
+        switch segue.identifier! {
+        case "EditResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
                 vc.value = minResistance.title(for: .normal)
                 vc.callback = { [weak self] newValue in
@@ -156,10 +162,7 @@ class OpAmpGainViewController: UIViewController {
                     wself.calculateOptimalValues()
                 }
             }
-            let popPC = destNav.popoverPresentationController
-            popPC?.delegate = self
-        } else if segue.identifier == "EditGain" {
-            let destNav = segue.destination
+        case "EditGain":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
                 vc.value = gainValue.title(for: .normal)
                 vc.picker = NumberPicker(maxValue: Decimal(string: "99.999")!, andIncrement: Decimal(string: "100.0")!)
@@ -170,8 +173,17 @@ class OpAmpGainViewController: UIViewController {
                     wself.calculateOptimalValues()
                 }
             }
-            let popPC = destNav.popoverPresentationController
-            popPC?.delegate = self
+        case "SelectCollection":
+            if let vc = destNav.childViewControllers.first as? CollectionViewController {
+                vc.value = collectionButton.title(for: .normal)
+                vc.callback = { [weak self] newValue in
+                    guard let wself = self else { return }
+                    wself.collectionButton.setTitle(newValue, for: .normal)
+                    Resistors.active = newValue
+                    wself.calculateOptimalValues()
+                }
+            }
+        default: break
         }
     }
     

@@ -10,39 +10,28 @@ import UIKit
 
 class ResistorViewController: UIViewController {
 
-    @IBOutlet weak var seriesResistors: UIImageView! {
-        didSet {
-            seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: "???", value2: "???", value3: "???")
-        }
-    }
+    @IBOutlet weak var seriesResistors: UIImageView!
     @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var seriesActivity: UIActivityIndicatorView!
     
-    @IBOutlet weak var seriesParallelResistors: UIImageView!  {
-        didSet {
-            seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: "???", value2: "???", value3: "???")
-        }
-    }
+    @IBOutlet weak var seriesParallelResistors: UIImageView!
     @IBOutlet weak var seriesParallelLabel: UILabel!
     @IBOutlet weak var seriesParallelActivity: UIActivityIndicatorView!
     
-    @IBOutlet weak var parallelResistors: UIImageView! {
-        didSet {
-            parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: "???", value2: "???", value3: "???")
-        }
-    }
+    @IBOutlet weak var parallelResistors: UIImageView!
     @IBOutlet weak var parallelLabel: UILabel!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
 
     @IBOutlet weak var desiredValue: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var collectionButton: UIButton!
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
     }
     
     static var formatter : NumberFormatter {
         let f = NumberFormatter()
-        f.maximumFractionDigits = 3
+        f.maximumFractionDigits = 6
         f.minimumIntegerDigits = 1
         return f
     }
@@ -57,7 +46,7 @@ class ResistorViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.seriesLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.seriesLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -69,7 +58,7 @@ class ResistorViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.seriesParallelLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.seriesParallelLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -81,7 +70,7 @@ class ResistorViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.parallelLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.parallelLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -95,6 +84,7 @@ class ResistorViewController: UIViewController {
         let done = !calculating1 && !calculating2 && !calculating3
         cancelButton.isEnabled = !done
         desiredValue.isEnabled = done
+        collectionButton.isEnabled = done
     }
     
     @IBAction func cancelCalculations(_ sender: Any) {
@@ -200,19 +190,30 @@ class ResistorViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PresentPicker" {
-            let destNav = segue.destination
+        let destNav = segue.destination
+        let popPC = destNav.popoverPresentationController
+        popPC?.delegate = self
+        switch segue.identifier! {
+        case "PresentPicker":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
                 vc.value = desiredValue.title(for: .normal)
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.r = Resistors.parseString(newValue)
                     wself.calculateOptimalValues()
-                    wself.view.endEditing(true)
                 }
             }
-            let popPC = destNav.popoverPresentationController
-            popPC?.delegate = self
+        case "SelectCollection":
+            if let vc = destNav.childViewControllers.first as? CollectionViewController {
+                vc.value = collectionButton.title(for: .normal)
+                vc.callback = { [weak self] newValue in
+                    guard let wself = self else { return }
+                    wself.collectionButton.setTitle(newValue, for: .normal)
+                    Resistors.active = newValue
+                    wself.calculateOptimalValues()
+                }
+            }
+        default: break
         }
     }
 

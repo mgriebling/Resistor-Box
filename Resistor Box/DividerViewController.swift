@@ -13,6 +13,7 @@ class DividerViewController: UIViewController {
     @IBOutlet weak var divisionRatio: UIButton!
     @IBOutlet weak var minResistance: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var collectionButton: UIButton!
     
     @IBOutlet weak var divider1Image: UIImageView!
     @IBOutlet weak var divider1Activity: UIActivityIndicatorView!
@@ -50,7 +51,7 @@ class DividerViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.divider1Image.image = ResistorImage.imageOfVoltageDivider(value1: r1v, value2: r2v, value3: r3v)
-            self.divider1Label.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.divider1Label.text = "\(label) Ratio: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -62,7 +63,7 @@ class DividerViewController: UIViewController {
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             self.divider2Image.image = ResistorImage.imageOfVoltageDivider2(value1: r1v, value2: r2v, value3: r3v)
-            self.divider2Label.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            self.divider2Label.text = "\(label) Ratio: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
@@ -81,6 +82,8 @@ class DividerViewController: UIViewController {
         let done = !calculating1 && !calculating2
         cancelButton.isEnabled = !done
         divisionRatio.isEnabled = done
+        minResistance.isEnabled = done
+        collectionButton.isEnabled = done
     }
     
     func stopTimer() {
@@ -147,8 +150,11 @@ class DividerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditResistance" {
-            let destNav = segue.destination
+        let destNav = segue.destination
+        let popPC = destNav.popoverPresentationController
+        popPC?.delegate = self
+        switch segue.identifier! {
+        case "EditResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
                 vc.value = minResistance.title(for: .normal)
                 vc.callback = { [weak self] newValue in
@@ -157,10 +163,7 @@ class DividerViewController: UIViewController {
                     wself.calculateOptimalValues()
                 }
             }
-            let popPC = destNav.popoverPresentationController
-            popPC?.delegate = self
-        } else if segue.identifier == "EditGain" {
-            let destNav = segue.destination
+        case "EditGain":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
                 vc.picker = NumberPicker(maxValue: Decimal(string: "1.99999")!, andIncrement: Decimal(string: "1.0")!)
                 vc.picker.maxValue = 1
@@ -171,8 +174,17 @@ class DividerViewController: UIViewController {
                     wself.calculateOptimalValues()
                 }
             }
-            let popPC = destNav.popoverPresentationController
-            popPC?.delegate = self
+        case "SelectCollection":
+            if let vc = destNav.childViewControllers.first as? CollectionViewController {
+                vc.value = collectionButton.title(for: .normal)
+                vc.callback = { [weak self] newValue in
+                    guard let wself = self else { return }
+                    wself.collectionButton.setTitle(newValue, for: .normal)
+                    Resistors.active = newValue
+                    wself.calculateOptimalValues()
+                }
+            }
+        default: break
         }
     }
     
