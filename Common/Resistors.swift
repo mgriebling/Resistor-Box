@@ -8,6 +8,10 @@
 
 import Foundation
 
+// resistor parallal algorithm
+infix operator ⧦ : MultiplicationPrecedence
+fileprivate func ⧦ (r1 : Double, r2 : Double) -> Double { return (r1*r2)/(r1+r2) }
+
 class Resistors {
     
     static let OPEN  = 1.0e12
@@ -164,53 +168,126 @@ class Resistors {
         done(result)
     }
     
-    static func computeDivider (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+    static func computeDivider1 (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
-        let sindex = rArray.index { value -> Bool in
-            // find index of next largest value
-            if value > start { return true }
-            return false
-            }!
+        let sindex : Int
+        if let index = rArray.index(of: start) {
+            sindex = index
+        } else {
+            sindex = rArray.index { value -> Bool in
+                // find index of next largest value
+                if value > start { return true }
+                return false
+                }!
+        }
+        
+        // check for common gains
+        if x >= 1 {
+            done([SHORT, OPEN, rArray[sindex], 1, 100.0*fabs(x-1.0)/x]); return
+        } else if x == 0.5 {
+            done([rArray[sindex], OPEN, rArray[sindex], x, 0]); return
+        } else if x == 1.0/3.0 {
+            done([rArray[sindex], rArray[sindex], rArray[sindex], x, 0]); return
+        }
+        
         let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            return r2/(r1+r2)
+            let rp = r2 ⧦ r3
+            return rp/(r1+rp)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
-            return r3 > 1  // ignore r3
+            return false
+        }, callback: callback)
+        done(result)
+    }
+    
+    static func computeDivider2 (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+        let rArray = rInv[active]!
+        let sindex : Int
+        if let index = rArray.index(of: start) {
+            sindex = index
+        } else {
+            sindex = rArray.index { value -> Bool in
+                // find index of next largest value
+                if value > start { return true }
+                return false
+            }!
+        }
+        
+        // check for common gains
+        if x >= 1 {
+            done([OPEN, SHORT, rArray[sindex], 1, 100.0*fabs(x-1.0)/x]); return
+        } else if x == 0.5 {
+            done([OPEN, rArray[sindex], rArray[sindex], x, 0]); return
+        } else if x == 2.0/3.0 {
+             done([rArray[sindex], rArray[sindex], rArray[sindex], x, 0]); return
+        }
+        
+        let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
+        let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
+            if r3 == SHORT { return 0 }  // avoid an error because SHORTs are not really zero
+            let rp = r1 ⧦ r2
+            let rn = r3 / (rp + r3)
+            return rn
+        }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
+            // exit early if a solution is unlikely
+            return false
         }, callback: callback)
         done(result)
     }
     
     static func computeGain (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
-        let sindex = rArray.index { value -> Bool in
-            // find index of next largest value
-            if value > start { return true }
-            return false
-        }!
+        let sindex : Int
+        if let index = rArray.index(of: start) {
+            sindex = index
+        } else {
+            sindex = rArray.index { value -> Bool in
+                // find index of next largest value
+                if value > start { return true }
+                return false
+            }!
+        }
+        
+        // check for common gains
+        if x == 1 {
+            done([SHORT, OPEN, SHORT, x, 0]); return
+        }
+        
         let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            return 1.0 + r2/r1
+            return 1.0 + r3 / (r1 ⧦ r2)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
-            return r3 > 1  // ignore r3
+            return false
         }, callback: callback)
         done(result)
     }
     
     static func computeInvertingGain (_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
-        let sindex = rArray.index { value -> Bool in
-            // find index of next largest value
-            if value > start { return true }
-            return false
+        let sindex : Int
+        if let index = rArray.index(of: start) {
+            sindex = index
+        } else {
+            sindex = rArray.index { value -> Bool in
+                // find index of next largest value
+                if value > start { return true }
+                return false
             }!
+        }
+        
+        // check for common gains
+        if x == 1 {
+            done([SHORT, OPEN, SHORT, x, 0]); return
+        }
+        
         let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            return r2/r1
+            return r3 / (r1 ⧦ r2)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
-            return r3 > 1  // ignore r3
+            return false
         }, callback: callback)
         done(result)
     }
@@ -241,7 +318,8 @@ class Resistors {
         }
         let r = CountableRange(sindex!...eindex!)
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            return 1.0 / (1.0/r1 + 1.0/r2 + 1.0/r3)
+            // using my parallel ⧦ operator 😀
+            return r1 ⧦ r2 ⧦ r3
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return false
@@ -275,7 +353,8 @@ class Resistors {
         }
         let r = CountableRange(sindex!...eindex!)
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            return r1 + r2*r3/(r2+r3)
+            // using my parallel ⧦ operator 😀
+            return r1 + r2 ⧦ r3
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return r1 > x || current > x

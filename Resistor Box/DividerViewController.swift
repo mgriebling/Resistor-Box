@@ -45,10 +45,11 @@ class DividerViewController: UIViewController {
     func updateDivider1Resistors (_ x : [Double], label: String) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[3]))!
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
-            self.divider1Image.image = ResistorImage.imageOfVoltageDivider(value1: r1v, value2: r2v)
+            self.divider1Image.image = ResistorImage.imageOfVoltageDivider(value1: r1v, value2: r2v, value3: r3v)
             self.divider1Label.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
@@ -56,10 +57,11 @@ class DividerViewController: UIViewController {
     func updateDivider2Resistors (_ x : [Double], label: String) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[3]))!
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
-            self.divider2Image.image = ResistorImage.imageOfVoltageDivider(value1: r1v, value2: r2v)
+            self.divider2Image.image = ResistorImage.imageOfVoltageDivider2(value1: r1v, value2: r2v, value3: r3v)
             self.divider2Label.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
@@ -112,7 +114,7 @@ class DividerViewController: UIViewController {
         timedTask?.fire()     // refresh GUI to start
         backgroundQueue.async {
             print("Starting divider 1 calculations...")
-            Resistors.computeDivider(self.divider, start: self.minR.0, callback: { values in
+            Resistors.computeDivider1(self.divider, start: self.minR.0, callback: { values in
                 self.x = values   // update working values
             }, done: { s in
                 self.x = s
@@ -128,7 +130,7 @@ class DividerViewController: UIViewController {
         }
         backgroundQueue.async {
             print("Starting divider 2 calculations...")
-            Resistors.computeDivider(self.divider, start: self.minR.0, callback: { values in
+            Resistors.computeDivider2(self.divider, start: self.minR.0, callback: { values in
                 self.y = values   // update working values
             }, done: { sp in
                 self.y = sp        // final answer update
@@ -160,7 +162,9 @@ class DividerViewController: UIViewController {
         } else if segue.identifier == "EditGain" {
             let destNav = segue.destination
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = divisionRatio.title(for: .normal)
+                vc.picker = NumberPicker(maxValue: Decimal(string: "1.99999")!, andIncrement: Decimal(string: "1.0")!)
+                vc.picker.maxValue = 1
+                vc.value = divisionRatio.title(for: .normal)!
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.divider = Double(newValue) ?? 1

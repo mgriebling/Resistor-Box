@@ -44,10 +44,11 @@ class OpAmpGainViewController: UIViewController {
     func updateGainResistors (_ x : [Double], label: String) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[3]))!
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
-            self.gainImage.image = ResistorImage.imageOfOpAmpGain2(value1: r1v, value2: r2v)
+            self.gainImage.image = ResistorImage.imageOfOpAmpGain2(value1: r1v, value2: r2v, value3: r3v)
             self.gainLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
@@ -55,10 +56,11 @@ class OpAmpGainViewController: UIViewController {
     func updateInvertingGainResistors (_ x : [Double], label: String) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: -x[3]))!
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
-            self.invertingGainImage.image = ResistorImage.imageOfOpAmpGain(value1: r1v, value2: r2v)
+            self.invertingGainImage.image = ResistorImage.imageOfOpAmpGain(value1: r1v, value2: r2v, value3: r3v)
             self.invertingGainLabel.text = "\(label) Result: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
@@ -160,6 +162,8 @@ class OpAmpGainViewController: UIViewController {
             let destNav = segue.destination
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
                 vc.value = gainValue.title(for: .normal)
+                vc.picker = NumberPicker(maxValue: Decimal(string: "99.999")!, andIncrement: Decimal(string: "100.0")!)
+                vc.picker.minValue = 1
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.gain = Double(newValue) ?? 1
