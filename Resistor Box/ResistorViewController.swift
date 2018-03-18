@@ -22,9 +22,11 @@ class ResistorViewController: UIViewController {
     @IBOutlet weak var parallelLabel: UILabel!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
 
-    @IBOutlet weak var desiredValue: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var collectionButton: UIButton!
+    @IBOutlet weak var desiredValue: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var actionButton: UIBarButtonItem!
+    @IBOutlet weak var collectionButton: UIBarButtonItem!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
     }
@@ -80,9 +82,52 @@ class ResistorViewController: UIViewController {
         if calculating3 { updateParallelResistors(z, label: label) }
     }
     
+    func takePDFOf(_ view: UIView) -> Data? {
+        let renderer = UIGraphicsPDFRenderer(bounds: view.bounds)
+        let data = renderer.pdfData { context in
+            context.beginPage()
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        }
+        return data
+    }
+    
+    func takeSnapshotOf(_ view: UIView) -> UIImage? {
+        UIGraphicsBeginImageContext(CGSize(width: view.frame.size.width, height: view.frame.size.height))
+        view.drawHierarchy(in: CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height), afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    @IBAction func sendResult(_ sender: Any) {
+        print("Sending result...")
+//        let graphic = [takeSnapshotOf(self.parent!.view)!]
+        
+        let pdf = takePDFOf(self.parent!.view)
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileName = "ResistorBox"
+        let file = docPath.appendingPathComponent(fileName).appendingPathExtension("pdf")
+        try? pdf?.write(to: file)
+        
+        let x = UIActivityViewController(activityItems: [file], applicationActivities: nil)
+        if let popoverController = x.popoverPresentationController, let button = sender as? UIBarButtonItem {
+            popoverController.barButtonItem = button
+//            popoverController.sourceRect = sendReportButton.bounds
+//            popoverController.sourceView = sendReportButton
+        }
+        present(x, animated: true, completion: nil)
+    }
+    
     func enableGUI () {
         let done = !calculating1 && !calculating2 && !calculating3
-        cancelButton.isEnabled = !done
+        var items = toolBar.items!
+        if items.contains(actionButton) || items.contains(cancelButton) { items.removeLast() }
+        if done {
+            items.append(actionButton)
+        } else {
+            items.append(cancelButton)
+        }
+        toolBar.setItems(items, animated: true)
         desiredValue.isEnabled = done
         collectionButton.isEnabled = done
     }
@@ -109,8 +154,8 @@ class ResistorViewController: UIViewController {
     // make sure these variables are retained
     var r = (0.0, 0.0, "") {
         didSet {
-            DispatchQueue.main.async {
-                self.desiredValue.setTitle(Resistors.stringFrom(self.r.0), for: .normal)
+            DispatchQueue.main.async { [weak self] in
+                self?.desiredValue.title = Resistors.stringFrom(self?.r.0 ?? 0)
             }
         }
     }
@@ -194,9 +239,9 @@ class ResistorViewController: UIViewController {
         let popPC = destNav.popoverPresentationController
         popPC?.delegate = self
         switch segue.identifier! {
-        case "PresentPicker":
+        case "SelectResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
-                vc.value = desiredValue.title(for: .normal)
+                vc.value = desiredValue.title
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.r = Resistors.parseString(newValue)
@@ -205,10 +250,10 @@ class ResistorViewController: UIViewController {
             }
         case "SelectCollection":
             if let vc = destNav.childViewControllers.first as? CollectionViewController {
-                vc.value = collectionButton.title(for: .normal)
+                vc.value = collectionButton.title
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
-                    wself.collectionButton.setTitle(newValue, for: .normal)
+                    wself.collectionButton.title = newValue
                     Resistors.active = newValue
                     wself.calculateOptimalValues()
                 }

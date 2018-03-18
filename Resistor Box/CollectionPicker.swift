@@ -1,10 +1,10 @@
 
 import UIKit
 
+//********************************************************************************
 /**
- 
-     Class to implement a graphical collection picker control.  The
-     *valueChangeCallback* is called whenever the user selects a new collection.
+     Class to implement a simple collection picker control.  The
+     *valueChangeCallback* is invoked whenever the user selects a new collection.
      The active collection string is saved in *selectedCollection*.
      
      - Author:  Michael Griebling
@@ -19,11 +19,12 @@ class CollectionPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     var selectedCollection: String
     var valueChangeCallback: CollectionChanged = { (picker) -> () in }
     
-    var collection : [String]   // what to display in the scroller
+    var collection : [String]   // what to display in the picker
     
     //********************************************************************************
     /**
-       Collection picker initialization method.
+       Collection picker initialization method setting the *items* to be displayed
+       with the *selected* item highlighted.
      
         - Author:   Michael Griebling
         - Date:   	15 July 2013
@@ -95,44 +96,5 @@ class CollectionPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return collection[row]
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        var loggerView = view as? LoggerView
-//        if view == nil {
-//            let subViewArray = Bundle.main.loadNibNamed("LoggerView", owner:self, options:nil)
-//            loggerView = subViewArray?[0] as? LoggerView
-//        }
-//
-//        loggerView!.loggerImage!.image = CollectionPicker.loggerImages[row]
-//        loggerView!.loggerImage!.contentMode = UIViewContentMode.scaleAspectFit
-//        loggerView!.loggerName!.text = CollectionPicker.loggerNames[row]
-//        return loggerView!
-//    }
-    
-//    //********************************************************************************
-//    /**
-//       Picker delegate method to return the height of rows in the
-//              *component* scroll wheel.
-//
-//        - Author:   Michael Griebling
-//        - Date:       15 July 2013
-//
-//     ******************************************************************************** */
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 89
-//    }
-//
-//    //********************************************************************************
-//    /**
-//       Picker delegate method to return the width of the *component* scroll
-//              wheel.
-//
-//        - Author:   Michael Griebling
-//        - Date:       15 July 2013
-//
-//     ******************************************************************************** */
-//    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-//        return pickerView.frame.size.width - 30
-//    }
     
 }

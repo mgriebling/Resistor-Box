@@ -70,6 +70,7 @@
 		47CE31DC2057D138007AB17B /* ResistorImageMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImageMac.swift; sourceTree = "<group>"; };
 		47D81188205D41A80006B050 /* CollectionPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPicker.swift; sourceTree = "<group>"; };
 		47D8118A205D48470006B050 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		47D8118C205E8D7F0006B050 /* Resistor Box.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Resistor Box.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +113,7 @@
 		2F2F2C512036156300DD98AE /* Resistor Box */ = {
 			isa = PBXGroup;
 			children = (
+				47D8118C205E8D7F0006B050 /* Resistor Box.entitlements */,
 				2F2F2C522036156300DD98AE /* AppDelegate.swift */,
 				2F2F2C542036156300DD98AE /* ResistorViewController.swift */,
 				2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */,
@@ -209,6 +211,11 @@
 					2F2F2C4E2036156300DD98AE = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					2FC933132056B2C700FE9688 = {
 						CreatedOnToolsVersion = 9.2;
@@ -437,8 +444,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Resistor Box/Resistor Box.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37VFB869JC;
+				DEVELOPMENT_TEAM = 6389FT2N69;
 				INFOPLIST_FILE = "Resistor Box/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.Resistor-Box";
@@ -452,8 +460,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Resistor Box/Resistor Box.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37VFB869JC;
+				DEVELOPMENT_TEAM = 6389FT2N69;
 				INFOPLIST_FILE = "Resistor Box/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.Resistor-Box";
@@ -467,7 +476,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Resistor Box Mac/Resistor_Box_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -486,7 +494,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Resistor Box Mac/Resistor_Box_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

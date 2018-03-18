@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,63 +22,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DIf-bl-tTg">
-                                <rect key="frame" x="0.0" y="20" width="370" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Total: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X02-Si-XAG">
-                                        <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFk-eP-aY7">
-                                        <rect key="frame" x="135" y="0.0" width="128" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="10KΩ"/>
-                                        <connections>
-                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="PresentPicker" popoverAnchorView="jFk-eP-aY7" id="xIt-DP-D4f">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qka-Cw-Gr9" userLabel="My 1%">
-                                        <rect key="frame" x="271" y="0.0" width="30" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="1%"/>
-                                        <connections>
-                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorView="Qka-Cw-Gr9" id="cZl-m2-oc7">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwh-Pi-GD3">
-                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelCalculations:" destination="9pv-A4-QxB" eventType="touchUpInside" id="8k3-4Q-4Ou"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mk-0M-XjV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="11k-Sx-j9E"/>
+                                    <constraint firstAttribute="height" constant="44" id="qS8-IL-BG8"/>
                                 </constraints>
-                            </stackView>
+                                <items>
+                                    <barButtonItem title="Desired Total:" id="BiX-D4-6qh">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem title="102KΩ" id="e1N-fg-blq">
+                                        <connections>
+                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="SelectResistance" popoverAnchorBarButtonItem="e1N-fg-blq" id="J1A-ky-7j9">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0wh-qL-HTx"/>
+                                    <barButtonItem title="1%" id="umS-gf-8xR">
+                                        <connections>
+                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorBarButtonItem="umS-gf-8xR" id="rRx-DY-fSd">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="f5G-OA-9R2"/>
+                                </items>
+                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-fW-IJR">
-                                <rect key="frame" x="0.0" y="50" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4AH-f8-96V">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="122.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-eD-5sP">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="78.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xDp-GK-2CU">
-                                                <rect key="frame" x="0.0" y="79.5" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="78.5" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHL-ZZ-0Dl">
-                                                <rect key="frame" x="0.0" y="79.5" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="98.5" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -85,17 +71,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9L9-wl-j49">
-                                        <rect key="frame" x="0.0" y="79.5" width="375" height="182.5"/>
+                                        <rect key="frame" x="0.0" y="122.5" width="375" height="201"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWp-MI-h8N">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-W1-i6J">
-                                                <rect key="frame" x="0.0" y="158.5" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="157" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dC-it-Gzl">
-                                                <rect key="frame" x="0.0" y="158.5" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="177" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -103,17 +89,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-s7-By5">
-                                        <rect key="frame" x="0.0" y="262" width="375" height="262"/>
+                                        <rect key="frame" x="0.0" y="323.5" width="375" height="279.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ez4-ta-HSI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="235.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nGK-oB-LcE">
-                                                <rect key="frame" x="0.0" y="238" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="235.5" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-tS-x7N">
-                                                <rect key="frame" x="0.0" y="238" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="255.5" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -145,23 +131,32 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8NR-fW-IJR" firstAttribute="top" secondItem="DIf-bl-tTg" secondAttribute="bottom" id="2Q4-27-cgF"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="8NR-fW-IJR" secondAttribute="trailing" id="Fbf-lT-za2"/>
-                            <constraint firstItem="DIf-bl-tTg" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="G8K-Mj-52K"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="DIf-bl-tTg" secondAttribute="trailing" constant="5" id="LwC-Td-8BE"/>
+                            <constraint firstItem="0mk-0M-XjV" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="IIu-NA-u9V"/>
                             <constraint firstItem="8NR-fW-IJR" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="aIn-Xs-0vY"/>
+                            <constraint firstItem="0mk-0M-XjV" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="bar-Y3-p8B"/>
+                            <constraint firstItem="0mk-0M-XjV" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" id="h1h-8J-ude"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="8NR-fW-IJR" secondAttribute="bottom" id="i8w-7j-ys0"/>
-                            <constraint firstItem="DIf-bl-tTg" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="zJr-tF-Irk"/>
+                            <constraint firstItem="8NR-fW-IJR" firstAttribute="top" secondItem="0mk-0M-XjV" secondAttribute="bottom" symbolic="YES" id="kdQ-OF-CLd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calibration" image="Resistor" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBarItem key="tabBarItem" title="Calibration" image="Resistor" id="9rg-1i-5nv"/>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="wNX-jZ-g3n">
+                            <connections>
+                                <action selector="sendResult:" destination="9pv-A4-QxB" id="FCo-dF-aAR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="cancel" id="2x5-Hi-6w9"/>
+                    </toolbarItems>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="cancelButton" destination="Fwh-Pi-GD3" id="GHf-eo-B9H"/>
-                        <outlet property="collectionButton" destination="Qka-Cw-Gr9" id="IMH-k6-A5S"/>
-                        <outlet property="desiredValue" destination="jFk-eP-aY7" id="vN0-g4-DIO"/>
+                        <outlet property="actionButton" destination="wNX-jZ-g3n" id="cAY-YH-okS"/>
+                        <outlet property="cancelButton" destination="2x5-Hi-6w9" id="3Fu-hJ-jdH"/>
+                        <outlet property="collectionButton" destination="umS-gf-8xR" id="c8S-h2-G47"/>
+                        <outlet property="desiredValue" destination="e1N-fg-blq" id="Efw-RX-fMW"/>
                         <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
                         <outlet property="parallelLabel" destination="5e1-tS-x7N" id="KDz-Uk-Zk1"/>
                         <outlet property="parallelResistors" destination="Ez4-ta-HSI" id="gzT-F5-9iA"/>
@@ -171,23 +166,24 @@
                         <outlet property="seriesParallelLabel" destination="7dC-it-Gzl" id="b9b-2W-N7B"/>
                         <outlet property="seriesParallelResistors" destination="dWp-MI-h8N" id="HOQ-4P-Bqf"/>
                         <outlet property="seriesResistors" destination="tGS-eD-5sP" id="KIp-ON-Mff"/>
+                        <outlet property="toolBar" destination="0mk-0M-XjV" id="hfh-sn-vdW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="750" y="-340"/>
         </scene>
         <!--Select Resistance-->
         <scene sceneID="ypV-Ev-t3p">
             <objects>
                 <viewController modalPresentationStyle="pageSheet" id="sVG-US-5Sm" customClass="ResistancePickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9QZ-dQ-jCS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-sN-rTY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="44" width="300" height="156"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -200,9 +196,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="300"/>
+                    <size key="freeformSize" width="300" height="200"/>
                     <connections>
                         <outlet property="pickerView" destination="7S5-sN-rTY" id="H4A-hA-JcX"/>
                     </connections>
@@ -210,19 +206,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU5-4R-qIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nY4-0o-YKu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2337" y="-254"/>
+            <point key="canvasLocation" x="2675.1999999999998" y="-254.57271364317842"/>
         </scene>
         <!--Select Desired Value-->
         <scene sceneID="85N-Tb-3C5">
             <objects>
                 <viewController modalPresentationStyle="pageSheet" id="jbh-G2-5Zb" customClass="NumberPickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DKN-N5-Xi9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CbI-6e-Haw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="44" width="300" height="156"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -235,9 +231,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="300"/>
+                    <size key="freeformSize" width="300" height="200"/>
                     <connections>
                         <outlet property="pickerView" destination="CbI-6e-Haw" id="yhu-9b-mq4"/>
                     </connections>
@@ -245,19 +241,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OTn-Ud-JJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rjs-VE-wM4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2462" y="408"/>
+            <point key="canvasLocation" x="2395.1999999999998" y="408.39580209895058"/>
         </scene>
         <!--Select Collection-->
         <scene sceneID="AVm-Ya-c9k">
             <objects>
                 <viewController modalPresentationStyle="pageSheet" id="bPn-3E-5Ah" customClass="CollectionViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3kN-DH-yWv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stg-ei-sZB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="44" width="300" height="156"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -270,9 +266,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="300"/>
+                    <size key="freeformSize" width="300" height="200"/>
                     <connections>
                         <outlet property="pickerView" destination="stg-ei-sZB" id="Iib-bB-MNL"/>
                     </connections>
@@ -280,14 +276,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLI-I4-QLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VRD-lY-n0K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2418" y="1060"/>
+            <point key="canvasLocation" x="2417.5999999999999" y="1059.6701649175413"/>
         </scene>
         <!--Resistor Collection-->
         <scene sceneID="GkT-fC-SDg">
             <objects>
                 <viewController modalPresentationStyle="pageSheet" id="EpL-jS-c4N" customClass="CollectionGeneratorViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kVx-La-Nje">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xQr-sN-449">
@@ -415,9 +411,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="375" height="300"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="250"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="300"/>
+                    <size key="freeformSize" width="375" height="250"/>
                     <connections>
                         <outlet property="endLabel" destination="2BL-YF-vuR" id="EA7-FG-HKc"/>
                         <outlet property="estimatedNumber" destination="pyd-GA-bQS" id="TEY-iL-dOP"/>
@@ -755,13 +751,14 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="xLt-aK-mSj"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="acr-ZN-D4c" kind="relationship" relationship="viewControllers" id="Fs0-k3-OLQ"/>
                         <segue destination="gqK-ve-sEa" kind="relationship" relationship="viewControllers" id="poU-pL-Mj4"/>
@@ -769,13 +766,14 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-470" y="-1"/>
         </scene>
         <!--ResistorSelector-->
         <scene sceneID="3Ha-pd-gdY">
             <objects>
                 <navigationController title="ResistorSelector" automaticallyAdjustsScrollViewInsets="NO" id="38x-Mt-Miz" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z0y-vS-dqi">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -787,7 +785,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Tx-dD-YjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="-253"/>
+            <point key="canvasLocation" x="1912.8" y="-253.2233883058471"/>
         </scene>
         <!--Resistor Collections-->
         <scene sceneID="rhp-r7-TWf">
@@ -892,13 +890,16 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Resistor Collections" id="KXU-e4-OGa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="e3Z-Rt-rZ4">
-                            <connections>
-                                <segue destination="9yz-r2-zyN" kind="popoverPresentation" identifier="AddCollection" popoverAnchorBarButtonItem="e3Z-Rt-rZ4" id="UDe-qf-znf">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="e3Z-Rt-rZ4">
+                                <connections>
+                                    <segue destination="9yz-r2-zyN" kind="popoverPresentation" identifier="AddCollection" popoverAnchorBarButtonItem="e3Z-Rt-rZ4" id="UDe-qf-znf">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="LZ7-Ux-k2d"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -919,7 +920,6 @@
                     <tabBarItem key="tabBarItem" title="Edit Resistors" image="Edit" id="kd9-MY-Oy1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xHc-Q3-7WB">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -994,8 +994,8 @@
         <image name="Resistor Collection" width="81" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cZl-m2-oc7"/>
+        <segue reference="rRx-DY-fSd"/>
         <segue reference="nVq-P9-Qni"/>
-        <segue reference="hk2-fp-Gwn"/>
+        <segue reference="J1A-ky-7j9"/>
     </inferredMetricsTieBreakers>
 </document>
