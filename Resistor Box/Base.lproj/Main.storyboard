@@ -206,7 +206,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU5-4R-qIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nY4-0o-YKu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2346" y="-254"/>
+            <point key="canvasLocation" x="2586" y="-254"/>
         </scene>
         <!--Select Desired Value-->
         <scene sceneID="85N-Tb-3C5">
@@ -241,7 +241,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OTn-Ud-JJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rjs-VE-wM4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2057" y="408"/>
+            <point key="canvasLocation" x="2294" y="408"/>
         </scene>
         <!--Select Collection-->
         <scene sceneID="AVm-Ya-c9k">
@@ -276,7 +276,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLI-I4-QLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VRD-lY-n0K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2066" y="1059"/>
+            <point key="canvasLocation" x="2325" y="1059"/>
         </scene>
         <!--Resistor Collection-->
         <scene sceneID="GkT-fC-SDg">
@@ -425,7 +425,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNt-R6-Rpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5cW-bu-49C" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="208" y="1599"/>
+            <point key="canvasLocation" x="474" y="1599"/>
         </scene>
         <!--Op Amp Gain-->
         <scene sceneID="wg7-f3-ORb">
@@ -554,87 +554,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9qR-Sh-iJd">
-                                <rect key="frame" x="0.0" y="20" width="370" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Ratio(x): " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-vK-Zqp">
-                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIA-tB-7rA">
-                                        <rect key="frame" x="161.5" y="0.0" width="139.5" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="0.5"/>
-                                        <connections>
-                                            <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditGain" popoverAnchorView="pIA-tB-7rA" id="nVq-P9-Qni">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0u-mb-7Co">
-                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelCalculations:" destination="acr-ZN-D4c" eventType="touchUpInside" id="JKt-8i-jyG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vc0-kH-jhc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="amm-ew-IOe"/>
+                                    <constraint firstAttribute="height" constant="44" id="HIh-ci-5dN"/>
                                 </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-la-Oxg">
-                                <rect key="frame" x="0.0" y="58" width="370" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ2-Z2-c16">
-                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ms-qh-Kuz">
-                                        <rect key="frame" x="161.5" y="0.0" width="139.5" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="10KΩ"/>
-                                        <connections>
-                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditResistance" popoverAnchorView="2Ms-qh-Kuz" id="per-S7-xvl">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="to8-Hg-2cz" userLabel="My 1%">
-                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="1%"/>
-                                        <connections>
-                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorView="to8-Hg-2cz" id="eFZ-0h-b4d">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="wgY-Gm-pzo"/>
-                                </constraints>
-                            </stackView>
+                                <items>
+                                    <barButtonItem title="Desired Ratio (x):" id="bTF-bk-kg6">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem title="2.5" id="ceg-hp-V1B"/>
+                                    <barButtonItem title="&gt;10KΩ" id="rIK-2Y-GK5"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gaO-fb-Uhk"/>
+                                    <barButtonItem title="1%" id="C7R-Ji-lW5"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lHV-Qn-LMr"/>
+                                </items>
+                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sz8-4M-Hou">
-                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="6Dv-Jm-Zl0">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="261"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="277"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-9R-ujH">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y6c-8c-Tpt">
-                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwG-vW-HTB">
-                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="253" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -642,17 +592,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kRa-W3-qeH">
-                                        <rect key="frame" x="0.0" y="261" width="375" height="261"/>
+                                        <rect key="frame" x="0.0" y="277" width="375" height="277"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-tZ-trm">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pG1-LA-LTK">
-                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-u4-MKz">
-                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="253" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -673,33 +623,24 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sz8-4M-Hou" firstAttribute="leading" secondItem="CBZ-vM-U4v" secondAttribute="leading" id="579-dV-qzc"/>
-                            <constraint firstItem="pIA-tB-7rA" firstAttribute="width" secondItem="2Ms-qh-Kuz" secondAttribute="width" id="6oe-GT-Acp"/>
-                            <constraint firstItem="mWe-la-Oxg" firstAttribute="top" secondItem="9qR-Sh-iJd" secondAttribute="bottom" constant="8" symbolic="YES" id="90F-CM-xfI"/>
-                            <constraint firstItem="sz8-4M-Hou" firstAttribute="top" secondItem="mWe-la-Oxg" secondAttribute="bottom" constant="8" symbolic="YES" id="E24-Pe-Yvu"/>
+                            <constraint firstItem="vc0-kH-jhc" firstAttribute="leading" secondItem="CBZ-vM-U4v" secondAttribute="leading" id="ENW-zy-rEQ"/>
                             <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="sz8-4M-Hou" secondAttribute="trailing" id="EsF-BY-4T3"/>
+                            <constraint firstItem="sz8-4M-Hou" firstAttribute="top" secondItem="vc0-kH-jhc" secondAttribute="bottom" id="KUp-2P-puH"/>
                             <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="sz8-4M-Hou" secondAttribute="trailing" id="QOl-ak-U4O"/>
-                            <constraint firstItem="9qR-Sh-iJd" firstAttribute="top" secondItem="CBZ-vM-U4v" secondAttribute="top" id="WQa-so-gt3"/>
+                            <constraint firstItem="vc0-kH-jhc" firstAttribute="top" secondItem="CBZ-vM-U4v" secondAttribute="top" id="Rhg-EI-8hj"/>
                             <constraint firstItem="sz8-4M-Hou" firstAttribute="bottom" secondItem="CBZ-vM-U4v" secondAttribute="bottom" id="WZl-R4-wO7"/>
-                            <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="9qR-Sh-iJd" secondAttribute="trailing" constant="5" id="gOM-Yy-wk1"/>
-                            <constraint firstItem="mWe-la-Oxg" firstAttribute="leading" secondItem="CBZ-vM-U4v" secondAttribute="leading" id="keP-rl-UQA"/>
-                            <constraint firstItem="CBZ-vM-U4v" firstAttribute="trailing" secondItem="mWe-la-Oxg" secondAttribute="trailing" constant="5" id="kvD-sl-DEz"/>
-                            <constraint firstItem="9qR-Sh-iJd" firstAttribute="leading" secondItem="CBZ-vM-U4v" secondAttribute="leading" id="rL7-Aq-fk0"/>
-                            <constraint firstItem="1Lu-vK-Zqp" firstAttribute="width" secondItem="sQ2-Z2-c16" secondAttribute="width" id="rcu-ev-RT8"/>
+                            <constraint firstItem="vc0-kH-jhc" firstAttribute="trailing" secondItem="CBZ-vM-U4v" secondAttribute="trailing" id="YAv-zy-5ae"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CBZ-vM-U4v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Divider" image="Divider2" id="v9u-e1-em8"/>
                     <connections>
-                        <outlet property="cancelButton" destination="k0u-mb-7Co" id="YyI-8F-cQD"/>
-                        <outlet property="collectionButton" destination="to8-Hg-2cz" id="U5o-aQ-a1Z"/>
                         <outlet property="divider1Activity" destination="Y6c-8c-Tpt" id="eTI-JP-80i"/>
                         <outlet property="divider1Image" destination="pjV-9R-ujH" id="oxR-iA-DQh"/>
                         <outlet property="divider1Label" destination="rwG-vW-HTB" id="Y8S-Q8-SAV"/>
                         <outlet property="divider2Activity" destination="pG1-LA-LTK" id="beA-Yh-YLF"/>
                         <outlet property="divider2Image" destination="18Q-tZ-trm" id="Pqp-op-OXa"/>
                         <outlet property="divider2Label" destination="pWE-u4-MKz" id="naz-hw-uLY"/>
-                        <outlet property="divisionRatio" destination="pIA-tB-7rA" id="sWh-CH-5DB"/>
-                        <outlet property="minResistance" destination="2Ms-qh-Kuz" id="Xr0-l4-9KA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qts-0G-J8T" sceneMemberID="firstResponder"/>
@@ -870,7 +811,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9N-A8-ecm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-313" y="785"/>
+            <point key="canvasLocation" x="-284" y="785"/>
         </scene>
         <!--Edit Resistors-->
         <scene sceneID="zv3-Rd-VFn">
@@ -888,7 +829,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yoP-gr-3j9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-794" y="785"/>
+            <point key="canvasLocation" x="-966" y="785"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="epB-iY-BSW">
@@ -953,7 +894,6 @@
         <image name="Resistor Collection" width="81" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rRx-DY-fSd"/>
-        <segue reference="nBE-QT-9bg"/>
+        <segue reference="hk2-fp-Gwn"/>
     </inferredMetricsTieBreakers>
 </document>
