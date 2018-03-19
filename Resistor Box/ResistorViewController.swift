@@ -101,7 +101,7 @@ class ResistorViewController: UIViewController {
     
     @IBAction func sendResult(_ sender: Any) {
         print("Sending result...")
-//        let graphic = [takeSnapshotOf(self.parent!.view)!]
+        let graphic = [takeSnapshotOf(self.parent!.view)!]
         
         let pdf = takePDFOf(self.parent!.view)
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -109,7 +109,7 @@ class ResistorViewController: UIViewController {
         let file = docPath.appendingPathComponent(fileName).appendingPathExtension("pdf")
         try? pdf?.write(to: file)
         
-        let x = UIActivityViewController(activityItems: [file], applicationActivities: nil)
+        let x = UIActivityViewController(activityItems: [graphic, file], applicationActivities: nil)
         if let popoverController = x.popoverPresentationController, let button = sender as? UIBarButtonItem {
             popoverController.barButtonItem = button
 //            popoverController.sourceRect = sendReportButton.bounds
@@ -142,6 +142,10 @@ class ResistorViewController: UIViewController {
         Resistors.initInventory()   // build up the values
         r = (10, 10, "Ω")
         calculateOptimalValues()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        Resistors.clearInventory()
     }
     
     func stopTimer() {

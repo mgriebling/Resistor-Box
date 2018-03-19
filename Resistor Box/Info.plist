@@ -7,8 +7,6 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeIconFiles</key>
-			<array/>
 			<key>CFBundleTypeName</key>
 			<string>Resistor Box Collection</string>
 			<key>CFBundleTypeRole</key>
@@ -17,7 +15,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.c-inspirations.resistor-box.rbox</string>
+				<string>com.c-inspirations.rbox</string>
 			</array>
 		</dict>
 	</array>
@@ -36,7 +34,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
-	<false/>
+	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Resistor Box saves screen shots to your photo library.</string>
 	<key>UIFileSharingEnabled</key>
@@ -50,7 +48,7 @@
 		<string>armv7</string>
 	</array>
 	<key>UIRequiresPersistentWiFi</key>
-	<false/>
+	<true/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
@@ -84,7 +82,7 @@
 			<key>UTTypeDescription</key>
 			<string>Resistor Box Collection</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.c-inspirations.resistor-box.rbox</string>
+			<string>com.c-inspirations.rbox</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
