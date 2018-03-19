@@ -82,7 +82,7 @@ class ResistorViewController: UIViewController {
         if calculating3 { updateParallelResistors(z, label: label) }
     }
     
-    func takePDFOf(_ view: UIView) -> Data? {
+    static func takePDFOf(_ view: UIView) -> Data? {
         let renderer = UIGraphicsPDFRenderer(bounds: view.bounds)
         let data = renderer.pdfData { context in
             context.beginPage()
@@ -91,7 +91,7 @@ class ResistorViewController: UIViewController {
         return data
     }
     
-    func takeSnapshotOf(_ view: UIView) -> UIImage? {
+    static func takeSnapshotOf(_ view: UIView) -> UIImage? {
         UIGraphicsBeginImageContext(CGSize(width: view.frame.size.width, height: view.frame.size.height))
         view.drawHierarchy(in: CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height), afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -101,9 +101,9 @@ class ResistorViewController: UIViewController {
     
     @IBAction func sendResult(_ sender: Any) {
         print("Sending result...")
-        let graphic = [takeSnapshotOf(self.parent!.view)!]
+        let graphic = ResistorViewController.takeSnapshotOf(self.parent!.view)!
         
-        let pdf = takePDFOf(self.parent!.view)
+        let pdf = ResistorViewController.takePDFOf(self.parent!.view)
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileName = "ResistorBox"
         let file = docPath.appendingPathComponent(fileName).appendingPathExtension("pdf")

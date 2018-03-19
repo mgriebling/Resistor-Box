@@ -206,7 +206,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU5-4R-qIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nY4-0o-YKu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2675.1999999999998" y="-254.57271364317842"/>
+            <point key="canvasLocation" x="2346" y="-254"/>
         </scene>
         <!--Select Desired Value-->
         <scene sceneID="85N-Tb-3C5">
@@ -241,7 +241,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OTn-Ud-JJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rjs-VE-wM4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2395.1999999999998" y="408.39580209895058"/>
+            <point key="canvasLocation" x="2057" y="408"/>
         </scene>
         <!--Select Collection-->
         <scene sceneID="AVm-Ya-c9k">
@@ -276,7 +276,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLI-I4-QLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VRD-lY-n0K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2417.5999999999999" y="1059.6701649175413"/>
+            <point key="canvasLocation" x="2066" y="1059"/>
         </scene>
         <!--Resistor Collection-->
         <scene sceneID="GkT-fC-SDg">
@@ -425,7 +425,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNt-R6-Rpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5cW-bu-49C" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="98" y="1513"/>
+            <point key="canvasLocation" x="208" y="1599"/>
         </scene>
         <!--Op Amp Gain-->
         <scene sceneID="wg7-f3-ORb">
@@ -435,87 +435,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8aA-iD-Ajx">
-                                <rect key="frame" x="0.0" y="20" width="370" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text=" Desired Gain (x): " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcq-By-Uvl">
-                                        <rect key="frame" x="0.0" y="0.0" width="154" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7O-01-V0Q">
-                                        <rect key="frame" x="162" y="0.0" width="139" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="2.5"/>
-                                        <connections>
-                                            <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditGain" popoverAnchorView="b7O-01-V0Q" id="z5Z-Mi-q3c">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guN-Ps-7OQ">
-                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelCalculations:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ro6-jV-rEt"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5f-Q0-P3L">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Afa-ej-2G5"/>
+                                    <constraint firstAttribute="height" constant="44" id="mUX-3I-F3e"/>
                                 </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ena-ix-0kY">
-                                <rect key="frame" x="0.0" y="58" width="370" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text=" Min. resistance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ri-8c-9IO">
-                                        <rect key="frame" x="0.0" y="0.0" width="154" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-aG-xWz">
-                                        <rect key="frame" x="162" y="0.0" width="139" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="10KΩ"/>
+                                <items>
+                                    <barButtonItem title="Desired Gain (x):" id="uyJ-dm-CZW">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem title="2.5" id="eFn-nE-hyq"/>
+                                    <barButtonItem title="&gt;10KΩ" id="wLj-Hy-Fxh">
                                         <connections>
-                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditResistance" popoverAnchorView="dCw-aG-xWz" id="bOP-6T-7JU">
+                                            <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditResistance" popoverAnchorBarButtonItem="wLj-Hy-Fxh" id="nBE-QT-9bg">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbF-VO-NIf" userLabel="My 1%">
-                                        <rect key="frame" x="309" y="0.0" width="61" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <state key="normal" title="1%"/>
-                                        <connections>
-                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorView="mbF-VO-NIf" id="tFt-bN-5YR">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Zec-96-nZF"/>
-                                </constraints>
-                            </stackView>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="f2x-ZQ-bnv"/>
+                                    <barButtonItem title="1%" id="Dcl-8C-8f4"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RXu-kj-5Gc"/>
+                                </items>
+                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9DM-ba-Fxn">
-                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9mu-HZ-5B8">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="261"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ib3-JE-fIO">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="210.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uik-RD-lHJ">
-                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="210.5" width="375" height="26.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvU-3K-etO">
-                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="237" width="375" height="64.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -523,17 +479,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-sZ-Xy5">
-                                        <rect key="frame" x="0.0" y="261" width="375" height="261"/>
+                                        <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-TY-zb0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="210.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nnu-GM-H36">
-                                                <rect key="frame" x="0.0" y="217" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="210.5" width="375" height="26"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th7-S9-Jni">
-                                                <rect key="frame" x="0.0" y="237" width="375" height="24"/>
+                                                <rect key="frame" x="0.0" y="236.5" width="375" height="65"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -541,49 +497,52 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ib3-JE-fIO" firstAttribute="height" secondItem="DlR-TY-zb0" secondAttribute="height" id="JhQ-U9-Yeg"/>
-                                </constraints>
-                                <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually">
-                                    <mask key="constraints">
-                                        <exclude reference="JhQ-U9-Yeg"/>
-                                    </mask>
-                                </variation>
+                                <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="b7O-01-V0Q" firstAttribute="width" secondItem="dCw-aG-xWz" secondAttribute="width" id="0df-4a-61s"/>
-                            <constraint firstItem="ena-ix-0kY" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="1aJ-iR-fMc"/>
+                            <constraint firstItem="U5f-Q0-P3L" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="3Xx-Nj-heW"/>
                             <constraint firstItem="9DM-ba-Fxn" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="6mA-TN-hN0"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="8aA-iD-Ajx" secondAttribute="trailing" constant="5" id="N2K-4p-ITT"/>
-                            <constraint firstItem="mcq-By-Uvl" firstAttribute="width" secondItem="8ri-8c-9IO" secondAttribute="width" id="SxZ-Bg-oNr"/>
-                            <constraint firstItem="8aA-iD-Ajx" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="atw-Cv-jHD"/>
+                            <constraint firstItem="9DM-ba-Fxn" firstAttribute="top" secondItem="U5f-Q0-P3L" secondAttribute="bottom" id="B9t-y3-uyM"/>
+                            <constraint firstItem="U5f-Q0-P3L" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="Bbs-Fc-g1o"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="9DM-ba-Fxn" secondAttribute="trailing" id="dR4-Xw-f2a"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="9DM-ba-Fxn" secondAttribute="trailing" id="dqH-lo-Ojd"/>
-                            <constraint firstItem="9DM-ba-Fxn" firstAttribute="top" secondItem="ena-ix-0kY" secondAttribute="bottom" constant="8" symbolic="YES" id="ipB-nn-wlz"/>
                             <constraint firstItem="9DM-ba-Fxn" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="lMi-VB-FlN"/>
-                            <constraint firstItem="ena-ix-0kY" firstAttribute="top" secondItem="8aA-iD-Ajx" secondAttribute="bottom" constant="8" symbolic="YES" id="oxu-SP-phx"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="ena-ix-0kY" secondAttribute="trailing" constant="5" id="r6I-2Y-KNc"/>
-                            <constraint firstItem="8aA-iD-Ajx" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="vf3-Fd-ikP"/>
+                            <constraint firstItem="U5f-Q0-P3L" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="udb-EZ-s2d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Op Amp Gain" image="Op Amp" id="cPa-gy-q4n"/>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="ZVV-mv-Ek7">
+                            <connections>
+                                <action selector="sendAction:" destination="8rJ-Kc-sve" id="iZ1-AF-GWc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="cancel" id="WM5-TG-629">
+                            <connections>
+                                <segue destination="pqH-II-TmA" kind="unwind" unwindAction="returnToResistorView:" id="j9N-np-az4"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="cancelButton" destination="guN-Ps-7OQ" id="uEy-Cl-dxE"/>
-                        <outlet property="collectionButton" destination="mbF-VO-NIf" id="GKj-Wj-Hs4"/>
+                        <outlet property="actionButton" destination="ZVV-mv-Ek7" id="Muo-fR-0Jp"/>
+                        <outlet property="cancelButton" destination="WM5-TG-629" id="qZH-Go-dpG"/>
+                        <outlet property="collectionButton" destination="Dcl-8C-8f4" id="tsz-gD-DPU"/>
                         <outlet property="gainImage" destination="Ib3-JE-fIO" id="gvJ-qV-hvB"/>
                         <outlet property="gainIndicator" destination="uik-RD-lHJ" id="fxv-Hw-u9o"/>
                         <outlet property="gainLabel" destination="NvU-3K-etO" id="LJi-W7-qcJ"/>
-                        <outlet property="gainValue" destination="b7O-01-V0Q" id="Bdq-IM-fGz"/>
+                        <outlet property="gainValue" destination="eFn-nE-hyq" id="AeU-cn-haT"/>
                         <outlet property="invertingGainImage" destination="DlR-TY-zb0" id="uMT-VB-y7n"/>
                         <outlet property="invertingGainIndicator" destination="Nnu-GM-H36" id="yTh-zT-4qy"/>
                         <outlet property="invertingGainLabel" destination="Th7-S9-Jni" id="IMw-Mp-mj8"/>
-                        <outlet property="minResistance" destination="dCw-aG-xWz" id="V2B-Fs-pdc"/>
+                        <outlet property="minResistance" destination="wLj-Hy-Fxh" id="oSP-qr-YVC"/>
+                        <outlet property="toolBar" destination="U5f-Q0-P3L" id="mhD-tV-HTx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+                <exit id="pqH-II-TmA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="750" y="338"/>
         </scene>
@@ -911,7 +870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9N-A8-ecm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-311.19999999999999" y="744.3778110944528"/>
+            <point key="canvasLocation" x="-313" y="785"/>
         </scene>
         <!--Edit Resistors-->
         <scene sceneID="zv3-Rd-VFn">
@@ -929,7 +888,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yoP-gr-3j9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1074" y="744"/>
+            <point key="canvasLocation" x="-794" y="785"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="epB-iY-BSW">
@@ -947,7 +906,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1e-oq-t6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-676" y="1514"/>
+            <point key="canvasLocation" x="-312" y="1600"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a2Z-iA-Ld3">
@@ -995,7 +954,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rRx-DY-fSd"/>
-        <segue reference="nVq-P9-Qni"/>
-        <segue reference="J1A-ky-7j9"/>
+        <segue reference="nBE-QT-9bg"/>
     </inferredMetricsTieBreakers>
 </document>

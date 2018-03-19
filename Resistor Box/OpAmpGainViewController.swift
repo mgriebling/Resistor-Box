@@ -10,27 +10,29 @@ import UIKit
 
 class OpAmpGainViewController: UIViewController {
     
-    @IBOutlet weak var gainValue: UIButton!
-    @IBOutlet weak var minResistance: UIButton!
-    @IBOutlet weak var collectionButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var gainValue: UIBarButtonItem!
+    @IBOutlet weak var minResistance: UIBarButtonItem!
+    @IBOutlet weak var collectionButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var actionButton: UIBarButtonItem!
     @IBOutlet weak var gainImage: UIImageView!
     @IBOutlet weak var gainIndicator: UIActivityIndicatorView!
     @IBOutlet weak var gainLabel: UILabel!
     @IBOutlet weak var invertingGainImage: UIImageView!
     @IBOutlet weak var invertingGainIndicator: UIActivityIndicatorView!
     @IBOutlet weak var invertingGainLabel: UILabel!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue2", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
     var gain : Double = 2.5 {
         didSet {
-            gainValue.setTitle(ResistorViewController.formatter.string(from: NSNumber(value: gain)), for: .normal)
+            gainValue.title = ResistorViewController.formatter.string(from: NSNumber(value: gain))
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
         didSet {
-            minResistance.setTitle(Resistors.stringFrom(minR.0), for: .normal)
+            minResistance.title = ">" + Resistors.stringFrom(minR.0)
         }
     }
     var calculating1 = false
@@ -67,8 +69,9 @@ class OpAmpGainViewController: UIViewController {
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        gain = Double(gainValue.title(for: .normal)!) ?? 1
-        minR = Resistors.parseString(minResistance.title(for: .normal) ?? "10KΩ")
+        gain = Double(gainValue.title!) ?? 1
+        let r = minResistance.title!.dropFirst()
+        minR = Resistors.parseString(String(r))
         calculateOptimalValues()
     }
     
@@ -77,8 +80,32 @@ class OpAmpGainViewController: UIViewController {
         if calculating2 { updateInvertingGainResistors(y, label: label) }
     }
     
+    @IBAction func sendAction(_ sender: Any) {
+        print("Sending result...")
+        let graphic = ResistorViewController.takeSnapshotOf(self.parent!.view)!
+        let pdf = ResistorViewController.takePDFOf(self.parent!.view)
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileName = "ResistorBox"
+        let file = docPath.appendingPathComponent(fileName).appendingPathExtension("pdf")
+        try? pdf?.write(to: file)
+        
+        let x = UIActivityViewController(activityItems: [graphic, file], applicationActivities: nil)
+        if let popoverController = x.popoverPresentationController, let button = sender as? UIBarButtonItem {
+            popoverController.barButtonItem = button
+        }
+        present(x, animated: true, completion: nil)
+    }
+    
     func enableGUI () {
         let done = !calculating1 && !calculating2
+        var items = toolBar.items!
+        if items.contains(actionButton) || items.contains(cancelButton) { items.removeLast() }
+        if done {
+            items.append(actionButton)
+        } else {
+            items.append(cancelButton)
+        }
+        toolBar.setItems(items, animated: true)
         cancelButton.isEnabled = !done
         gainValue.isEnabled = done
         minResistance.isEnabled = done
@@ -155,7 +182,7 @@ class OpAmpGainViewController: UIViewController {
         switch segue.identifier! {
         case "EditResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
-                vc.value = minResistance.title(for: .normal)
+                vc.value = minResistance.title
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.minR = Resistors.parseString(newValue)
@@ -164,7 +191,7 @@ class OpAmpGainViewController: UIViewController {
             }
         case "EditGain":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = gainValue.title(for: .normal)
+                vc.value = gainValue.title
                 vc.picker = NumberPicker(maxValue: Decimal(string: "99.999")!, andIncrement: Decimal(string: "100.0")!)
                 vc.picker.minValue = 1
                 vc.callback = { [weak self] newValue in
@@ -175,10 +202,10 @@ class OpAmpGainViewController: UIViewController {
             }
         case "SelectCollection":
             if let vc = destNav.childViewControllers.first as? CollectionViewController {
-                vc.value = collectionButton.title(for: .normal)
+                vc.value = collectionButton.title
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
-                    wself.collectionButton.setTitle(newValue, for: .normal)
+                    wself.collectionButton.title = newValue
                     Resistors.active = newValue
                     wself.calculateOptimalValues()
                 }
