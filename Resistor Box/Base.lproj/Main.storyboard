@@ -444,7 +444,13 @@
                                     <barButtonItem title="Desired Gain (x):" id="uyJ-dm-CZW">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
-                                    <barButtonItem title="2.5" id="eFn-nE-hyq"/>
+                                    <barButtonItem title="2.5" id="eFn-nE-hyq">
+                                        <connections>
+                                            <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditGain" popoverAnchorBarButtonItem="eFn-nE-hyq" id="Pi9-uc-bgz">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="&gt;10KΩ" id="wLj-Hy-Fxh">
                                         <connections>
                                             <segue destination="38x-Mt-Miz" kind="popoverPresentation" identifier="EditResistance" popoverAnchorBarButtonItem="wLj-Hy-Fxh" id="nBE-QT-9bg">
@@ -453,7 +459,13 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="f2x-ZQ-bnv"/>
-                                    <barButtonItem title="1%" id="Dcl-8C-8f4"/>
+                                    <barButtonItem title="1%" id="Dcl-8C-8f4">
+                                        <connections>
+                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorBarButtonItem="Dcl-8C-8f4" id="tuH-wV-WPo">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RXu-kj-5Gc"/>
                                 </items>
                             </toolbar>
@@ -464,14 +476,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ib3-JE-fIO">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uik-RD-lHJ">
-                                                <rect key="frame" x="0.0" y="249.5" width="375" height="23.5"/>
+                                                <rect key="frame" x="0.0" y="236" width="375" height="19"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvU-3K-etO">
-                                                <rect key="frame" x="0.0" y="273" width="375" height="28.5"/>
+                                                <rect key="frame" x="0.0" y="255" width="375" height="46.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -482,14 +494,14 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-TY-zb0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nnu-GM-H36">
-                                                <rect key="frame" x="0.0" y="249.5" width="375" height="23.5"/>
+                                                <rect key="frame" x="0.0" y="236" width="375" height="19"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th7-S9-Jni">
-                                                <rect key="frame" x="0.0" y="273" width="375" height="28.5"/>
+                                                <rect key="frame" x="0.0" y="255" width="375" height="46.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -595,14 +607,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-9R-ujH">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="230.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y6c-8c-Tpt">
-                                                <rect key="frame" x="0.0" y="230.5" width="375" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="232" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwG-vW-HTB">
-                                                <rect key="frame" x="0.0" y="251" width="375" height="50.5"/>
+                                                <rect key="frame" x="0.0" y="252" width="375" height="49.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -613,14 +625,14 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-tZ-trm">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="230.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pG1-LA-LTK">
-                                                <rect key="frame" x="0.0" y="230.5" width="375" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="232" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-u4-MKz">
-                                                <rect key="frame" x="0.0" y="251" width="375" height="50.5"/>
+                                                <rect key="frame" x="0.0" y="252" width="375" height="49.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -932,7 +944,8 @@
         <image name="Resistor Collection" width="81" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dgs-rd-9FN"/>
+        <segue reference="tuH-wV-WPo"/>
+        <segue reference="Pi9-uc-bgz"/>
         <segue reference="i6Z-rh-896"/>
     </inferredMetricsTieBreakers>
 </document>

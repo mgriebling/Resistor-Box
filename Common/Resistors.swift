@@ -266,18 +266,18 @@ class Resistors {
         
         // check for common gains
         if x >= 1 {
-            done([OPEN, SHORT, rArray[sindex], 1, 100.0*fabs(x-1.0)/x]); return
+            done([rArray[sindex], OPEN, SHORT, 1, 100.0*fabs(x-1.0)/x]); return
         } else if x == 0.5 {
-            done([OPEN, rArray[sindex], rArray[sindex], x, 0]); return
+            done([rArray[sindex], OPEN, rArray[sindex], x, 0]); return
         } else if x == 2.0/3.0 {
              done([rArray[sindex], rArray[sindex], rArray[sindex], x, 0]); return
         }
         
         let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            if r3 == SHORT { return 0 }  // avoid an error because SHORTs are not really zero
-            let rp = r1 ⧦ r2
-            let rn = r3 / (rp + r3)
+            if r1 == SHORT { return 0 }  // avoid an error because SHORTs are not really zero
+            let rp = r2 ⧦ r3
+            let rn = r1 / (rp + r1)
             return rn
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
@@ -301,12 +301,12 @@ class Resistors {
         
         // check for common gains
         if x == 1 {
-            done([SHORT, OPEN, SHORT, x, 0]); return
+            done([rArray[sindex], OPEN, OPEN, x, 0]); return
         }
         
         let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            return 1.0 + r3 / (r1 ⧦ r2)
+            return 1.0 + r1 / (r3 ⧦ r2)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return false
@@ -329,12 +329,12 @@ class Resistors {
         
         // check for common gains
         if x == 1 {
-            done([SHORT, OPEN, SHORT, x, 0]); return
+            done([rArray[sindex], OPEN, rArray[sindex], x, 0]); return
         }
         
         let r = CountableRange(sindex...rArray.index(before: rArray.endIndex))
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
-            return r3 / (r1 ⧦ r2)
+            return r1 / (r3 ⧦ r2)
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
             return false

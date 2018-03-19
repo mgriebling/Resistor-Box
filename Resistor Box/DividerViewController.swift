@@ -58,9 +58,9 @@ class DividerViewController: UIViewController {
     }
     
     func updateDivider2Resistors (_ x : [Double], label: String) {
-        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
+        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
-        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
+        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let rt  = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[3]))!
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
