@@ -40,40 +40,55 @@ class ResistorViewController: UIViewController {
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
-    func updateSeriesResistors (_ x : [Double], label: String) {
+    func update(_ x : [Double], prefix: String, image: UIImageView, imageFunc: @escaping (_ value1: String, _ value2: String, _ value3: String) -> (UIImage), label: UILabel) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
         let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
         let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
-            self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.seriesLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            image.image = imageFunc(r1v, r2v, r3v)
+            label.text = "\(prefix) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
+    }
+    
+    func updateSeriesResistors (_ x : [Double], label: String) {
+        update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors, label: seriesLabel)
+//        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
+//        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+//        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
+//        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
+//        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
+//        UIView.animate(withDuration: 0.5) {
+//            self.seriesResistors.image = ResistorImage.imageOfSeriesResistors(value1: r1v, value2: r2v, value3: r3v)
+//            self.seriesLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
+//        }
     }
     
     func updateSeriesParallelResistors (_ x : [Double], label: String) {
-        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
-        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
-        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
-        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
-        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
-        UIView.animate(withDuration: 0.5) {
-            self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.seriesParallelLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
-        }
+        update(x, prefix: label, image: seriesParallelResistors, imageFunc: ResistorImage.imageOfSeriesParallelResistors, label: seriesParallelLabel)
+//        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
+//        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+//        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
+//        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
+//        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
+//        UIView.animate(withDuration: 0.5) {
+//            self.seriesParallelResistors.image = ResistorImage.imageOfSeriesParallelResistors(value1: r1v, value2: r2v, value3: r3v)
+//            self.seriesParallelLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
+//        }
     }
     
     func updateParallelResistors (_ x : [Double], label: String) {
-        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
-        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
-        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
-        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
-        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
-        UIView.animate(withDuration: 0.5) {
-            self.parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: r1v, value2: r2v, value3: r3v)
-            self.parallelLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
-        }
+        update(x, prefix: label, image: parallelResistors, imageFunc: ResistorImage.imageOfParallelResistors, label: parallelLabel)
+//        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
+//        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
+//        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
+//        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
+//        let error = x.count == 0 ? "???" : ResistorViewController.formatter.string(from: NSNumber(value: x[4]))!
+//        UIView.animate(withDuration: 0.5) {
+//            self.parallelResistors.image = ResistorImage.imageOfParallelResistors(value1: r1v, value2: r2v, value3: r3v)
+//            self.parallelLabel.text = "\(label) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
+//        }
     }
     
     func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
@@ -170,68 +185,94 @@ class ResistorViewController: UIViewController {
     var calculating1 = false
     var calculating2 = false
     var calculating3 = false
+    
+    func performCalculations(_ label : String, x : inout [Double], calculating : inout Bool, update : @escaping ([Double], String) -> (), activity : UIActivityIndicatorView) {
+        calculating = true
+        activity.startAnimating()
+        backgroundQueue.async {
+            print("Starting \(label) calculations...")
+            Resistors.computeSeries(self.r.0, callback: { values in
+                x = values   // update working values
+            }, done: { s in
+                x = s
+                calculating = false
+                self.stopTimer()
+                DispatchQueue.main.async { [weak self] in
+                    update(s, "Best")
+                    activity.stopAnimating()
+                    self?.enableGUI()
+                    print("Finished \(label) calculations...")
+                }
+            })
+        }
+    }
 
     func calculateOptimalValues() {
         guard !(calculating1 || calculating2 || calculating3) else { print("ERROR!!!!!!"); return }
-        calculating1 = true; calculating2 = true; calculating3 = true
-        seriesActivity.startAnimating()
-        seriesParallelActivity.startAnimating()
-        parallelActivity.startAnimating()
-        enableGUI()
         Resistors.cancelCalculations = false
         timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.refreshGUI(self.x, y: self.y, z: self.z, label: "Working")
         }
         timedTask?.fire()     // refresh GUI to start
-        backgroundQueue.async {
-            print("Starting series calculations...")
-            Resistors.computeSeries(self.r.0, callback: { values in
-                self.x = values   // update working values
-            }, done: { s in
-                self.x = s
-                self.calculating1 = false
-                self.stopTimer()
-                DispatchQueue.main.async { [weak self] in
-                    self?.updateSeriesResistors(s, label: "Best")
-                    self?.seriesActivity.stopAnimating()
-                    self?.enableGUI()
-                    print("Finished series calculations...")
-                }
-            })
-        }
-        backgroundQueue.async {
-            print("Starting series/parallel calculations...")
-            Resistors.computeSeriesParallel(self.r.0, callback: { values in
-                self.y = values   // update working values
-            }, done: { sp in
-                self.y = sp        // final answer update
-                self.calculating2 = false
-                self.stopTimer()
-                DispatchQueue.main.async { [weak self] in
-                    self?.updateSeriesParallelResistors(sp, label: "Best")
-                    self?.seriesParallelActivity.stopAnimating()
-                    self?.enableGUI()
-                    print("Finished series/parallel calculations...")
-                }
-            })
-        }
-        backgroundQueue.async {
-            print("Starting parallel calculations...")
-            Resistors.computeParallel(self.r.0, callback: { values in
-                self.z = values   // update working values
-            }, done: { p in
-                self.z = p        // final answer update
-                print("Parallel answer = \(p)")
-                self.calculating3 = false
-                self.stopTimer()
-                DispatchQueue.main.async { [weak self] in
-                    self?.updateParallelResistors(p, label: "Best")
-                    self?.parallelActivity.stopAnimating()
-                    self?.enableGUI()
-                    print("Finished parallel calculations...")
-                }
-            })
-        }
+        
+        performCalculations("series", x: &x, calculating: &calculating1, update: updateSeriesResistors(_:label:), activity: seriesActivity)
+        
+//        backgroundQueue.async {
+//            print("Starting series calculations...")
+//            Resistors.computeSeries(self.r.0, callback: { values in
+//                self.x = values   // update working values
+//            }, done: { s in
+//                self.x = s
+//                self.calculating1 = false
+//                self.stopTimer()
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.updateSeriesResistors(s, label: "Best")
+//                    self?.seriesActivity.stopAnimating()
+//                    self?.enableGUI()
+//                    print("Finished series calculations...")
+//                }
+//            })
+//        }
+        
+        performCalculations("series/parallel", x: &y, calculating: &calculating2, update: updateSeriesParallelResistors(_:label:), activity: seriesParallelActivity)
+        
+//        backgroundQueue.async {
+//            print("Starting series/parallel calculations...")
+//            Resistors.computeSeriesParallel(self.r.0, callback: { values in
+//                self.y = values   // update working values
+//            }, done: { sp in
+//                self.y = sp        // final answer update
+//                self.calculating2 = false
+//                self.stopTimer()
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.updateSeriesParallelResistors(sp, label: "Best")
+//                    self?.seriesParallelActivity.stopAnimating()
+//                    self?.enableGUI()
+//                    print("Finished series/parallel calculations...")
+//                }
+//            })
+//        }
+        
+        performCalculations("parallel", x: &z, calculating: &calculating3, update: updateParallelResistors(_:label:), activity: parallelActivity)
+        
+//        backgroundQueue.async {
+//            print("Starting parallel calculations...")
+//            Resistors.computeParallel(self.r.0, callback: { values in
+//                self.z = values   // update working values
+//            }, done: { p in
+//                self.z = p        // final answer update
+//                print("Parallel answer = \(p)")
+//                self.calculating3 = false
+//                self.stopTimer()
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.updateParallelResistors(p, label: "Best")
+//                    self?.parallelActivity.stopAnimating()
+//                    self?.enableGUI()
+//                    print("Finished parallel calculations...")
+//                }
+//            })
+//        }
+        enableGUI()
     }
     
     @IBAction func editingDidBegin(_ sender: UITextField) {
