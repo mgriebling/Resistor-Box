@@ -106,7 +106,6 @@ class OpAmpGainViewController: UIViewController {
             items.append(cancelButton)
         }
         toolBar.setItems(items, animated: true)
-        cancelButton.isEnabled = !done
         gainValue.isEnabled = done
         minResistance.isEnabled = done
         collectionButton.isEnabled = done
@@ -182,7 +181,7 @@ class OpAmpGainViewController: UIViewController {
         switch segue.identifier! {
         case "EditResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
-                vc.value = minResistance.title
+                vc.value = String(minResistance.title!.dropFirst())
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.minR = Resistors.parseString(newValue)

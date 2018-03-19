@@ -10,10 +10,12 @@ import UIKit
 
 class DividerViewController: UIViewController {
 
-    @IBOutlet weak var divisionRatio: UIButton!
-    @IBOutlet weak var minResistance: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var collectionButton: UIButton!
+    @IBOutlet weak var divisionRatio: UIBarButtonItem!
+    @IBOutlet weak var minResistance: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var collectionButton: UIBarButtonItem!
+    @IBOutlet weak var actionButton: UIBarButtonItem!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     @IBOutlet weak var divider1Image: UIImageView!
     @IBOutlet weak var divider1Activity: UIActivityIndicatorView!
@@ -26,12 +28,12 @@ class DividerViewController: UIViewController {
     
     var divider : Double = 0.5 {
         didSet {
-            divisionRatio.setTitle(ResistorViewController.formatter.string(from: NSNumber(value: divider)), for: .normal)
+            divisionRatio.title = ResistorViewController.formatter.string(from: NSNumber(value: divider))
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
         didSet {
-            minResistance.setTitle(Resistors.stringFrom(minR.0), for: .normal)
+            minResistance.title = ">" + Resistors.stringFrom(minR.0)
         }
     }
     var calculating1 = false
@@ -68,8 +70,8 @@ class DividerViewController: UIViewController {
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        divider = Double(divisionRatio.title(for: .normal)!) ?? 0.5
-        minR = Resistors.parseString(minResistance.title(for: .normal) ?? "10KΩ")
+        divider = Double(divisionRatio.title!) ?? 0.5
+        minR = Resistors.parseString(String(minResistance.title!.dropFirst()))
         calculateOptimalValues()
     }
     
@@ -80,10 +82,33 @@ class DividerViewController: UIViewController {
     
     func enableGUI () {
         let done = !calculating1 && !calculating2
-        cancelButton.isEnabled = !done
+        var items = toolBar.items!
+        if items.contains(actionButton) || items.contains(cancelButton) { items.removeLast() }
+        if done {
+            items.append(actionButton)
+        } else {
+            items.append(cancelButton)
+        }
+        toolBar.setItems(items, animated: true)
         divisionRatio.isEnabled = done
         minResistance.isEnabled = done
         collectionButton.isEnabled = done
+    }
+    
+    @IBAction func performAction(_ sender: Any) {
+        print("Sending result...")
+        let graphic = ResistorViewController.takeSnapshotOf(self.parent!.view)!
+        let pdf = ResistorViewController.takePDFOf(self.parent!.view)
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileName = "ResistorBox"
+        let file = docPath.appendingPathComponent(fileName).appendingPathExtension("pdf")
+        try? pdf?.write(to: file)
+        
+        let x = UIActivityViewController(activityItems: [graphic, file], applicationActivities: nil)
+        if let popoverController = x.popoverPresentationController, let button = sender as? UIBarButtonItem {
+            popoverController.barButtonItem = button
+        }
+        present(x, animated: true, completion: nil)
     }
     
     func stopTimer() {
@@ -156,7 +181,8 @@ class DividerViewController: UIViewController {
         switch segue.identifier! {
         case "EditResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
-                vc.value = minResistance.title(for: .normal)
+                let r = minResistance.title!.dropFirst()  // remove ">"
+                vc.value = String(r)
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.minR = Resistors.parseString(newValue)
@@ -167,7 +193,7 @@ class DividerViewController: UIViewController {
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
                 vc.picker = NumberPicker(maxValue: Decimal(string: "1.99999")!, andIncrement: Decimal(string: "1.0")!)
                 vc.picker.maxValue = 1
-                vc.value = divisionRatio.title(for: .normal)!
+                vc.value = divisionRatio.title!
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.divider = Double(newValue) ?? 1
@@ -176,10 +202,10 @@ class DividerViewController: UIViewController {
             }
         case "SelectCollection":
             if let vc = destNav.childViewControllers.first as? CollectionViewController {
-                vc.value = collectionButton.title(for: .normal)
+                vc.value = collectionButton.title
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
-                    wself.collectionButton.setTitle(newValue, for: .normal)
+                    wself.collectionButton.title = newValue
                     Resistors.active = newValue
                     wself.calculateOptimalValues()
                 }
