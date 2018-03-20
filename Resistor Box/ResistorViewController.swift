@@ -63,9 +63,12 @@ class ResistorViewController: BaseViewController {
         }
         timedTask?.fire()     // refresh GUI to start
         
-        performCalculations("series", r: r.0, x: &x, calculating: &calculating1, update: updateSeriesResistors(_:label:), activity: seriesActivity)
-        performCalculations("series/parallel", r: r.0, x: &y, calculating: &calculating2, update: updateSeriesParallelResistors(_:label:), activity: seriesParallelActivity)
-        performCalculations("parallel", r: r.0, x: &z, calculating: &calculating3, update: updateParallelResistors(_:label:), activity: parallelActivity)
+        performCalculations("series", r: r.0, x: &x, compute: Resistors.computeSeries(_:callback:done:), calculating: &calculating1,
+                            update: updateSeriesResistors(_:label:), activity: seriesActivity)
+        performCalculations("series/parallel", r: r.0, x: &y, compute: Resistors.computeSeriesParallel(_:callback:done:), calculating: &calculating2,
+                            update: updateSeriesParallelResistors(_:label:), activity: seriesParallelActivity)
+        performCalculations("parallel", r: r.0, x: &z, compute: Resistors.computeParallel(_:callback:done:), calculating: &calculating3,
+                            update: updateParallelResistors(_:label:), activity: parallelActivity)
         
         enableGUI()
     }

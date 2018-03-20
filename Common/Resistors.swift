@@ -347,7 +347,17 @@ class Resistors {
         if let index = rArray.index(of: x) {
             // return the obvious solution
             let Rs = rArray[index]
-            done([Rs, OPEN, OPEN, Rs, 0]); return
+            done([Rs, OPEN, OPEN, x, 0]); return
+        }
+        if let index = rArray.index(of: 2*x) {
+            // return the obvious solution
+            let Rs = rArray[index]
+            done([Rs, Rs, OPEN, x, 0]); return
+        }
+        if let index = rArray.index(of: 3*x) {
+            // return the obvious solution
+            let Rs = rArray[index]
+            done([Rs, Rs, Rs, x, 0]); return
         }
         let last = rArray.index(rArray.endIndex, offsetBy: -2)
         let rlast = rArray[last]

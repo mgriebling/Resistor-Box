@@ -116,19 +116,20 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func performCalculations(_ label : String, r : Double, x : inout [Double], calculating : inout Bool, update : @escaping ([Double], String) -> (), activity : UIActivityIndicatorView) {
+    func performCalculations(_ label : String, r : Double, x : inout [Double], compute : @escaping (Double, ([Double]) -> (), ([Double]) -> ()) -> (),
+                             calculating : inout Bool, update : @escaping ([Double], String) -> (), activity : UIActivityIndicatorView) {
         calculating = true
         activity.startAnimating()
         backgroundQueue.async {
             print("Starting \(label) calculations...")
-            Resistors.computeSeries(r, callback: { values in
+            compute(r, { values in
                 x = values   // update working values
-            }, done: { s in
-                x = s
+            }, { fvalues in
+                x = fvalues
                 calculating = false
                 self.stopTimer()
                 DispatchQueue.main.async { [weak self] in
-                    update(s, "Best")
+                    update(fvalues, "Best")
                     activity.stopAnimating()
                     self?.enableGUI()
                     print("Finished \(label) calculations...")
@@ -136,7 +137,6 @@ class BaseViewController: UIViewController {
             })
         }
     }
-
 }
 
 extension BaseViewController : UIPopoverPresentationControllerDelegate {
