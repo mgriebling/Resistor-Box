@@ -40,14 +40,17 @@ class ResistorViewController: BaseViewController {
         if calculating3 { updateParallelResistors(z, label: label) }
     }
     
+    override func formatValue(_ x: Double) -> String {
+        return "Total: " + Resistors.stringFrom(x)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        r = (10, 10, "Ω")
         calculateOptimalValues()
     }
     
     // make sure these variables are retained
-    var r = (0.0, 0.0, "") {
+    var r = (10.0, 10.0, "Ω") {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.desiredValue.title = Resistors.stringFrom(self?.r.0 ?? 0)
@@ -63,11 +66,11 @@ class ResistorViewController: BaseViewController {
         }
         timedTask?.fire()     // refresh GUI to start
         
-        performCalculations("series", r: r.0, x: &x, compute: Resistors.computeSeries(_:callback:done:), calculating: &calculating1,
+        performCalculations("series", value: r.0, start: 0, x: &x, compute: Resistors.computeSeries(_:start:callback:done:), calculating: &calculating1,
                             update: updateSeriesResistors(_:label:), activity: seriesActivity)
-        performCalculations("series/parallel", r: r.0, x: &y, compute: Resistors.computeSeriesParallel(_:callback:done:), calculating: &calculating2,
+        performCalculations("series/parallel", value: r.0, start: 0, x: &y, compute: Resistors.computeSeriesParallel(_:start:callback:done:), calculating: &calculating2,
                             update: updateSeriesParallelResistors(_:label:), activity: seriesParallelActivity)
-        performCalculations("parallel", r: r.0, x: &z, compute: Resistors.computeParallel(_:callback:done:), calculating: &calculating3,
+        performCalculations("parallel", value: r.0, start: 0, x: &z, compute: Resistors.computeParallel(_:start:callback:done:), calculating: &calculating3,
                             update: updateParallelResistors(_:label:), activity: parallelActivity)
         
         enableGUI()

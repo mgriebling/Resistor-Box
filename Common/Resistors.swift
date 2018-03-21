@@ -195,7 +195,7 @@ class Resistors {
         return [Ri, Rj, Rk, Rt, Re]
     }
     
-    static func computeSeries(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+    static func computeSeries(_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
         if let index = rArray.index(of: x) {
             // return the obvious solution
@@ -342,7 +342,7 @@ class Resistors {
         done(result)
     }
     
-    static func computeParallel(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+    static func computeParallel(_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
         if let index = rArray.index(of: x) {
             // return the obvious solution
@@ -387,7 +387,7 @@ class Resistors {
         done(result)
     }
     
-    static func computeSeriesParallel(_ x : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
+    static func computeSeriesParallel(_ x : Double, start : Double, callback : ([Double]) -> (), done: ([Double]) -> ()) {
         let rArray = rInv[active]!
         if let index = rArray.index(of: x) {
             // return the obvious solution

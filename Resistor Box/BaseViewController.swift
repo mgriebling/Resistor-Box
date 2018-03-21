@@ -11,6 +11,7 @@ import UIKit
 class BaseViewController: UIViewController {
     
     @IBOutlet weak var desiredValue: UIBarButtonItem!
+    @IBOutlet weak var minResistance: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var actionButton: UIBarButtonItem!
     @IBOutlet weak var collectionButton: UIBarButtonItem!
@@ -102,27 +103,36 @@ class BaseViewController: UIViewController {
         toolBar.setItems(items, animated: true)
         desiredValue.isEnabled = done
         collectionButton.isEnabled = done
+        minResistance?.isEnabled = done
     }
     
-    func update(_ x : [Double], prefix: String, image: UIImageView, imageFunc: @escaping (_ value1: String, _ value2: String, _ value3: String) -> (UIImage), label: UILabel) {
+    func formatValue(_ x : Double) -> String {
+        // stub to be overridden
+        assert(false, "Need to override 'formatValue' method")
+        return "Value: \(x)"
+    }
+    
+    func update(_ x : [Double], prefix: String, image: UIImageView,
+                imageFunc: @escaping (_ value1: String, _ value2: String, _ value3: String) -> (UIImage), label: UILabel) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
         let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
-        let rt  = x.count == 0 ? "???" : Resistors.stringFrom(x[3])
+        let rt  = x.count == 0 ? "???" : formatValue(x[3])
         let error = x.count == 0 ? "???" : BaseViewController.formatter.string(from: NSNumber(value: x[4]))!
         UIView.animate(withDuration: 0.5) {
             image.image = imageFunc(r1v, r2v, r3v)
-            label.text = "\(prefix) Total: \(rt); error: \(error)% with \(Resistors.active) resistors"
+            label.text = "\(prefix) \(rt); error: \(error)% with \(Resistors.active) resistors"
         }
     }
     
-    func performCalculations(_ label : String, r : Double, x : inout [Double], compute : @escaping (Double, ([Double]) -> (), ([Double]) -> ()) -> (),
+    func performCalculations(_ label : String, value : Double, start: Double, x : inout [Double],
+                             compute : @escaping (Double, Double, ([Double]) -> (), ([Double]) -> ()) -> (),
                              calculating : inout Bool, update : @escaping ([Double], String) -> (), activity : UIActivityIndicatorView) {
         calculating = true
         activity.startAnimating()
         backgroundQueue.async {
             print("Starting \(label) calculations...")
-            compute(r, { values in
+            compute(value, start, { values in
                 x = values   // update working values
             }, { fvalues in
                 x = fvalues

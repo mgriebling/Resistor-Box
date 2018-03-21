@@ -148,13 +148,17 @@
                                 <action selector="sendResult:" destination="9pv-A4-QxB" id="FCo-dF-aAR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem systemItem="cancel" id="2x5-Hi-6w9"/>
+                        <barButtonItem systemItem="cancel" id="2x5-Hi-6w9">
+                            <connections>
+                                <action selector="cancelCalculations:" destination="9pv-A4-QxB" id="1mD-Ru-aue"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="actionButton" destination="wNX-jZ-g3n" id="cAY-YH-okS"/>
-                        <outlet property="cancelButton" destination="2x5-Hi-6w9" id="3Fu-hJ-jdH"/>
+                        <outlet property="cancelButton" destination="2x5-Hi-6w9" id="8bf-Nb-luC"/>
                         <outlet property="collectionButton" destination="umS-gf-8xR" id="c8S-h2-G47"/>
                         <outlet property="desiredValue" destination="e1N-fg-blq" id="Efw-RX-fMW"/>
                         <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
@@ -476,14 +480,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ib3-JE-fIO">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uik-RD-lHJ">
-                                                <rect key="frame" x="0.0" y="236" width="375" height="19"/>
+                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvU-3K-etO">
-                                                <rect key="frame" x="0.0" y="255" width="375" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="253" width="375" height="48.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -494,14 +498,14 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-TY-zb0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nnu-GM-H36">
-                                                <rect key="frame" x="0.0" y="236" width="375" height="19"/>
+                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th7-S9-Jni">
-                                                <rect key="frame" x="0.0" y="255" width="375" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="253" width="375" height="48.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -528,24 +532,24 @@
                     <toolbarItems>
                         <barButtonItem systemItem="action" id="ZVV-mv-Ek7">
                             <connections>
-                                <action selector="sendAction:" destination="8rJ-Kc-sve" id="iZ1-AF-GWc"/>
+                                <action selector="sendResult:" destination="8rJ-Kc-sve" id="tlA-bD-Wbi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem systemItem="cancel" id="WM5-TG-629">
                             <connections>
-                                <segue destination="pqH-II-TmA" kind="unwind" unwindAction="returnToResistorView:" id="j9N-np-az4"/>
+                                <action selector="cancelCalculations:" destination="8rJ-Kc-sve" id="8OM-QZ-rlm"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="actionButton" destination="ZVV-mv-Ek7" id="Muo-fR-0Jp"/>
-                        <outlet property="cancelButton" destination="WM5-TG-629" id="qZH-Go-dpG"/>
+                        <outlet property="actionButton" destination="ZVV-mv-Ek7" id="esD-rV-7ci"/>
+                        <outlet property="cancelButton" destination="WM5-TG-629" id="EB0-Wn-amf"/>
                         <outlet property="collectionButton" destination="Dcl-8C-8f4" id="tsz-gD-DPU"/>
+                        <outlet property="desiredValue" destination="eFn-nE-hyq" id="mEO-5P-7cy"/>
                         <outlet property="gainImage" destination="Ib3-JE-fIO" id="gvJ-qV-hvB"/>
                         <outlet property="gainIndicator" destination="uik-RD-lHJ" id="fxv-Hw-u9o"/>
                         <outlet property="gainLabel" destination="NvU-3K-etO" id="LJi-W7-qcJ"/>
-                        <outlet property="gainValue" destination="eFn-nE-hyq" id="AeU-cn-haT"/>
                         <outlet property="invertingGainImage" destination="DlR-TY-zb0" id="uMT-VB-y7n"/>
                         <outlet property="invertingGainIndicator" destination="Nnu-GM-H36" id="yTh-zT-4qy"/>
                         <outlet property="invertingGainLabel" destination="Th7-S9-Jni" id="IMw-Mp-mj8"/>
@@ -554,7 +558,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-                <exit id="pqH-II-TmA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="750" y="338"/>
         </scene>
@@ -607,14 +610,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-9R-ujH">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="253.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y6c-8c-Tpt">
-                                                <rect key="frame" x="0.0" y="232" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="253.5" width="375" height="22"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwG-vW-HTB">
-                                                <rect key="frame" x="0.0" y="252" width="375" height="49.5"/>
+                                                <rect key="frame" x="0.0" y="275.5" width="375" height="26"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -625,14 +628,14 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-tZ-trm">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="253.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pG1-LA-LTK">
-                                                <rect key="frame" x="0.0" y="232" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="253.5" width="375" height="22"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-u4-MKz">
-                                                <rect key="frame" x="0.0" y="252" width="375" height="49.5"/>
+                                                <rect key="frame" x="0.0" y="275.5" width="375" height="26"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -667,33 +670,32 @@
                     <toolbarItems>
                         <barButtonItem systemItem="action" id="RlQ-pV-yRc">
                             <connections>
-                                <action selector="performAction:" destination="acr-ZN-D4c" id="eeZ-sf-1uW"/>
+                                <action selector="sendResult:" destination="acr-ZN-D4c" id="uCJ-tn-x8p"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem systemItem="cancel" id="6eY-AX-bLf">
                             <connections>
-                                <segue destination="rxT-ut-aJY" kind="unwind" unwindAction="returnToResistorView:" id="gqv-bu-D5Z"/>
+                                <action selector="cancelCalculations:" destination="acr-ZN-D4c" id="b36-Lg-cjk"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="actionButton" destination="RlQ-pV-yRc" id="z0k-2l-i2S"/>
-                        <outlet property="cancelButton" destination="6eY-AX-bLf" id="8el-Yd-4zc"/>
+                        <outlet property="actionButton" destination="RlQ-pV-yRc" id="uei-Fs-rmh"/>
+                        <outlet property="cancelButton" destination="6eY-AX-bLf" id="ojF-99-P5Z"/>
                         <outlet property="collectionButton" destination="C7R-Ji-lW5" id="VTN-Ui-Fj8"/>
+                        <outlet property="desiredValue" destination="ceg-hp-V1B" id="ved-Lf-qnA"/>
                         <outlet property="divider1Activity" destination="Y6c-8c-Tpt" id="eTI-JP-80i"/>
                         <outlet property="divider1Image" destination="pjV-9R-ujH" id="oxR-iA-DQh"/>
                         <outlet property="divider1Label" destination="rwG-vW-HTB" id="Y8S-Q8-SAV"/>
                         <outlet property="divider2Activity" destination="pG1-LA-LTK" id="beA-Yh-YLF"/>
                         <outlet property="divider2Image" destination="18Q-tZ-trm" id="Pqp-op-OXa"/>
                         <outlet property="divider2Label" destination="pWE-u4-MKz" id="naz-hw-uLY"/>
-                        <outlet property="divisionRatio" destination="ceg-hp-V1B" id="ved-Lf-qnA"/>
                         <outlet property="minResistance" destination="rIK-2Y-GK5" id="Hlp-VH-dZ5"/>
                         <outlet property="toolBar" destination="vc0-kH-jhc" id="fMq-XO-GsL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qts-0G-J8T" sceneMemberID="firstResponder"/>
-                <exit id="rxT-ut-aJY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="750" y="1013"/>
         </scene>
@@ -944,8 +946,8 @@
         <image name="Resistor Collection" width="81" height="55"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tuH-wV-WPo"/>
-        <segue reference="Pi9-uc-bgz"/>
+        <segue reference="Dgs-rd-9FN"/>
+        <segue reference="ab2-QI-2hb"/>
         <segue reference="i6Z-rh-896"/>
     </inferredMetricsTieBreakers>
 </document>
