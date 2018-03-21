@@ -146,7 +146,7 @@ class ResistorViewController: NSViewController {
         timedTask?.fire()     // refresh GUI to start
         backgroundQueue.async {
             print("Starting series calculations...")
-            Resistors.computeSeries(self.r.0, callback: { values in
+            Resistors.computeSeries(self.r.0, start: 0, callback: { values in
                 self.x = values   // update working values
             }, done: { s in
                 self.x = s
@@ -163,7 +163,7 @@ class ResistorViewController: NSViewController {
         }
         backgroundQueue.async {
             print("Starting series/parallel calculations...")
-            Resistors.computeSeriesParallel(self.r.0, callback: { values in
+            Resistors.computeSeriesParallel(self.r.0, start: 0, callback: { values in
                 self.y = values   // update working values
             }, done: { sp in
                 self.y = sp        // final answer update
@@ -180,7 +180,7 @@ class ResistorViewController: NSViewController {
         }
         backgroundQueue.async {
             print("Starting parallel calculations...")
-            Resistors.computeParallel(self.r.0, callback: { values in
+            Resistors.computeParallel(self.r.0, start: 0, callback: { values in
                 self.z = values   // update working values
             }, done: { p in
                 self.z = p        // final answer update
