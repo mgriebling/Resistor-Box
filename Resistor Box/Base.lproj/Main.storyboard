@@ -480,14 +480,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ib3-JE-fIO">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="232.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uik-RD-lHJ">
-                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="232.5" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvU-3K-etO">
-                                                <rect key="frame" x="0.0" y="253" width="375" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="252.5" width="375" height="49"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -498,14 +498,14 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-TY-zb0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="232.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nnu-GM-H36">
-                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="232.5" width="375" height="20"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th7-S9-Jni">
-                                                <rect key="frame" x="0.0" y="253" width="375" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="252.5" width="375" height="49"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -610,14 +610,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-9R-ujH">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="253.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="237"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y6c-8c-Tpt">
-                                                <rect key="frame" x="0.0" y="253.5" width="375" height="22"/>
+                                                <rect key="frame" x="0.0" y="237" width="375" height="18.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwG-vW-HTB">
-                                                <rect key="frame" x="0.0" y="275.5" width="375" height="26"/>
+                                                <rect key="frame" x="0.0" y="255.5" width="375" height="46"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -628,14 +628,14 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-tZ-trm">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="253.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="237"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pG1-LA-LTK">
-                                                <rect key="frame" x="0.0" y="253.5" width="375" height="22"/>
+                                                <rect key="frame" x="0.0" y="237" width="375" height="18.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-u4-MKz">
-                                                <rect key="frame" x="0.0" y="275.5" width="375" height="26"/>
+                                                <rect key="frame" x="0.0" y="255.5" width="375" height="46"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -699,6 +699,130 @@
             </objects>
             <point key="canvasLocation" x="750" y="1013"/>
         </scene>
+        <!--Power Supply-->
+        <scene sceneID="qsi-Q9-ND6">
+            <objects>
+                <viewController id="mm9-Ct-Dfl" customClass="DividerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="30r-2u-YM1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loW-Sl-UCC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WN1-2R-dTf"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Vout:" id="EQU-S2-ROr">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem title="5V" id="UQy-VR-o82"/>
+                                    <barButtonItem title="Vf:" id="Jvr-ll-diE">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem title="1.25V" id="e2u-x4-Nu2"/>
+                                    <barButtonItem title="&gt;10KΩ" id="Gle-Lb-d29"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6gP-JV-2Tt"/>
+                                    <barButtonItem title="1%" id="Wtw-aT-0DN"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GHq-2O-VWq"/>
+                                </items>
+                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Jy2-NW-zc2">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="615-24-gfe">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zLZ-zT-2dj">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="257.5"/>
+                                            </imageView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4au-H1-UPc">
+                                                <rect key="frame" x="0.0" y="257.5" width="375" height="20"/>
+                                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5O-n8-Y4K">
+                                                <rect key="frame" x="0.0" y="277.5" width="375" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oSR-MY-7RP">
+                                        <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cGO-Yf-vSh">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="257.5"/>
+                                            </imageView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cqD-se-yhe">
+                                                <rect key="frame" x="0.0" y="257.5" width="375" height="20"/>
+                                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oD5-qh-T7W">
+                                                <rect key="frame" x="0.0" y="277.5" width="375" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zLZ-zT-2dj" firstAttribute="height" secondItem="cGO-Yf-vSh" secondAttribute="height" id="bsw-7n-u67"/>
+                                </constraints>
+                                <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually">
+                                    <mask key="constraints">
+                                        <exclude reference="bsw-7n-u67"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Jy2-NW-zc2" firstAttribute="bottom" secondItem="MvH-tl-3o3" secondAttribute="bottom" id="5mD-Xc-WPb"/>
+                            <constraint firstItem="MvH-tl-3o3" firstAttribute="trailing" secondItem="Jy2-NW-zc2" secondAttribute="trailing" id="H54-W3-O22"/>
+                            <constraint firstItem="loW-Sl-UCC" firstAttribute="leading" secondItem="MvH-tl-3o3" secondAttribute="leading" id="LHt-ZR-iSJ"/>
+                            <constraint firstItem="Jy2-NW-zc2" firstAttribute="top" secondItem="loW-Sl-UCC" secondAttribute="bottom" id="Vuu-m8-iJa"/>
+                            <constraint firstItem="Jy2-NW-zc2" firstAttribute="leading" secondItem="MvH-tl-3o3" secondAttribute="leading" id="XEc-bG-1vD"/>
+                            <constraint firstItem="loW-Sl-UCC" firstAttribute="trailing" secondItem="MvH-tl-3o3" secondAttribute="trailing" id="XeP-Fh-9Vn"/>
+                            <constraint firstItem="MvH-tl-3o3" firstAttribute="trailing" secondItem="Jy2-NW-zc2" secondAttribute="trailing" id="ufy-5p-ioe"/>
+                            <constraint firstItem="loW-Sl-UCC" firstAttribute="top" secondItem="MvH-tl-3o3" secondAttribute="top" id="zRU-1h-zE2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MvH-tl-3o3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Power Supply" image="Power" id="QZo-3c-3L6"/>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="s6b-GO-RoG">
+                            <connections>
+                                <action selector="sendResult:" destination="mm9-Ct-Dfl" id="KyW-V1-bRP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="cancel" id="G04-UK-umK">
+                            <connections>
+                                <action selector="cancelCalculations:" destination="mm9-Ct-Dfl" id="Iwh-he-kLp"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="actionButton" destination="s6b-GO-RoG" id="QXB-rR-jO5"/>
+                        <outlet property="cancelButton" destination="G04-UK-umK" id="DJL-EM-obR"/>
+                        <outlet property="collectionButton" destination="Wtw-aT-0DN" id="2bp-g2-wsd"/>
+                        <outlet property="desiredValue" destination="UQy-VR-o82" id="LRu-O5-IYL"/>
+                        <outlet property="divider1Activity" destination="4au-H1-UPc" id="CTs-d7-qDi"/>
+                        <outlet property="divider1Image" destination="zLZ-zT-2dj" id="qsA-qc-SRW"/>
+                        <outlet property="divider1Label" destination="d5O-n8-Y4K" id="HUz-xw-BUY"/>
+                        <outlet property="divider2Activity" destination="cqD-se-yhe" id="I74-2r-ACL"/>
+                        <outlet property="divider2Image" destination="cGO-Yf-vSh" id="wAL-qQ-KN3"/>
+                        <outlet property="divider2Label" destination="oD5-qh-T7W" id="DSs-3q-cfA"/>
+                        <outlet property="minResistance" destination="Gle-Lb-d29" id="FsZ-Ul-umw"/>
+                        <outlet property="toolBar" destination="loW-Sl-UCC" id="JcI-5R-DxM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cjS-On-ubm" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1639" y="785"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -713,6 +837,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="xLt-aK-mSj"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="acr-ZN-D4c" kind="relationship" relationship="viewControllers" id="Fs0-k3-OLQ"/>
+                        <segue destination="mm9-Ct-Dfl" kind="relationship" relationship="viewControllers" id="XQk-OE-Aqy"/>
                         <segue destination="gqK-ve-sEa" kind="relationship" relationship="viewControllers" id="poU-pL-Mj4"/>
                     </connections>
                 </tabBarController>
@@ -942,6 +1067,7 @@
         <image name="Divider2" width="54" height="25"/>
         <image name="Edit" width="33" height="25"/>
         <image name="Op Amp" width="28" height="25"/>
+        <image name="Power" width="37" height="25"/>
         <image name="Resistor" width="69" height="25"/>
         <image name="Resistor Collection" width="81" height="55"/>
     </resources>
