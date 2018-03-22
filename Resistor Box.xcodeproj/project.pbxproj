@@ -20,15 +20,14 @@
 		2F2F2C5C2036156300DD98AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5B2036156300DD98AE /* Assets.xcassets */; };
 		2F2F2C5F2036156300DD98AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */; };
 		2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C66203617B000DD98AE /* Resistors.swift */; };
+		2F53F8CC2062838E00034789 /* BaseViewMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53F8CA2062838E00034789 /* BaseViewMController.swift */; };
 		2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD9B5F206056AA00615394 /* BaseViewController.swift */; };
 		2FC933172056B2C700FE9688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC933162056B2C700FE9688 /* AppDelegate.swift */; };
-		2FC933192056B2C700FE9688 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC933182056B2C700FE9688 /* ViewController.swift */; };
 		2FC9331B2056B2C700FE9688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9331A2056B2C700FE9688 /* Assets.xcassets */; };
 		2FC9331E2056B2C700FE9688 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9331C2056B2C700FE9688 /* Main.storyboard */; };
 		2FC933252056B31B00FE9688 /* Resistors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C66203617B000DD98AE /* Resistors.swift */; };
 		2FC933262056B34B00FE9688 /* String+Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D4204EC48D00E948B5 /* String+Char.swift */; };
 		2FC933272056B34E00FE9688 /* Decimal+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */; };
-		2FC933292056B4B900FE9688 /* Includes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC933282056B4B900FE9688 /* Includes.swift */; };
 		2FC9332E2056C04F00FE9688 /* ResistorViewMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */; };
 		2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8FE842048268F000841AF /* ResistorImage.swift */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
@@ -55,15 +54,14 @@
 		2F2F2C5E2036156300DD98AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F2F2C602036156300DD98AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2F2C66203617B000DD98AE /* Resistors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resistors.swift; sourceTree = "<group>"; };
+		2F53F8CA2062838E00034789 /* BaseViewMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewMController.swift; sourceTree = "<group>"; };
 		2FAD9B5F206056AA00615394 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2FC933142056B2C700FE9688 /* Resistor Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resistor Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC933162056B2C700FE9688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2FC933182056B2C700FE9688 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FC9331A2056B2C700FE9688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FC9331D2056B2C700FE9688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FC9331F2056B2C700FE9688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FC933202056B2C700FE9688 /* Resistor_Box_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Resistor_Box_Mac.entitlements; sourceTree = "<group>"; };
-		2FC933282056B4B900FE9688 /* Includes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Includes.swift; sourceTree = "<group>"; };
 		2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorViewMController.swift; sourceTree = "<group>"; };
 		2FF8FE842048268F000841AF /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				47D8118A205D48470006B050 /* CollectionViewController.swift */,
 				47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */,
 				2FF8FE842048268F000841AF /* ResistorImage.swift */,
-				2FC933282056B4B900FE9688 /* Includes.swift */,
 				2F2F2C5B2036156300DD98AE /* Assets.xcassets */,
 				2F2F2C602036156300DD98AE /* Info.plist */,
 			);
@@ -143,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC933162056B2C700FE9688 /* AppDelegate.swift */,
-				2FC933182056B2C700FE9688 /* ViewController.swift */,
+				2F53F8CA2062838E00034789 /* BaseViewMController.swift */,
 				2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */,
 				2FC9331A2056B2C700FE9688 /* Assets.xcassets */,
 				2FC9331C2056B2C700FE9688 /* Main.storyboard */,
@@ -276,7 +273,6 @@
 				47CE31D720547454007AB17B /* EditViewController.swift in Sources */,
 				2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */,
 				2F1573D9204EC7CD00E948B5 /* ResistancePickerViewController.swift in Sources */,
-				2FC933292056B4B900FE9688 /* Includes.swift in Sources */,
 				2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */,
 				47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */,
 				2F23077E205BEBAF00B01CE1 /* DividerViewController.swift in Sources */,
@@ -299,9 +295,9 @@
 			files = (
 				47CE31DD2057D138007AB17B /* ResistorImageMac.swift in Sources */,
 				2FC9332E2056C04F00FE9688 /* ResistorViewMController.swift in Sources */,
+				2F53F8CC2062838E00034789 /* BaseViewMController.swift in Sources */,
 				2FC933262056B34B00FE9688 /* String+Char.swift in Sources */,
 				2FC933252056B31B00FE9688 /* Resistors.swift in Sources */,
-				2FC933192056B2C700FE9688 /* ViewController.swift in Sources */,
 				2FC933172056B2C700FE9688 /* AppDelegate.swift in Sources */,
 				2FC933272056B34E00FE9688 /* Decimal+Double.swift in Sources */,
 			);
@@ -483,11 +479,11 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 6389FT2N69;
+				DEVELOPMENT_TEAM = 37VFB869JC;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.Resistor-Box-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.c-inspirations.Resistor-Box-Mac";
 				PRODUCT_NAME = "Resistor Box";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -501,11 +497,11 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 6389FT2N69;
+				DEVELOPMENT_TEAM = 37VFB869JC;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.solinst.Resistor-Box-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.c-inspirations.Resistor-Box-Mac";
 				PRODUCT_NAME = "Resistor Box";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
