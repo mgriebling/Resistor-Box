@@ -1,5 +1,5 @@
 
-import Foundation
+import UIKit
 
 //********************************************************************************
 //
@@ -23,7 +23,7 @@ import Foundation
  
  ******************************************************************************** */
 
-class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
+class NumberPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
 
     typealias ValueChanged = (_ picker: NumberPicker) -> ()
     
@@ -133,7 +133,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    func getPickerNumberAsString(picker: PickerView) -> String {
+    func getPickerNumberAsString(picker: UIPickerView) -> String {
         var val = ""
         let columns = getNumberColumnCount()
         
@@ -473,7 +473,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    func getSelectedLabel(picker: PickerView) -> String {
+    func getSelectedLabel(picker: UIPickerView) -> String {
         var labelVal = ""
         if labels.count > 0 && columnValues.count > 0 {
             let columns = picker.numberOfComponents
@@ -491,7 +491,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    private func set(_ picker: PickerView, toCurrentValue val: Any) {
+    private func set(_ picker: UIPickerView, toCurrentValue val: Any) {
         if kindOfPicker == .minMax {
             let number = val as! Decimal
             value = number
@@ -570,7 +570,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    func set(_ picker: PickerView, toCurrentValue val: Any, label: String = "") {
+    func set(_ picker: UIPickerView, toCurrentValue val: Any, label: String = "") {
         set(picker, toCurrentValue:val)
         if label == "" { return }
         for i in 0..<labels.count {
@@ -591,7 +591,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    func numberOfComponents(in pickerView: PickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if kindOfPicker == .rate {
             return 2
         }
@@ -609,7 +609,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    func pickerView(_ pickerView: PickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 //        if kindOfPicker == .rate {
 //            if component == 0 {
 //                return rate!.maxIndexForTime
@@ -640,7 +640,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    private func stringFor(pickerView: PickerView, titleForRow row:Int, forComponent component:Int) -> String {
+    private func stringFor(pickerView: UIPickerView, titleForRow row:Int, forComponent component:Int) -> String {
         var string : String
         var component = component
         if kindOfPicker == .minMax {
@@ -685,12 +685,12 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    10 September 2013
      
      ******************************************************************************** */
-    private func fontForComponent(_ component: Int) -> Font {
-        let isPad = Device.current.userInterfaceIdiom == .pad
+    private func fontForComponent(_ component: Int) -> UIFont {
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
         if kindOfPicker == .number && !isPad && component == getNumberColumnCount() {
-            return Font.boldSystemFont(ofSize:12)
+            return UIFont.boldSystemFont(ofSize:12)
         } else {
-            return Font.boldSystemFont(ofSize:18)
+            return UIFont.boldSystemFont(ofSize:18)
         }
     }
     
@@ -702,18 +702,18 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    15 July 2013
      
      ******************************************************************************** */
-    func pickerView(_ pickerView: PickerView, viewForRow row: Int, forComponent component: Int, reusing view: View?) -> View {
-        var label : Label!
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label : UILabel!
         var view = view
         if view == nil {
-            label = Label(frame: Rect(x:0, y:0, width:250, height:50))
+            label = UILabel(frame: CGRect(x:0, y:0, width:250, height:50))
             view = label
         } else {
-            label = view as! Label
+            label = view as! UILabel
         }
         label.textAlignment = .center
-        label.textColor = Color.black
-        label.backgroundColor = Color.clear
+        label.textColor = UIColor.black
+        label.backgroundColor = UIColor.clear
         label.font = fontForComponent(component)
         label.text = stringFor(pickerView: pickerView, titleForRow:row, forComponent:component)
         label.lineBreakMode = .byTruncatingTail
@@ -731,7 +731,7 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    func pickerView(_ pickerView: PickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // update the internal number representation
         if kindOfPicker == .minMax {
             let column = columnValues[0]
@@ -779,11 +779,11 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
        - Date:    17 April 2013
      
      ******************************************************************************** */
-    func pickerView(_ pickerView: PickerView, widthForComponent component: Int) -> Float {
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         let OVERHEAD = 25
         let font = fontForComponent(component)
         let width = pickerView.bounds.size.width - 30
-        let overhead = Device.current.userInterfaceIdiom == .pad ? OVERHEAD : 2*OVERHEAD/3
+        let overhead = UIDevice.current.userInterfaceIdiom == .pad ? OVERHEAD : 2*OVERHEAD/3
         var string: NSAttributedString
         if kindOfPicker == .minMax {
             if component == 1 { return width * 0.3 }
@@ -792,18 +792,18 @@ class NumberPicker: NSObject, PickerViewDataSource, PickerViewDelegate {
             if component == 0 { return width * 0.3 }
             else { return width * 0.7 }
         } else {
-            let columnWidth = width / Float(columnValues.count)
+            let columnWidth = width / CGFloat(columnValues.count)
             if decimalColumn == component+1 {
                 let locale = NSLocale.current
                 let dp = locale.decimalSeparator!
                 string = NSAttributedString(string: "9 " + dp, attributes: [NSAttributedStringKey.font : font])
             } else if labels.count > 0 && component+1 == columnValues.count {
                 string = NSAttributedString(string: labels.last!, attributes: [NSAttributedStringKey.font : font])
-                return string.size().width+Float(overhead)
+                return string.size().width+CGFloat(overhead)
             } else {
                 string = NSAttributedString(string: "9", attributes: [NSAttributedStringKey.font : font])
             }
-            return min(columnWidth, string.size().width+Float(overhead))
+            return min(columnWidth, string.size().width+CGFloat(overhead))
         }
     }
     
