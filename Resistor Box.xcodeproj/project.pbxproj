@@ -30,6 +30,7 @@
 		2FC933272056B34E00FE9688 /* Decimal+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */; };
 		2FC9332E2056C04F00FE9688 /* ResistorViewMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */; };
 		2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8FE842048268F000841AF /* ResistorImage.swift */; };
+		470848B9206501C5009A2C6F /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470848B8206501C5009A2C6F /* PowerViewController.swift */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
 		47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */; };
 		47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */; };
@@ -64,6 +65,7 @@
 		2FC933202056B2C700FE9688 /* Resistor_Box_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Resistor_Box_Mac.entitlements; sourceTree = "<group>"; };
 		2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorViewMController.swift; sourceTree = "<group>"; };
 		2FF8FE842048268F000841AF /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
+		470848B8206501C5009A2C6F /* PowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerViewController.swift; sourceTree = "<group>"; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorCollectionViewCell.swift; sourceTree = "<group>"; };
 		47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				2F2F2C542036156300DD98AE /* ResistorViewController.swift */,
 				2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */,
 				2F23077D205BEBAF00B01CE1 /* DividerViewController.swift */,
+				470848B8206501C5009A2C6F /* PowerViewController.swift */,
 				47CE31D620547454007AB17B /* EditViewController.swift */,
 				47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */,
 				2F2F2C582036156300DD98AE /* Main.storyboard */,
@@ -283,6 +286,7 @@
 				2F1573D7204EC4F700E948B5 /* Decimal+Double.swift in Sources */,
 				47D81189205D41A80006B050 /* CollectionPicker.swift in Sources */,
 				2F2F2C532036156300DD98AE /* AppDelegate.swift in Sources */,
+				470848B9206501C5009A2C6F /* PowerViewController.swift in Sources */,
 				2F1573D3204EC3D400E948B5 /* NumberPicker.swift in Sources */,
 				2F23077C205BE53E00B01CE1 /* NumberPickerViewController.swift in Sources */,
 				2F2F2C552036156300DD98AE /* ResistorViewController.swift in Sources */,
@@ -479,7 +483,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 37VFB869JC;
+				DEVELOPMENT_TEAM = 6389FT2N69;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -497,7 +501,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 37VFB869JC;
+				DEVELOPMENT_TEAM = 6389FT2N69;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;

@@ -1,26 +1,32 @@
 //
-//  DividerViewController.swift
+//  PowerViewController.swift
 //  Resistor Box
 //
-//  Created by Michael Griebling on 2018-03-16.
+//  Created by Mike Griebling on 23 Mar 2018.
 //  Copyright © 2018 Solinst Canada. All rights reserved.
 //
 
 import UIKit
 
-class DividerViewController: BaseViewController {
+class PowerViewController: BaseViewController {
 
-    @IBOutlet weak var divider1Image: UIImageView!
-    @IBOutlet weak var divider1Activity: UIActivityIndicatorView!
-    @IBOutlet weak var divider1Label: UILabel!
+    @IBOutlet weak var feedbackButton: UIBarButtonItem!
+    @IBOutlet weak var power1Image: UIImageView!
+    @IBOutlet weak var power1Activity: UIActivityIndicatorView!
+    @IBOutlet weak var power1Label: UILabel!
     
-    @IBOutlet weak var divider2Image: UIImageView!
-    @IBOutlet weak var divider2Activity: UIActivityIndicatorView!
-    @IBOutlet weak var divider2Label: UILabel!
+    @IBOutlet weak var power2Image: UIImageView!
+    @IBOutlet weak var power2Activity: UIActivityIndicatorView!
+    @IBOutlet weak var power2Label: UILabel!
     
-    var divider : Double = 0.5 {
+    var outputVoltage : Double = 5.0 {
         didSet {
-            desiredValue.title = BaseViewController.formatter.string(from: NSNumber(value: divider))
+            desiredValue.title = BaseViewController.formatter.string(from: NSNumber(value: outputVoltage))! + "V"
+        }
+    }
+    var feedbackVoltage : Double = 1.25 {
+        didSet {
+             feedbackButton.title = BaseViewController.formatter.string(from: NSNumber(value: feedbackVoltage))! + "V"
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
@@ -29,27 +35,27 @@ class DividerViewController: BaseViewController {
         }
     }
     
-    func updateDivider1Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: divider1Image, imageFunc: ResistorImage.imageOfVoltageDivider(value1:value2:value3:), label: divider1Label)
+    func updatePower1Resistors (_ x : [Double], label: String) {
+        update(x, prefix: label, image: power1Image, imageFunc: ResistorImage.imageOfPowerSupply(value1:value2:value3:), label: power1Label)
     }
     
-    func updateDivider2Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: divider2Image, imageFunc: ResistorImage.imageOfVoltageDivider2(value1:value2:value3:), label: divider2Label)
+    func updatePower2Resistors (_ x : [Double], label: String) {
+        update(x, prefix: label, image: power2Image, imageFunc: ResistorImage.imageOfPowerSupply2(value1:value2:value3:), label: power2Label)
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        divider = Double(desiredValue.title!) ?? 0.5
+        outputVoltage = Double(desiredValue.title!.dropLast()) ?? 0.5
         minR = Resistors.parseString(String(minResistance.title!.dropFirst()))
         calculateOptimalValues()
     }
     
     override func formatValue(_ x: Double) -> String {
-        return "Ratio: " + BaseViewController.formatter.string(from: NSNumber(value: x))!
+        return "Vout: " + BaseViewController.formatter.string(from: NSNumber(value: feedbackVoltage/x))! + "V"
     }
     
     func refreshGUI (_ x : [Double], y : [Double], label : String) {
-        if calculating1 { updateDivider1Resistors(x, label: label) }
-        if calculating2 { updateDivider2Resistors(y, label: label) }
+        if calculating1 { updatePower1Resistors(x, label: label) }
+        if calculating2 { updatePower2Resistors(y, label: label) }
     }
     
     override func viewDidLoad() {
@@ -65,10 +71,10 @@ class DividerViewController: BaseViewController {
         }
         timedTask?.fire()     // refresh GUI to start
         
-        performCalculations("divider 1", value: divider, start: minR.0, x: &x, compute: Resistors.computeDivider1(_:start:callback:done:),
-                            calculating: &calculating1, update: updateDivider1Resistors(_:label:), activity: divider1Activity)
-        performCalculations("divider 2", value: divider, start: minR.0, x: &y, compute: Resistors.computeDivider2(_:start:callback:done:),
-                            calculating: &calculating2, update: updateDivider2Resistors(_:label:), activity: divider2Activity)
+        performCalculations("power 1", value: feedbackVoltage/outputVoltage, start: minR.0, x: &x, compute: Resistors.computeDivider1(_:start:callback:done:),
+                            calculating: &calculating1, update: updatePower1Resistors(_:label:), activity: power1Activity)
+        performCalculations("power 2", value: feedbackVoltage/outputVoltage, start: minR.0, x: &y, compute: Resistors.computeDivider2(_:start:callback:done:),
+                            calculating: &calculating2, update: updatePower2Resistors(_:label:), activity: power2Activity)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,12 +94,10 @@ class DividerViewController: BaseViewController {
             }
         case "EditGain":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.picker = NumberPicker(maxValue: Decimal(string: "1.99999")!, andIncrement: Decimal(string: "1.0")!)
-                vc.picker.maxValue = 1
-                vc.value = desiredValue.title!
+                vc.value = String(desiredValue.title!.dropLast())  // remove "V"
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
-                    wself.divider = Double(newValue) ?? 1
+                    wself.outputVoltage = Double(newValue) ?? 1
                     wself.calculateOptimalValues()
                 }
             }
@@ -110,5 +114,5 @@ class DividerViewController: BaseViewController {
         default: break
         }
     }
-    
+
 }

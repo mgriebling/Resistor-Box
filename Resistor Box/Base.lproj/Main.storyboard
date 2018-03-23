@@ -610,14 +610,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-9R-ujH">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="237"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y6c-8c-Tpt">
-                                                <rect key="frame" x="0.0" y="237" width="375" height="18.5"/>
+                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="250" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwG-vW-HTB">
-                                                <rect key="frame" x="0.0" y="255.5" width="375" height="46"/>
+                                                <rect key="frame" x="0.0" y="253" width="375" height="48.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -628,14 +628,14 @@
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-tZ-trm">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="237"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pG1-LA-LTK">
-                                                <rect key="frame" x="0.0" y="237" width="375" height="18.5"/>
+                                                <rect key="frame" x="0.0" y="233.5" width="375" height="19.5"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Working..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-u4-MKz">
-                                                <rect key="frame" x="0.0" y="255.5" width="375" height="46"/>
+                                                <rect key="frame" x="0.0" y="253" width="375" height="48.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -702,7 +702,7 @@
         <!--Power Supply-->
         <scene sceneID="qsi-Q9-ND6">
             <objects>
-                <viewController id="mm9-Ct-Dfl" customClass="DividerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mm9-Ct-Dfl" customClass="PowerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="30r-2u-YM1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -794,29 +794,30 @@
                     <toolbarItems>
                         <barButtonItem systemItem="action" id="s6b-GO-RoG">
                             <connections>
-                                <action selector="sendResult:" destination="mm9-Ct-Dfl" id="KyW-V1-bRP"/>
+                                <action selector="sendResult:" destination="mm9-Ct-Dfl" id="GrL-2Q-GoF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem systemItem="cancel" id="G04-UK-umK">
                             <connections>
-                                <action selector="cancelCalculations:" destination="mm9-Ct-Dfl" id="Iwh-he-kLp"/>
+                                <action selector="cancelCalculations:" destination="mm9-Ct-Dfl" id="p4Q-ag-YGU"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="actionButton" destination="s6b-GO-RoG" id="QXB-rR-jO5"/>
-                        <outlet property="cancelButton" destination="G04-UK-umK" id="DJL-EM-obR"/>
-                        <outlet property="collectionButton" destination="Wtw-aT-0DN" id="2bp-g2-wsd"/>
-                        <outlet property="desiredValue" destination="UQy-VR-o82" id="LRu-O5-IYL"/>
-                        <outlet property="divider1Activity" destination="4au-H1-UPc" id="CTs-d7-qDi"/>
-                        <outlet property="divider1Image" destination="zLZ-zT-2dj" id="qsA-qc-SRW"/>
-                        <outlet property="divider1Label" destination="d5O-n8-Y4K" id="HUz-xw-BUY"/>
-                        <outlet property="divider2Activity" destination="cqD-se-yhe" id="I74-2r-ACL"/>
-                        <outlet property="divider2Image" destination="cGO-Yf-vSh" id="wAL-qQ-KN3"/>
-                        <outlet property="divider2Label" destination="oD5-qh-T7W" id="DSs-3q-cfA"/>
-                        <outlet property="minResistance" destination="Gle-Lb-d29" id="FsZ-Ul-umw"/>
-                        <outlet property="toolBar" destination="loW-Sl-UCC" id="JcI-5R-DxM"/>
+                        <outlet property="actionButton" destination="s6b-GO-RoG" id="6Er-CK-9vL"/>
+                        <outlet property="cancelButton" destination="G04-UK-umK" id="zfY-2a-HWL"/>
+                        <outlet property="collectionButton" destination="Wtw-aT-0DN" id="KdI-LR-u5C"/>
+                        <outlet property="desiredValue" destination="UQy-VR-o82" id="VX0-RU-Xoc"/>
+                        <outlet property="feedbackButton" destination="e2u-x4-Nu2" id="of7-24-GcR"/>
+                        <outlet property="minResistance" destination="Gle-Lb-d29" id="R25-ad-E5q"/>
+                        <outlet property="power1Activity" destination="4au-H1-UPc" id="tmc-tT-vS0"/>
+                        <outlet property="power1Image" destination="zLZ-zT-2dj" id="tzl-ZX-qzT"/>
+                        <outlet property="power1Label" destination="d5O-n8-Y4K" id="rs6-jC-65d"/>
+                        <outlet property="power2Activity" destination="cqD-se-yhe" id="yaf-IN-e1W"/>
+                        <outlet property="power2Image" destination="cGO-Yf-vSh" id="Nie-xM-v5r"/>
+                        <outlet property="power2Label" destination="oD5-qh-T7W" id="hZs-DN-Uym"/>
+                        <outlet property="toolBar" destination="loW-Sl-UCC" id="CXZ-OS-m9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjS-On-ubm" sceneMemberID="firstResponder"/>
