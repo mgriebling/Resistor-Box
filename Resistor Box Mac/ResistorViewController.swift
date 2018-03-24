@@ -33,15 +33,15 @@ class ResistorViewController: BaseViewController {
     }
     
     func updateSeriesResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors(value1:value2:value3:), label: seriesLabel)
+        update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors)
     }
     
     func updateSeriesParallelResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: seriesParallelResistors, imageFunc: ResistorImage.imageOfSeriesParallelResistors(value1:value2:value3:), label: seriesParallelLabel)
+        update(x, prefix: label, image: seriesParallelResistors, imageFunc: ResistorImage.imageOfSeriesParallelResistors)
     }
     
     func updateParallelResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: parallelResistors, imageFunc: ResistorImage.imageOfParallelResistors(value1:value2:value3:), label: parallelLabel)
+        update(x, prefix: label, image: parallelResistors, imageFunc: ResistorImage.imageOfParallelResistors)
     }
     
     func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
@@ -52,10 +52,6 @@ class ResistorViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // install a swipe gesture to display user settings
-        let gesture = UISwipeGestureRecognizer()
-        
         calculateOptimalValues()
     }
     

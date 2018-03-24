@@ -64,14 +64,14 @@ class BaseViewController: NSViewController {
     }
     
     func update(_ x : [Double], prefix: String, image: NSImageView,
-                imageFunc: @escaping (_ value1: String, _ value2: String, _ value3: String) -> (NSImage), label: NSTextField) {
+                imageFunc: @escaping (String, String, String, String) -> (NSImage)) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
         let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
         let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : formatValue(x[3])
         let error = x.count == 0 ? "???" : BaseViewController.formatter.string(from: NSNumber(value: x[4]))!
-        image.image = imageFunc(r1v, r2v, r3v)
-        label.stringValue = "\(prefix) \(rt); error: \(error)% with \(Resistors.active) resistors"
+        let label = "\(prefix) \(rt); error: \(error)% with \(Resistors.active) resistors"
+        image.image = imageFunc(r1v, r2v, r3v, label)
     }
     
     func performCalculations(_ label : String, value : Double, start: Double, x : inout [Double],
