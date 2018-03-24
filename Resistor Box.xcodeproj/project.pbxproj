@@ -20,7 +20,7 @@
 		2F2F2C5C2036156300DD98AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5B2036156300DD98AE /* Assets.xcassets */; };
 		2F2F2C5F2036156300DD98AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */; };
 		2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C66203617B000DD98AE /* Resistors.swift */; };
-		2F53F8CC2062838E00034789 /* BaseViewMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53F8CA2062838E00034789 /* BaseViewMController.swift */; };
+		2F53F8CC2062838E00034789 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53F8CA2062838E00034789 /* BaseViewController.swift */; };
 		2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD9B5F206056AA00615394 /* BaseViewController.swift */; };
 		2FC933172056B2C700FE9688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC933162056B2C700FE9688 /* AppDelegate.swift */; };
 		2FC9331B2056B2C700FE9688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9331A2056B2C700FE9688 /* Assets.xcassets */; };
@@ -28,13 +28,13 @@
 		2FC933252056B31B00FE9688 /* Resistors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C66203617B000DD98AE /* Resistors.swift */; };
 		2FC933262056B34B00FE9688 /* String+Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D4204EC48D00E948B5 /* String+Char.swift */; };
 		2FC933272056B34E00FE9688 /* Decimal+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */; };
-		2FC9332E2056C04F00FE9688 /* ResistorViewMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */; };
+		2FC9332E2056C04F00FE9688 /* ResistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9332D2056C04F00FE9688 /* ResistorViewController.swift */; };
 		2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8FE842048268F000841AF /* ResistorImage.swift */; };
 		470848B9206501C5009A2C6F /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470848B8206501C5009A2C6F /* PowerViewController.swift */; };
+		470848BB20665090009A2C6F /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470848BA20665090009A2C6F /* ResistorImage.swift */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
 		47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */; };
 		47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */; };
-		47CE31DD2057D138007AB17B /* ResistorImageMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31DC2057D138007AB17B /* ResistorImageMac.swift */; };
 		47D81189205D41A80006B050 /* CollectionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D81188205D41A80006B050 /* CollectionPicker.swift */; };
 		47D8118B205D48470006B050 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8118A205D48470006B050 /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +55,7 @@
 		2F2F2C5E2036156300DD98AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F2F2C602036156300DD98AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2F2C66203617B000DD98AE /* Resistors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resistors.swift; sourceTree = "<group>"; };
-		2F53F8CA2062838E00034789 /* BaseViewMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewMController.swift; sourceTree = "<group>"; };
+		2F53F8CA2062838E00034789 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2FAD9B5F206056AA00615394 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2FC933142056B2C700FE9688 /* Resistor Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resistor Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC933162056B2C700FE9688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,13 +63,13 @@
 		2FC9331D2056B2C700FE9688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FC9331F2056B2C700FE9688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FC933202056B2C700FE9688 /* Resistor_Box_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Resistor_Box_Mac.entitlements; sourceTree = "<group>"; };
-		2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorViewMController.swift; sourceTree = "<group>"; };
+		2FC9332D2056C04F00FE9688 /* ResistorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorViewController.swift; sourceTree = "<group>"; };
 		2FF8FE842048268F000841AF /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		470848B8206501C5009A2C6F /* PowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerViewController.swift; sourceTree = "<group>"; };
+		470848BA20665090009A2C6F /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorCollectionViewCell.swift; sourceTree = "<group>"; };
 		47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGeneratorViewController.swift; sourceTree = "<group>"; };
-		47CE31DC2057D138007AB17B /* ResistorImageMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImageMac.swift; sourceTree = "<group>"; };
 		47D81188205D41A80006B050 /* CollectionPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPicker.swift; sourceTree = "<group>"; };
 		47D8118A205D48470006B050 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		47D8118C205E8D7F0006B050 /* Resistor Box.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Resistor Box.entitlements"; sourceTree = "<group>"; };
@@ -142,13 +142,13 @@
 		2FC933152056B2C700FE9688 /* Resistor Box Mac */ = {
 			isa = PBXGroup;
 			children = (
+				470848BA20665090009A2C6F /* ResistorImage.swift */,
 				2FC933162056B2C700FE9688 /* AppDelegate.swift */,
-				2F53F8CA2062838E00034789 /* BaseViewMController.swift */,
-				2FC9332D2056C04F00FE9688 /* ResistorViewMController.swift */,
+				2F53F8CA2062838E00034789 /* BaseViewController.swift */,
+				2FC9332D2056C04F00FE9688 /* ResistorViewController.swift */,
 				2FC9331A2056B2C700FE9688 /* Assets.xcassets */,
 				2FC9331C2056B2C700FE9688 /* Main.storyboard */,
 				2FC9331F2056B2C700FE9688 /* Info.plist */,
-				47CE31DC2057D138007AB17B /* ResistorImageMac.swift */,
 				2FC933202056B2C700FE9688 /* Resistor_Box_Mac.entitlements */,
 			);
 			path = "Resistor Box Mac";
@@ -297,12 +297,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47CE31DD2057D138007AB17B /* ResistorImageMac.swift in Sources */,
-				2FC9332E2056C04F00FE9688 /* ResistorViewMController.swift in Sources */,
-				2F53F8CC2062838E00034789 /* BaseViewMController.swift in Sources */,
+				2FC9332E2056C04F00FE9688 /* ResistorViewController.swift in Sources */,
+				2F53F8CC2062838E00034789 /* BaseViewController.swift in Sources */,
 				2FC933262056B34B00FE9688 /* String+Char.swift in Sources */,
 				2FC933252056B31B00FE9688 /* Resistors.swift in Sources */,
 				2FC933172056B2C700FE9688 /* AppDelegate.swift in Sources */,
+				470848BB20665090009A2C6F /* ResistorImage.swift in Sources */,
 				2FC933272056B34E00FE9688 /* Decimal+Double.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
