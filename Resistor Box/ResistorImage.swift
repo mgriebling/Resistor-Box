@@ -16,8 +16,10 @@ import UIKit
 public class ResistorImage : NSObject {
 
     //// Drawing Methods
+    
+    static let euroResistor = false
 
-    @objc dynamic public class func drawResistor(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 153, height: 55), resizing: ResizingBehavior = .aspectFit, resistorValue: String = "") {
+    @objc dynamic public class func drawResistor(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 153, height: 55), resizing: ResizingBehavior = .aspectFit, resistorValue: String = "2.345K") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -26,25 +28,41 @@ public class ResistorImage : NSObject {
         let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 153, height: 55), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 153, y: resizedFrame.height / 55)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 153, resizedFrame.height / 55)
 
 
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 2, y: 37))
-        bezierPath.addCurve(to: CGPoint(x: 26, y: 37), controlPoint1: CGPoint(x: 26, y: 37), controlPoint2: CGPoint(x: 26, y: 37))
-        bezierPath.addLine(to: CGPoint(x: 37, y: 21))
-        bezierPath.addLine(to: CGPoint(x: 54, y: 53))
-        bezierPath.addLine(to: CGPoint(x: 70, y: 21))
-        bezierPath.addLine(to: CGPoint(x: 86, y: 53))
-        bezierPath.addLine(to: CGPoint(x: 103, y: 21))
-        bezierPath.addCurve(to: CGPoint(x: 119, y: 53), controlPoint1: CGPoint(x: 103, y: 21), controlPoint2: CGPoint(x: 119, y: 55))
-        bezierPath.addCurve(to: CGPoint(x: 127, y: 37), controlPoint1: CGPoint(x: 119, y: 51), controlPoint2: CGPoint(x: 127, y: 37))
-        bezierPath.addLine(to: CGPoint(x: 151, y: 37))
-        UIColor.black.setStroke()
-        bezierPath.lineWidth = 3
-        bezierPath.lineCapStyle = .round
-        bezierPath.lineJoinStyle = .round
-        bezierPath.stroke()
+
+        //// Shadow Declarations
+        let shadow2 = NSShadow()
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
+
+        //// Variable Declarations
+        let ameriResistor = !euroResistor
+
+        if (ameriResistor) {
+            //// Bezier Drawing
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 2, y: 37))
+            bezierPath.addCurve(to: CGPoint(x: 26, y: 37), controlPoint1: CGPoint(x: 26, y: 37), controlPoint2: CGPoint(x: 26, y: 37))
+            bezierPath.addLine(to: CGPoint(x: 37, y: 21))
+            bezierPath.addLine(to: CGPoint(x: 54, y: 53))
+            bezierPath.addLine(to: CGPoint(x: 70, y: 21))
+            bezierPath.addLine(to: CGPoint(x: 86, y: 53))
+            bezierPath.addLine(to: CGPoint(x: 103, y: 21))
+            bezierPath.addCurve(to: CGPoint(x: 119, y: 53), controlPoint1: CGPoint(x: 103, y: 21), controlPoint2: CGPoint(x: 119, y: 55))
+            bezierPath.addCurve(to: CGPoint(x: 127, y: 37), controlPoint1: CGPoint(x: 119, y: 51), controlPoint2: CGPoint(x: 127, y: 37))
+            bezierPath.addLine(to: CGPoint(x: 151, y: 37))
+            context.saveGState()
+            context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
+            UIColor.black.setStroke()
+            bezierPath.lineWidth = 3
+            bezierPath.lineCapStyle = .round
+            bezierPath.lineJoinStyle = .round
+            bezierPath.stroke()
+            context.restoreGState()
+        }
 
 
         //// Text Drawing
@@ -62,36 +80,61 @@ public class ResistorImage : NSObject {
         context.clip(to: textRect)
         resistorValue.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
         context.restoreGState()
+
+
+        if (euroResistor) {
+            //// Bezier 2 Drawing
+            let bezier2Path = UIBezierPath()
+            bezier2Path.move(to: CGPoint(x: 24.08, y: 53.5))
+            bezier2Path.addLine(to: CGPoint(x: 127.89, y: 53.5))
+            bezier2Path.addLine(to: CGPoint(x: 127.89, y: 20.5))
+            bezier2Path.addLine(to: CGPoint(x: 24.08, y: 20.5))
+            bezier2Path.addLine(to: CGPoint(x: 24.08, y: 53.5))
+            bezier2Path.close()
+            bezier2Path.move(to: CGPoint(x: 128.92, y: 37.5))
+            bezier2Path.addLine(to: CGPoint(x: 150.5, y: 37.5))
+            bezier2Path.move(to: CGPoint(x: 2.5, y: 37.5))
+            bezier2Path.addLine(to: CGPoint(x: 24.08, y: 37.5))
+            context.saveGState()
+            context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
+            UIColor.black.setStroke()
+            bezier2Path.lineWidth = 3
+            bezier2Path.lineCapStyle = .round
+            bezier2Path.stroke()
+            context.restoreGState()
+        }
         
         context.restoreGState()
 
     }
 
-    @objc dynamic public class func drawSeriesResistors(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 416, height: 69), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
+    @objc dynamic public class func drawSeriesResistors(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 416, height: 109), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 416, height: 69), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 416, height: 109), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 416, y: resizedFrame.height / 69)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 416, resizedFrame.height / 69)
+        context.scaleBy(x: resizedFrame.width / 416, y: resizedFrame.height / 109)
 
 
+        //// Color Declarations
+        let gradient4Color = UIColor(red: 0.519, green: 0.979, blue: 0.519, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
 
-        //// Shadow Declarations
-        let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        //// Gradient Declarations
+        let gradient4 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, gradient4Color.cgColor] as CFArray, locations: [0, 1])!
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 416, height: 109))
+        context.saveGState()
+        rectanglePath.addClip()
+        context.drawLinearGradient(gradient4, start: CGPoint(x: 208, y: -0), end: CGPoint(x: 208, y: 109), options: [])
+        context.restoreGState()
+
 
         //// Group
-        context.saveGState()
-        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
-        context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-
         //// Symbol Drawing
         let symbolRect = CGRect(x: 1, y: 5, width: 153, height: 55)
         context.saveGState()
@@ -122,40 +165,68 @@ public class ResistorImage : NSObject {
         context.restoreGState()
 
 
-        context.endTransparencyLayer()
+
+
+        //// Text Drawing
+        let textRect = CGRect(x: 1, y: 69, width: 415, height: 40)
+        let textPath = UIBezierPath(rect: textRect)
+        color5.setFill()
+        textPath.fill()
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
         context.restoreGState()
         
         context.restoreGState()
 
     }
 
-    @objc dynamic public class func drawSeriesParallelResistors(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 359, height: 128), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
+    @objc dynamic public class func drawSeriesParallelResistors(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 359, height: 169), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 359, height: 128), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 359, height: 169), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 359, y: resizedFrame.height / 128)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 359, resizedFrame.height / 128)
+        context.scaleBy(x: resizedFrame.width / 359, y: resizedFrame.height / 169)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 359, resizedFrame.height / 169)
 
 
+        //// Color Declarations
+        let gradient3Color = UIColor(red: 0.719, green: 0.719, blue: 1.000, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient3 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, gradient3Color.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
         let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
 
-        //// Group
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 359, height: 169))
         context.saveGState()
-        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
-        context.beginTransparencyLayer(auxiliaryInfo: nil)
+        rectanglePath.addClip()
+        context.drawLinearGradient(gradient3, start: CGPoint(x: 179.5, y: -0), end: CGPoint(x: 179.5, y: 169), options: [])
+        context.restoreGState()
 
 
+        //// Group 3
+        //// Group 2
         //// Symbol Drawing
-        let symbolRect = CGRect(x: 8, y: 1, width: 153, height: 55)
+        let symbolRect = CGRect(x: 11, y: 1, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbolRect)
         context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
@@ -165,7 +236,7 @@ public class ResistorImage : NSObject {
 
 
         //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 154, y: 1, width: 153, height: 55)
+        let symbol2Rect = CGRect(x: 157, y: 1, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbol2Rect)
         context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
@@ -175,7 +246,7 @@ public class ResistorImage : NSObject {
 
 
         //// Symbol 3 Drawing
-        let symbol3Rect = CGRect(x: 154, y: 68, width: 153, height: 55)
+        let symbol3Rect = CGRect(x: 157, y: 68, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbol3Rect)
         context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
@@ -184,10 +255,18 @@ public class ResistorImage : NSObject {
         context.restoreGState()
 
 
+
+
+        //// Group
+        context.saveGState()
+        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 155, y: 105))
-        bezierPath.addLine(to: CGPoint(x: 155, y: 39))
+        bezierPath.move(to: CGPoint(x: 158, y: 105))
+        bezierPath.addLine(to: CGPoint(x: 158, y: 39))
         UIColor.black.setStroke()
         bezierPath.lineWidth = 3
         bezierPath.lineCapStyle = .round
@@ -195,15 +274,15 @@ public class ResistorImage : NSObject {
 
 
         //// Oval Drawing
-        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 150, y: 33, width: 10, height: 10))
+        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 153, y: 33, width: 10, height: 10))
         UIColor.black.setFill()
         ovalPath.fill()
 
 
         //// Bezier 2 Drawing
         let bezier2Path = UIBezierPath()
-        bezier2Path.move(to: CGPoint(x: 305, y: 104))
-        bezier2Path.addLine(to: CGPoint(x: 305, y: 38))
+        bezier2Path.move(to: CGPoint(x: 308, y: 104))
+        bezier2Path.addLine(to: CGPoint(x: 308, y: 38))
         UIColor.black.setStroke()
         bezier2Path.lineWidth = 3
         bezier2Path.lineCapStyle = .round
@@ -211,15 +290,15 @@ public class ResistorImage : NSObject {
 
 
         //// Oval 2 Drawing
-        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 300, y: 33, width: 10, height: 10))
+        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 303, y: 33, width: 10, height: 10))
         UIColor.black.setFill()
         oval2Path.fill()
 
 
         //// Bezier 3 Drawing
         let bezier3Path = UIBezierPath()
-        bezier3Path.move(to: CGPoint(x: 305.5, y: 37.5))
-        bezier3Path.addLine(to: CGPoint(x: 343.5, y: 37.5))
+        bezier3Path.move(to: CGPoint(x: 308.5, y: 37.5))
+        bezier3Path.addLine(to: CGPoint(x: 346.5, y: 37.5))
         UIColor.black.setStroke()
         bezier3Path.lineWidth = 3
         bezier3Path.lineCapStyle = .round
@@ -228,38 +307,70 @@ public class ResistorImage : NSObject {
 
         context.endTransparencyLayer()
         context.restoreGState()
+
+
+
+
+        //// Text Drawing
+        let textRect = CGRect(x: 0, y: 129, width: 359, height: 40)
+        let textPath = UIBezierPath(rect: textRect)
+        color5.setFill()
+        textPath.fill()
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
+        context.restoreGState()
         
         context.restoreGState()
 
     }
 
-    @objc dynamic public class func drawParallelResistors(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 260, height: 193), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value3: String = "33.3K") {
+    @objc dynamic public class func drawParallelResistors(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 391, height: 235), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 260, height: 193), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 391, height: 235), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 260, y: resizedFrame.height / 193)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 260, resizedFrame.height / 193)
+        context.scaleBy(x: resizedFrame.width / 391, y: resizedFrame.height / 235)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 391, resizedFrame.height / 235)
 
 
+        //// Color Declarations
+        let gradient2Color3 = UIColor(red: 0.929, green: 0.520, blue: 0.520, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient2 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: gradient2Color3).cgColor, gradient2Color3.cgColor] as CFArray, locations: [0, 0.48, 1])!
 
         //// Shadow Declarations
         let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
 
-        //// Group
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 391, height: 235))
         context.saveGState()
-        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
-        context.beginTransparencyLayer(auxiliaryInfo: nil)
+        rectanglePath.addClip()
+        context.drawLinearGradient(gradient2, start: CGPoint(x: 195.5, y: -0), end: CGPoint(x: 195.5, y: 235), options: [])
+        context.restoreGState()
 
 
+        //// Group 3
+        //// Group 2
         //// Symbol Drawing
-        let symbolRect = CGRect(x: 55, y: 134, width: 153, height: 55)
+        let symbolRect = CGRect(x: 120, y: 134, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbolRect)
         context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
@@ -269,7 +380,7 @@ public class ResistorImage : NSObject {
 
 
         //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 56, y: 1, width: 153, height: 55)
+        let symbol2Rect = CGRect(x: 121, y: 1, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbol2Rect)
         context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
@@ -279,19 +390,27 @@ public class ResistorImage : NSObject {
 
 
         //// Symbol 3 Drawing
-        let symbol3Rect = CGRect(x: 56, y: 68, width: 153, height: 55)
+        let symbol3Rect = CGRect(x: 121, y: 68, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbol3Rect)
         context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
 
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value3)
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value2)
         context.restoreGState()
+
+
+
+
+        //// Group
+        context.saveGState()
+        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
 
 
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 57, y: 105))
-        bezierPath.addLine(to: CGPoint(x: 57, y: 39))
+        bezierPath.move(to: CGPoint(x: 122, y: 105))
+        bezierPath.addLine(to: CGPoint(x: 122, y: 39))
         UIColor.black.setStroke()
         bezierPath.lineWidth = 3
         bezierPath.lineCapStyle = .round
@@ -299,15 +418,15 @@ public class ResistorImage : NSObject {
 
 
         //// Oval Drawing
-        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 52, y: 33, width: 10, height: 10))
+        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 117, y: 33, width: 10, height: 10))
         UIColor.black.setFill()
         ovalPath.fill()
 
 
         //// Bezier 2 Drawing
         let bezier2Path = UIBezierPath()
-        bezier2Path.move(to: CGPoint(x: 207, y: 104))
-        bezier2Path.addLine(to: CGPoint(x: 207, y: 38))
+        bezier2Path.move(to: CGPoint(x: 272, y: 104))
+        bezier2Path.addLine(to: CGPoint(x: 272, y: 38))
         UIColor.black.setStroke()
         bezier2Path.lineWidth = 3
         bezier2Path.lineCapStyle = .round
@@ -315,15 +434,15 @@ public class ResistorImage : NSObject {
 
 
         //// Oval 2 Drawing
-        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 202, y: 33, width: 10, height: 10))
+        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 267, y: 33, width: 10, height: 10))
         UIColor.black.setFill()
         oval2Path.fill()
 
 
         //// Bezier 3 Drawing
         let bezier3Path = UIBezierPath()
-        bezier3Path.move(to: CGPoint(x: 207.5, y: 37.5))
-        bezier3Path.addLine(to: CGPoint(x: 245.5, y: 37.5))
+        bezier3Path.move(to: CGPoint(x: 272.5, y: 37.5))
+        bezier3Path.addLine(to: CGPoint(x: 310.5, y: 37.5))
         UIColor.black.setStroke()
         bezier3Path.lineWidth = 3
         bezier3Path.lineCapStyle = .round
@@ -332,8 +451,8 @@ public class ResistorImage : NSObject {
 
         //// Bezier 4 Drawing
         let bezier4Path = UIBezierPath()
-        bezier4Path.move(to: CGPoint(x: 14.5, y: 37.5))
-        bezier4Path.addLine(to: CGPoint(x: 52.5, y: 37.5))
+        bezier4Path.move(to: CGPoint(x: 79.5, y: 37.5))
+        bezier4Path.addLine(to: CGPoint(x: 117.5, y: 37.5))
         UIColor.black.setStroke()
         bezier4Path.lineWidth = 3
         bezier4Path.lineCapStyle = .round
@@ -342,8 +461,8 @@ public class ResistorImage : NSObject {
 
         //// Bezier 5 Drawing
         let bezier5Path = UIBezierPath()
-        bezier5Path.move(to: CGPoint(x: 57, y: 171))
-        bezier5Path.addLine(to: CGPoint(x: 57, y: 105))
+        bezier5Path.move(to: CGPoint(x: 122, y: 171))
+        bezier5Path.addLine(to: CGPoint(x: 122, y: 105))
         UIColor.black.setStroke()
         bezier5Path.lineWidth = 3
         bezier5Path.lineCapStyle = .round
@@ -351,15 +470,15 @@ public class ResistorImage : NSObject {
 
 
         //// Oval 3 Drawing
-        let oval3Path = UIBezierPath(ovalIn: CGRect(x: 52, y: 99, width: 10, height: 10))
+        let oval3Path = UIBezierPath(ovalIn: CGRect(x: 117, y: 99, width: 10, height: 10))
         UIColor.black.setFill()
         oval3Path.fill()
 
 
         //// Bezier 6 Drawing
         let bezier6Path = UIBezierPath()
-        bezier6Path.move(to: CGPoint(x: 57, y: 105))
-        bezier6Path.addLine(to: CGPoint(x: 57, y: 39))
+        bezier6Path.move(to: CGPoint(x: 122, y: 105))
+        bezier6Path.addLine(to: CGPoint(x: 122, y: 39))
         UIColor.black.setStroke()
         bezier6Path.lineWidth = 3
         bezier6Path.lineCapStyle = .round
@@ -367,15 +486,15 @@ public class ResistorImage : NSObject {
 
 
         //// Oval 4 Drawing
-        let oval4Path = UIBezierPath(ovalIn: CGRect(x: 52, y: 33, width: 10, height: 10))
+        let oval4Path = UIBezierPath(ovalIn: CGRect(x: 117, y: 33, width: 10, height: 10))
         UIColor.black.setFill()
         oval4Path.fill()
 
 
         //// Bezier 7 Drawing
         let bezier7Path = UIBezierPath()
-        bezier7Path.move(to: CGPoint(x: 207, y: 171))
-        bezier7Path.addLine(to: CGPoint(x: 207, y: 105))
+        bezier7Path.move(to: CGPoint(x: 272, y: 171))
+        bezier7Path.addLine(to: CGPoint(x: 272, y: 105))
         UIColor.black.setStroke()
         bezier7Path.lineWidth = 3
         bezier7Path.lineCapStyle = .round
@@ -383,61 +502,77 @@ public class ResistorImage : NSObject {
 
 
         //// Oval 5 Drawing
-        let oval5Path = UIBezierPath(ovalIn: CGRect(x: 202, y: 99, width: 10, height: 10))
+        let oval5Path = UIBezierPath(ovalIn: CGRect(x: 267, y: 99, width: 10, height: 10))
         UIColor.black.setFill()
         oval5Path.fill()
 
 
         context.endTransparencyLayer()
         context.restoreGState()
+
+
+
+
+        //// Text Drawing
+        let textRect = CGRect(x: 0, y: 194, width: 391, height: 40)
+        let textPath = UIBezierPath(rect: textRect)
+        color5.setFill()
+        textPath.fill()
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
+        context.restoreGState()
         
         context.restoreGState()
 
     }
 
-    @objc dynamic public class func drawVoltageDivider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 354, height: 169), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
+    @objc dynamic public class func drawVoltageDivider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 354, height: 207), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 354, height: 169), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 354, height: 207), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 354, y: resizedFrame.height / 169)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 354, resizedFrame.height / 169)
+        context.scaleBy(x: resizedFrame.width / 354, y: resizedFrame.height / 207)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 354, resizedFrame.height / 207)
 
 
+        //// Color Declarations
+        let gradient3Color = UIColor(red: 0.719, green: 0.719, blue: 1.000, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient3 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, gradient3Color.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
         let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 354, height: 207))
+        context.saveGState()
+        rectanglePath.addClip()
+        context.drawLinearGradient(gradient3, start: CGPoint(x: 177, y: -0), end: CGPoint(x: 177, y: 207), options: [])
+        context.restoreGState()
+
 
         //// Group
         context.saveGState()
         context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-
-        //// Symbol Drawing
-        let symbolRect = CGRect(x: 35, y: 70, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbolRect)
-        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value1)
-        context.restoreGState()
-
-
-        //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 182, y: 70, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol2Rect)
-        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
-        context.restoreGState()
 
 
         //// Bezier Drawing
@@ -520,6 +655,36 @@ public class ResistorImage : NSObject {
         context.restoreGState()
 
 
+        //// Oval 2 Drawing
+        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 329, y: 102, width: 10, height: 10))
+        UIColor.black.setFill()
+        oval2Path.fill()
+
+
+        context.endTransparencyLayer()
+        context.restoreGState()
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 35, y: 70, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value1)
+        context.restoreGState()
+
+
+        //// Symbol 2 Drawing
+        let symbol2Rect = CGRect(x: 182, y: 70, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol2Rect)
+        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
+        context.restoreGState()
+
+
         //// Symbol 3 Drawing
         let symbol3Rect = CGRect(x: 182, y: 8, width: 153, height: 55)
         context.saveGState()
@@ -530,62 +695,66 @@ public class ResistorImage : NSObject {
         context.restoreGState()
 
 
-        //// Oval 2 Drawing
-        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 329, y: 102, width: 10, height: 10))
-        UIColor.black.setFill()
-        oval2Path.fill()
+        //// Text Drawing
+        let textRect = CGRect(x: 0, y: 167, width: 354, height: 40)
+        let textPath = UIBezierPath(rect: textRect)
+        color5.setFill()
+        textPath.fill()
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
 
-
-        context.endTransparencyLayer()
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
         context.restoreGState()
         
         context.restoreGState()
 
     }
 
-    @objc dynamic public class func drawOpAmpGain(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 416, height: 163), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
+    @objc dynamic public class func drawOpAmpGain(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 416, height: 196), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 416, height: 163), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 416, height: 196), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 416, y: resizedFrame.height / 163)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 416, resizedFrame.height / 163)
+        context.scaleBy(x: resizedFrame.width / 416, y: resizedFrame.height / 196)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 416, resizedFrame.height / 196)
 
 
+        //// Color Declarations
+        let gradient3Color = UIColor(red: 0.719, green: 0.719, blue: 1.000, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient3 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, gradient3Color.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
         let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 416, height: 196))
+        context.saveGState()
+        rectanglePath.addClip()
+        context.drawLinearGradient(gradient3, start: CGPoint(x: 208, y: -0), end: CGPoint(x: 208, y: 196), options: [])
+        context.restoreGState()
+
 
         //// Group
         context.saveGState()
         context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-
-        //// Symbol Drawing
-        let symbolRect = CGRect(x: 47, y: 29, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbolRect)
-        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value2)
-        context.restoreGState()
-
-
-        //// Symbol 3 Drawing
-        let symbol3Rect = CGRect(x: 194, y: 96, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol3Rect)
-        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value1)
-        context.restoreGState()
 
 
         //// Bezier Drawing
@@ -636,9 +805,9 @@ public class ResistorImage : NSObject {
         context.rotate(by: -270 * CGFloat.pi/180)
 
         let polygonPath = UIBezierPath()
-        polygonPath.move(to: CGPoint(x: 43, y: 0))
+        polygonPath.move(to: CGPoint(x: 43, y: -0))
         polygonPath.addLine(to: CGPoint(x: 80.24, y: 77.62))
-        polygonPath.addLine(to: CGPoint(x: 5.76, y: 77.63))
+        polygonPath.addLine(to: CGPoint(x: 5.76, y: 77.62))
         polygonPath.close()
         UIColor.black.setStroke()
         polygonPath.lineWidth = 3
@@ -763,16 +932,6 @@ public class ResistorImage : NSObject {
         context.restoreGState()
 
 
-        //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 46, y: 96, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol2Rect)
-        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
-        context.restoreGState()
-
-
         //// Oval 3 Drawing
         let oval3Path = UIBezierPath(ovalIn: CGRect(x: 190, y: 128, width: 10, height: 10))
         UIColor.black.setFill()
@@ -806,38 +965,10 @@ public class ResistorImage : NSObject {
 
         context.endTransparencyLayer()
         context.restoreGState()
-        
-        context.restoreGState()
-
-    }
-
-    @objc dynamic public class func drawOpAmpGain2(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 417, height: 163), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()!
-        
-        //// Resize to Target Frame
-        context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 417, height: 163), target: targetFrame)
-        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 417, y: resizedFrame.height / 163)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 417, resizedFrame.height / 163)
-
-
-
-        //// Shadow Declarations
-        let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
-
-        //// Group
-        context.saveGState()
-        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
-        context.beginTransparencyLayer(auxiliaryInfo: nil)
 
 
         //// Symbol Drawing
-        let symbolRect = CGRect(x: 39, y: 25, width: 153, height: 55)
+        let symbolRect = CGRect(x: 47, y: 29, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbolRect)
         context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
@@ -847,13 +978,85 @@ public class ResistorImage : NSObject {
 
 
         //// Symbol 3 Drawing
-        let symbol3Rect = CGRect(x: 186, y: 92, width: 153, height: 55)
+        let symbol3Rect = CGRect(x: 194, y: 96, width: 153, height: 55)
         context.saveGState()
         context.clip(to: symbol3Rect)
         context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
 
         ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value1)
         context.restoreGState()
+
+
+        //// Symbol 2 Drawing
+        let symbol2Rect = CGRect(x: 46, y: 96, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol2Rect)
+        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
+        context.restoreGState()
+
+
+        //// Text 4 Drawing
+        let text4Rect = CGRect(x: 0, y: 156, width: 416, height: 40)
+        let text4Path = UIBezierPath(rect: text4Rect)
+        color5.setFill()
+        text4Path.fill()
+        let text4Style = NSMutableParagraphStyle()
+        text4Style.alignment = .center
+        let text4FontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: text4Style,
+        ] as [NSAttributedStringKey: Any]
+
+        let text4TextHeight: CGFloat = label.boundingRect(with: CGSize(width: text4Rect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: text4FontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: text4Rect)
+        label.draw(in: CGRect(x: text4Rect.minX, y: text4Rect.minY + (text4Rect.height - text4TextHeight) / 2, width: text4Rect.width, height: text4TextHeight), withAttributes: text4FontAttributes)
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawOpAmpGain2(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 417, height: 206), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 417, height: 206), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 417, y: resizedFrame.height / 206)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 417, resizedFrame.height / 206)
+
+
+        //// Color Declarations
+        let gradient2Color3 = UIColor(red: 0.929, green: 0.520, blue: 0.520, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient2 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: gradient2Color3).cgColor, gradient2Color3.cgColor] as CFArray, locations: [0, 0.48, 1])!
+
+        //// Shadow Declarations
+        let shadow2 = NSShadow()
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 417, height: 206))
+        context.saveGState()
+        rectanglePath.addClip()
+        context.drawLinearGradient(gradient2, start: CGPoint(x: 208.5, y: -0), end: CGPoint(x: 208.5, y: 206), options: [])
+        context.restoreGState()
+
+
+        //// Group
+        context.saveGState()
+        context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
 
 
         //// Bezier Drawing
@@ -1031,16 +1234,6 @@ public class ResistorImage : NSObject {
         bezier6Path.stroke()
 
 
-        //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 40, y: 92, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol2Rect)
-        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
-        context.restoreGState()
-
-
         //// Oval 3 Drawing
         let oval3Path = UIBezierPath(ovalIn: CGRect(x: 182, y: 124, width: 10, height: 10))
         UIColor.black.setFill()
@@ -1054,6 +1247,56 @@ public class ResistorImage : NSObject {
 
 
         context.endTransparencyLayer()
+        context.restoreGState()
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 39, y: 25, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value2)
+        context.restoreGState()
+
+
+        //// Symbol 3 Drawing
+        let symbol3Rect = CGRect(x: 186, y: 92, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol3Rect)
+        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value1)
+        context.restoreGState()
+
+
+        //// Symbol 2 Drawing
+        let symbol2Rect = CGRect(x: 40, y: 92, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol2Rect)
+        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
+        context.restoreGState()
+
+
+        //// Text 4 Drawing
+        let text4Rect = CGRect(x: 0, y: 166, width: 417, height: 40)
+        let text4Path = UIBezierPath(rect: text4Rect)
+        color5.setFill()
+        text4Path.fill()
+        let text4Style = NSMutableParagraphStyle()
+        text4Style.alignment = .center
+        let text4FontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: text4Style,
+        ] as [NSAttributedStringKey: Any]
+
+        let text4TextHeight: CGFloat = label.boundingRect(with: CGSize(width: text4Rect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: text4FontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: text4Rect)
+        label.draw(in: CGRect(x: text4Rect.minX, y: text4Rect.minY + (text4Rect.height - text4TextHeight) / 2, width: text4Rect.width, height: text4TextHeight), withAttributes: text4FontAttributes)
         context.restoreGState()
         
         context.restoreGState()
@@ -1613,49 +1856,43 @@ public class ResistorImage : NSObject {
 
     }
 
-    @objc dynamic public class func drawVoltageDivider2(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 354, height: 169), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
+    @objc dynamic public class func drawVoltageDivider2(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 354, height: 208), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 354, height: 169), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 354, height: 208), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 354, y: resizedFrame.height / 169)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 354, resizedFrame.height / 169)
+        context.scaleBy(x: resizedFrame.width / 354, y: resizedFrame.height / 208)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 354, resizedFrame.height / 208)
 
 
+        //// Color Declarations
+        let gradient2Color3 = UIColor(red: 0.929, green: 0.520, blue: 0.520, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient2 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: gradient2Color3).cgColor, gradient2Color3.cgColor] as CFArray, locations: [0, 0.48, 1])!
 
         //// Shadow Declarations
         let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 354, height: 208))
+        context.saveGState()
+        rectanglePath.addClip()
+        context.drawLinearGradient(gradient2, start: CGPoint(x: 177, y: -0), end: CGPoint(x: 177, y: 208), options: [])
+        context.restoreGState()
+
 
         //// Group
         context.saveGState()
         context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-
-        //// Symbol Drawing
-        let symbolRect = CGRect(x: 38, y: 70, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbolRect)
-        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value3)
-        context.restoreGState()
-
-
-        //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 185, y: 70, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol2Rect)
-        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value1)
-        context.restoreGState()
 
 
         //// Bezier Drawing
@@ -1738,16 +1975,6 @@ public class ResistorImage : NSObject {
         context.restoreGState()
 
 
-        //// Symbol 3 Drawing
-        let symbol3Rect = CGRect(x: 38, y: 9, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol3Rect)
-        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value2)
-        context.restoreGState()
-
-
         //// Oval 2 Drawing
         let oval2Path = UIBezierPath(ovalIn: CGRect(x: 34, y: 101, width: 10, height: 10))
         UIColor.black.setFill()
@@ -1775,54 +2002,98 @@ public class ResistorImage : NSObject {
 
         context.endTransparencyLayer()
         context.restoreGState()
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 38, y: 70, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value3)
+        context.restoreGState()
+
+
+        //// Symbol 2 Drawing
+        let symbol2Rect = CGRect(x: 185, y: 70, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol2Rect)
+        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value1)
+        context.restoreGState()
+
+
+        //// Symbol 3 Drawing
+        let symbol3Rect = CGRect(x: 38, y: 9, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol3Rect)
+        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value2)
+        context.restoreGState()
+
+
+        //// Text Drawing
+        let textRect = CGRect(x: 0, y: 168, width: 354, height: 40)
+        let textPath = UIBezierPath(rect: textRect)
+        color5.setFill()
+        textPath.fill()
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
+        context.restoreGState()
         
         context.restoreGState()
 
     }
 
-    @objc dynamic public class func drawPowerSupply(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 380, height: 163), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
+    @objc dynamic public class func drawPowerSupply(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 380, height: 202), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 380, height: 163), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 380, height: 202), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 380, y: resizedFrame.height / 163)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 380, resizedFrame.height / 163)
+        context.scaleBy(x: resizedFrame.width / 380, y: resizedFrame.height / 202)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 380, resizedFrame.height / 202)
 
 
+        //// Color Declarations
+        let gradient3Color = UIColor(red: 0.719, green: 0.719, blue: 1.000, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient3 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, gradient3Color.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
         let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
+
+        //// Rectangle 2 Drawing
+        let rectangle2Path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 380, height: 202))
+        context.saveGState()
+        rectangle2Path.addClip()
+        context.drawLinearGradient(gradient3, start: CGPoint(x: 190, y: 0), end: CGPoint(x: 190, y: 202), options: [])
+        context.restoreGState()
+
 
         //// Group
         context.saveGState()
         context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-
-        //// Symbol Drawing
-        let symbolRect = CGRect(x: 20, y: 21, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbolRect)
-        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value2)
-        context.restoreGState()
-
-
-        //// Symbol 3 Drawing
-        let symbol3Rect = CGRect(x: 167, y: 88, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol3Rect)
-        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value1)
-        context.restoreGState()
 
 
         //// Bezier Drawing
@@ -1874,16 +2145,6 @@ public class ResistorImage : NSObject {
         UIColor.black.setStroke()
         bezier4Path.lineWidth = 3
         bezier4Path.stroke()
-
-
-        //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 19, y: 88, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol2Rect)
-        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
-        context.restoreGState()
 
 
         //// Oval 3 Drawing
@@ -2032,54 +2293,98 @@ public class ResistorImage : NSObject {
 
         context.endTransparencyLayer()
         context.restoreGState()
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 20, y: 21, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value2)
+        context.restoreGState()
+
+
+        //// Symbol 3 Drawing
+        let symbol3Rect = CGRect(x: 167, y: 88, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol3Rect)
+        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value1)
+        context.restoreGState()
+
+
+        //// Symbol 2 Drawing
+        let symbol2Rect = CGRect(x: 19, y: 88, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol2Rect)
+        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value3)
+        context.restoreGState()
+
+
+        //// Text Drawing
+        let textRect = CGRect(x: 0, y: 162, width: 380, height: 40)
+        let textPath = UIBezierPath(rect: textRect)
+        color5.setFill()
+        textPath.fill()
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
+        context.restoreGState()
         
         context.restoreGState()
 
     }
 
-    @objc dynamic public class func drawPowerSupply2(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 380, height: 209), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
+    @objc dynamic public class func drawPowerSupply2(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 380, height: 249), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 380, height: 209), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 380, height: 249), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 380, y: resizedFrame.height / 209)
-        let resizedShadowScale: CGFloat = min(resizedFrame.width / 380, resizedFrame.height / 209)
+        context.scaleBy(x: resizedFrame.width / 380, y: resizedFrame.height / 249)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 380, resizedFrame.height / 249)
 
 
+        //// Color Declarations
+        let gradient2Color3 = UIColor(red: 0.929, green: 0.520, blue: 0.520, alpha: 1.000)
+        let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
+
+        //// Gradient Declarations
+        let gradient2 = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: gradient2Color3).cgColor, gradient2Color3.cgColor] as CFArray, locations: [0, 0.48, 1])!
 
         //// Shadow Declarations
         let shadow2 = NSShadow()
-        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.59)
-        shadow2.shadowOffset = CGSize(width: 3, height: 3)
-        shadow2.shadowBlurRadius = 5
+        shadow2.shadowColor = UIColor.black.withAlphaComponent(0.48)
+        shadow2.shadowOffset = CGSize(width: 1, height: 1)
+        shadow2.shadowBlurRadius = 4
+
+        //// Rectangle 2 Drawing
+        let rectangle2Path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 391, height: 249))
+        context.saveGState()
+        rectangle2Path.addClip()
+        context.drawLinearGradient(gradient2, start: CGPoint(x: 195.5, y: 0), end: CGPoint(x: 195.5, y: 249), options: [])
+        context.restoreGState()
+
 
         //// Group
         context.saveGState()
         context.setShadow(offset: CGSize(width: shadow2.shadowOffset.width * resizedShadowScale, height: shadow2.shadowOffset.height * resizedShadowScale), blur: shadow2.shadowBlurRadius * resizedShadowScale, color: (shadow2.shadowColor as! UIColor).cgColor)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-
-        //// Symbol Drawing
-        let symbolRect = CGRect(x: 164, y: 149, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbolRect)
-        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value3)
-        context.restoreGState()
-
-
-        //// Symbol 3 Drawing
-        let symbol3Rect = CGRect(x: 164, y: 87, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol3Rect)
-        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value2)
-        context.restoreGState()
 
 
         //// Bezier Drawing
@@ -2131,16 +2436,6 @@ public class ResistorImage : NSObject {
         UIColor.black.setStroke()
         bezier4Path.lineWidth = 3
         bezier4Path.stroke()
-
-
-        //// Symbol 2 Drawing
-        let symbol2Rect = CGRect(x: 16, y: 87, width: 153, height: 55)
-        context.saveGState()
-        context.clip(to: symbol2Rect)
-        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
-
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value1)
-        context.restoreGState()
 
 
         //// Oval 3 Drawing
@@ -2283,6 +2578,56 @@ public class ResistorImage : NSObject {
 
         context.endTransparencyLayer()
         context.restoreGState()
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 164, y: 149, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, resistorValue: value3)
+        context.restoreGState()
+
+
+        //// Symbol 3 Drawing
+        let symbol3Rect = CGRect(x: 164, y: 87, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol3Rect)
+        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value2)
+        context.restoreGState()
+
+
+        //// Symbol 2 Drawing
+        let symbol2Rect = CGRect(x: 16, y: 87, width: 153, height: 55)
+        context.saveGState()
+        context.clip(to: symbol2Rect)
+        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
+
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, resistorValue: value1)
+        context.restoreGState()
+
+
+        //// Text Drawing
+        let textRect = CGRect(x: 0, y: 209, width: 380, height: 40)
+        let textPath = UIBezierPath(rect: textRect)
+        color5.setFill()
+        textPath.fill()
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue-Bold", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
+        context.restoreGState()
         
         context.restoreGState()
 
@@ -2348,9 +2693,33 @@ public class ResistorImage : NSObject {
 
     }
 
+    @objc dynamic public class func drawCanvas1(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 418, height: 313), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 418, height: 313), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 418, y: resizedFrame.height / 313)
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 2, y: 12, width: 416, height: 109)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        ResistorImage.drawSeriesResistors(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, value1: "11.1K", value2: "22.2K", value3: "33.3K", label: "Best Value: 33.4KΩ; error: 0% with 1% resistors")
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
     //// Generated Images
 
-    @objc dynamic public class func imageOfResistor(resistorValue: String = "") -> UIImage {
+    @objc dynamic public class func imageOfResistor(resistorValue: String = "2.345K") -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 153, height: 55), false, 0)
             ResistorImage.drawResistor(resistorValue: resistorValue)
 
@@ -2360,9 +2729,9 @@ public class ResistorImage : NSObject {
         return imageOfResistor
     }
 
-    @objc dynamic public class func imageOfSeriesResistors(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 416, height: 69), false, 0)
-            ResistorImage.drawSeriesResistors(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfSeriesResistors(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 416, height: 109), false, 0)
+            ResistorImage.drawSeriesResistors(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfSeriesResistors = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2370,9 +2739,9 @@ public class ResistorImage : NSObject {
         return imageOfSeriesResistors
     }
 
-    @objc dynamic public class func imageOfSeriesParallelResistors(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 359, height: 128), false, 0)
-            ResistorImage.drawSeriesParallelResistors(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfSeriesParallelResistors(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 359, height: 169), false, 0)
+            ResistorImage.drawSeriesParallelResistors(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfSeriesParallelResistors = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2380,9 +2749,9 @@ public class ResistorImage : NSObject {
         return imageOfSeriesParallelResistors
     }
 
-    @objc dynamic public class func imageOfParallelResistors(value1: String = "11.1K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 260, height: 193), false, 0)
-            ResistorImage.drawParallelResistors(value1: value1, value3: value3)
+    @objc dynamic public class func imageOfParallelResistors(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 391, height: 235), false, 0)
+            ResistorImage.drawParallelResistors(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfParallelResistors = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2390,9 +2759,9 @@ public class ResistorImage : NSObject {
         return imageOfParallelResistors
     }
 
-    @objc dynamic public class func imageOfVoltageDivider(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 354, height: 169), false, 0)
-            ResistorImage.drawVoltageDivider(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfVoltageDivider(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 354, height: 207), false, 0)
+            ResistorImage.drawVoltageDivider(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfVoltageDivider = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2400,9 +2769,9 @@ public class ResistorImage : NSObject {
         return imageOfVoltageDivider
     }
 
-    @objc dynamic public class func imageOfOpAmpGain(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 416, height: 163), false, 0)
-            ResistorImage.drawOpAmpGain(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfOpAmpGain(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 416, height: 196), false, 0)
+            ResistorImage.drawOpAmpGain(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfOpAmpGain = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2410,9 +2779,9 @@ public class ResistorImage : NSObject {
         return imageOfOpAmpGain
     }
 
-    @objc dynamic public class func imageOfOpAmpGain2(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 417, height: 163), false, 0)
-            ResistorImage.drawOpAmpGain2(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfOpAmpGain2(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 417, height: 206), false, 0)
+            ResistorImage.drawOpAmpGain2(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfOpAmpGain2 = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2420,9 +2789,9 @@ public class ResistorImage : NSObject {
         return imageOfOpAmpGain2
     }
 
-    @objc dynamic public class func imageOfVoltageDivider2(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 354, height: 169), false, 0)
-            ResistorImage.drawVoltageDivider2(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfVoltageDivider2(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 354, height: 208), false, 0)
+            ResistorImage.drawVoltageDivider2(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfVoltageDivider2 = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2430,9 +2799,9 @@ public class ResistorImage : NSObject {
         return imageOfVoltageDivider2
     }
 
-    @objc dynamic public class func imageOfPowerSupply(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 380, height: 163), false, 0)
-            ResistorImage.drawPowerSupply(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfPowerSupply(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 380, height: 202), false, 0)
+            ResistorImage.drawPowerSupply(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfPowerSupply = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2440,9 +2809,9 @@ public class ResistorImage : NSObject {
         return imageOfPowerSupply
     }
 
-    @objc dynamic public class func imageOfPowerSupply2(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 380, height: 209), false, 0)
-            ResistorImage.drawPowerSupply2(value1: value1, value2: value2, value3: value3)
+    @objc dynamic public class func imageOfPowerSupply2(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K", label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 380, height: 249), false, 0)
+            ResistorImage.drawPowerSupply2(value1: value1, value2: value2, value3: value3, label: label)
 
         let imageOfPowerSupply2 = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -2490,5 +2859,22 @@ public class ResistorImage : NSObject {
             result.origin.y = target.minY + (target.height - result.height) / 2
             return result
         }
+    }
+}
+
+
+
+private extension UIColor {
+    func blended(withFraction fraction: CGFloat, of color: UIColor) -> UIColor {
+        var r1: CGFloat = 1, g1: CGFloat = 1, b1: CGFloat = 1, a1: CGFloat = 1
+        var r2: CGFloat = 1, g2: CGFloat = 1, b2: CGFloat = 1, a2: CGFloat = 1
+
+        self.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        color.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+
+        return UIColor(red: r1 * (1 - fraction) + r2 * fraction,
+            green: g1 * (1 - fraction) + g2 * fraction,
+            blue: b1 * (1 - fraction) + b2 * fraction,
+            alpha: a1 * (1 - fraction) + a2 * fraction);
     }
 }

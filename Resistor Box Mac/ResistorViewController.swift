@@ -11,15 +11,12 @@ import Cocoa
 class ResistorViewController: BaseViewController {
     
     @IBOutlet weak var seriesResistors: NSImageView!
-    @IBOutlet weak var seriesLabel: NSTextField!
     @IBOutlet weak var seriesActivity: NSProgressIndicator!
     
     @IBOutlet weak var seriesParallelResistors: NSImageView!
-    @IBOutlet weak var seriesParallelLabel: NSTextField!
     @IBOutlet weak var seriesParallelActivity: NSProgressIndicator!
     
     @IBOutlet weak var parallelResistors: NSImageView!
-    @IBOutlet weak var parallelLabel: NSTextField!
     @IBOutlet weak var parallelActivity: NSProgressIndicator!
     
     // make sure these variables are retained
@@ -34,7 +31,7 @@ class ResistorViewController: BaseViewController {
     override func formatValue(_ x: Double) -> String {
         return "Total: " + Resistors.stringFrom(x)
     }
-
+    
     func updateSeriesResistors (_ x : [Double], label: String) {
         update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors(value1:value2:value3:), label: seriesLabel)
     }
@@ -55,6 +52,10 @@ class ResistorViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // install a swipe gesture to display user settings
+        let gesture = UISwipeGestureRecognizer()
+        
         calculateOptimalValues()
     }
     

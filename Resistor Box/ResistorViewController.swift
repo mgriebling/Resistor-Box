@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  ResistorViewController.swift
 //  Resistor Box
 //
 //  Created by Michael Griebling on 2018-02-15.
@@ -11,27 +11,28 @@ import UIKit
 class ResistorViewController: BaseViewController {
 
     @IBOutlet weak var seriesResistors: UIImageView!
-    @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var seriesActivity: UIActivityIndicatorView!
     
     @IBOutlet weak var seriesParallelResistors: UIImageView!
-    @IBOutlet weak var seriesParallelLabel: UILabel!
     @IBOutlet weak var seriesParallelActivity: UIActivityIndicatorView!
     
     @IBOutlet weak var parallelResistors: UIImageView!
-    @IBOutlet weak var parallelLabel: UILabel!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
     
+    @IBAction func handleSwipe(_ sender: UISwipeGestureRecognizer) {
+        print("You swiped me!")
+    }
+    
     func updateSeriesResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors, label: seriesLabel)
+        update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors)
     }
     
     func updateSeriesParallelResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: seriesParallelResistors, imageFunc: ResistorImage.imageOfSeriesParallelResistors, label: seriesParallelLabel)
+        update(x, prefix: label, image: seriesParallelResistors, imageFunc: ResistorImage.imageOfSeriesParallelResistors)
     }
     
     func updateParallelResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: parallelResistors, imageFunc: ResistorImage.imageOfParallelResistors, label: parallelLabel)
+        update(x, prefix: label, image: parallelResistors, imageFunc: ResistorImage.imageOfParallelResistors)
     }
     
     func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
@@ -44,8 +45,8 @@ class ResistorViewController: BaseViewController {
         return "Total: " + Resistors.stringFrom(x)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         calculateOptimalValues()
     }
     
@@ -72,7 +73,6 @@ class ResistorViewController: BaseViewController {
                             update: updateSeriesParallelResistors(_:label:), activity: seriesParallelActivity)
         performCalculations("parallel", value: r.0, start: 0, x: &z, compute: Resistors.computeParallel(_:start:callback:done:), calculating: &calculating3,
                             update: updateParallelResistors(_:label:), activity: parallelActivity)
-        
         enableGUI()
     }
     
@@ -100,9 +100,15 @@ class ResistorViewController: BaseViewController {
                     wself.calculateOptimalValues()
                 }
             }
+            
+        case "showUserSettings":
+            if let _ = destNav.presentationController {
+            }
+            
         default: break
         }
     }
 
 }
+
 

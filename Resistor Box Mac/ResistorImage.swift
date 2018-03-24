@@ -234,7 +234,7 @@ public class ResistorImage : NSObject {
 
     }
 
-    @objc dynamic public class func drawParallelResistors(frame targetFrame: NSRect = NSRect(x: 0, y: 0, width: 260, height: 193), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value3: String = "33.3K") {
+    @objc dynamic public class func drawParallelResistors(frame targetFrame: NSRect = NSRect(x: 0, y: 0, width: 260, height: 193), resizing: ResizingBehavior = .aspectFit, value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") {
         //// General Declarations
         let context = NSGraphicsContext.current!.cgContext
         
@@ -285,7 +285,7 @@ public class ResistorImage : NSObject {
         symbol3Rect.clip()
         context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
 
-        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value3)
+        ResistorImage.drawResistor(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, resistorValue: value2)
         NSGraphicsContext.restoreGraphicsState()
 
 
@@ -2393,9 +2393,9 @@ public class ResistorImage : NSObject {
         }
     }
 
-    @objc dynamic public class func imageOfParallelResistors(value1: String = "11.1K", value3: String = "33.3K") -> NSImage {
+    @objc dynamic public class func imageOfParallelResistors(value1: String = "11.1K", value2: String = "22.2K", value3: String = "33.3K") -> NSImage {
         return NSImage(size: NSSize(width: 260, height: 193), flipped: false) { _ in 
-            ResistorImage.drawParallelResistors(value1: value1, value3: value3)
+            ResistorImage.drawParallelResistors(value1: value1, value2: value2, value3: value3)
 
             return true
         }

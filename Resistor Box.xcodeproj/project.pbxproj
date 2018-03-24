@@ -115,8 +115,7 @@
 		2F2F2C512036156300DD98AE /* Resistor Box */ = {
 			isa = PBXGroup;
 			children = (
-				47D8118C205E8D7F0006B050 /* Resistor Box.entitlements */,
-				2F2F2C522036156300DD98AE /* AppDelegate.swift */,
+				2F2F2C582036156300DD98AE /* Main.storyboard */,
 				2FAD9B5F206056AA00615394 /* BaseViewController.swift */,
 				2F2F2C542036156300DD98AE /* ResistorViewController.swift */,
 				2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */,
@@ -124,17 +123,8 @@
 				470848B8206501C5009A2C6F /* PowerViewController.swift */,
 				47CE31D620547454007AB17B /* EditViewController.swift */,
 				47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */,
-				2F2F2C582036156300DD98AE /* Main.storyboard */,
-				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
-				2F1573D2204EC3D400E948B5 /* NumberPicker.swift */,
-				2F23077B205BE53E00B01CE1 /* NumberPickerViewController.swift */,
-				2F1573D8204EC7CD00E948B5 /* ResistancePickerViewController.swift */,
-				47D81188205D41A80006B050 /* CollectionPicker.swift */,
-				47D8118A205D48470006B050 /* CollectionViewController.swift */,
-				47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */,
-				2FF8FE842048268F000841AF /* ResistorImage.swift */,
-				2F2F2C5B2036156300DD98AE /* Assets.xcassets */,
-				2F2F2C602036156300DD98AE /* Info.plist */,
+				4785688F2066552800A0A9B0 /* Pickers */,
+				478568902066555C00A0A9B0 /* Miscellaneous */,
 			);
 			path = "Resistor Box";
 			sourceTree = "<group>";
@@ -162,6 +152,32 @@
 				2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4785688F2066552800A0A9B0 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				2F1573D2204EC3D400E948B5 /* NumberPicker.swift */,
+				2F23077B205BE53E00B01CE1 /* NumberPickerViewController.swift */,
+				2F1573D8204EC7CD00E948B5 /* ResistancePickerViewController.swift */,
+				47D81188205D41A80006B050 /* CollectionPicker.swift */,
+				47D8118A205D48470006B050 /* CollectionViewController.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		478568902066555C00A0A9B0 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
+				47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */,
+				2FF8FE842048268F000841AF /* ResistorImage.swift */,
+				2F2F2C522036156300DD98AE /* AppDelegate.swift */,
+				47D8118C205E8D7F0006B050 /* Resistor Box.entitlements */,
+				2F2F2C5B2036156300DD98AE /* Assets.xcassets */,
+				2F2F2C602036156300DD98AE /* Info.plist */,
+			);
+			name = Miscellaneous;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

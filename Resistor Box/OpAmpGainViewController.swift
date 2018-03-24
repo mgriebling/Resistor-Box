@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  OpAmpGainViewController.swift
 //  Resistor Box
 //
 //  Created by Michael Griebling on 2018-02-15.
@@ -12,11 +12,9 @@ class OpAmpGainViewController: BaseViewController {
     
     @IBOutlet weak var gainImage: UIImageView!
     @IBOutlet weak var gainIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var gainLabel: UILabel!
     
     @IBOutlet weak var invertingGainImage: UIImageView!
     @IBOutlet weak var invertingGainIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var invertingGainLabel: UILabel!
     
     var gain : Double = 2.5 {
         didSet {
@@ -30,11 +28,11 @@ class OpAmpGainViewController: BaseViewController {
     }
     
     func updateGainResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: gainImage, imageFunc: ResistorImage.imageOfOpAmpGain2(value1:value2:value3:), label: gainLabel)
+        update(x, prefix: label, image: gainImage, imageFunc: ResistorImage.imageOfOpAmpGain2)
     }
     
     func updateInvertingGainResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: invertingGainImage, imageFunc: ResistorImage.imageOfOpAmpGain(value1:value2:value3:), label: invertingGainLabel)
+        update(x, prefix: label, image: invertingGainImage, imageFunc: ResistorImage.imageOfOpAmpGain)
     }
     
     @IBAction func updateValues(_ sender: Any) {

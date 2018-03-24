@@ -12,11 +12,9 @@ class DividerViewController: BaseViewController {
 
     @IBOutlet weak var divider1Image: UIImageView!
     @IBOutlet weak var divider1Activity: UIActivityIndicatorView!
-    @IBOutlet weak var divider1Label: UILabel!
     
     @IBOutlet weak var divider2Image: UIImageView!
     @IBOutlet weak var divider2Activity: UIActivityIndicatorView!
-    @IBOutlet weak var divider2Label: UILabel!
     
     var divider : Double = 0.5 {
         didSet {
@@ -30,11 +28,11 @@ class DividerViewController: BaseViewController {
     }
     
     func updateDivider1Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: divider1Image, imageFunc: ResistorImage.imageOfVoltageDivider(value1:value2:value3:), label: divider1Label)
+        update(x, prefix: label, image: divider1Image, imageFunc: ResistorImage.imageOfVoltageDivider)
     }
     
     func updateDivider2Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: divider2Image, imageFunc: ResistorImage.imageOfVoltageDivider2(value1:value2:value3:), label: divider2Label)
+        update(x, prefix: label, image: divider2Image, imageFunc: ResistorImage.imageOfVoltageDivider2)
     }
     
     @IBAction func updateValues(_ sender: Any) {

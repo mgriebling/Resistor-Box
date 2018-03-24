@@ -13,11 +13,9 @@ class PowerViewController: BaseViewController {
     @IBOutlet weak var feedbackButton: UIBarButtonItem!
     @IBOutlet weak var power1Image: UIImageView!
     @IBOutlet weak var power1Activity: UIActivityIndicatorView!
-    @IBOutlet weak var power1Label: UILabel!
     
     @IBOutlet weak var power2Image: UIImageView!
     @IBOutlet weak var power2Activity: UIActivityIndicatorView!
-    @IBOutlet weak var power2Label: UILabel!
     
     var outputVoltage : Double = 5.0 {
         didSet {
@@ -36,11 +34,11 @@ class PowerViewController: BaseViewController {
     }
     
     func updatePower1Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: power1Image, imageFunc: ResistorImage.imageOfPowerSupply(value1:value2:value3:), label: power1Label)
+        update(x, prefix: label, image: power1Image, imageFunc: ResistorImage.imageOfPowerSupply)
     }
     
     func updatePower2Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: power2Image, imageFunc: ResistorImage.imageOfPowerSupply2(value1:value2:value3:), label: power2Label)
+        update(x, prefix: label, image: power2Image, imageFunc: ResistorImage.imageOfPowerSupply2)
     }
     
     @IBAction func updateValues(_ sender: Any) {
