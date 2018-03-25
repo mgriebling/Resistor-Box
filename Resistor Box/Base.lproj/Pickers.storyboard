@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="38x-Mt-Miz">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Resistance-->
+        <scene sceneID="ypV-Ev-t3p">
+            <objects>
+                <viewController modalPresentationStyle="pageSheet" id="sVG-US-5Sm" customClass="ResistancePickerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9QZ-dQ-jCS">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-sN-rTY">
+                                <rect key="frame" x="0.0" y="44" width="300" height="156"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aj3-AK-e4t"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Resistance" id="zFu-l7-pXi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="3GH-e0-023">
+                            <connections>
+                                <segue destination="nY4-0o-YKu" kind="unwind" unwindAction="returnToResistorView:" id="rL8-jt-SbK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="200"/>
+                    <connections>
+                        <outlet property="pickerView" destination="7S5-sN-rTY" id="H4A-hA-JcX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wU5-4R-qIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nY4-0o-YKu" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2586" y="-254"/>
+        </scene>
+        <!--ResistorSelector-->
+        <scene sceneID="3Ha-pd-gdY">
+            <objects>
+                <navigationController title="ResistorSelector" automaticallyAdjustsScrollViewInsets="NO" id="38x-Mt-Miz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z0y-vS-dqi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sVG-US-5Sm" kind="relationship" relationship="rootViewController" id="hsX-U6-EKo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Tx-dD-YjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912.8" y="-253.2233883058471"/>
+        </scene>
+    </scenes>
+</document>
