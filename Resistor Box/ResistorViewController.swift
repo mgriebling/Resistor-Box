@@ -45,8 +45,8 @@ class ResistorViewController: BaseViewController {
         return "Total: " + Resistors.stringFrom(x)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         calculateOptimalValues()
     }
     
