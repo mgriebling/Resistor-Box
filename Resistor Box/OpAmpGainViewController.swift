@@ -51,6 +51,13 @@ class OpAmpGainViewController: BaseViewController {
         if calculating2 { updateInvertingGainResistors(y, label: label) }
     }
     
+    override func refreshAll() {
+        super.refreshAll()
+        let label = "Best"
+        updateGainResistors(x, label: label)
+        updateInvertingGainResistors(y, label: label)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calculateOptimalValues()

@@ -182,7 +182,7 @@ extension EditViewController : UICollectionViewDataSource {
         if let myCell = cell as? ResistorCollectionViewCell {
             let resistor = Resistors.rInv[Resistors.active]?[indexPath.item+1] ?? 0
             let label = Resistors.stringFrom(resistor)
-            myCell.resistor.image = ResistorImage.imageOfResistor(resistorValue: label)
+            myCell.resistor.image = ResistorImage.imageOfResistor(value: label)
             let selected = selectedResistors.contains(indexPath)
             myCell.backgroundColor = selected ? UIColor(white: 0.85, alpha: 1) : UIColor.white
         }

@@ -35,6 +35,9 @@
 		47B7A32B206797E00004781E /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A329206797E00004781E /* Pickers.storyboard */; };
 		47B7A32D2067A4560004781E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A32C2067A4560004781E /* Preferences.swift */; };
 		47B7A32E2067A45E0004781E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A32C2067A4560004781E /* Preferences.swift */; };
+		47BFFF582067B35900DE0E13 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */; };
+		47BFFF5A2067DE8200DE0E13 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */; };
+		47BFFF5C2067DECE00DE0E13 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
 		47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */; };
 		47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */; };
@@ -72,6 +75,9 @@
 		470848BA20665090009A2C6F /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		47B7A32A206797E00004781E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Resistor Box/Base.lproj/Pickers.storyboard"; sourceTree = "<group>"; };
 		47B7A32C2067A4560004781E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorCollectionViewCell.swift; sourceTree = "<group>"; };
 		47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 				2F23077D205BEBAF00B01CE1 /* DividerViewController.swift */,
 				470848B8206501C5009A2C6F /* PowerViewController.swift */,
 				47CE31D620547454007AB17B /* EditViewController.swift */,
+				47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */,
 				47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */,
 				4785688F2066552800A0A9B0 /* Pickers */,
 				478568902066555C00A0A9B0 /* Miscellaneous */,
@@ -176,6 +183,8 @@
 		478568902066555C00A0A9B0 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
+				47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */,
+				47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */,
 				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
 				47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */,
 				2FF8FE842048268F000841AF /* ResistorImage.swift */,
@@ -273,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47BFFF5C2067DECE00DE0E13 /* colorPalette.plist in Resources */,
 				2F2F2C5F2036156300DD98AE /* LaunchScreen.storyboard in Resources */,
 				2F2F2C5C2036156300DD98AE /* Assets.xcassets in Resources */,
 				47B7A32B206797E00004781E /* Pickers.storyboard in Resources */,
@@ -312,6 +322,8 @@
 				47D81189205D41A80006B050 /* CollectionPicker.swift in Sources */,
 				2F2F2C532036156300DD98AE /* AppDelegate.swift in Sources */,
 				470848B9206501C5009A2C6F /* PowerViewController.swift in Sources */,
+				47BFFF582067B35900DE0E13 /* UserSettingsViewController.swift in Sources */,
+				47BFFF5A2067DE8200DE0E13 /* ColorPickerViewController.swift in Sources */,
 				2F1573D3204EC3D400E948B5 /* NumberPicker.swift in Sources */,
 				2F23077C205BE53E00B01CE1 /* NumberPickerViewController.swift in Sources */,
 				2F2F2C552036156300DD98AE /* ResistorViewController.swift in Sources */,

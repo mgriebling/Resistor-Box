@@ -63,6 +63,15 @@ class BaseViewController: UIViewController {
         Resistors.initInventory()   // build up the values
     }
     
+    public func refreshAll() {
+        // child needs to override this
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshAll()  // user may have changed preferences
+    }
+    
     override func didReceiveMemoryWarning() {
         Resistors.clearInventory()
     }

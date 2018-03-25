@@ -55,6 +55,13 @@ class DividerViewController: BaseViewController {
         calculateOptimalValues()
     }
     
+    override func refreshAll() {
+        super.refreshAll()
+        let label = "Best"
+        updateDivider1Resistors(x, label: label)
+        updateDivider2Resistors(y, label: label)
+    }
+    
     func calculateOptimalValues () {
         guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
         Resistors.cancelCalculations = false

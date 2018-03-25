@@ -19,10 +19,6 @@ class ResistorViewController: BaseViewController {
     @IBOutlet weak var parallelResistors: UIImageView!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
     
-    @IBAction func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        print("You swiped me!")
-    }
-    
     func updateSeriesResistors (_ x : [Double], label: String) {
         update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors)
     }
@@ -39,6 +35,14 @@ class ResistorViewController: BaseViewController {
         if calculating1 { updateSeriesResistors(x, label: label) }
         if calculating2 { updateSeriesParallelResistors(y, label: label) }
         if calculating3 { updateParallelResistors(z, label: label) }
+    }
+    
+    override func refreshAll() {
+        super.refreshAll()
+        let label = "Best"
+        updateSeriesResistors(x, label: label)
+        updateSeriesParallelResistors(y, label: label)
+        updateParallelResistors(z, label: label)
     }
     
     override func formatValue(_ x: Double) -> String {
@@ -99,10 +103,6 @@ class ResistorViewController: BaseViewController {
                     Resistors.active = newValue
                     wself.calculateOptimalValues()
                 }
-            }
-            
-        case "showUserSettings":
-            if let _ = destNav.presentationController {
             }
             
         default: break

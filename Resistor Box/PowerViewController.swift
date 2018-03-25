@@ -61,6 +61,13 @@ class PowerViewController: BaseViewController {
         calculateOptimalValues()
     }
     
+    override func refreshAll() {
+        super.refreshAll()
+        let label = "Best"
+        updatePower1Resistors(x, label: label)
+        updatePower2Resistors(y, label: label)
+    }
+    
     func calculateOptimalValues () {
         guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
         Resistors.cancelCalculations = false
