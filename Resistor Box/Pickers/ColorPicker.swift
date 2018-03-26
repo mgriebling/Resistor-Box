@@ -6,26 +6,26 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     typealias ColorChanged = (_ picker: ColorPicker) -> ()
     
     var colors : [String: UIColor] = [
-        "Color 01"  : UIColor(hue: 0.00000, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 02"  : UIColor(hue: 0.05263, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 03"  : UIColor(hue: 0.10526, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 04"  : UIColor(hue: 0.15789, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 05"  : UIColor(hue: 0.21052, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 06"  : UIColor(hue: 0.26316, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 07"  : UIColor(hue: 0.31579, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 08"  : UIColor(hue: 0.36842, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 09"  : UIColor(hue: 0.42105, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 10"  : UIColor(hue: 0.47368, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 11"  : UIColor(hue: 0.52632, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 12"  : UIColor(hue: 0.57895, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 13"  : UIColor(hue: 0.63158, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 14"  : UIColor(hue: 0.68421, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 15"  : UIColor(hue: 0.73684, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 16"  : UIColor(hue: 0.78947, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 17"  : UIColor(hue: 0.84211, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 18"  : UIColor(hue: 0.89474, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 19"  : UIColor(hue: 0.94737, saturation: 0.7, brightness: 1, alpha: 1),
-        "Color 20"  : UIColor(hue: 1.00000, saturation: 0.7, brightness: 1, alpha: 1)
+        "Silver"     : UIColor(hue: 148/360.0, saturation: 0.00, brightness: 0.84, alpha: 1),
+        "Snow"       : UIColor(hue: 180/360.0, saturation: 0.00, brightness: 1.00, alpha: 1),
+        "Salmon"     : UIColor(hue:   2/360.0, saturation: 0.53, brightness: 1.00, alpha: 1),
+        "Cantaloupe" : UIColor(hue:  41/360.0, saturation: 0.53, brightness: 1.00, alpha: 1),
+        "Banana"     : UIColor(hue:  59/360.0, saturation: 0.53, brightness: 1.00, alpha: 1),
+        "Honeydew"   : UIColor(hue:  78/360.0, saturation: 0.52, brightness: 0.99, alpha: 1),
+        "Flora"      : UIColor(hue: 123/360.0, saturation: 0.54, brightness: 0.98, alpha: 1),
+        "Spindrift"  : UIColor(hue: 163/360.0, saturation: 0.54, brightness: 0.99, alpha: 1),
+        "Ice"        : UIColor(hue: 181/360.0, saturation: 0.55, brightness: 1.00, alpha: 1),
+        "Sky"        : UIColor(hue: 198/360.0, saturation: 0.54, brightness: 1.00, alpha: 1),
+        "Orchid"     : UIColor(hue: 237/360.0, saturation: 0.52, brightness: 1.00, alpha: 1),
+        "Lavender"   : UIColor(hue: 281/360.0, saturation: 0.49, brightness: 1.00, alpha: 1),
+        "Bubblegum"  : UIColor(hue: 300/360.0, saturation: 0.48, brightness: 1.00, alpha: 1),
+        "Carnation"  : UIColor(hue: 320/360.0, saturation: 0.46, brightness: 1.00, alpha: 1),
+        "Maraschino" : UIColor(hue:   9/360.0, saturation: 1.00, brightness: 1.00, alpha: 1),
+        "Lemon"      : UIColor(hue:  59/360.0, saturation: 1.00, brightness: 1.00, alpha: 1),
+        "Spring"     : UIColor(hue: 120/360.0, saturation: 1.00, brightness: 0.98, alpha: 1),
+        "Aqua"       : UIColor(hue: 205/360.0, saturation: 1.00, brightness: 1.00, alpha: 1),
+        "Blueberry"  : UIColor(hue: 229/360.0, saturation: 0.98, brightness: 1.00, alpha: 1),
+        "Strawberry" : UIColor(hue: 331/360.0, saturation: 0.81, brightness: 1.00, alpha: 1)
     ]
     
     var selectedColor: String
