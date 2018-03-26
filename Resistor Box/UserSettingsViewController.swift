@@ -29,6 +29,9 @@ class UserSettingsViewController : UIViewController {
         resistorImage.selectedSegmentIndex = preferences.useEuroSymbols ? 1 : 0
         minResistance.setTitle(Resistors.stringFrom(preferences.minResistance), for: .normal)
         maxResistance.setTitle(Resistors.stringFrom(preferences.maxResistance), for: .normal)
+        background1.backgroundColor = preferences.color1
+        background2.backgroundColor = preferences.color2
+        background3.backgroundColor = preferences.color3
     }
     
     @IBAction func changedResistorImage(_ sender: UISegmentedControl) {
@@ -75,24 +78,26 @@ class UserSettingsViewController : UIViewController {
             }
         case "ChooseColor1":
             if let vc = destNav as? ColorPickerViewController {
-                vc.preferredContentSize = CGSize(width: 284, height: 446)
-                vc.callback = { newValue in
+                vc.preferredContentSize = CGSize(width: 250, height: 250)
+                vc.callback = { name, newValue in
                     preferences.color1 = newValue
+                    print("Selected \(newValue)")
+                    self.background1.setTitle(name, for: .normal)
                     self.background1.backgroundColor = newValue
                 }
             }
         case "ChooseColor2":
             if let vc = destNav as? ColorPickerViewController {
-                vc.preferredContentSize = CGSize(width: 284, height: 446)
-                vc.callback = { newValue in
+                vc.preferredContentSize = CGSize(width: 250, height: 250)
+                vc.callback = { name, newValue in
                     preferences.color2 = newValue
                     self.background2.backgroundColor = newValue
                 }
             }
         case "ChooseColor3":
             if let vc = destNav as? ColorPickerViewController {
-                vc.preferredContentSize = CGSize(width: 284, height: 446)
-                vc.callback = { newValue in
+                vc.preferredContentSize = CGSize(width: 250, height: 250)
+                vc.callback = { name, newValue in
                     preferences.color3 = newValue
                     self.background3.backgroundColor = newValue
                 }

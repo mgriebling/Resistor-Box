@@ -147,9 +147,10 @@ class Resistors {
             else if r >= K   { r /= K; ext = "KΩ" }
             else if r < 0.1  { r *= K; ext = "mΩ" }
             
-            var s = String(format: "%15.3f", r).trimmingCharacters(in: CharacterSet.whitespaces)
+            var s = String(format: "%15.3f", locale: Locale.current, r).trimmingCharacters(in: CharacterSet.whitespaces)
+            let dp = Locale.current.decimalSeparator ?? "."
             while s.hasSuffix("0") { s.removeLast() }
-            if s.hasSuffix(".") { s.removeLast() }
+            if s.hasSuffix(dp) { s.removeLast() }
             return s+ext
         }
     }

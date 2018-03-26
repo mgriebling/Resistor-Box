@@ -136,6 +136,7 @@ class NumberPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     func getPickerNumberAsString(picker: UIPickerView) -> String {
         var val = ""
         let columns = getNumberColumnCount()
+        let dp = NSLocale.current.decimalSeparator!
         
         for i in 0..<columns {
             if i < picker.numberOfComponents {
@@ -148,7 +149,7 @@ class NumberPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
                         selected = picker.selectedRow(inComponent:i+1)
                     }
                 }
-                if i == decimalColumn { val += ".\(selected)" }
+                if i == decimalColumn { val += "\(dp)\(selected)" }
                 else { val += "\(selected)" }
             }
         }
@@ -166,7 +167,7 @@ class NumberPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     private func splitStringToArray(_ stringVal: String) -> [String] {
         var splitVal : [String] = []
         let locale = NSLocale.current
-        let dp = locale.decimalSeparator
+        let dp = locale.decimalSeparator!
         
         var i = 0
         while i < stringVal.count {
@@ -242,7 +243,8 @@ class NumberPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
                 numFloatPrecision = countNumberCols - decimalColumn
             }
             
-            let formatted = String(format:"%0\(stringLength).\(numFloatPrecision)f", val.double)
+            let dp = Locale.current.decimalSeparator!
+            let formatted = String(format:"%0\(stringLength).\(numFloatPrecision)f", val.double).replacingOccurrences(of: ".", with: dp)
             return splitStringToArray(formatted)
         }
         return splitVal
@@ -293,11 +295,13 @@ class NumberPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
      ******************************************************************************** */
     private func generateRangeFromNumber (_ number: Decimal) -> Decimal {
         // convert numbers like 179.999 into 199.999
-        var maxString = "\(number)"
+        let dp = Locale.current.decimalSeparator!
+        var maxString = "\(number)".replacingOccurrences(of: ".", with: dp)
         let start : Int = number.isSignMinus ? 2 : 1   // account for extra offset for negative numbers
+
         for i in start..<maxString.count {
             let ch = maxString[i]
-            if ch != "." && ch != "9" {
+            if ch != dp.first! && ch != "9" {
                 maxString[i] = "9"
             }
         }
@@ -509,6 +513,7 @@ class NumberPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
                 // remove the negative sign for display purposes
                 val = -val
             }
+            print(val)
             let splitVal = splitAndPad(val: val)
             let diff = getNumberColumnCount() - splitVal.count
             let startRow = negativeColumnValues.count > 0 ? 1 : 0

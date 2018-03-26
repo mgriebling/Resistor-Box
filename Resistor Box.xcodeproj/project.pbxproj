@@ -38,6 +38,8 @@
 		47BFFF582067B35900DE0E13 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */; };
 		47BFFF5A2067DE8200DE0E13 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */; };
 		47BFFF5C2067DECE00DE0E13 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */; };
+		47BFFF5E206845B600DE0E13 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF5D206845B600DE0E13 /* ColorPicker.swift */; };
+		47BFFF602068477E00DE0E13 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF5F2068477E00DE0E13 /* ColorView.swift */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
 		47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */; };
 		47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */; };
@@ -78,6 +80,8 @@
 		47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
+		47BFFF5D206845B600DE0E13 /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		47BFFF5F2068477E00DE0E13 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorCollectionViewCell.swift; sourceTree = "<group>"; };
 		47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				2F23077B205BE53E00B01CE1 /* NumberPickerViewController.swift */,
 				2F1573D8204EC7CD00E948B5 /* ResistancePickerViewController.swift */,
 				47D81188205D41A80006B050 /* CollectionPicker.swift */,
+				47BFFF5D206845B600DE0E13 /* ColorPicker.swift */,
+				47BFFF5F2068477E00DE0E13 /* ColorView.swift */,
 				47D8118A205D48470006B050 /* CollectionViewController.swift */,
 			);
 			path = Pickers;
@@ -308,6 +314,7 @@
 			files = (
 				47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */,
 				47CE31D720547454007AB17B /* EditViewController.swift in Sources */,
+				47BFFF602068477E00DE0E13 /* ColorView.swift in Sources */,
 				2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */,
 				2F1573D9204EC7CD00E948B5 /* ResistancePickerViewController.swift in Sources */,
 				2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */,
@@ -321,6 +328,7 @@
 				2F1573D7204EC4F700E948B5 /* Decimal+Double.swift in Sources */,
 				47D81189205D41A80006B050 /* CollectionPicker.swift in Sources */,
 				2F2F2C532036156300DD98AE /* AppDelegate.swift in Sources */,
+				47BFFF5E206845B600DE0E13 /* ColorPicker.swift in Sources */,
 				470848B9206501C5009A2C6F /* PowerViewController.swift in Sources */,
 				47BFFF582067B35900DE0E13 /* UserSettingsViewController.swift in Sources */,
 				47BFFF5A2067DE8200DE0E13 /* ColorPickerViewController.swift in Sources */,

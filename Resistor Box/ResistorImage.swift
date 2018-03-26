@@ -17,11 +17,17 @@ public class ResistorImage : NSObject {
 
     //// Cache
 
-    public struct Cache {
-        static var topGradientColor: UIColor = UIColor(red: 0.929, green: 0.520, blue: 0.520, alpha: 1.000)
-        static var midGradientColor: UIColor = UIColor(red: 0.719, green: 0.719, blue: 1.000, alpha: 1.000)
-        static var bottomGradientColor: UIColor = UIColor(red: 0.519, green: 0.979, blue: 0.519, alpha: 1.000)
+    private struct Cache {
+        static let topGradientColor: UIColor = UIColor(red: 0.929, green: 0.520, blue: 0.520, alpha: 1.000)
+        static let midGradientColor: UIColor = UIColor(red: 0.719, green: 0.719, blue: 1.000, alpha: 1.000)
+        static let bottomGradientColor: UIColor = UIColor(red: 0.519, green: 0.979, blue: 0.519, alpha: 1.000)
     }
+
+    //// Colors
+
+    //@objc dynamic public class var topGradientColor: UIColor { return Cache.topGradientColor }
+    //@objc dynamic public class var midGradientColor: UIColor { return Cache.midGradientColor }
+    //@objc dynamic public class var bottomGradientColor: UIColor { return Cache.bottomGradientColor }
 
     //// Drawing Methods
 
@@ -45,7 +51,9 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        //let euroResistor = false
         let ameriResistor = !euroResistor
+        //let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Text Drawing
@@ -131,13 +139,13 @@ public class ResistorImage : NSObject {
         let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
 
         //// Gradient Declarations
-        let bottomGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, ResistorImage.bottomGradientColor.cgColor] as CFArray, locations: [0, 1])!
+        let topGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: ResistorImage.topGradientColor).cgColor, ResistorImage.topGradientColor.cgColor] as CFArray, locations: [0, 0.48, 1])!
 
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 416, height: 109))
         context.saveGState()
         rectanglePath.addClip()
-        context.drawLinearGradient(bottomGradient, start: CGPoint(x: 208, y: -0), end: CGPoint(x: 208, y: 109), options: [])
+        context.drawLinearGradient(topGradient, start: CGPoint(x: 208, y: -0), end: CGPoint(x: 208, y: 109), options: [])
         context.restoreGState()
 
 
@@ -221,6 +229,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        // let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -359,20 +368,21 @@ public class ResistorImage : NSObject {
         let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
 
         //// Gradient Declarations
-        let topGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: ResistorImage.topGradientColor).cgColor, ResistorImage.topGradientColor.cgColor] as CFArray, locations: [0, 0.48, 1])!
+        let bottomGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, ResistorImage.bottomGradientColor.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
         let shadow = NSShadow(color: shadowColor, offset: CGSize(width: 0, height: 0), blurRadius: 4)
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        // let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 391, height: 235))
         context.saveGState()
         rectanglePath.addClip()
-        context.drawLinearGradient(topGradient, start: CGPoint(x: 195.5, y: -0), end: CGPoint(x: 195.5, y: 235), options: [])
+        context.drawLinearGradient(bottomGradient, start: CGPoint(x: 195.5, y: -0), end: CGPoint(x: 195.5, y: 235), options: [])
         context.restoreGState()
 
 
@@ -562,20 +572,21 @@ public class ResistorImage : NSObject {
         let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
 
         //// Gradient Declarations
-        let midGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, ResistorImage.midGradientColor.cgColor] as CFArray, locations: [0, 1])!
+        let topGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: ResistorImage.topGradientColor).cgColor, ResistorImage.topGradientColor.cgColor] as CFArray, locations: [0, 0.48, 1])!
 
         //// Shadow Declarations
         let shadow = NSShadow(color: shadowColor, offset: CGSize(width: 0, height: 0), blurRadius: 4)
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        // let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 354, height: 207))
         context.saveGState()
         rectanglePath.addClip()
-        context.drawLinearGradient(midGradient, start: CGPoint(x: 177, y: -0), end: CGPoint(x: 177, y: 207), options: [])
+        context.drawLinearGradient(topGradient, start: CGPoint(x: 177, y: -0), end: CGPoint(x: 177, y: 207), options: [])
         context.restoreGState()
 
 
@@ -752,6 +763,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        //let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -1055,6 +1067,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        //let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -1338,6 +1351,7 @@ public class ResistorImage : NSObject {
         shadow2.shadowBlurRadius = 4
 
         //// Variable Declarations
+        //let euroResistor = false
         let ameriResistor = !euroResistor
 
         //// Group
@@ -1390,7 +1404,7 @@ public class ResistorImage : NSObject {
 
     }
 
-    @objc dynamic public class func drawResistorCollection(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 81, height: 55), resizing: ResizingBehavior = .aspectFit) {
+    @objc dynamic public class func drawResistorCollection(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 81, height: 55), resizing: ResizingBehavior = .aspectFit, selectedGradientColor: UIColor = UIColor(red: 0.288, green: 0.923, blue: 0.352, alpha: 1.000)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -1401,17 +1415,15 @@ public class ResistorImage : NSObject {
         context.scaleBy(x: resizedFrame.width / 81, y: resizedFrame.height / 55)
 
 
-        //// Color Declarations
-        let gradientColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
 
         //// Gradient Declarations
-        let gradient = CGGradient(colorsSpace: nil, colors: [UIColor.lightGray.cgColor, gradientColor.cgColor] as CFArray, locations: [0, 1])!
+        let selectedGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, selectedGradientColor.cgColor] as CFArray, locations: [0, 1])!
 
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(roundedRect: CGRect(x: 1, y: 3, width: 79, height: 48), cornerRadius: 10)
         context.saveGState()
         rectanglePath.addClip()
-        context.drawLinearGradient(gradient, start: CGPoint(x: 40.5, y: 51), end: CGPoint(x: 40.5, y: 3), options: [])
+        context.drawLinearGradient(selectedGradient, start: CGPoint(x: 40.5, y: 51), end: CGPoint(x: 40.5, y: 3), options: [])
         context.restoreGState()
         UIColor.black.setStroke()
         rectanglePath.lineWidth = 1
@@ -1486,20 +1498,21 @@ public class ResistorImage : NSObject {
         let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
 
         //// Gradient Declarations
-        let topGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: ResistorImage.topGradientColor).cgColor, ResistorImage.topGradientColor.cgColor] as CFArray, locations: [0, 0.48, 1])!
+        let midGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, ResistorImage.midGradientColor.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
         let shadow = NSShadow(color: shadowColor, offset: CGSize(width: 0, height: 0), blurRadius: 4)
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        //let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 354, height: 208))
         context.saveGState()
         rectanglePath.addClip()
-        context.drawLinearGradient(topGradient, start: CGPoint(x: 177, y: -0), end: CGPoint(x: 177, y: 208), options: [])
+        context.drawLinearGradient(midGradient, start: CGPoint(x: 177, y: -0), end: CGPoint(x: 177, y: 208), options: [])
         context.restoreGState()
 
 
@@ -1688,20 +1701,21 @@ public class ResistorImage : NSObject {
         let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
 
         //// Gradient Declarations
-        let midGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, ResistorImage.midGradientColor.cgColor] as CFArray, locations: [0, 1])!
+        let topGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: ResistorImage.topGradientColor).cgColor, ResistorImage.topGradientColor.cgColor] as CFArray, locations: [0, 0.48, 1])!
 
         //// Shadow Declarations
         let shadow = NSShadow(color: shadowColor, offset: CGSize(width: 0, height: 0), blurRadius: 4)
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        //let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle 2 Drawing
         let rectangle2Path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 380, height: 202))
         context.saveGState()
         rectangle2Path.addClip()
-        context.drawLinearGradient(midGradient, start: CGPoint(x: 190, y: 0), end: CGPoint(x: 190, y: 202), options: [])
+        context.drawLinearGradient(topGradient, start: CGPoint(x: 190, y: 0), end: CGPoint(x: 190, y: 202), options: [])
         context.restoreGState()
 
 
@@ -1980,20 +1994,21 @@ public class ResistorImage : NSObject {
         let color5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.572)
 
         //// Gradient Declarations
-        let topGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, UIColor.white.blended(withFraction: 0.5, of: ResistorImage.topGradientColor).cgColor, ResistorImage.topGradientColor.cgColor] as CFArray, locations: [0, 0.48, 1])!
+        let midGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, ResistorImage.midGradientColor.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
         let shadow = NSShadow(color: shadowColor, offset: CGSize(width: 0, height: 0), blurRadius: 4)
         let shadow2 = NSShadow(color: UIColor.black.withAlphaComponent(0.48), offset: CGSize(width: 1, height: 1), blurRadius: 4)
 
         //// Variable Declarations
+        //let drawShadows = true
         let optionalShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle 2 Drawing
         let rectangle2Path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 391, height: 249))
         context.saveGState()
         rectangle2Path.addClip()
-        context.drawLinearGradient(topGradient, start: CGPoint(x: 195.5, y: 0), end: CGPoint(x: 195.5, y: 249), options: [])
+        context.drawLinearGradient(midGradient, start: CGPoint(x: 195.5, y: 0), end: CGPoint(x: 195.5, y: 249), options: [])
         context.restoreGState()
 
 
@@ -2309,24 +2324,46 @@ public class ResistorImage : NSObject {
 
     }
 
-    @objc dynamic public class func drawCanvas1(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 418, height: 313), resizing: ResizingBehavior = .aspectFit) {
+    @objc dynamic public class func drawGradientView(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 215, height: 56), resizing: ResizingBehavior = .aspectFit, selectedGradientColor: UIColor = UIColor(red: 0.288, green: 0.923, blue: 0.352, alpha: 1.000), label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 418, height: 313), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 215, height: 56), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 418, y: resizedFrame.height / 313)
+        context.scaleBy(x: resizedFrame.width / 215, y: resizedFrame.height / 56)
 
 
-        //// Symbol Drawing
-        let symbolRect = CGRect(x: 2, y: 12, width: 416, height: 109)
+
+        //// Gradient Declarations
+        let selectedGradient = CGGradient(colorsSpace: nil, colors: [UIColor.white.cgColor, selectedGradientColor.cgColor] as CFArray, locations: [0, 1])!
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(roundedRect: CGRect(x: 8, y: 6, width: 49, height: 43), cornerRadius: 4)
         context.saveGState()
-        context.clip(to: symbolRect)
-        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+        rectanglePath.addClip()
+        context.drawLinearGradient(selectedGradient, start: CGPoint(x: 32.5, y: 6), end: CGPoint(x: 32.5, y: 49), options: [])
+        context.restoreGState()
+        UIColor.gray.setStroke()
+        rectanglePath.lineWidth = 2
+        rectanglePath.stroke()
 
-        ResistorImage.drawSeriesResistors(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, value1: "11.1K", value2: "22.2K", value3: "33.3K", label: "Best Value: 33.4KΩ; error: 0% with 1% resistors")
+
+        //// Text Drawing
+        let textRect = CGRect(x: 63, y: 15, width: 152, height: 24)
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .left
+        let textFontAttributes = [
+            .font: UIFont(name: "HelveticaNeue", size: 17)!,
+            .foregroundColor: UIColor.black,
+            .paragraphStyle: textStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let textTextHeight: CGFloat = label.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: textRect)
+        label.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
         context.restoreGState()
         
         context.restoreGState()
@@ -2346,6 +2383,7 @@ public class ResistorImage : NSObject {
 
 
         //// Variable Declarations
+        //let euroResistor = false
         let ameriResistor = !euroResistor
 
         //// Group
@@ -2659,6 +2697,7 @@ public class ResistorImage : NSObject {
         shadow2.shadowBlurRadius = 4
 
         //// Variable Declarations
+        //let euroResistor = false
         let ameriResistor = !euroResistor
 
         //// Group
@@ -2731,6 +2770,7 @@ public class ResistorImage : NSObject {
         shadow2.shadowBlurRadius = 4
 
         //// Variable Declarations
+        //let euroResistor = false
         let ameriResistor = !euroResistor
 
         //// Group
@@ -2778,6 +2818,30 @@ public class ResistorImage : NSObject {
             bezier3Path.stroke()
             context.restoreGState()
         }
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawCanvas1(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 252, height: 200), resizing: ResizingBehavior = .aspectFit, selectedGradientColor: UIColor = UIColor(red: 0.288, green: 0.923, blue: 0.352, alpha: 1.000)) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 252, height: 200), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 252, y: resizedFrame.height / 200)
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 0, y: 13, width: 215, height: 56)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        ResistorImage.drawGradientView(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, selectedGradientColor: selectedGradientColor, label: "Light Lavender")
+        context.restoreGState()
         
         context.restoreGState()
 
@@ -2883,6 +2947,16 @@ public class ResistorImage : NSObject {
         UIGraphicsEndImageContext()
 
         return imageOfPowerSupply2
+    }
+
+    @objc dynamic public class func imageOfGradientView(selectedGradientColor: UIColor = UIColor(red: 0.288, green: 0.923, blue: 0.352, alpha: 1.000), label: String = "Best Value: 33.4KΩ; error: 0% with 1% resistors") -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 215, height: 56), false, 0)
+            ResistorImage.drawGradientView(selectedGradientColor: selectedGradientColor, label: label)
+
+        let imageOfGradientView = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return imageOfGradientView
     }
 
 
