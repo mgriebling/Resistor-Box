@@ -14,17 +14,16 @@ class ColorPickerViewController: UIViewController {
     }
     
     // Global variables
-	var color: UIColor = UIColor.gray
-    var colorPicker = ColorPicker("Light Grey")
+    let colorPicker = ColorPicker("Silver")
     public var callback : (String, UIColor) -> () = { name, arg in }
 	
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        colorPicker.setPicker(pickerView, toCurrentValue: colorPicker.selectedColor)
         colorPicker.valueChangeCallback = { [weak self] picker in
             let value = picker.selectedColor
-            let color = picker.colors[value]!
+            let color = ColorPicker.colors[value]!
             self?.callback(value, color)
-            print("Changed color to \(value)")
         }
     }
     

@@ -967,6 +967,11 @@
                                                 <state key="normal" title="Blue">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="gQu-SO-SfO" kind="popoverPresentation" identifier="ChooseColor2" popoverAnchorView="Bvq-Jz-by0" id="ixf-B0-nN7">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -986,6 +991,11 @@
                                                 <state key="normal" title="Green">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="gQu-SO-SfO" kind="popoverPresentation" identifier="ChooseColor3" popoverAnchorView="9Ng-bZ-cJK" id="tbR-Vo-ZYa">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1005,7 +1015,7 @@
                                                 <rect key="frame" x="180.5" y="0.0" width="164.5" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Off" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgA-KN-seb">
-                                                        <rect key="frame" x="0.0" y="2" width="42" height="31"/>
+                                                        <rect key="frame" x="0.0" y="2" width="41" height="31"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -1353,5 +1363,6 @@
         <segue reference="LnV-1h-8bd"/>
         <segue reference="Dgs-rd-9FN"/>
         <segue reference="ab2-QI-2hb"/>
+        <segue reference="tbR-Vo-ZYa"/>
     </inferredMetricsTieBreakers>
 </document>

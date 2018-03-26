@@ -29,9 +29,12 @@ class UserSettingsViewController : UIViewController {
         resistorImage.selectedSegmentIndex = preferences.useEuroSymbols ? 1 : 0
         minResistance.setTitle(Resistors.stringFrom(preferences.minResistance), for: .normal)
         maxResistance.setTitle(Resistors.stringFrom(preferences.maxResistance), for: .normal)
-        background1.backgroundColor = preferences.color1
-        background2.backgroundColor = preferences.color2
-        background3.backgroundColor = preferences.color3
+        background1.setTitle(preferences.color1, for: .normal)
+        background1.backgroundColor = ColorPicker.colors[preferences.color1]!
+        background2.setTitle(preferences.color2, for: .normal)
+        background2.backgroundColor = ColorPicker.colors[preferences.color2]!
+        background3.setTitle(preferences.color3, for: .normal)
+        background3.backgroundColor = ColorPicker.colors[preferences.color3]!
     }
     
     @IBAction func changedResistorImage(_ sender: UISegmentedControl) {
@@ -54,6 +57,7 @@ class UserSettingsViewController : UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destNav = segue.destination
         let popPC = destNav.popoverPresentationController
+        let colorSize = CGSize(width: 250, height: 250)
         if let button = sender as? UIButton {
             popPC?.sourceView = button
             popPC?.sourceRect = button.bounds
@@ -78,27 +82,31 @@ class UserSettingsViewController : UIViewController {
             }
         case "ChooseColor1":
             if let vc = destNav as? ColorPickerViewController {
-                vc.preferredContentSize = CGSize(width: 250, height: 250)
+                vc.preferredContentSize = colorSize
+                vc.colorPicker.selectedColor = preferences.color1
                 vc.callback = { name, newValue in
-                    preferences.color1 = newValue
-                    print("Selected \(newValue)")
+                    preferences.color1 = name
                     self.background1.setTitle(name, for: .normal)
                     self.background1.backgroundColor = newValue
                 }
             }
         case "ChooseColor2":
             if let vc = destNav as? ColorPickerViewController {
-                vc.preferredContentSize = CGSize(width: 250, height: 250)
+                vc.preferredContentSize = colorSize
+                vc.colorPicker.selectedColor = preferences.color2
                 vc.callback = { name, newValue in
-                    preferences.color2 = newValue
+                    preferences.color2 = name
+                    self.background2.setTitle(name, for: .normal)
                     self.background2.backgroundColor = newValue
                 }
             }
         case "ChooseColor3":
             if let vc = destNav as? ColorPickerViewController {
-                vc.preferredContentSize = CGSize(width: 250, height: 250)
+                vc.preferredContentSize = colorSize
+                vc.colorPicker.selectedColor = preferences.color3
                 vc.callback = { name, newValue in
-                    preferences.color3 = newValue
+                    preferences.color3 = name
+                    self.background3.setTitle(name, for: .normal)
                     self.background3.backgroundColor = newValue
                 }
             }

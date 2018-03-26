@@ -5,7 +5,7 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     typealias ColorChanged = (_ picker: ColorPicker) -> ()
     
-    var colors : [String: UIColor] = [
+    static public let colors : [String: UIColor] = [
         "Silver"     : UIColor(hue: 148/360.0, saturation: 0.00, brightness: 0.84, alpha: 1),
         "Snow"       : UIColor(hue: 180/360.0, saturation: 0.00, brightness: 1.00, alpha: 1),
         "Salmon"     : UIColor(hue:   2/360.0, saturation: 0.53, brightness: 1.00, alpha: 1),
@@ -28,15 +28,17 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
         "Strawberry" : UIColor(hue: 331/360.0, saturation: 0.81, brightness: 1.00, alpha: 1)
     ]
     
-    var selectedColor: String
+    var selectedColor: String = "Silver"
     var valueChangeCallback: ColorChanged = { (picker) -> () in }
     
     init (_ color: String) {
-        selectedColor = color
+        if let _ = ColorPicker.colors.keys.sorted().index(of: color) {
+            selectedColor = color
+        }
     }
     
     func setPicker(_ picker: UIPickerView, toCurrentValue value: String) {
-        if let index = colors.keys.sorted().index(of: value) {
+        if let index = ColorPicker.colors.keys.sorted().index(of: value) {
             selectedColor = value
             picker.selectRow(index, inComponent: 0, animated: true)
         }
@@ -53,7 +55,7 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
      
      ******************************************************************************** */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedColor = colors.keys.sorted()[row]
+        selectedColor = ColorPicker.colors.keys.sorted()[row]
         valueChangeCallback(self)
     }
     
@@ -78,7 +80,7 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
      
      ******************************************************************************** */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return colors.count
+        return ColorPicker.colors.count
     }
     
     //********************************************************************************
@@ -97,9 +99,9 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
         } else {
             newView = ColorView()
         }
-        let key = colors.keys.sorted()[row]
+        let key = ColorPicker.colors.keys.sorted()[row]
         newView.label = key
-        newView.color = colors[key]!
+        newView.color = ColorPicker.colors[key]!
         return newView
     }
     
