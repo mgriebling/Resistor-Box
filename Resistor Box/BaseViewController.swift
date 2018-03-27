@@ -17,6 +17,8 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var collectionButton: UIBarButtonItem!
     @IBOutlet weak var toolBar: UIToolbar!
     
+    weak var popover : UIPopoverPresentationController?     // use to hold popover to assist rotations
+    
     @IBAction func cancelCalculations(_ sender: Any) {
         print("Cancelled calculation")
         Resistors.cancelCalculations = true
@@ -56,7 +58,7 @@ class BaseViewController: UIViewController {
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
-    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {  }
+    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { popover = nil }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,6 +170,19 @@ class BaseViewController: UIViewController {
             })
         }
     }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            if let pover = self.popover {
+                if let button = pover.sourceView as? UIButton {
+                    button.setNeedsLayout()
+                    button.layoutIfNeeded()
+                }
+            }
+        }, completion: nil)
+    }
+    
 }
 
 extension BaseViewController : UIPopoverPresentationControllerDelegate {
@@ -176,5 +191,4 @@ extension BaseViewController : UIPopoverPresentationControllerDelegate {
         // allows popover to appear for iPhone-style devices
         return .none
     }
-    
 }

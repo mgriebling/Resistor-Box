@@ -18,12 +18,12 @@ class UserSettingsViewController : UIViewController {
     @IBOutlet weak var background2: UIButton!
     @IBOutlet weak var background3: UIButton!
     
-    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { /* stub to return from pop-ups */ }
+    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { popover = nil /* stub to return from pop-ups */ }
     
     private func setButtonColor (_ color : String, button: UIButton) {
         let buttonSize = button.bounds.size
         UIGraphicsBeginImageContextWithOptions(buttonSize, false, 0)
-        ResistorImage.drawGradientButton(frame: button.bounds, selectedGradientColor: ColorPicker.colors[color]!, label: color)
+        ResistorImage.drawGradientButton(frame: button.bounds, resizing: .stretch, selectedGradientColor: ColorPicker.colors[color]!, label: color)
         let imageOfGradientButton = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         button.setBackgroundImage(imageOfGradientButton, for: .normal)
@@ -51,14 +51,6 @@ class UserSettingsViewController : UIViewController {
         setButtonColor(preferences.color3, button: background3)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { coordinator in
-            // nothing
-        }) { context in
-            self.updateButtons()  // refresh buttons
-        }
-    }
-    
     @IBAction func changedResistorImage(_ sender: UISegmentedControl) {
         preferences.useEuroSymbols = sender.selectedSegmentIndex > 0
         
@@ -76,10 +68,13 @@ class UserSettingsViewController : UIViewController {
     
     // MARK: - Navigation
     
+    weak var popover : UIPopoverPresentationController?
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destNav = segue.destination
         let popPC = destNav.popoverPresentationController
         let colorSize = CGSize(width: 250, height: 250)
+        popover = popPC
         if let button = sender as? UIButton {
             popPC?.sourceView = button
             popPC?.sourceRect = button.bounds
@@ -133,11 +128,23 @@ class UserSettingsViewController : UIViewController {
         }
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            if let pover = self.popover {
+                if let button = pover.sourceView as? UIButton {
+                    button.setNeedsLayout()
+                    button.layoutIfNeeded()
+                }
+            }
+        }, completion: nil)
+    }
+    
 }
 
 extension UserSettingsViewController : UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // allows popover to appear for iPhone-style devices
         return .none
     }

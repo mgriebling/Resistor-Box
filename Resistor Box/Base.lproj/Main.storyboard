@@ -1022,7 +1022,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgo-oc-EJo">
-                                                                <rect key="frame" x="48" y="2" width="51" height="31"/>
+                                                                <rect key="frame" x="47" y="2" width="51" height="31"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <connections>
                                                                     <action selector="changedShadows:" destination="uKZ-Q2-fyA" eventType="valueChanged" id="RZx-oS-Qhu"/>
@@ -1081,7 +1081,6 @@
                                             <constraint firstAttribute="trailing" secondItem="Faw-aK-vzM" secondAttribute="trailing" id="pEM-CW-m65"/>
                                             <constraint firstAttribute="trailing" secondItem="IBJ-KX-ttt" secondAttribute="trailing" id="tpN-7d-UYe"/>
                                         </constraints>
-                                        <variation key="heightClass=compact"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>

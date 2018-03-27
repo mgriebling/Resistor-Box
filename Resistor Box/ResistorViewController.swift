@@ -83,6 +83,7 @@ class ResistorViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destNav = segue.destination
         let popPC = destNav.popoverPresentationController
+        popover = popPC
         popPC?.delegate = self
         switch segue.identifier! {
         case "SelectResistance":
