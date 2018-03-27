@@ -101,27 +101,30 @@ class UserSettingsViewController : UIViewController {
             if let vc = destNav as? ColorPickerViewController {
                 vc.preferredContentSize = colorSize
                 vc.colorPicker.selectedColor = preferences.color1
-                vc.callback = { name, newValue in
+                vc.callback = { [weak self] name, newValue in
+                    guard let wself = self else { return }
                     preferences.color1 = name
-                    self.setButtonColor(name, button: self.background1)
+                    wself.setButtonColor(name, button: wself.background1)
                 }
             }
         case "ChooseColor2":
             if let vc = destNav as? ColorPickerViewController {
                 vc.preferredContentSize = colorSize
                 vc.colorPicker.selectedColor = preferences.color2
-                vc.callback = { name, newValue in
+                vc.callback = { [weak self] name, newValue in
+                    guard let wself = self else { return }
                     preferences.color2 = name
-                    self.setButtonColor(name, button: self.background2)
+                    wself.setButtonColor(name, button: wself.background2)
                 }
             }
         case "ChooseColor3":
             if let vc = destNav as? ColorPickerViewController {
                 vc.preferredContentSize = colorSize
                 vc.colorPicker.selectedColor = preferences.color3
-                vc.callback = { name, newValue in
+                vc.callback = { [weak self] name, newValue in
+                    guard let wself = self else { return }
                     preferences.color3 = name
-                    self.setButtonColor(name, button: self.background3)
+                    wself.setButtonColor(name, button: wself.background3)
                 }
             }
         default: break
