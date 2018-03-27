@@ -20,6 +20,10 @@ class UserSettingsViewController : UIViewController {
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { /* stub to return from pop-ups */ }
     
+    private func setButtonColor (_ color : String, button: UIButton) {
+        button.setBackgroundImage(ResistorImage.imageOfGradientButton(selectedGradientColor: ColorPicker.colors[color]!, label: color), for: .normal)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -29,12 +33,9 @@ class UserSettingsViewController : UIViewController {
         resistorImage.selectedSegmentIndex = preferences.useEuroSymbols ? 1 : 0
         minResistance.setTitle(Resistors.stringFrom(preferences.minResistance), for: .normal)
         maxResistance.setTitle(Resistors.stringFrom(preferences.maxResistance), for: .normal)
-        background1.setTitle(preferences.color1, for: .normal)
-        background1.backgroundColor = ColorPicker.colors[preferences.color1]!
-        background2.setTitle(preferences.color2, for: .normal)
-        background2.backgroundColor = ColorPicker.colors[preferences.color2]!
-        background3.setTitle(preferences.color3, for: .normal)
-        background3.backgroundColor = ColorPicker.colors[preferences.color3]!
+        setButtonColor(preferences.color1, button: background1)
+        setButtonColor(preferences.color2, button: background2)
+        setButtonColor(preferences.color3, button: background3)
     }
     
     @IBAction func changedResistorImage(_ sender: UISegmentedControl) {
@@ -86,8 +87,7 @@ class UserSettingsViewController : UIViewController {
                 vc.colorPicker.selectedColor = preferences.color1
                 vc.callback = { name, newValue in
                     preferences.color1 = name
-                    self.background1.setTitle(name, for: .normal)
-                    self.background1.backgroundColor = newValue
+                    self.setButtonColor(name, button: self.background1)
                 }
             }
         case "ChooseColor2":
@@ -96,8 +96,7 @@ class UserSettingsViewController : UIViewController {
                 vc.colorPicker.selectedColor = preferences.color2
                 vc.callback = { name, newValue in
                     preferences.color2 = name
-                    self.background2.setTitle(name, for: .normal)
-                    self.background2.backgroundColor = newValue
+                    self.setButtonColor(name, button: self.background2)
                 }
             }
         case "ChooseColor3":
@@ -106,8 +105,7 @@ class UserSettingsViewController : UIViewController {
                 vc.colorPicker.selectedColor = preferences.color3
                 vc.callback = { name, newValue in
                     preferences.color3 = name
-                    self.background3.setTitle(name, for: .normal)
-                    self.background3.backgroundColor = newValue
+                    self.setButtonColor(name, button: self.background3)
                 }
             }
         default: break
