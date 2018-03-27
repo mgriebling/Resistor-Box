@@ -21,7 +21,12 @@ class UserSettingsViewController : UIViewController {
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { /* stub to return from pop-ups */ }
     
     private func setButtonColor (_ color : String, button: UIButton) {
-        button.setBackgroundImage(ResistorImage.imageOfGradientButton(selectedGradientColor: ColorPicker.colors[color]!, label: color), for: .normal)
+        let buttonSize = button.bounds.size
+        UIGraphicsBeginImageContextWithOptions(buttonSize, false, 0)
+        ResistorImage.drawGradientButton(frame: button.bounds, selectedGradientColor: ColorPicker.colors[color]!, label: color)
+        let imageOfGradientButton = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        button.setBackgroundImage(imageOfGradientButton, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,9 +38,25 @@ class UserSettingsViewController : UIViewController {
         resistorImage.selectedSegmentIndex = preferences.useEuroSymbols ? 1 : 0
         minResistance.setTitle(Resistors.stringFrom(preferences.minResistance), for: .normal)
         maxResistance.setTitle(Resistors.stringFrom(preferences.maxResistance), for: .normal)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateButtons()
+    }
+    
+    func updateButtons() {
         setButtonColor(preferences.color1, button: background1)
         setButtonColor(preferences.color2, button: background2)
         setButtonColor(preferences.color3, button: background3)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { coordinator in
+            // nothing
+        }) { context in
+            self.updateButtons()  // refresh buttons
+        }
     }
     
     @IBAction func changedResistorImage(_ sender: UISegmentedControl) {

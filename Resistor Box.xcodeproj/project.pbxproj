@@ -64,6 +64,7 @@
 		2F2F2C602036156300DD98AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2F2C66203617B000DD98AE /* Resistors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resistors.swift; sourceTree = "<group>"; };
 		2F53F8CA2062838E00034789 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2F7F2409206A695B00D71148 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2FAD9B5F206056AA00615394 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2FC933142056B2C700FE9688 /* Resistor Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resistor Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC933162056B2C700FE9688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 				2FC933152056B2C700FE9688 /* Resistor Box Mac */,
 				2FC933242056B30600FE9688 /* Common */,
 				2F2F2C502036156300DD98AE /* Products */,
+				2F7F2408206A695B00D71148 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +146,14 @@
 				478568902066555C00A0A9B0 /* Miscellaneous */,
 			);
 			path = "Resistor Box";
+			sourceTree = "<group>";
+		};
+		2F7F2408206A695B00D71148 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F7F2409206A695B00D71148 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2FC933152056B2C700FE9688 /* Resistor Box Mac */ = {
@@ -439,7 +449,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -490,7 +500,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
