@@ -20,15 +20,18 @@ class ResistorViewController: BaseViewController {
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
     
     func updateSeriesResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors)
+        let color = ColorPicker.colors[preferences.color1]!
+        update(x, prefix: label, image: seriesResistors, color: color, imageFunc: ResistorImage.imageOfSeriesResistors)
     }
     
     func updateSeriesParallelResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: seriesParallelResistors, imageFunc: ResistorImage.imageOfSeriesParallelResistors)
+        let color = ColorPicker.colors[preferences.color2]!
+        update(x, prefix: label, image: seriesParallelResistors, color: color, imageFunc: ResistorImage.imageOfSeriesParallelResistors)
     }
     
     func updateParallelResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: parallelResistors, imageFunc: ResistorImage.imageOfParallelResistors)
+        let color = ColorPicker.colors[preferences.color3]!
+        update(x, prefix: label, image: parallelResistors, color: color, imageFunc: ResistorImage.imageOfParallelResistors)
     }
     
     func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {

@@ -34,11 +34,13 @@ class PowerViewController: BaseViewController {
     }
     
     func updatePower1Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: power1Image, imageFunc: ResistorImage.imageOfPowerSupply)
+        let color = ColorPicker.colors[preferences.color1]!
+        update(x, prefix: label, image: power1Image, color: color, imageFunc: ResistorImage.imageOfPowerSupply)
     }
     
     func updatePower2Resistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: power2Image, imageFunc: ResistorImage.imageOfPowerSupply2)
+        let color = ColorPicker.colors[preferences.color2]!
+        update(x, prefix: label, image: power2Image, color: color, imageFunc: ResistorImage.imageOfPowerSupply2)
     }
     
     @IBAction func updateValues(_ sender: Any) {

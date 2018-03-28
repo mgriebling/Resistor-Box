@@ -23,9 +23,10 @@ class UserSettingsViewController : UIViewController {
     private func setButtonColor (_ color : String, button: UIButton) {
         let buttonSize = button.bounds.size
         UIGraphicsBeginImageContextWithOptions(buttonSize, false, 0)
-        ResistorImage.drawGradientButton(frame: button.bounds, resizing: .stretch, selectedGradientColor: ColorPicker.colors[color]!, label: color)
+        ResistorImage.drawGradientButton(frame: button.bounds, resizing: .stretch, selectedGradientColor: ColorPicker.colors[color]!)
         let imageOfGradientButton = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        button.setTitle(color, for: .normal)
         button.setBackgroundImage(imageOfGradientButton, for: .normal)
     }
     
@@ -136,6 +137,7 @@ class UserSettingsViewController : UIViewController {
         coordinator.animate(alongsideTransition: { _ in
             if let pover = self.popover {
                 if let button = pover.sourceView as? UIButton {
+                    self.setButtonColor(button.title(for: .normal)!, button: button)
                     button.setNeedsLayout()
                     button.layoutIfNeeded()
                 }

@@ -112,7 +112,6 @@
 		2F2F2C462036156300DD98AE = {
 			isa = PBXGroup;
 			children = (
-				47B7A329206797E00004781E /* Pickers.storyboard */,
 				2F2F2C512036156300DD98AE /* Resistor Box */,
 				2FC933152056B2C700FE9688 /* Resistor Box Mac */,
 				2FC933242056B30600FE9688 /* Common */,
@@ -185,6 +184,7 @@
 		4785688F2066552800A0A9B0 /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
+				47B7A329206797E00004781E /* Pickers.storyboard */,
 				2F1573D2204EC3D400E948B5 /* NumberPicker.swift */,
 				2F23077B205BE53E00B01CE1 /* NumberPickerViewController.swift */,
 				2F1573D8204EC7CD00E948B5 /* ResistancePickerViewController.swift */,

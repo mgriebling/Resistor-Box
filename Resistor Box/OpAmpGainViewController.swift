@@ -28,11 +28,13 @@ class OpAmpGainViewController: BaseViewController {
     }
     
     func updateGainResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: gainImage, imageFunc: ResistorImage.imageOfOpAmpGain2)
+        let color = ColorPicker.colors[preferences.color1]!
+        update(x, prefix: label, image: gainImage, color: color, imageFunc: ResistorImage.imageOfOpAmpGain2)
     }
     
     func updateInvertingGainResistors (_ x : [Double], label: String) {
-        update(x, prefix: label, image: invertingGainImage, imageFunc: ResistorImage.imageOfOpAmpGain)
+        let color = ColorPicker.colors[preferences.color2]!
+        update(x, prefix: label, image: invertingGainImage, color: color, imageFunc: ResistorImage.imageOfOpAmpGain)
     }
     
     @IBAction func updateValues(_ sender: Any) {
