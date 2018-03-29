@@ -19,6 +19,10 @@ class ResistorViewController: BaseViewController {
     @IBOutlet weak var parallelResistors: UIImageView!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
     
+    @IBAction func showTabMenu(_ sender: Any) {
+        print("Showing menu")
+    }
+    
     func updateSeriesResistors (_ x : [Double], label: String) {
         let color = ColorPicker.colors[preferences.color1]!
         update(x, prefix: label, image: seriesResistors, color: color, imageFunc: ResistorImage.imageOfSeriesResistors)

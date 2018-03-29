@@ -29,6 +29,11 @@
                                     <constraint firstAttribute="height" constant="44" id="loy-08-UTK"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem systemItem="organize" id="vN5-Of-vTA">
+                                        <connections>
+                                            <action selector="showTabMenu:" destination="9pv-A4-QxB" id="fTU-t8-6Z6"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Desired Total:" id="BiX-D4-6qh">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
@@ -829,7 +834,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CenterViewController" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -842,7 +847,6 @@
                         <segue destination="acr-ZN-D4c" kind="relationship" relationship="viewControllers" id="Fs0-k3-OLQ"/>
                         <segue destination="mm9-Ct-Dfl" kind="relationship" relationship="viewControllers" id="XQk-OE-Aqy"/>
                         <segue destination="gqK-ve-sEa" kind="relationship" relationship="viewControllers" id="poU-pL-Mj4"/>
-                        <segue destination="uKZ-Q2-fyA" kind="relationship" relationship="viewControllers" id="3Xw-f6-fPI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -852,16 +856,16 @@
         <!--User Settings-->
         <scene sceneID="QFP-sz-bKD">
             <objects>
-                <viewController title="User Settings" id="uKZ-Q2-fyA" customClass="UserSettingsViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeftViewController" title="User Settings" id="uKZ-Q2-fyA" customClass="UserSettingsViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hrG-m5-HQA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7C-Ok-m5H">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DdM-Rr-obt">
-                                        <rect key="frame" x="20" y="20" width="335" height="558"/>
+                                        <rect key="frame" x="20" y="20" width="335" height="607"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IBJ-KX-ttt">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="28"/>
@@ -1057,10 +1061,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ELI-w1-Pms">
-                                                <rect key="frame" x="0.0" y="327" width="335" height="231"/>
+                                                <rect key="frame" x="0.0" y="327" width="335" height="280"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nah-Sa-R3t">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="231"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="280"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Restore Factory Defaults"/>
                                                     </button>
@@ -1373,8 +1377,8 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fkr-bb-YmD"/>
-        <segue reference="Dgs-rd-9FN"/>
+        <segue reference="J1A-ky-7j9"/>
+        <segue reference="rRx-DY-fSd"/>
         <segue reference="ab2-QI-2hb"/>
         <segue reference="ixf-B0-nN7"/>
     </inferredMetricsTieBreakers>

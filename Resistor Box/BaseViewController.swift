@@ -63,6 +63,17 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Resistors.initInventory()   // build up the values
+        
+        // set up gesture recognizer
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        self.view.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    @objc public func handlePan(_ recognizer: UIPanGestureRecognizer) {
+        if let tbc = self.parent as? ContainerViewController {
+            print("Handling the pan")
+            tbc.handlePanGesture(recognizer)
+        }
     }
     
     public func refreshAll() {
@@ -122,19 +133,6 @@ class BaseViewController: UIViewController {
         assert(false, "Need to override 'formatValue' method")
         return "Value: \(x)"
     }
-    
-//    func update(_ x : [Double], prefix: String, image: UIImageView,
-//                imageFunc: @escaping (String, String, String) -> (UIImage), label: UILabel) {
-//        let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])
-//        let r2v = x.count == 0 ? "???" : Resistors.stringFrom(x[1])
-//        let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
-//        let rt  = x.count == 0 ? "???" : formatValue(x[3])
-//        let error = x.count == 0 ? "???" : BaseViewController.formatter.string(from: NSNumber(value: x[4]))!
-//        UIView.animate(withDuration: 0.5) {
-//            image.image = imageFunc(r1v, r2v, r3v)
-//            label.text = "\(prefix) \(rt); error: \(error)% with \(Resistors.active) resistors"
-//        }
-//    }
     
     func update(_ x : [Double], prefix: String, image: UIImageView, color: UIColor, imageFunc: @escaping (UIColor, String, String, String, String) -> (UIImage)) {
         let r1v = x.count == 0 ? "???" : Resistors.stringFrom(x[0])

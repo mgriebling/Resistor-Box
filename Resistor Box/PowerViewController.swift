@@ -73,8 +73,9 @@ class PowerViewController: BaseViewController {
     func calculateOptimalValues () {
         guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
         Resistors.cancelCalculations = false
-        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.refreshGUI(self.x, y: self.y, label: "Working")
+        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let wself = self else { return }
+            wself.refreshGUI(wself.x, y: wself.y, label: "Working")
         }
         timedTask?.fire()     // refresh GUI to start
         

@@ -30,7 +30,7 @@ class ResistorViewController: BaseViewController {
     
     override func formatValue(_ x: Double) -> String {
         return "Total: " + Resistors.stringFrom(x)
-    }
+    }    
     
     func updateSeriesResistors (_ x : [Double], label: String) {
         update(x, prefix: label, image: seriesResistors, imageFunc: ResistorImage.imageOfSeriesResistors)

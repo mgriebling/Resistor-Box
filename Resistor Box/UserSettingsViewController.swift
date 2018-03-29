@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SidePanelViewControllerDelegate {
+    func didFinish()
+}
+
 class UserSettingsViewController : UIViewController {
     
     @IBOutlet weak var resistorImage: UISegmentedControl!
@@ -17,6 +21,8 @@ class UserSettingsViewController : UIViewController {
     @IBOutlet weak var background1: UIButton!
     @IBOutlet weak var background2: UIButton!
     @IBOutlet weak var background3: UIButton!
+    
+    var delegate: SidePanelViewControllerDelegate?
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { popover = nil /* stub to return from pop-ups */ }
     
