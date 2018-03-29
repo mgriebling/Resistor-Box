@@ -18,6 +18,7 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
     
     weak var popover : UIPopoverPresentationController?     // use to hold popover to assist rotations
+    var slideDelegate : CenterViewControllerDelegate?
     
     @IBAction func cancelCalculations(_ sender: Any) {
         print("Cancelled calculation")
@@ -70,9 +71,11 @@ class BaseViewController: UIViewController {
     }
     
     @objc public func handlePan(_ recognizer: UIPanGestureRecognizer) {
-        if let tbc = self.parent as? ContainerViewController {
+        if let tbc = tabBarController {
             print("Handling the pan")
-            tbc.handlePanGesture(recognizer)
+            if let handler = tbc as? ContainerViewController {
+                handler.handlePanGesture(recognizer)
+            }
         }
     }
     
@@ -182,6 +185,15 @@ class BaseViewController: UIViewController {
     }
     
 }
+
+// MARK: - SidePanelViewControllerDelegate
+extension CenterViewController: SidePanelViewControllerDelegate {
+    
+    func didFinish() {
+        slideDelegate?.collapseSidePanels?()
+    }
+}
+
 
 extension BaseViewController : UIPopoverPresentationControllerDelegate {
     

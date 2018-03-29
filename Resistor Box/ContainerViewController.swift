@@ -29,7 +29,7 @@
 import UIKit
 import QuartzCore
 
-typealias CenterViewController = TabViewController
+typealias CenterViewController = BaseViewController
 typealias SidePanelViewController = UserSettingsViewController
 
 @objc
@@ -65,17 +65,19 @@ class ContainerViewController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    centerViewController = UIStoryboard.centerViewController()
+    centerViewController = viewControllers?.first as? BaseViewController
     centerViewController.slideDelegate = self
     
-    centerNavigationController = UINavigationController(rootViewController: centerViewController)
-    view.addSubview(centerNavigationController.view)
-    addChildViewController(centerNavigationController)
+    centerNavigationController = self.viewControllers?.last as? UINavigationController
     
-    centerNavigationController.didMove(toParentViewController: self)
+//    centerNavigationController = self
+//    view.addSubview(centerNavigationController.view)
+//    addChildViewController(centerNavigationController)
+
+//    centerNavigationController.didMove(toParentViewController: self)
     
-    let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+//    let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+//    centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
   }
 }
 
