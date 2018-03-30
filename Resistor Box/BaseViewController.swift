@@ -10,11 +10,12 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    @IBOutlet weak var preferencesMenu: UIBarButtonItem!
+    @IBOutlet var preferencesMenu: UIBarButtonItem!
     @IBOutlet weak var desiredValue: UIBarButtonItem!
-    @IBOutlet weak var minResistance: UIBarButtonItem!
+    @IBOutlet var minResistance: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var actionButton: UIBarButtonItem!
+    @IBOutlet var stopButton: UIBarButtonItem!
+    @IBOutlet var actionButton: UIBarButtonItem!
     @IBOutlet weak var collectionButton: UIBarButtonItem!
     @IBOutlet weak var toolBar: UIToolbar!
     
@@ -153,17 +154,25 @@ class BaseViewController: UIViewController {
         }
     }
     
+    var minRPos : Int?
+    
     func enableGUI () {
         let done = !calculating1 && !calculating2 && !calculating3
         var items = toolBar.items!
         if items.contains(actionButton) || items.contains(cancelButton) { items.removeLast() }
-        if items.contains(preferencesMenu) { items.removeFirst() }
+        if let stop = stopButton, items.contains(stop) { items.removeLast() }
+        if let menu = preferencesMenu, items.contains(menu) { items.removeFirst() }
+        if let minR = minResistance, let pos = items.index(of: minR) { items.remove(at: pos); minRPos = pos }
+        let small = UIDevice.current.orientation == .portrait && UIDevice.current.userInterfaceIdiom == .phone
         if done {
+            if let pos = minRPos { items.insert(minResistance, at: pos) }
             items.append(actionButton)
+            if !small || minRPos == nil { items.insert(preferencesMenu, at: 0) }
+        } else if small && stopButton != nil {
+            items.append(stopButton)
         } else {
             items.append(cancelButton)
         }
-        items.insert(preferencesMenu, at: 0)
         toolBar.setItems(items, animated: true)
         desiredValue.isEnabled = done
         collectionButton.isEnabled = done
