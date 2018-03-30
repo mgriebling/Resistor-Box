@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ResistorViewController: BaseViewController {
+class CalibrationViewController: BaseViewController {
     
     @IBOutlet weak var seriesResistors: NSImageView!
     @IBOutlet weak var seriesActivity: NSProgressIndicator!

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -715,7 +715,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
-                        <tabViewItems/>
                         <connections>
                             <outlet property="delegate" destination="ANk-Px-Bca" id="tMa-a3-YIn"/>
                         </connections>
@@ -733,7 +732,7 @@
         <!--Calibration-->
         <scene sceneID="i62-P9-QNu">
             <objects>
-                <viewController title="Calibration" id="jS1-Xf-pAW" customClass="ResistorViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Calibration" id="jS1-Xf-pAW" customClass="CalibrationViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fHr-z4-2cw">
                         <rect key="frame" x="0.0" y="0.0" width="765" height="1040"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -981,7 +980,7 @@
                                 <rect key="frame" x="0.0" y="294" width="450" height="264"/>
                                 <clipView key="contentView" id="XEl-dA-73Y">
                                     <rect key="frame" x="1" y="0.0" width="448" height="263"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Gt1-C8-wKx" viewBased="YES" id="TgR-LV-b6N">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="240"/>
@@ -1125,7 +1124,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="264"/>
                                 <clipView key="contentView" drawsBackground="NO" id="2Mg-Gk-YKI">
                                     <rect key="frame" x="1" y="1" width="448" height="262"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView id="NGw-9i-Odu">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="262"/>

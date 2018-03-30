@@ -18,7 +18,7 @@ class OpAmpGainViewController: BaseViewController {
     
     var gain : Double = 2.5 {
         didSet {
-            desiredValue.title = ResistorViewController.formatter.string(from: NSNumber(value: gain))
+            desiredValue.title = CalibrationViewController.formatter.string(from: NSNumber(value: gain))
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
@@ -68,8 +68,9 @@ class OpAmpGainViewController: BaseViewController {
     func calculateOptimalValues () {
         guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
         Resistors.cancelCalculations = false
-        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.refreshGUI(self.x, y: self.y, label: "Working")
+        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let wself = self else { return }
+            wself.refreshGUI(wself.x, y: wself.y, label: "Working")
         }
         timedTask?.fire()     // refresh GUI to start
         
@@ -77,6 +78,7 @@ class OpAmpGainViewController: BaseViewController {
                             update: updateGainResistors(_:label:), activity: gainIndicator)
         performCalculations("gain 2", value: gain, start: minR.0, x: &y, compute: Resistors.computeInvertingGain, calculating: &calculating2,
                             update: updateInvertingGainResistors(_:label:), activity: invertingGainIndicator)
+        enableGUI()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SidePanelViewControllerDelegate {
-    func didFinish()
-}
-
 class UserSettingsViewController : UIViewController {
     
     @IBOutlet weak var resistorImage: UISegmentedControl!
@@ -21,8 +17,6 @@ class UserSettingsViewController : UIViewController {
     @IBOutlet weak var background1: UIButton!
     @IBOutlet weak var background2: UIButton!
     @IBOutlet weak var background3: UIButton!
-    
-    var delegate: SidePanelViewControllerDelegate?
     
     @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { popover = nil /* stub to return from pop-ups */ }
     
@@ -47,6 +41,20 @@ class UserSettingsViewController : UIViewController {
         maxResistance.setTitle(Resistors.stringFrom(preferences.maxResistance), for: .normal)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // set up gesture recognizer
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeGestureRecognizer.direction = .down
+        swipeGestureRecognizer.numberOfTouchesRequired = 1
+        view.addGestureRecognizer(swipeGestureRecognizer)
+    }
+    
+    @objc func handleSwipe(_ recognizer : UISwipeGestureRecognizer) {
+        performSegue(withIdentifier: "ExitUserSettings", sender: self)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateButtons()
@@ -60,13 +68,6 @@ class UserSettingsViewController : UIViewController {
     
     @IBAction func changedResistorImage(_ sender: UISegmentedControl) {
         preferences.useEuroSymbols = sender.selectedSegmentIndex > 0
-        
-        if let tbc = tabBarController, let items = tbc.tabBar.items {
-            items.first!.image = UIImage(named: preferences.useEuroSymbols ? "EResistor" : "Resistor")
-            items.first!.selectedImage = UIImage(named: preferences.useEuroSymbols ? "EResistor" : "Resistor")
-            items[2].image = UIImage(named: preferences.useEuroSymbols ? "EDivider" : "Divider")
-            items[2].selectedImage = UIImage(named: preferences.useEuroSymbols ? "EDivider" : "Divider")
-        }
     }
     
     @IBAction func changedShadows(_ sender: UISwitch) {
@@ -87,7 +88,7 @@ class UserSettingsViewController : UIViewController {
             popPC?.sourceRect = button.bounds
         }
         popPC?.delegate = self
-        switch segue.identifier! {
+        switch segue.identifier {
         case "SelectMinResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
                 vc.value = minResistance.title(for: .normal)

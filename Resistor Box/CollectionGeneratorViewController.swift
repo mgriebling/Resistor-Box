@@ -33,8 +33,10 @@ class CollectionGeneratorViewController: UIViewController {
     
     func setValues(_ tolerance: String) {
         nameField.text = "My \(tolerance)"
-        startLabel.setTitle("10Ω", for: .normal)
-        endLabel.setTitle("10MΩ", for: .normal)
+        let min = Resistors.stringFrom(preferences.minResistance)
+        let max = Resistors.stringFrom(preferences.maxResistance)
+        startLabel.setTitle(min, for: .normal)
+        endLabel.setTitle(max, for: .normal)
         updateTotalResistors(tolerance)
     }
     

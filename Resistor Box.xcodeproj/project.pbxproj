@@ -14,7 +14,7 @@
 		2F23077C205BE53E00B01CE1 /* NumberPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F23077B205BE53E00B01CE1 /* NumberPickerViewController.swift */; };
 		2F23077E205BEBAF00B01CE1 /* DividerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F23077D205BEBAF00B01CE1 /* DividerViewController.swift */; };
 		2F2F2C532036156300DD98AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C522036156300DD98AE /* AppDelegate.swift */; };
-		2F2F2C552036156300DD98AE /* ResistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C542036156300DD98AE /* ResistorViewController.swift */; };
+		2F2F2C552036156300DD98AE /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C542036156300DD98AE /* CalibrationViewController.swift */; };
 		2F2F2C572036156300DD98AE /* OpAmpGainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */; };
 		2F2F2C5A2036156300DD98AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C582036156300DD98AE /* Main.storyboard */; };
 		2F2F2C5C2036156300DD98AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5B2036156300DD98AE /* Assets.xcassets */; };
@@ -28,14 +28,13 @@
 		2FC933252056B31B00FE9688 /* Resistors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C66203617B000DD98AE /* Resistors.swift */; };
 		2FC933262056B34B00FE9688 /* String+Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D4204EC48D00E948B5 /* String+Char.swift */; };
 		2FC933272056B34E00FE9688 /* Decimal+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */; };
-		2FC9332E2056C04F00FE9688 /* ResistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9332D2056C04F00FE9688 /* ResistorViewController.swift */; };
+		2FC9332E2056C04F00FE9688 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9332D2056C04F00FE9688 /* CalibrationViewController.swift */; };
 		2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8FE842048268F000841AF /* ResistorImage.swift */; };
 		470848B9206501C5009A2C6F /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470848B8206501C5009A2C6F /* PowerViewController.swift */; };
 		470848BB20665090009A2C6F /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470848BA20665090009A2C6F /* ResistorImage.swift */; };
 		47B7A32B206797E00004781E /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A329206797E00004781E /* Pickers.storyboard */; };
 		47B7A32D2067A4560004781E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A32C2067A4560004781E /* Preferences.swift */; };
 		47B7A32E2067A45E0004781E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A32C2067A4560004781E /* Preferences.swift */; };
-		47BA8AFA206CF241001A8C37 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BA8AF5206CE6F2001A8C37 /* ContainerViewController.swift */; };
 		47BFFF582067B35900DE0E13 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */; };
 		47BFFF5A2067DE8200DE0E13 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */; };
 		47BFFF5C2067DECE00DE0E13 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */; };
@@ -57,7 +56,7 @@
 		2F23077D205BEBAF00B01CE1 /* DividerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerViewController.swift; sourceTree = "<group>"; };
 		2F2F2C4F2036156300DD98AE /* Resistor Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resistor Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2F2C522036156300DD98AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2F2F2C542036156300DD98AE /* ResistorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorViewController.swift; sourceTree = "<group>"; };
+		2F2F2C542036156300DD98AE /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
 		2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpAmpGainViewController.swift; sourceTree = "<group>"; };
 		2F2F2C592036156300DD98AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F2F2C5B2036156300DD98AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,13 +72,12 @@
 		2FC9331D2056B2C700FE9688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FC9331F2056B2C700FE9688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FC933202056B2C700FE9688 /* Resistor_Box_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Resistor_Box_Mac.entitlements; sourceTree = "<group>"; };
-		2FC9332D2056C04F00FE9688 /* ResistorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorViewController.swift; sourceTree = "<group>"; };
+		2FC9332D2056C04F00FE9688 /* CalibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
 		2FF8FE842048268F000841AF /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		470848B8206501C5009A2C6F /* PowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerViewController.swift; sourceTree = "<group>"; };
 		470848BA20665090009A2C6F /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		47B7A32A206797E00004781E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Resistor Box/Base.lproj/Pickers.storyboard"; sourceTree = "<group>"; };
 		47B7A32C2067A4560004781E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		47BA8AF5206CE6F2001A8C37 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
@@ -136,7 +134,7 @@
 			children = (
 				2F2F2C582036156300DD98AE /* Main.storyboard */,
 				2FAD9B5F206056AA00615394 /* BaseViewController.swift */,
-				2F2F2C542036156300DD98AE /* ResistorViewController.swift */,
+				2F2F2C542036156300DD98AE /* CalibrationViewController.swift */,
 				2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */,
 				2F23077D205BEBAF00B01CE1 /* DividerViewController.swift */,
 				470848B8206501C5009A2C6F /* PowerViewController.swift */,
@@ -163,7 +161,7 @@
 				470848BA20665090009A2C6F /* ResistorImage.swift */,
 				2FC933162056B2C700FE9688 /* AppDelegate.swift */,
 				2F53F8CA2062838E00034789 /* BaseViewController.swift */,
-				2FC9332D2056C04F00FE9688 /* ResistorViewController.swift */,
+				2FC9332D2056C04F00FE9688 /* CalibrationViewController.swift */,
 				2FC9331A2056B2C700FE9688 /* Assets.xcassets */,
 				2FC9331C2056B2C700FE9688 /* Main.storyboard */,
 				2FC9331F2056B2C700FE9688 /* Info.plist */,
@@ -201,7 +199,6 @@
 		478568902066555C00A0A9B0 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
-				47BA8AF5206CE6F2001A8C37 /* ContainerViewController.swift */,
 				47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */,
 				47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */,
 				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
@@ -259,7 +256,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Solinst Canada";
 				TargetAttributes = {
 					2F2F2C4E2036156300DD98AE = {
@@ -346,9 +343,8 @@
 				47BFFF582067B35900DE0E13 /* UserSettingsViewController.swift in Sources */,
 				47BFFF5A2067DE8200DE0E13 /* ColorPickerViewController.swift in Sources */,
 				2F1573D3204EC3D400E948B5 /* NumberPicker.swift in Sources */,
-				47BA8AFA206CF241001A8C37 /* ContainerViewController.swift in Sources */,
 				2F23077C205BE53E00B01CE1 /* NumberPickerViewController.swift in Sources */,
-				2F2F2C552036156300DD98AE /* ResistorViewController.swift in Sources */,
+				2F2F2C552036156300DD98AE /* CalibrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FC9332E2056C04F00FE9688 /* ResistorViewController.swift in Sources */,
+				2FC9332E2056C04F00FE9688 /* CalibrationViewController.swift in Sources */,
 				2F53F8CC2062838E00034789 /* BaseViewController.swift in Sources */,
 				2FC933262056B34B00FE9688 /* String+Char.swift in Sources */,
 				2FC933252056B31B00FE9688 /* Resistors.swift in Sources */,
@@ -419,6 +415,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -426,6 +423,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -476,6 +474,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -483,6 +482,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -17,7 +17,7 @@
         <!--Calibration-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="ResistorViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="CalibrationViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,9 +29,10 @@
                                     <constraint firstAttribute="height" constant="44" id="loy-08-UTK"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="organize" id="vN5-Of-vTA">
+                                    <barButtonItem image="Settings" id="vN5-Of-vTA">
                                         <connections>
-                                            <action selector="showTabMenu:" destination="9pv-A4-QxB" id="fTU-t8-6Z6"/>
+                                            <action selector="userPreferences:" destination="9pv-A4-QxB" id="eXT-cw-fYB"/>
+                                            <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="COa-ef-3S0"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Desired Total:" id="BiX-D4-6qh">
@@ -204,6 +205,7 @@
                         <outlet property="desiredValue" destination="e1N-fg-blq" id="Efw-RX-fMW"/>
                         <outlet property="parallelActivity" destination="nGK-oB-LcE" id="c9t-HE-BPe"/>
                         <outlet property="parallelResistors" destination="Ez4-ta-HSI" id="gzT-F5-9iA"/>
+                        <outlet property="preferencesMenu" destination="vN5-Of-vTA" id="7KG-7h-Blc"/>
                         <outlet property="seriesActivity" destination="xDp-GK-2CU" id="3rS-2H-Xe9"/>
                         <outlet property="seriesParallelActivity" destination="HFp-W1-i6J" id="rIT-DN-6gl"/>
                         <outlet property="seriesParallelResistors" destination="dWp-MI-h8N" id="HOQ-4P-Bqf"/>
@@ -213,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.8" y="-340.47976011994007"/>
+            <point key="canvasLocation" x="750" y="-350"/>
         </scene>
         <!--Select Desired Value-->
         <scene sceneID="85N-Tb-3C5">
@@ -248,7 +250,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OTn-Ud-JJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rjs-VE-wM4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2294" y="408"/>
+            <point key="canvasLocation" x="2293" y="383"/>
         </scene>
         <!--Select Collection-->
         <scene sceneID="AVm-Ya-c9k">
@@ -448,7 +450,13 @@
                                     <constraint firstAttribute="height" constant="44" id="mUX-3I-F3e"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Desired Gain (x):" id="uyJ-dm-CZW">
+                                    <barButtonItem image="Settings" id="fif-tM-Fg0">
+                                        <connections>
+                                            <action selector="userPreferences:" destination="8rJ-Kc-sve" id="XrZ-EF-L7Z"/>
+                                            <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="fwe-3p-J1U"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Desired Gain(x):" id="uyJ-dm-CZW">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
                                     <barButtonItem title="2.5" id="eFn-nE-hyq">
@@ -563,6 +571,7 @@
                         <outlet property="invertingGainImage" destination="DlR-TY-zb0" id="uMT-VB-y7n"/>
                         <outlet property="invertingGainIndicator" destination="Nnu-GM-H36" id="yTh-zT-4qy"/>
                         <outlet property="minResistance" destination="wLj-Hy-Fxh" id="oSP-qr-YVC"/>
+                        <outlet property="preferencesMenu" destination="fif-tM-Fg0" id="Zn4-gb-uXj"/>
                         <outlet property="toolBar" destination="U5f-Q0-P3L" id="mhD-tV-HTx"/>
                     </connections>
                 </viewController>
@@ -584,7 +593,13 @@
                                     <constraint firstAttribute="height" constant="44" id="HIh-ci-5dN"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Desired Ratio (x):" id="bTF-bk-kg6">
+                                    <barButtonItem image="Settings" id="s0E-L8-1JM">
+                                        <connections>
+                                            <action selector="userPreferences:" destination="acr-ZN-D4c" id="XSm-WS-yWe"/>
+                                            <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="NSf-bW-c54"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Desired Ratio(x):" id="bTF-bk-kg6">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
                                     <barButtonItem title="0.5" id="ceg-hp-V1B">
@@ -700,6 +715,7 @@
                         <outlet property="divider2Activity" destination="pG1-LA-LTK" id="beA-Yh-YLF"/>
                         <outlet property="divider2Image" destination="18Q-tZ-trm" id="Pqp-op-OXa"/>
                         <outlet property="minResistance" destination="rIK-2Y-GK5" id="Hlp-VH-dZ5"/>
+                        <outlet property="preferencesMenu" destination="s0E-L8-1JM" id="SJK-xf-kTz"/>
                         <outlet property="toolBar" destination="vc0-kH-jhc" id="fMq-XO-GsL"/>
                     </connections>
                 </viewController>
@@ -721,17 +737,47 @@
                                     <constraint firstAttribute="height" constant="44" id="WN1-2R-dTf"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem image="Settings" width="25" id="xiL-Ei-DX0">
+                                        <connections>
+                                            <action selector="userPreferences:" destination="mm9-Ct-Dfl" id="qqn-aO-lIK"/>
+                                            <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="sCD-pS-HKq"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Vout:" id="EQU-S2-ROr">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
-                                    <barButtonItem title="5V" id="UQy-VR-o82"/>
+                                    <barButtonItem title="5V" id="UQy-VR-o82">
+                                        <connections>
+                                            <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditVout" popoverAnchorBarButtonItem="UQy-VR-o82" id="GWA-K5-aEc">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Vf:" id="Jvr-ll-diE">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
-                                    <barButtonItem title="1.25V" id="e2u-x4-Nu2"/>
-                                    <barButtonItem title="&gt;10KΩ" id="Gle-Lb-d29"/>
+                                    <barButtonItem title="1.25V" id="e2u-x4-Nu2">
+                                        <connections>
+                                            <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditVf" popoverAnchorBarButtonItem="e2u-x4-Nu2" id="aK6-3s-Yzn">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="&gt;10KΩ" id="Gle-Lb-d29">
+                                        <connections>
+                                            <segue destination="rqv-KD-49C" kind="popoverPresentation" identifier="EditResistance" popoverAnchorBarButtonItem="Gle-Lb-d29" id="vxP-qd-9hd">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6gP-JV-2Tt"/>
-                                    <barButtonItem title="1%" id="Wtw-aT-0DN"/>
+                                    <barButtonItem title="1%" id="Wtw-aT-0DN">
+                                        <connections>
+                                            <segue destination="bB8-Rf-5E2" kind="popoverPresentation" identifier="SelectCollection" popoverAnchorBarButtonItem="Wtw-aT-0DN" id="LJA-Bu-hNU">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GHq-2O-VWq"/>
                                 </items>
                             </toolbar>
@@ -824,6 +870,7 @@
                         <outlet property="power1Image" destination="zLZ-zT-2dj" id="tzl-ZX-qzT"/>
                         <outlet property="power2Activity" destination="cqD-se-yhe" id="yaf-IN-e1W"/>
                         <outlet property="power2Image" destination="cGO-Yf-vSh" id="Nie-xM-v5r"/>
+                        <outlet property="preferencesMenu" destination="xiL-Ei-DX0" id="vCi-OD-exQ"/>
                         <outlet property="toolBar" destination="loW-Sl-UCC" id="CXZ-OS-m9w"/>
                     </connections>
                 </viewController>
@@ -831,10 +878,10 @@
             </objects>
             <point key="canvasLocation" x="-1639" y="785"/>
         </scene>
-        <!--Container View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="CenterViewController" id="49e-Tb-3d3" customClass="ContainerViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CenterViewController" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -862,10 +909,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7C-Ok-m5H">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DdM-Rr-obt">
-                                        <rect key="frame" x="20" y="20" width="335" height="607"/>
+                                        <rect key="frame" x="20" y="20" width="335" height="563"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IBJ-KX-ttt">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="28"/>
@@ -1033,7 +1080,7 @@
                                                                 </connections>
                                                             </switch>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRD-EY-c9g">
-                                                                <rect key="frame" x="103" y="2" width="57" height="29"/>
+                                                                <rect key="frame" x="103" y="2" width="56" height="29"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -1061,12 +1108,21 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ELI-w1-Pms">
-                                                <rect key="frame" x="0.0" y="327" width="335" height="280"/>
+                                                <rect key="frame" x="0.0" y="327" width="335" height="34"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nah-Sa-R3t">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="280"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nah-Sa-R3t">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Restore Factory Defaults"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nv2-iB-pT4">
+                                                <rect key="frame" x="0.0" y="369" width="335" height="194"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8T-op-06C">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="194"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1106,8 +1162,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="efY-8W-h0U"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="User Settings" image="Settings" id="eda-mD-vAN"/>
-                    <navigationItem key="navigationItem" id="MIf-2F-Sku"/>
+                    <navigationItem key="navigationItem" title="User Settings" id="MIf-2F-Sku">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="pS1-nv-vFB">
+                            <connections>
+                                <segue destination="9as-2N-NoZ" kind="unwind" identifier="ExitUserSettings" unwindAction="returnToResistorView:" id="lbl-fx-NWN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="background1" destination="7cU-Xx-u5k" id="iB4-oj-ZKY"/>
                         <outlet property="background2" destination="Bvq-Jz-by0" id="moN-wT-pfm"/>
@@ -1119,8 +1180,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wa-kr-Pe4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9as-2N-NoZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="312.80000000000001" y="-726.38680659670172"/>
+            <point key="canvasLocation" x="2650" y="-684"/>
         </scene>
         <!--Color Picker View Controller-->
         <scene sceneID="Rjq-x9-tRg">
@@ -1157,7 +1219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfG-zV-T1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093.5999999999999" y="-1008.8455772113944"/>
+            <point key="canvasLocation" x="3434" y="-684"/>
         </scene>
         <!--Resistor Collections-->
         <scene sceneID="rhp-r7-TWf">
@@ -1292,6 +1354,7 @@
                     <tabBarItem key="tabBarItem" title="Edit Resistors" image="Edit" id="kd9-MY-Oy1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xHc-Q3-7WB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1337,7 +1400,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUI-K9-Ukc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="409"/>
+            <point key="canvasLocation" x="1574" y="384"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y2C-t4-zbu">
@@ -1363,7 +1426,26 @@
                 <viewControllerPlaceholder storyboardName="Pickers" id="rqv-KD-49C" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9j-lY-5Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912.8" y="-253.2233883058471"/>
+            <point key="canvasLocation" x="2105" y="-222"/>
+        </scene>
+        <!--User Settings-->
+        <scene sceneID="VmH-UU-var">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fwe-Pb-xq0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="User Settings" image="Settings" id="eda-mD-vAN"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tXG-dC-vn1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uKZ-Q2-fyA" kind="relationship" relationship="rootViewController" id="VDh-dG-Rg5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILc-nv-FK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1866" y="-684"/>
         </scene>
     </scenes>
     <resources>
@@ -1377,9 +1459,10 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J1A-ky-7j9"/>
-        <segue reference="rRx-DY-fSd"/>
-        <segue reference="ab2-QI-2hb"/>
+        <segue reference="sCD-pS-HKq"/>
+        <segue reference="vxP-qd-9hd"/>
+        <segue reference="LJA-Bu-hNU"/>
+        <segue reference="aK6-3s-Yzn"/>
         <segue reference="ixf-B0-nN7"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResistorViewController: BaseViewController {
+class CalibrationViewController: BaseViewController {
 
     @IBOutlet weak var seriesResistors: UIImageView!
     @IBOutlet weak var seriesActivity: UIActivityIndicatorView!
@@ -19,9 +19,6 @@ class ResistorViewController: BaseViewController {
     @IBOutlet weak var parallelResistors: UIImageView!
     @IBOutlet weak var parallelActivity: UIActivityIndicatorView!
     
-    @IBAction func showTabMenu(_ sender: Any) {
-        print("Showing menu")
-    }
     
     func updateSeriesResistors (_ x : [Double], label: String) {
         let color = ColorPicker.colors[preferences.color1]!
@@ -78,11 +75,11 @@ class ResistorViewController: BaseViewController {
         }
         timedTask?.fire()     // refresh GUI to start
         
-        performCalculations("series", value: r.0, start: 0, x: &x, compute: Resistors.computeSeries(_:start:callback:done:), calculating: &calculating1,
+        performCalculations("series", value: r.0, start: 0, x: &x, compute: Resistors.computeSeries, calculating: &calculating1,
                             update: updateSeriesResistors(_:label:), activity: seriesActivity)
-        performCalculations("series/parallel", value: r.0, start: 0, x: &y, compute: Resistors.computeSeriesParallel(_:start:callback:done:), calculating: &calculating2,
+        performCalculations("series/parallel", value: r.0, start: 0, x: &y, compute: Resistors.computeSeriesParallel, calculating: &calculating2,
                             update: updateSeriesParallelResistors(_:label:), activity: seriesParallelActivity)
-        performCalculations("parallel", value: r.0, start: 0, x: &z, compute: Resistors.computeParallel(_:start:callback:done:), calculating: &calculating3,
+        performCalculations("parallel", value: r.0, start: 0, x: &z, compute: Resistors.computeParallel, calculating: &calculating3,
                             update: updateParallelResistors(_:label:), activity: parallelActivity)
         enableGUI()
     }

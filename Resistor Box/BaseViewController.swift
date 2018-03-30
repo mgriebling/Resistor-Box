@@ -10,6 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    @IBOutlet weak var preferencesMenu: UIBarButtonItem!
     @IBOutlet weak var desiredValue: UIBarButtonItem!
     @IBOutlet weak var minResistance: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -18,7 +19,12 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
     
     weak var popover : UIPopoverPresentationController?     // use to hold popover to assist rotations
-    var slideDelegate : CenterViewControllerDelegate?
+    static var activeTab : Int?
+    
+    @IBAction func userPreferences(_ sender: Any) {
+        BaseViewController.activeTab = tabBarController?.selectedIndex
+        cancelCalculations(self)
+    }
     
     @IBAction func cancelCalculations(_ sender: Any) {
         print("Cancelled calculation")
@@ -59,24 +65,40 @@ class BaseViewController: UIViewController {
     
     let backgroundQueue = DispatchQueue(label: "com.c-inspirations.resistorBox.bgqueue", qos: .background, attributes: DispatchQueue.Attributes.concurrent)
     
-    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { popover = nil }
+    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
+        popover = nil
+        
+        // restore the active tab if the user swipped to the preferences
+        if let active = BaseViewController.activeTab {
+            DispatchQueue.main.async { [weak self] in
+                self?.tabBarController?.selectedIndex = active  // back to original selected tab
+            }
+            BaseViewController.activeTab = nil
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Resistors.initInventory()   // build up the values
         
         // set up gesture recognizer
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        self.view.addGestureRecognizer(panGestureRecognizer)
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeGestureRecognizer.direction = .up
+        swipeGestureRecognizer.numberOfTouchesRequired = 1
+        view.addGestureRecognizer(swipeGestureRecognizer)
     }
     
-    @objc public func handlePan(_ recognizer: UIPanGestureRecognizer) {
-        if let tbc = tabBarController {
-            print("Handling the pan")
-            if let handler = tbc as? ContainerViewController {
-                handler.handlePanGesture(recognizer)
-            }
+    deinit {
+        // not sure if this is still necessary?
+        if let recognizer = view.gestureRecognizers?.first {
+            view.removeGestureRecognizer(recognizer)
         }
+    }
+    
+    @objc public func handleSwipe(_ recognizer: UISwipeGestureRecognizer) {
+        BaseViewController.activeTab = tabBarController?.selectedIndex
+        cancelCalculations(self)
+        performSegue(withIdentifier: "UserSettings", sender: self)
     }
     
     public func refreshAll() {
@@ -85,6 +107,14 @@ class BaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // update tab graphics
+        if let tbc = tabBarController, let items = tbc.tabBar.items {
+            items.first!.image = UIImage(named: preferences.useEuroSymbols ? "EResistor" : "Resistor")
+            items.first!.selectedImage = UIImage(named: preferences.useEuroSymbols ? "EResistor" : "Resistor")
+            items[2].image = UIImage(named: preferences.useEuroSymbols ? "EDivider" : "Divider")
+            items[2].selectedImage = UIImage(named: preferences.useEuroSymbols ? "EDivider" : "Divider")
+        }
         refreshAll()  // user may have changed preferences
     }
     
@@ -122,6 +152,7 @@ class BaseViewController: UIViewController {
         if items.contains(actionButton) || items.contains(cancelButton) { items.removeLast() }
         if done {
             items.append(actionButton)
+            preferencesMenu.setBackgroundImage(UIImage(named: "Settings"), for: .normal, barMetrics: .compact)
         } else {
             items.append(cancelButton)
         }
@@ -129,6 +160,7 @@ class BaseViewController: UIViewController {
         desiredValue.isEnabled = done
         collectionButton.isEnabled = done
         minResistance?.isEnabled = done
+        preferencesMenu.isEnabled = done
     }
     
     func formatValue(_ x : Double) -> String {
@@ -143,9 +175,11 @@ class BaseViewController: UIViewController {
         let r3v = x.count == 0 ? "???" : Resistors.stringFrom(x[2])
         let rt  = x.count == 0 ? "???" : formatValue(x[3])
         let error = x.count == 0 ? "???" : BaseViewController.formatter.string(from: NSNumber(value: x[4]))!
-        UIView.animate(withDuration: 0.5) {
-            let label = "\(prefix) \(rt); error: \(error)% with \(Resistors.active) resistors"
-            image.image = imageFunc(color, r1v, r2v, r3v, label)
+        DispatchQueue.main.async { 
+            UIView.animate(withDuration: 0.5) {
+                let label = "\(prefix) \(rt); error: \(error)% with \(Resistors.active) resistors"
+                image.image = imageFunc(color, r1v, r2v, r3v, label)
+            }
         }
     }
     
@@ -158,10 +192,10 @@ class BaseViewController: UIViewController {
             print("Starting \(label) calculations...")
             compute(value, start, { values in
                 x = values   // update working values
-            }, { fvalues in
+            }, { [weak self] fvalues in
                 x = fvalues
                 calculating = false
-                self.stopTimer()
+                self?.stopTimer()
                 DispatchQueue.main.async { [weak self] in
                     update(fvalues, "Best")
                     activity.stopAnimating()
@@ -185,15 +219,6 @@ class BaseViewController: UIViewController {
     }
     
 }
-
-// MARK: - SidePanelViewControllerDelegate
-extension CenterViewController: SidePanelViewControllerDelegate {
-    
-    func didFinish() {
-        slideDelegate?.collapseSidePanels?()
-    }
-}
-
 
 extension BaseViewController : UIPopoverPresentationControllerDelegate {
     

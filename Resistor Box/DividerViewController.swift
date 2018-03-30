@@ -76,6 +76,7 @@ class DividerViewController: BaseViewController {
                             calculating: &calculating1, update: updateDivider1Resistors(_:label:), activity: divider1Activity)
         performCalculations("divider 2", value: divider, start: minR.0, x: &y, compute: Resistors.computeDivider2(_:start:callback:done:),
                             calculating: &calculating2, update: updateDivider2Resistors(_:label:), activity: divider2Activity)
+        enableGUI()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

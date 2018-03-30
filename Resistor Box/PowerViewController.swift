@@ -70,6 +70,11 @@ class PowerViewController: BaseViewController {
         updatePower2Resistors(y, label: label)
     }
     
+    override func enableGUI() {
+        super.enableGUI()
+        feedbackButton.isEnabled = !calculating1 && !calculating2
+    }
+    
     func calculateOptimalValues () {
         guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
         Resistors.cancelCalculations = false
@@ -83,6 +88,8 @@ class PowerViewController: BaseViewController {
                             calculating: &calculating1, update: updatePower1Resistors(_:label:), activity: power1Activity)
         performCalculations("power 2", value: feedbackVoltage/outputVoltage, start: minR.0, x: &y, compute: Resistors.computeDivider2(_:start:callback:done:),
                             calculating: &calculating2, update: updatePower2Resistors(_:label:), activity: power2Activity)
+
+        enableGUI()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,28 +103,33 @@ class PowerViewController: BaseViewController {
                 let r = minResistance.title!.dropFirst()  // remove ">"
                 vc.value = String(r)
                 vc.callback = { [weak self] newValue in
-                    guard let wself = self else { return }
-                    wself.minR = Resistors.parseString(newValue)
-                    wself.calculateOptimalValues()
+                    self?.minR = Resistors.parseString(newValue)
+                    self?.calculateOptimalValues()
                 }
             }
-        case "EditGain":
+        case "EditVout":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
                 vc.value = String(desiredValue.title!.dropLast())  // remove "V"
                 vc.callback = { [weak self] newValue in
-                    guard let wself = self else { return }
-                    wself.outputVoltage = Double(newValue) ?? 1
-                    wself.calculateOptimalValues()
+                    self?.outputVoltage = Double(newValue) ?? 1
+                    self?.calculateOptimalValues()
+                }
+            }
+        case "EditVf":
+            if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
+                vc.value = String(desiredValue.title!.dropLast())  // remove "V"
+                vc.callback = { [weak self] newValue in
+                    self?.feedbackVoltage = Double(newValue) ?? 1
+                    self?.calculateOptimalValues()
                 }
             }
         case "SelectCollection":
             if let vc = destNav.childViewControllers.first as? CollectionViewController {
                 vc.value = collectionButton.title
                 vc.callback = { [weak self] newValue in
-                    guard let wself = self else { return }
-                    wself.collectionButton.title = newValue
+                    self?.collectionButton.title = newValue
                     Resistors.active = newValue
-                    wself.calculateOptimalValues()
+                    self?.calculateOptimalValues()
                 }
             }
         default: break
