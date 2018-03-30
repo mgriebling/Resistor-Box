@@ -29,13 +29,20 @@ class BaseViewController: UIViewController {
     @IBAction func cancelCalculations(_ sender: Any) {
         print("Cancelled calculation")
         Resistors.cancelCalculations = true
+        DispatchQueue.main.async { [weak self] in
+            self?.enableGUI()
+        }
     }
     
-    static var formatter : NumberFormatter {
+    static private var formatter : NumberFormatter {
         let f = NumberFormatter()
         f.maximumFractionDigits = 6
         f.minimumIntegerDigits = 1
         return f
+    }
+    
+    func stringFrom (_ number: Double) -> String {
+        return BaseViewController.formatter.string(from: NSNumber(value: number)) ?? "0"
     }
     
     var x = [Double]()
@@ -150,12 +157,13 @@ class BaseViewController: UIViewController {
         let done = !calculating1 && !calculating2 && !calculating3
         var items = toolBar.items!
         if items.contains(actionButton) || items.contains(cancelButton) { items.removeLast() }
+        if items.contains(preferencesMenu) { items.removeFirst() }
         if done {
             items.append(actionButton)
-            preferencesMenu.setBackgroundImage(UIImage(named: "Settings"), for: .normal, barMetrics: .compact)
         } else {
             items.append(cancelButton)
         }
+        items.insert(preferencesMenu, at: 0)
         toolBar.setItems(items, animated: true)
         desiredValue.isEnabled = done
         collectionButton.isEnabled = done

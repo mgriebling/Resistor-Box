@@ -19,12 +19,12 @@ class PowerViewController: BaseViewController {
     
     var outputVoltage : Double = 5.0 {
         didSet {
-            desiredValue.title = BaseViewController.formatter.string(from: NSNumber(value: outputVoltage))! + "V"
+            desiredValue.title = stringFrom(outputVoltage) + "V"
         }
     }
     var feedbackVoltage : Double = 1.25 {
         didSet {
-             feedbackButton.title = BaseViewController.formatter.string(from: NSNumber(value: feedbackVoltage))! + "V"
+             feedbackButton.title = stringFrom(feedbackVoltage) + "V"
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
@@ -50,7 +50,8 @@ class PowerViewController: BaseViewController {
     }
     
     override func formatValue(_ x: Double) -> String {
-        return "Vout: " + BaseViewController.formatter.string(from: NSNumber(value: feedbackVoltage/x))! + "V"
+        guard x != 0 else { return "∞" }
+        return "Vout: " + stringFrom(feedbackVoltage/x) + "V"
     }
     
     func refreshGUI (_ x : [Double], y : [Double], label : String) {

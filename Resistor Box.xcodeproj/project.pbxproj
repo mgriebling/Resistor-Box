@@ -37,7 +37,6 @@
 		47B7A32E2067A45E0004781E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A32C2067A4560004781E /* Preferences.swift */; };
 		47BFFF582067B35900DE0E13 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */; };
 		47BFFF5A2067DE8200DE0E13 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */; };
-		47BFFF5C2067DECE00DE0E13 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */; };
 		47BFFF5E206845B600DE0E13 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF5D206845B600DE0E13 /* ColorPicker.swift */; };
 		47BFFF602068477E00DE0E13 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF5F2068477E00DE0E13 /* ColorView.swift */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
@@ -80,7 +79,6 @@
 		47B7A32C2067A4560004781E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
-		47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
 		47BFFF5D206845B600DE0E13 /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		47BFFF5F2068477E00DE0E13 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				47BFFF592067DE8200DE0E13 /* ColorPickerViewController.swift */,
-				47BFFF5B2067DECE00DE0E13 /* colorPalette.plist */,
 				2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */,
 				47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */,
 				2FF8FE842048268F000841AF /* ResistorImage.swift */,
@@ -298,7 +295,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47BFFF5C2067DECE00DE0E13 /* colorPalette.plist in Resources */,
 				2F2F2C5F2036156300DD98AE /* LaunchScreen.storyboard in Resources */,
 				2F2F2C5C2036156300DD98AE /* Assets.xcassets in Resources */,
 				47B7A32B206797E00004781E /* Pickers.storyboard in Resources */,

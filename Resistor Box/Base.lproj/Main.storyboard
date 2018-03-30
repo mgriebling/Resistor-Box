@@ -737,13 +737,8 @@
                                     <constraint firstAttribute="height" constant="44" id="WN1-2R-dTf"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem image="Settings" width="25" id="xiL-Ei-DX0">
-                                        <connections>
-                                            <action selector="userPreferences:" destination="mm9-Ct-Dfl" id="qqn-aO-lIK"/>
-                                            <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="sCD-pS-HKq"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Vout:" id="EQU-S2-ROr">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AT8-ga-vJO"/>
+                                    <barButtonItem title="V₀" id="EQU-S2-ROr">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
                                     <barButtonItem title="5V" id="UQy-VR-o82">
@@ -753,10 +748,10 @@
                                             </segue>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Vf:" id="Jvr-ll-diE">
+                                    <barButtonItem title="V₊" id="Jvr-ll-diE">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </barButtonItem>
-                                    <barButtonItem title="1.25V" id="e2u-x4-Nu2">
+                                    <barButtonItem title="2.5V" id="e2u-x4-Nu2">
                                         <connections>
                                             <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditVf" popoverAnchorBarButtonItem="e2u-x4-Nu2" id="aK6-3s-Yzn">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -791,7 +786,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4au-H1-UPc">
-                                                <rect key="frame" x="169" y="132.5" width="37" height="37"/>
+                                                <rect key="frame" x="169" y="133" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -813,7 +808,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cqD-se-yhe">
-                                                <rect key="frame" x="169" y="132.5" width="37" height="37"/>
+                                                <rect key="frame" x="169" y="133" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -855,6 +850,12 @@
                         <barButtonItem systemItem="cancel" id="G04-UK-umK">
                             <connections>
                                 <action selector="cancelCalculations:" destination="mm9-Ct-Dfl" id="p4Q-ag-YGU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="Settings" id="xiL-Ei-DX0">
+                            <connections>
+                                <action selector="userPreferences:" destination="mm9-Ct-Dfl" id="qqn-aO-lIK"/>
+                                <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="sCD-pS-HKq"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -1091,8 +1092,17 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nv2-iB-pT4">
+                                                <rect key="frame" x="0.0" y="285" width="335" height="152"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8T-op-06C">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="152"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-aK-vzM">
-                                                <rect key="frame" x="0.0" y="285" width="335" height="34"/>
+                                                <rect key="frame" x="0.0" y="445" width="335" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Add-on:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1f-E4-FFa">
                                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
@@ -1107,22 +1117,22 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-Ga-HeE">
+                                                <rect key="frame" x="0.0" y="487" width="335" height="34"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fq-Z8-L3z">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ELI-w1-Pms">
-                                                <rect key="frame" x="0.0" y="327" width="335" height="34"/>
+                                                <rect key="frame" x="0.0" y="529" width="335" height="34"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nah-Sa-R3t">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Restore Factory Defaults"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nv2-iB-pT4">
-                                                <rect key="frame" x="0.0" y="369" width="335" height="194"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8T-op-06C">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="194"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1140,6 +1150,7 @@
                                             <constraint firstAttribute="trailing" secondItem="ELI-w1-Pms" secondAttribute="trailing" id="p05-LY-GFB"/>
                                             <constraint firstAttribute="trailing" secondItem="Faw-aK-vzM" secondAttribute="trailing" id="pEM-CW-m65"/>
                                             <constraint firstAttribute="trailing" secondItem="IBJ-KX-ttt" secondAttribute="trailing" id="tpN-7d-UYe"/>
+                                            <constraint firstItem="Faw-aK-vzM" firstAttribute="top" secondItem="DdM-Rr-obt" secondAttribute="top" constant="445" id="xZL-1f-qw5"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -1460,7 +1471,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sCD-pS-HKq"/>
-        <segue reference="vxP-qd-9hd"/>
+        <segue reference="Fkr-bb-YmD"/>
         <segue reference="LJA-Bu-hNU"/>
         <segue reference="aK6-3s-Yzn"/>
         <segue reference="ixf-B0-nN7"/>

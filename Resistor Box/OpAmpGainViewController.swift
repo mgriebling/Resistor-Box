@@ -18,7 +18,7 @@ class OpAmpGainViewController: BaseViewController {
     
     var gain : Double = 2.5 {
         didSet {
-            desiredValue.title = CalibrationViewController.formatter.string(from: NSNumber(value: gain))
+            desiredValue.title = stringFrom(gain)
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
@@ -45,7 +45,7 @@ class OpAmpGainViewController: BaseViewController {
     }
     
     override func formatValue(_ x: Double) -> String {
-        return "Gain: " + BaseViewController.formatter.string(from: NSNumber(value: x))!
+        return "Gain: " + stringFrom(x)
     }
     
     func refreshGUI (_ x : [Double], y : [Double], label : String) {

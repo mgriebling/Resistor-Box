@@ -18,7 +18,7 @@ class DividerViewController: BaseViewController {
     
     var divider : Double = 0.5 {
         didSet {
-            desiredValue.title = BaseViewController.formatter.string(from: NSNumber(value: divider))
+            desiredValue.title = stringFrom(divider)
         }
     }
     var minR = (10_000.0, 10.0, "KΩ") {
@@ -44,7 +44,7 @@ class DividerViewController: BaseViewController {
     }
     
     override func formatValue(_ x: Double) -> String {
-        return "Ratio: " + BaseViewController.formatter.string(from: NSNumber(value: x))!
+        return "Ratio: " + stringFrom(x)
     }
     
     func refreshGUI (_ x : [Double], y : [Double], label : String) {
