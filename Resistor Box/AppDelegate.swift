@@ -13,15 +13,97 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    static var currentCloudToken : (NSCoding & NSCopying & NSObjectProtocol)?
+    static var firstLaunchWithiCloudAvailable = false
+    static var useiCloud = false
+    static var myContainer : URL?
+    
+    enum Key {
+        static let ubiquityName = "com.c-inspirations.Resistor-Box.UbiquityIdentityToken"
+    }
+    
+    func getiCloudToken() -> (NSCoding & NSCopying & NSObjectProtocol)? {
+        let fileManager = FileManager.default
+        let currentCloudToken = fileManager.ubiquityIdentityToken
+        if let currentToken = currentCloudToken {
+            let newTokenData = NSKeyedArchiver.archivedData(withRootObject: currentToken)
+            UserDefaults.standard.set(newTokenData, forKey: Key.ubiquityName)
+        } else {
+            UserDefaults.standard.removeObject(forKey: Key.ubiquityName)
+        }
+        return currentCloudToken
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        let previousCloud = UserDefaults.standard.data(forKey: Key.ubiquityName)
+//        let currentCloudToken = getiCloudToken()
+//        if previousCloud == nil, let _ = currentCloudToken {
+//            AppDelegate.firstLaunchWithiCloudAvailable = true
+//        }
+//        AppDelegate.currentCloudToken = currentCloudToken
+//        
+//        // Register to be notified of iCloud availability changes
+////        NotificationCenter.default.addObserver(self, selector: #selector(iCloudAvailabilityChanged(_:)), name: NSNotification.Name.NSUbiquityIdentityDidChange, object: nil)
+//        
+//        // Ask user if (s)he wants to use iCloud
+//        if let _ = AppDelegate.currentCloudToken, AppDelegate.firstLaunchWithiCloudAvailable {
+//            let alert = UIAlertController(title: "Choose Storage Option", message: "Should documents be stored in iCloud and available on all your devices?", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Local Only", style: .cancel, handler: { action in
+//                AppDelegate.useiCloud = false
+//            }))
+//            alert.addAction(UIAlertAction(title: "Use iCloud", style: .default, handler: { action in
+//                AppDelegate.useiCloud = true
+//                // get the iCloud container to be used
+//                self.updateContainer()
+//            }))
+//            
+//            DispatchQueue.main.async {
+//                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+//            }
+//            
+//            AppDelegate.firstLaunchWithiCloudAvailable = false
+//        }
+        if AppDelegate.myContainer == nil {
+            setUpLocalContainer()
+        }
+        print("Active container = \(AppDelegate.myContainer!)")
+        
         return true
+    }
+    
+    func setUpLocalContainer() {
+        if let container = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            AppDelegate.myContainer = container
+        }
+    }
+    
+    func updateContainer() {
+        DispatchQueue.global().async {
+            AppDelegate.myContainer = FileManager.default.url(forUbiquityContainerIdentifier: nil)
+            if AppDelegate.myContainer == nil {
+                self.setUpLocalContainer()
+            }
+            print("Container = \(AppDelegate.myContainer!.absoluteString)")
+        }
+    }
+    
+    @objc func iCloudAvailabilityChanged(_ arg : Any) {
+        let currentToken = AppDelegate.currentCloudToken
+        let newToken = getiCloudToken()
+        print("iCloud availability changed...")
+        if let current = currentToken, let new = newToken, !current.isEqual(new) {
+            // discard changes because old account is gone
+            updateContainer()
+        } else if newToken == nil {
+            setUpLocalContainer()
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        Resistors.cancelCalculations = true
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

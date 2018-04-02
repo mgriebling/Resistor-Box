@@ -32,6 +32,8 @@
 		2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8FE842048268F000841AF /* ResistorImage.swift */; };
 		470848B9206501C5009A2C6F /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470848B8206501C5009A2C6F /* PowerViewController.swift */; };
 		470848BB20665090009A2C6F /* ResistorImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470848BA20665090009A2C6F /* ResistorImage.swift */; };
+		4785B094206FC53E00E338B2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4785B093206FC53E00E338B2 /* StoreKit.framework */; };
+		4785B0962072504900E338B2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4785B0952072504900E338B2 /* MenuViewController.swift */; };
 		47B7A32B206797E00004781E /* Pickers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B7A329206797E00004781E /* Pickers.storyboard */; };
 		47B7A32D2067A4560004781E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A32C2067A4560004781E /* Preferences.swift */; };
 		47B7A32E2067A45E0004781E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7A32C2067A4560004781E /* Preferences.swift */; };
@@ -75,6 +77,8 @@
 		2FF8FE842048268F000841AF /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
 		470848B8206501C5009A2C6F /* PowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerViewController.swift; sourceTree = "<group>"; };
 		470848BA20665090009A2C6F /* ResistorImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResistorImage.swift; sourceTree = "<group>"; };
+		4785B093206FC53E00E338B2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4785B0952072504900E338B2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		47B7A32A206797E00004781E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Resistor Box/Base.lproj/Pickers.storyboard"; sourceTree = "<group>"; };
 		47B7A32C2067A4560004781E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		47BFFF572067B35900DE0E13 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4785B094206FC53E00E338B2 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +137,7 @@
 			children = (
 				2F2F2C582036156300DD98AE /* Main.storyboard */,
 				2FAD9B5F206056AA00615394 /* BaseViewController.swift */,
+				4785B0952072504900E338B2 /* MenuViewController.swift */,
 				2F2F2C542036156300DD98AE /* CalibrationViewController.swift */,
 				2F2F2C562036156300DD98AE /* OpAmpGainViewController.swift */,
 				2F23077D205BEBAF00B01CE1 /* DividerViewController.swift */,
@@ -148,6 +154,7 @@
 		2F7F2408206A695B00D71148 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4785B093206FC53E00E338B2 /* StoreKit.framework */,
 				2F7F2409206A695B00D71148 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
@@ -260,6 +267,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -325,6 +335,7 @@
 				2F1573D9204EC7CD00E948B5 /* ResistancePickerViewController.swift in Sources */,
 				2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */,
 				47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */,
+				4785B0962072504900E338B2 /* MenuViewController.swift in Sources */,
 				2F23077E205BEBAF00B01CE1 /* DividerViewController.swift in Sources */,
 				2F1573D5204EC48D00E948B5 /* String+Char.swift in Sources */,
 				2FF8FE852048268F000841AF /* ResistorImage.swift in Sources */,
@@ -447,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -501,7 +512,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

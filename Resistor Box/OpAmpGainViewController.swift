@@ -21,11 +21,6 @@ class OpAmpGainViewController: BaseViewController {
             desiredValue.title = stringFrom(gain)
         }
     }
-    var minR = (10_000.0, 10.0, "KΩ") {
-        didSet {
-            minResistance.title = ">" + Resistors.stringFrom(minR.0)
-        }
-    }
     
     func updateGainResistors (_ x : [Double], label: String) {
         let color = ColorPicker.colors[preferences.color1]!
@@ -48,7 +43,8 @@ class OpAmpGainViewController: BaseViewController {
         return "Gain: " + stringFrom(x)
     }
     
-    func refreshGUI (_ x : [Double], y : [Double], label : String) {
+    override func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
+        super.refreshGUI(x, y: y, z: z, label: label)
         if calculating1 { updateGainResistors(x, label: label) }
         if calculating2 { updateInvertingGainResistors(y, label: label) }
     }
@@ -65,15 +61,8 @@ class OpAmpGainViewController: BaseViewController {
         calculateOptimalValues()
     }
     
-    func calculateOptimalValues () {
-        guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
-        Resistors.cancelCalculations = false
-        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            guard let wself = self else { return }
-            wself.refreshGUI(wself.x, y: wself.y, label: "Working")
-        }
-        timedTask?.fire()     // refresh GUI to start
-        
+    override func calculateOptimalValues() {
+        super.calculateOptimalValues()
         performCalculations("gain 1", value: gain, start: minR.0, x: &x, compute: Resistors.computeGain, calculating: &calculating1,
                             update: updateGainResistors(_:label:), activity: gainIndicator)
         performCalculations("gain 2", value: gain, start: minR.0, x: &y, compute: Resistors.computeInvertingGain, calculating: &calculating2,

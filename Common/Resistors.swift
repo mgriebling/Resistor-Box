@@ -175,6 +175,7 @@ class Resistors {
                         abortAlgorithm abort: (Double, Double, Double, Double) -> Bool, callback : ([Double]) -> ()) -> [Double] {
         var Re = 1.0e100  // very large error to start
         var Ri, Rj, Rk, Rt : Double
+        var rArray = [Double](repeating: 0, count:5)  // not doing this sometimes crashes
         Ri = 0; Rj = 0; Rk = 0; Rt = 0
         outerLoop: for idex in range {
             let i = rInv[active]![idex]
@@ -186,7 +187,13 @@ class Resistors {
                     if Resistors.cancelCalculations { break outerLoop }
                     if error < Re {
                         Ri = i; Rj = j; Rk = k; Re = error
-                        callback([Ri, Rj, Rk, Rt, Re])
+                        // rArray = [Ri, Rj, Rk, Rt, Re]  -- this sometimes crashes?
+                        rArray[0] = Ri;
+                        rArray[1] = Rj;
+                        rArray[2] = Rk;
+                        rArray[3] = Rt;
+                        rArray[4] = Re
+                        callback(rArray)
                         if error < 1e-10 { break outerLoop }  // abort processing
                     }
                 }

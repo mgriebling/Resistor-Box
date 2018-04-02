@@ -13,7 +13,6 @@ class BaseViewController: UIViewController {
     @IBOutlet var preferencesMenu: UIBarButtonItem!
     @IBOutlet weak var desiredValue: UIBarButtonItem!
     @IBOutlet var minResistance: UIBarButtonItem!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet var stopButton: UIBarButtonItem!
     @IBOutlet var actionButton: UIBarButtonItem!
     @IBOutlet weak var collectionButton: UIBarButtonItem!
@@ -21,6 +20,12 @@ class BaseViewController: UIViewController {
     
     weak var popover : UIPopoverPresentationController?     // use to hold popover to assist rotations
     static var activeTab : Int?
+    
+    var minR = (10_000.0, 10.0, "KΩ") {
+        didSet {
+            minResistance?.title = ">" + Resistors.stringFrom(minR.0)
+        }
+    }
     
     @IBAction func userPreferences(_ sender: Any) {
         BaseViewController.activeTab = tabBarController?.selectedIndex
@@ -96,6 +101,18 @@ class BaseViewController: UIViewController {
         view.addGestureRecognizer(swipeGestureRecognizer)
     }
     
+    func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
+    }
+    
+    func calculateOptimalValues() {
+        guard !(calculating1 || calculating2 || calculating3) else { print("ERROR!!!!!!"); return }
+        Resistors.cancelCalculations = false
+        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.refreshGUI(self.x, y: self.y, z: self.z, label: "Working")
+        }
+        timedTask?.fire()     // refresh GUI to start
+    }
+    
     deinit {
         // not sure if this is still necessary?
         if let recognizer = view.gestureRecognizers?.first {
@@ -154,30 +171,37 @@ class BaseViewController: UIViewController {
         }
     }
     
-    var minRPos : Int?
+    var isPhone : Bool {
+        let isPortrait = UIDevice.current.orientation.isPortrait
+        let isPhone = UIDevice.current.userInterfaceIdiom == .phone
+        return isPortrait && isPhone
+    }
     
     func enableGUI () {
         let done = !calculating1 && !calculating2 && !calculating3
         var items = toolBar.items!
-        if items.contains(actionButton) || items.contains(cancelButton) { items.removeLast() }
+        if items.contains(actionButton) { items.removeLast() }
         if let stop = stopButton, items.contains(stop) { items.removeLast() }
-        if let menu = preferencesMenu, items.contains(menu) { items.removeFirst() }
-        if let minR = minResistance, let pos = items.index(of: minR) { items.remove(at: pos); minRPos = pos }
-        let small = UIDevice.current.orientation == .portrait && UIDevice.current.userInterfaceIdiom == .phone
+        if let r = minResistance, let index = items.index(of: r) { items.remove(at: index) }
+//        if isPhone {
+        if items.contains(preferencesMenu) { items.removeFirst() }
+//        } else {
+//            if !items.contains(preferencesMenu) { items.insert(preferencesMenu, at: 0) }
+//        }
         if done {
-            if let pos = minRPos { items.insert(minResistance, at: pos) }
+            if let minR = minResistance, let index = items.index(of: collectionButton) {
+                items.insert(minR, at: index+1)
+            }
+            if !items.contains(preferencesMenu) { items.insert(preferencesMenu, at: 0) }
             items.append(actionButton)
-            if !small || minRPos == nil { items.insert(preferencesMenu, at: 0) }
-        } else if small && stopButton != nil {
+        } else if stopButton != nil {
             items.append(stopButton)
-        } else {
-            items.append(cancelButton)
         }
         toolBar.setItems(items, animated: true)
         desiredValue.isEnabled = done
-        collectionButton.isEnabled = done
+        collectionButton?.isEnabled = done
         minResistance?.isEnabled = done
-        preferencesMenu.isEnabled = done
+        preferencesMenu?.isEnabled = done
     }
     
     func formatValue(_ x : Double) -> String {
@@ -239,8 +263,9 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController : UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // allows popover to appear for iPhone-style devices
         return .none
     }
+    
 }

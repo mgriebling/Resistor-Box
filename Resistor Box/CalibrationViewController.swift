@@ -35,7 +35,8 @@ class CalibrationViewController: BaseViewController {
         update(x, prefix: label, image: parallelResistors, color: color, imageFunc: ResistorImage.imageOfParallelResistors)
     }
     
-    func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
+    override func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
+        super.refreshGUI(x, y: y, z: z, label: label)
         if calculating1 { updateSeriesResistors(x, label: label) }
         if calculating2 { updateSeriesParallelResistors(y, label: label) }
         if calculating3 { updateParallelResistors(z, label: label) }
@@ -67,14 +68,8 @@ class CalibrationViewController: BaseViewController {
         }
     }
 
-    func calculateOptimalValues() {
-        guard !(calculating1 || calculating2 || calculating3) else { print("ERROR!!!!!!"); return }
-        Resistors.cancelCalculations = false
-        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.refreshGUI(self.x, y: self.y, z: self.z, label: "Working")
-        }
-        timedTask?.fire()     // refresh GUI to start
-        
+    override func calculateOptimalValues() {
+        super.calculateOptimalValues()
         performCalculations("series", value: r.0, start: 0, x: &x, compute: Resistors.computeSeries, calculating: &calculating1,
                             update: updateSeriesResistors(_:label:), activity: seriesActivity)
         performCalculations("series/parallel", value: r.0, start: 0, x: &y, compute: Resistors.computeSeriesParallel, calculating: &calculating2,

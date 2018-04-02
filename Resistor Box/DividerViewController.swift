@@ -21,11 +21,6 @@ class DividerViewController: BaseViewController {
             desiredValue.title = stringFrom(divider)
         }
     }
-    var minR = (10_000.0, 10.0, "KΩ") {
-        didSet {
-            minResistance.title = ">" + Resistors.stringFrom(minR.0)
-        }
-    }
     
     func updateDivider1Resistors (_ x : [Double], label: String)  {
         let color = ColorPicker.colors[preferences.color1]!
@@ -47,7 +42,8 @@ class DividerViewController: BaseViewController {
         return "Ratio: " + stringFrom(x)
     }
     
-    func refreshGUI (_ x : [Double], y : [Double], label : String) {
+    override func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
+        super.refreshGUI(x, y: y, z: z, label: label)
         if calculating1 { updateDivider1Resistors(x, label: label) }
         if calculating2 { updateDivider2Resistors(y, label: label) }
     }
@@ -64,14 +60,8 @@ class DividerViewController: BaseViewController {
         updateDivider2Resistors(y, label: label)
     }
     
-    func calculateOptimalValues () {
-        guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
-        Resistors.cancelCalculations = false
-        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.refreshGUI(self.x, y: self.y, label: "Working")
-        }
-        timedTask?.fire()     // refresh GUI to start
-        
+    override func calculateOptimalValues() {
+        super.calculateOptimalValues()
         performCalculations("divider 1", value: divider, start: minR.0, x: &x, compute: Resistors.computeDivider1(_:start:callback:done:),
                             calculating: &calculating1, update: updateDivider1Resistors(_:label:), activity: divider1Activity)
         performCalculations("divider 2", value: divider, start: minR.0, x: &y, compute: Resistors.computeDivider2(_:start:callback:done:),

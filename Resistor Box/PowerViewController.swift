@@ -19,17 +19,12 @@ class PowerViewController: BaseViewController {
     
     var outputVoltage : Double = 5.0 {
         didSet {
-            desiredValue.title = stringFrom(outputVoltage) + "V"
+            desiredValue.title = "V₀ " + stringFrom(outputVoltage)
         }
     }
-    var feedbackVoltage : Double = 1.25 {
+    var feedbackVoltage : Double = 2.5 {
         didSet {
-             feedbackButton.title = stringFrom(feedbackVoltage) + "V"
-        }
-    }
-    var minR = (10_000.0, 10.0, "KΩ") {
-        didSet {
-            minResistance.title = ">" + Resistors.stringFrom(minR.0)
+             feedbackButton.title = "V₊ " + stringFrom(feedbackVoltage)
         }
     }
     
@@ -44,17 +39,18 @@ class PowerViewController: BaseViewController {
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        outputVoltage = Double(desiredValue.title!.dropLast()) ?? 0.5
+        outputVoltage = Double(desiredValue.title!.dropFirst(3)) ?? 5
         minR = Resistors.parseString(String(minResistance.title!.dropFirst()))
         calculateOptimalValues()
     }
     
     override func formatValue(_ x: Double) -> String {
         guard x != 0 else { return "∞" }
-        return "Vout: " + stringFrom(feedbackVoltage/x) + "V"
+        return "V₀: " + stringFrom(feedbackVoltage/x) + "V"
     }
     
-    func refreshGUI (_ x : [Double], y : [Double], label : String) {
+    override func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
+        super.refreshGUI(x, y: y, z: z, label: label)
         if calculating1 { updatePower1Resistors(x, label: label) }
         if calculating2 { updatePower2Resistors(y, label: label) }
     }
@@ -76,15 +72,8 @@ class PowerViewController: BaseViewController {
         feedbackButton.isEnabled = !calculating1 && !calculating2
     }
     
-    func calculateOptimalValues () {
-        guard !(calculating1 || calculating2) else { print("ERROR!!!!!!"); return }
-        Resistors.cancelCalculations = false
-        timedTask = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            guard let wself = self else { return }
-            wself.refreshGUI(wself.x, y: wself.y, label: "Working")
-        }
-        timedTask?.fire()     // refresh GUI to start
-        
+    override func calculateOptimalValues() {
+        super.calculateOptimalValues()
         performCalculations("power 1", value: feedbackVoltage/outputVoltage, start: minR.0, x: &x, compute: Resistors.computeDivider1(_:start:callback:done:),
                             calculating: &calculating1, update: updatePower1Resistors(_:label:), activity: power1Activity)
         performCalculations("power 2", value: feedbackVoltage/outputVoltage, start: minR.0, x: &y, compute: Resistors.computeDivider2(_:start:callback:done:),
@@ -98,7 +87,7 @@ class PowerViewController: BaseViewController {
         let popPC = destNav.popoverPresentationController
         popover = popPC
         popPC?.delegate = self
-        switch segue.identifier! {
+        switch segue.identifier {
         case "EditResistance":
             if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
                 let r = minResistance.title!.dropFirst()  // remove ">"
@@ -110,17 +99,17 @@ class PowerViewController: BaseViewController {
             }
         case "EditVout":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = String(desiredValue.title!.dropLast())  // remove "V"
+                vc.value = String(desiredValue.title!.dropFirst(3))  // remove "V"
                 vc.callback = { [weak self] newValue in
-                    self?.outputVoltage = Double(newValue) ?? 1
+                    self?.outputVoltage = Double(newValue) ?? 0
                     self?.calculateOptimalValues()
                 }
             }
         case "EditVf":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = String(desiredValue.title!.dropLast())  // remove "V"
+                vc.value = String(feedbackButton.title!.dropFirst(3))  // remove "V"
                 vc.callback = { [weak self] newValue in
-                    self?.feedbackVoltage = Double(newValue) ?? 1
+                    self?.feedbackVoltage = Double(newValue) ?? 0
                     self?.calculateOptimalValues()
                 }
             }
@@ -132,6 +121,10 @@ class PowerViewController: BaseViewController {
                     Resistors.active = newValue
                     self?.calculateOptimalValues()
                 }
+            }
+        case "showMenu":
+            if let vc = destNav as? MenuViewController {
+                vc.base = self
             }
         default: break
         }

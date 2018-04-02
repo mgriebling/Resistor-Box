@@ -16,7 +16,7 @@ public struct preferences {
     static var minResistance : Double = 1
     static var maxResistance : Double = 10 * Resistors.MEG
     
-    static var color1 = "Maraschino"
+    static var color1 = "Salmon"
     static var color2 = "Aqua"
     static var color3 = "Spring"
     
