@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="510"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Avz-VZ-l5D" userLabel="Top View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="272.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
                                         <subviews>
                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1fz-qF-dIE" userLabel="Series View">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
@@ -68,7 +68,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                                                     </imageView>
                                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xDp-GK-2CU">
-                                                        <rect key="frame" x="169" y="33" width="37" height="37"/>
+                                                        <rect key="frame" x="169.5" y="33" width="37" height="37"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                         <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
@@ -85,13 +85,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2QU-C9-GCc" userLabel="Series Parallel View">
-                                                <rect key="frame" x="0.0" y="102" width="375" height="170.5"/>
+                                                <rect key="frame" x="0.0" y="102" width="375" height="170"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWp-MI-h8N">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="170.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                                     </imageView>
                                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-W1-i6J">
-                                                        <rect key="frame" x="169" y="66.5" width="37" height="37"/>
+                                                        <rect key="frame" x="169.5" y="66" width="37" height="37"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                         <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
@@ -113,13 +113,13 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ejy-ZU-zWH" userLabel="Parallel View">
-                                        <rect key="frame" x="0.0" y="272.5" width="375" height="237.5"/>
+                                        <rect key="frame" x="0.0" y="272" width="375" height="238"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ez4-ta-HSI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="237.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nGK-oB-LcE">
-                                                <rect key="frame" x="169" y="100" width="37" height="37"/>
+                                                <rect key="frame" x="169.5" y="100.5" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -491,7 +491,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                         <subviews>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uik-RD-lHJ">
-                                                <rect key="frame" x="169.5" y="109" width="37" height="37"/>
+                                                <rect key="frame" x="169" y="109" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -516,7 +516,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nnu-GM-H36">
-                                                <rect key="frame" x="169.5" y="109" width="37" height="37"/>
+                                                <rect key="frame" x="169" y="109" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -638,7 +638,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255.5"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Y6c-8c-Tpt">
-                                                <rect key="frame" x="169" y="109.5" width="37" height="37"/>
+                                                <rect key="frame" x="169.5" y="109.5" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -660,7 +660,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="pG1-LA-LTK">
-                                                <rect key="frame" x="169" y="109.5" width="37" height="37"/>
+                                                <rect key="frame" x="169.5" y="109.5" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -826,7 +826,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4au-H1-UPc">
-                                                <rect key="frame" x="169" y="109" width="37" height="37"/>
+                                                <rect key="frame" x="169.5" y="109" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -848,7 +848,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cqD-se-yhe">
-                                                <rect key="frame" x="169" y="109" width="37" height="37"/>
+                                                <rect key="frame" x="169.5" y="109" width="37" height="37"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
@@ -931,7 +931,7 @@
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="acr-ZN-D4c" kind="relationship" relationship="viewControllers" id="Fs0-k3-OLQ"/>
                         <segue destination="mm9-Ct-Dfl" kind="relationship" relationship="viewControllers" id="XQk-OE-Aqy"/>
-                        <segue destination="gqK-ve-sEa" kind="relationship" relationship="viewControllers" id="poU-pL-Mj4"/>
+                        <segue destination="btv-rp-Zck" kind="relationship" relationship="viewControllers" id="fB2-Ff-hUi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -1277,14 +1277,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wOf-UZ-tPT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tjT-zb-ZdQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkF-B3-CdC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2H-g3-aUd">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
                                         <subviews>
-                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW6-Cy-rj0">
-                                                <rect key="frame" x="0.0" y="233" width="375" height="44"/>
+                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYn-yg-U5W" userLabel="Set Toolbar">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <items>
+                                                    <barButtonItem image="Settings" id="xiL-Ei-DX0">
+                                                        <connections>
+                                                            <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="sCD-pS-HKq"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wxl-O0-EdZ"/>
+                                                    <barButtonItem enabled="NO" style="plain" id="AZ2-kh-kep">
+                                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="U86-Hl-ufj">
+                                                            <rect key="frame" x="107.5" y="5" width="160" height="34"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <state key="normal" title="Resistor Collections">
+                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                        </button>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </barButtonItem>
+                                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="17n-TY-w8k"/>
+                                                    <barButtonItem systemItem="add" id="ela-C6-B7n"/>
+                                                </items>
+                                            </toolbar>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1IA-UK-Y7S">
+                                                <rect key="frame" x="0.0" y="44" width="375" height="255"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyCell" textLabel="Za9-eh-X9d" imageView="3Uh-s1-SQZ" style="IBUITableViewCellStyleDefault" id="K0j-oT-4mL">
+                                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K0j-oT-4mL" id="MiB-Z9-yHQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Za9-eh-X9d">
+                                                                    <rect key="frame" x="94" y="0.0" width="266" height="43.5"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Resistor Collection" id="3Uh-s1-SQZ">
+                                                                    <rect key="frame" x="15" y="0.0" width="64" height="43.5"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="NYn-yg-U5W" secondAttribute="trailing" id="05T-Ne-flr"/>
+                                            <constraint firstAttribute="bottom" secondItem="1IA-UK-Y7S" secondAttribute="bottom" id="2LU-ma-EDH"/>
+                                            <constraint firstItem="NYn-yg-U5W" firstAttribute="leading" secondItem="X2H-g3-aUd" secondAttribute="leading" id="DRd-wN-DHk"/>
+                                            <constraint firstAttribute="trailing" secondItem="1IA-UK-Y7S" secondAttribute="trailing" id="EzA-xY-8xY"/>
+                                            <constraint firstItem="1IA-UK-Y7S" firstAttribute="leading" secondItem="X2H-g3-aUd" secondAttribute="leading" id="doB-XQ-GBY"/>
+                                            <constraint firstItem="1IA-UK-Y7S" firstAttribute="top" secondItem="NYn-yg-U5W" secondAttribute="bottom" id="knb-Ch-6Hc"/>
+                                            <constraint firstItem="NYn-yg-U5W" firstAttribute="top" secondItem="X2H-g3-aUd" secondAttribute="top" id="wVs-GK-KPV"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4u-JE-C7s">
+                                        <rect key="frame" x="0.0" y="299" width="375" height="299"/>
+                                        <subviews>
+                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW6-Cy-rj0" userLabel="Resistor Toolbar">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                 <items>
                                                     <barButtonItem title="Delete" id="0SD-F8-IJs">
                                                         <connections>
@@ -1314,7 +1380,7 @@
                                                 </items>
                                             </toolbar>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vq4-NG-Xaj">
-                                                <rect key="frame" x="0.0" y="277" width="375" height="233"/>
+                                                <rect key="frame" x="0.0" y="44" width="375" height="255"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ie6-5k-QET">
                                                     <size key="itemSize" width="116" height="52"/>
@@ -1331,15 +1397,15 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Resistor" translatesAutoresizingMaskIntoConstraints="NO" id="n4N-e4-d7T">
-                                                                    <rect key="frame" x="-6" y="0.0" width="123" height="37"/>
+                                                                    <rect key="frame" x="8" y="0.0" width="108" height="44"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </view>
                                                         <constraints>
-                                                            <constraint firstItem="n4N-e4-d7T" firstAttribute="leading" secondItem="Q6W-F5-fwB" secondAttribute="leadingMargin" constant="-14" id="186-tG-pI2"/>
-                                                            <constraint firstItem="n4N-e4-d7T" firstAttribute="top" secondItem="Q6W-F5-fwB" secondAttribute="top" id="RJW-Gj-sHN"/>
-                                                            <constraint firstAttribute="bottomMargin" secondItem="n4N-e4-d7T" secondAttribute="bottom" constant="7" id="Uqp-TL-hV2"/>
-                                                            <constraint firstAttribute="trailingMargin" secondItem="n4N-e4-d7T" secondAttribute="trailing" constant="-9" id="g90-up-en6"/>
+                                                            <constraint firstAttribute="bottomMargin" secondItem="n4N-e4-d7T" secondAttribute="bottom" id="Acj-N2-WgQ"/>
+                                                            <constraint firstItem="n4N-e4-d7T" firstAttribute="top" secondItem="Q6W-F5-fwB" secondAttribute="top" id="GZU-aL-fwg"/>
+                                                            <constraint firstAttribute="leadingMargin" secondItem="n4N-e4-d7T" secondAttribute="leading" id="Oqp-o7-cGk"/>
+                                                            <constraint firstAttribute="trailing" secondItem="n4N-e4-d7T" secondAttribute="trailing" id="x0l-pe-Mo0"/>
                                                         </constraints>
                                                         <connections>
                                                             <outlet property="resistor" destination="n4N-e4-d7T" id="u0e-e2-RXk"/>
@@ -1347,76 +1413,34 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1IA-UK-Y7S">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyCell" textLabel="Za9-eh-X9d" imageView="3Uh-s1-SQZ" style="IBUITableViewCellStyleDefault" id="K0j-oT-4mL">
-                                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K0j-oT-4mL" id="MiB-Z9-yHQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Za9-eh-X9d">
-                                                                    <rect key="frame" x="94" y="0.0" width="266" height="43.5"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Resistor Collection" id="3Uh-s1-SQZ">
-                                                                    <rect key="frame" x="15" y="0.0" width="64" height="43.5"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="WW6-Cy-rj0" firstAttribute="leading" secondItem="BkF-B3-CdC" secondAttribute="leading" id="1u0-JN-1sK"/>
-                                            <constraint firstItem="Vq4-NG-Xaj" firstAttribute="leading" secondItem="1IA-UK-Y7S" secondAttribute="leading" id="BhN-KI-MPw"/>
-                                            <constraint firstItem="1IA-UK-Y7S" firstAttribute="top" secondItem="BkF-B3-CdC" secondAttribute="top" id="N1s-dJ-5Vp"/>
-                                            <constraint firstItem="Vq4-NG-Xaj" firstAttribute="centerX" secondItem="BkF-B3-CdC" secondAttribute="centerX" id="ZPC-6f-QPe"/>
-                                            <constraint firstItem="Vq4-NG-Xaj" firstAttribute="leading" secondItem="BkF-B3-CdC" secondAttribute="leading" id="cRs-3G-DYD"/>
-                                            <constraint firstItem="1IA-UK-Y7S" firstAttribute="height" secondItem="Vq4-NG-Xaj" secondAttribute="height" id="hl7-CR-n4l"/>
-                                            <constraint firstItem="WW6-Cy-rj0" firstAttribute="top" secondItem="1IA-UK-Y7S" secondAttribute="bottom" id="jYI-wz-1LH"/>
-                                            <constraint firstItem="Vq4-NG-Xaj" firstAttribute="top" secondItem="WW6-Cy-rj0" secondAttribute="bottom" id="lWq-Ga-bEx"/>
-                                            <constraint firstAttribute="trailing" secondItem="WW6-Cy-rj0" secondAttribute="trailing" id="rC7-Gi-YgQ"/>
-                                            <constraint firstItem="Vq4-NG-Xaj" firstAttribute="trailing" secondItem="1IA-UK-Y7S" secondAttribute="trailing" id="xWQ-ub-3gJ"/>
+                                            <constraint firstItem="Vq4-NG-Xaj" firstAttribute="top" secondItem="WW6-Cy-rj0" secondAttribute="bottom" id="13G-GZ-rPZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="WW6-Cy-rj0" secondAttribute="trailing" id="8PE-TJ-BkJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vq4-NG-Xaj" secondAttribute="trailing" id="8h8-9y-iYx"/>
+                                            <constraint firstItem="WW6-Cy-rj0" firstAttribute="leading" secondItem="f4u-JE-C7s" secondAttribute="leading" id="IcL-jo-GdZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Vq4-NG-Xaj" secondAttribute="bottom" id="PX2-fU-qgS"/>
+                                            <constraint firstItem="WW6-Cy-rj0" firstAttribute="top" secondItem="f4u-JE-C7s" secondAttribute="top" id="Zob-yA-6uf"/>
+                                            <constraint firstItem="Vq4-NG-Xaj" firstAttribute="leading" secondItem="f4u-JE-C7s" secondAttribute="leading" id="cVL-c2-OYG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="BkF-B3-CdC" firstAttribute="top" secondItem="wOf-UZ-tPT" secondAttribute="top" id="96G-I3-VRS"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vq4-NG-Xaj" secondAttribute="bottom" id="A2q-5X-7hM"/>
-                                    <constraint firstItem="BkF-B3-CdC" firstAttribute="leading" secondItem="wOf-UZ-tPT" secondAttribute="leading" id="NQL-0e-nXH"/>
-                                    <constraint firstAttribute="trailing" secondItem="BkF-B3-CdC" secondAttribute="trailing" id="RVS-SD-lJf"/>
-                                    <constraint firstAttribute="bottom" secondItem="BkF-B3-CdC" secondAttribute="bottom" id="iRF-Ix-ZOg"/>
-                                    <constraint firstItem="BkF-B3-CdC" firstAttribute="centerX" secondItem="wOf-UZ-tPT" secondAttribute="centerX" id="yq0-br-kUw"/>
-                                </constraints>
-                            </scrollView>
+                                <variation key="heightClass=compact" axis="horizontal"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BkF-B3-CdC" firstAttribute="height" secondItem="dl4-e2-eW6" secondAttribute="height" id="5hS-C2-sDd"/>
-                            <constraint firstItem="wOf-UZ-tPT" firstAttribute="trailing" secondItem="dl4-e2-eW6" secondAttribute="trailing" id="6eI-XW-vJN"/>
-                            <constraint firstItem="wOf-UZ-tPT" firstAttribute="top" secondItem="Exh-Jl-dKn" secondAttribute="top" id="IRs-zJ-8NG"/>
-                            <constraint firstAttribute="bottom" secondItem="wOf-UZ-tPT" secondAttribute="bottom" id="Nlb-Te-dVR"/>
-                            <constraint firstItem="wOf-UZ-tPT" firstAttribute="leading" secondItem="dl4-e2-eW6" secondAttribute="leading" id="bdh-sU-lYS"/>
+                            <constraint firstAttribute="trailing" secondItem="tjT-zb-ZdQ" secondAttribute="trailing" id="BFO-ix-IHZ"/>
+                            <constraint firstItem="tjT-zb-ZdQ" firstAttribute="top" secondItem="dl4-e2-eW6" secondAttribute="top" id="DIX-aH-ECZ"/>
+                            <constraint firstItem="tjT-zb-ZdQ" firstAttribute="leading" secondItem="Exh-Jl-dKn" secondAttribute="leading" id="ehj-t2-RdJ"/>
+                            <constraint firstItem="tjT-zb-ZdQ" firstAttribute="bottom" secondItem="dl4-e2-eW6" secondAttribute="bottom" id="rlF-An-Q48"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dl4-e2-eW6"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Edit Resistors" image="Edit" id="W2Q-uU-G8Q"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Resistor Collections" id="KXU-e4-OGa">
-                        <barButtonItem key="leftBarButtonItem" image="Settings" id="xiL-Ei-DX0">
-                            <connections>
-                                <segue destination="Fwe-Pb-xq0" kind="show" identifier="UserSettings" id="sCD-pS-HKq"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e3Z-Rt-rZ4">
                             <connections>
                                 <segue destination="9yz-r2-zyN" kind="popoverPresentation" identifier="AddCollection" popoverAnchorBarButtonItem="e3Z-Rt-rZ4" id="UDe-qf-znf">
@@ -1425,7 +1449,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="deleteBarButton" destination="0SD-F8-IJs" id="ExO-Vg-iu5"/>
                         <outlet property="resistorSets" destination="1IA-UK-Y7S" id="GTy-BE-fgq"/>
@@ -1435,26 +1459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9N-A8-ecm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284" y="784.85757121439292"/>
-        </scene>
-        <!--Edit Resistors-->
-        <scene sceneID="zv3-Rd-VFn">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gqK-ve-sEa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Edit Resistors" image="Edit" id="kd9-MY-Oy1"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xHc-Q3-7WB">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="btv-rp-Zck" kind="relationship" relationship="rootViewController" id="0ew-Vv-g8Q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yoP-gr-3j9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-966" y="785"/>
+            <point key="canvasLocation" x="-471" y="785"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="epB-iY-BSW">
