@@ -19,12 +19,12 @@ class PowerViewController: BaseViewController {
     
     var outputVoltage : Double = 5.0 {
         didSet {
-            desiredValue.title = "V₀ " + stringFrom(outputVoltage)
+            desiredValue.title = "V₀: " + stringFrom(outputVoltage) + "V"
         }
     }
     var feedbackVoltage : Double = 2.5 {
         didSet {
-             feedbackButton.title = "V₊ " + stringFrom(feedbackVoltage)
+            feedbackButton.title = "V₊: " + stringFrom(feedbackVoltage) + "V"
         }
     }
     
@@ -88,18 +88,18 @@ class PowerViewController: BaseViewController {
         popover = popPC
         popPC?.delegate = self
         switch segue.identifier {
-        case "EditResistance":
-            if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
-                let r = minResistance.title!.dropFirst()  // remove ">"
-                vc.value = String(r)
-                vc.callback = { [weak self] newValue in
-                    self?.minR = Resistors.parseString(newValue)
-                    self?.calculateOptimalValues()
-                }
-            }
+//        case "EditResistance":
+//            if let vc = destNav.childViewControllers.first as? ResistancePickerViewController {
+//                let r = minResistance.title!.dropFirst()  // remove ">"
+//                vc.value = String(r)
+//                vc.callback = { [weak self] newValue in
+//                    self?.minR = Resistors.parseString(newValue)
+//                    self?.calculateOptimalValues()
+//                }
+//            }
         case "EditVout":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = String(desiredValue.title!.dropFirst(3))  // remove "V"
+                vc.value = String(desiredValue.title!.dropLast().dropFirst(4))  // remove "V"
                 vc.callback = { [weak self] newValue in
                     self?.outputVoltage = Double(newValue) ?? 0
                     self?.calculateOptimalValues()
@@ -107,21 +107,21 @@ class PowerViewController: BaseViewController {
             }
         case "EditVf":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = String(feedbackButton.title!.dropFirst(3))  // remove "V"
+                vc.value = String(feedbackButton.title!.dropLast().dropFirst(4))  // remove "V"
                 vc.callback = { [weak self] newValue in
                     self?.feedbackVoltage = Double(newValue) ?? 0
                     self?.calculateOptimalValues()
                 }
             }
-        case "SelectCollection":
-            if let vc = destNav.childViewControllers.first as? CollectionViewController {
-                vc.value = collectionButton.title
-                vc.callback = { [weak self] newValue in
-                    self?.collectionButton.title = newValue
-                    Resistors.active = newValue
-                    self?.calculateOptimalValues()
-                }
-            }
+//        case "SelectCollection":
+//            if let vc = destNav.childViewControllers.first as? CollectionViewController {
+//                vc.value = collectionButton.title
+//                vc.callback = { [weak self] newValue in
+//                    self?.collectionButton.title = newValue
+//                    Resistors.active = newValue
+//                    self?.calculateOptimalValues()
+//                }
+//            }
         case "showMenu":
             if let vc = destNav as? MenuViewController {
                 vc.base = self

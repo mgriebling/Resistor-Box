@@ -792,14 +792,14 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L9G-JQ-FD9"/>
-                                    <barButtonItem title="V₀ 5" id="UQy-VR-o82">
+                                    <barButtonItem title="V₀: 5V" id="UQy-VR-o82">
                                         <connections>
                                             <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditVout" popoverAnchorBarButtonItem="UQy-VR-o82" id="GWA-K5-aEc">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="V₊ 2.5" id="e2u-x4-Nu2">
+                                    <barButtonItem title="V₊: 2.5V" id="e2u-x4-Nu2">
                                         <connections>
                                             <segue destination="uer-tE-O0T" kind="popoverPresentation" identifier="EditVf" popoverAnchorBarButtonItem="e2u-x4-Nu2" id="aK6-3s-Yzn">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -1554,7 +1554,7 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sCD-pS-HKq"/>
+        <segue reference="eff-vC-5Wz"/>
         <segue reference="hI6-Fe-dBt"/>
         <segue reference="LJA-Bu-hNU"/>
         <segue reference="GWA-K5-aEc"/>
