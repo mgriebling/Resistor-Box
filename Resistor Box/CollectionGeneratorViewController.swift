@@ -41,12 +41,16 @@ class CollectionGeneratorViewController: UIViewController {
     }
     
     func updateTotalResistors(_ tolerance: String) {
-        let start : [Double]
+        let start : [Int16]
         switch tolerance {
-        case "1%":  start = Resistors.r1pc
-        case "5%":  start = Resistors.r5pc
-        case "10%": start = Resistors.r10pc
-        default:    start = Resistors.r1pc
+        case "0.1%",
+             "0.25%",
+             "0.5%": start = Resistors.r0p1pc
+        case "1%":   start = Resistors.r1pc
+        case "2%":   start = Resistors.r2pc
+        case "5%":   start = Resistors.r5pc
+        case "10%":  start = Resistors.r10pc
+        default:     start = Resistors.r1pc
         }
         let minimum = Resistors.parseString(startLabel.title(for: .normal) ?? "10Ω")
         let maximum = Resistors.parseString(endLabel.title(for: .normal) ?? "10MΩ")

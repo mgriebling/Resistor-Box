@@ -23,28 +23,55 @@ class Resistors {
     static var active : String = ""         // currently active resistor collection
     static var cancelCalculations = false   // allow user to abort calculations
     
-    static let r1pc = [  // 1% minimum: 1 ohm, maximum: 10M ohm
-        10.0, 10.2, 10.5, 10.7, 11.0, 11.3, 11.5, 11.8, 12.1, 12.4, 12.7, 13.0,
-        13.3, 13.7, 14.0, 14.3, 14.7, 15.0, 15.4, 15.8, 16.2, 16.5, 16.9, 17.4,
-        17.8, 18.2, 18.7, 19.1, 19.6, 20.0, 20.5, 21.0, 21.5, 22.1, 22.6, 23.2,
-        23.7, 24.3, 24.9, 25.5, 26.1, 26.7, 27.4, 28.0, 28.7, 29.4, 30.1, 30.9,
-        31.6, 32.4, 33.2, 34.0, 34.8, 35.7, 36.5, 37.4, 38.3, 39.2, 40.2, 41.2,
-        42.2, 43.2, 44.2, 45.3, 46.4, 47.5, 48.7, 49.9, 51.1, 52.3, 53.6, 54.9,
-        56.2, 57.6, 59.0, 60.4, 61.9, 63.4, 64.9, 66.5, 68.1, 69.8, 71.5, 73.2,
-        75.0, 76.8, 78.7, 80.6, 82.5, 84.5, 86.6, 88.7, 90.9, 93.1, 95.3, 97.6]
-    
-    static let r5pc = [  // 5% minimum: 1 ohm, maximum: 56M ohm
-        1.0, 1.1, 1.2, 1.3, 1.5, 1.6, 1.8, 2.0, 2.2, 2.4, 2.7, 3.0,
-        3.3, 3.6, 3.9, 4.3, 4.7, 5.1, 5.6, 6.2, 6.8, 7.5, 8.2, 9.1
+    static let r0p1pc : [Int16] = [ // 0.5%, 0.25%, 0.1% minimum: 1 ohm, maximum: 10M ohm E192 Standard
+        100, 101, 102, 104, 105, 106, 107, 109, 110, 111, 113, 114,
+        115, 117, 118, 120, 121, 123, 124, 126, 127, 129, 130, 132,
+        133, 135, 137, 138, 140, 142, 143, 145, 147, 149, 150, 152,
+        154, 156, 158, 160, 162, 164, 165, 167, 169, 172, 174, 176,
+        178, 180, 182, 184, 187, 189, 191, 193, 196, 198, 200, 203,
+        205, 208, 210, 213, 215, 218, 221, 223, 226, 229, 232, 234,
+        237, 240, 243, 246, 249, 252, 255, 258, 261, 264, 267, 271,
+        274, 277, 280, 284, 287, 291, 294, 298, 301, 305, 309, 312,
+        316, 320, 324, 328, 332, 336, 340, 344, 348, 352, 357, 361,
+        365, 370, 374, 379, 383, 388, 392, 397, 402, 407, 412, 417,
+        422, 427, 432, 437, 442, 448, 453, 459, 464, 470, 475, 481,
+        487, 493, 499, 505, 511, 517, 523, 530, 536, 542, 549, 556,
+        562, 569, 576, 583, 590, 597, 604, 612, 619, 626, 634, 642,
+        649, 657, 665, 673, 681, 690, 698, 706, 715, 723, 732, 741,
+        750, 759, 768, 777, 787, 796, 806, 816, 825, 835, 845, 856,
+        866, 876, 887, 898, 909, 920, 931, 942, 953, 965, 976, 988
     ]
     
-    static let r10pc = [  // 10% minimum: 2.2 ohm, maximum: 1M ohm
-        10.0, 12.0, 15.0, 18.0, 22.0, 27.0, 33.0, 39.0, 47.0, 56.0, 68.0, 82.0
+    static let r1pc : [Int16] = [  // 1% minimum: 1 ohm, maximum: 10M ohm E96 Standard
+        100, 102, 105, 107, 110, 113, 115, 118, 121, 124, 127, 130,
+        133, 137, 140, 143, 147, 150, 154, 158, 162, 165, 169, 174,
+        178, 182, 187, 191, 196, 200, 205, 210, 215, 221, 226, 232,
+        237, 243, 249, 255, 261, 267, 274, 280, 287, 294, 301, 309,
+        316, 324, 332, 340, 348, 357, 365, 374, 383, 392, 402, 412,
+        422, 432, 442, 453, 464, 475, 487, 499, 511, 523, 536, 549,
+        562, 576, 590, 604, 619, 634, 649, 665, 681, 698, 715, 732,
+        750, 768, 787, 806, 825, 845, 866, 887, 909, 931, 953, 976
     ]
     
-    static public func computeValuesFor(_ rpc : [Double], minimum: Double, maximum: Double) -> [Double] {
+    static let r2pc : [Int16] = [  // 2% minimum: 1 ohm, maximum: 10M ohm E48 Standard
+        100, 105, 110, 115, 121, 127, 133, 140, 147, 154, 162, 169,
+        178, 187, 196, 205, 215, 226, 237, 249, 261, 274, 287, 301,
+        316, 332, 348, 365, 383, 402, 422, 442, 464, 487, 511, 536,
+        562, 590, 619, 649, 681, 715, 750, 787, 825, 866, 909, 953
+    ]
+
+    static let r5pc : [Int16] = [  // 5% minimum: 1 ohm, maximum: 56M ohm E24 Standard
+        10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30,
+        33, 36, 39, 43, 47, 51, 56, 62, 68, 75, 82, 91
+    ]
+    
+    static let r10pc : [Int16] = [  // 10% minimum: 2.2 ohm, maximum: 1M ohm E12 Standard
+        10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82
+    ]
+    
+    static public func computeValuesFor(_ rpc : [Int16], minimum: Double, maximum: Double) -> [Double] {
         var r = [Double]()
-        let min = rpc.first!
+        let min = Double(rpc.first!)
         var scale = 1.0
         
         // determine scaling factor
@@ -54,9 +81,9 @@ class Resistors {
         r.append(SHORT)
         outer: while scale < 100.0*MEG {
             for resistor in rpc {
-                let value = resistor*scale
+                let value = Double(resistor)*scale
                 if value > maximum { break outer }
-                if value >= minimum { r.append(resistor*scale) }
+                if value >= minimum { r.append(Double(resistor)*scale) }
             }
             scale *= 10
         }
@@ -64,7 +91,7 @@ class Resistors {
         return r
     }
     
-    static func computeValuesFor(_ rpc : [Double], minimum: Double, maximum: Double, name: String) {
+    static func computeValuesFor(_ rpc : [Int16], minimum: Double, maximum: Double, name: String) {
         rInv[name] = computeValuesFor(rpc, minimum: minimum, maximum: maximum)
     }
     
