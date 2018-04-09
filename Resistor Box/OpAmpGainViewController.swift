@@ -18,7 +18,7 @@ class OpAmpGainViewController: BaseViewController {
     
     var gain : Double = 2.5 {
         didSet {
-            desiredValue.title = stringFrom(gain)
+            desiredValue.title = "Gain(x): " + stringFrom(gain)
         }
     }
     
@@ -33,7 +33,7 @@ class OpAmpGainViewController: BaseViewController {
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        gain = Double(desiredValue.title!) ?? 1
+        gain = Double(desiredValue.title!.replacingOccurrences(of: "Gain(x): ", with: "")) ?? 1
         let r = minResistance.title!.dropFirst()
         minR = Resistors.parseString(String(r))
         calculateOptimalValues()
@@ -87,7 +87,7 @@ class OpAmpGainViewController: BaseViewController {
             }
         case "EditGain":
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
-                vc.value = desiredValue.title
+                vc.value = desiredValue.title?.replacingOccurrences(of: "Gain(x): ", with: "")
                 vc.picker = NumberPicker(maxValue: Decimal(string: "99.999")!, andIncrement: Decimal(string: "100.0")!)
                 vc.picker.minValue = 1
                 vc.callback = { [weak self] newValue in
@@ -105,6 +105,10 @@ class OpAmpGainViewController: BaseViewController {
                     Resistors.active = newValue
                     wself.calculateOptimalValues()
                 }
+            }
+        case "showMenu":
+            if let vc = destNav as? MenuViewController {
+                vc.base = self
             }
         default: break
         }

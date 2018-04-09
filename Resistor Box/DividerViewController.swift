@@ -18,7 +18,7 @@ class DividerViewController: BaseViewController {
     
     var divider : Double = 0.5 {
         didSet {
-            desiredValue.title = stringFrom(divider)
+            desiredValue.title = "Ratio(x): " + stringFrom(divider)
         }
     }
     
@@ -33,13 +33,13 @@ class DividerViewController: BaseViewController {
     }
     
     @IBAction func updateValues(_ sender: Any) {
-        divider = Double(desiredValue.title!) ?? 0.5
+        divider = Double(desiredValue.title!.replacingOccurrences(of: "Ratio(x): ", with: "")) ?? 0.5
         minR = Resistors.parseString(String(minResistance.title!.dropFirst()))
         calculateOptimalValues()
     }
     
     override func formatValue(_ x: Double) -> String {
-        return "Ratio: " + stringFrom(x)
+        return "Ratio(x): " + stringFrom(x)
     }
     
     override func refreshGUI (_ x : [Double], y : [Double], z : [Double], label : String) {
@@ -89,7 +89,10 @@ class DividerViewController: BaseViewController {
             if let vc = destNav.childViewControllers.first as? NumberPickerViewController {
                 vc.picker = NumberPicker(maxValue: Decimal(string: "1.99999")!, andIncrement: Decimal(string: "1.0")!)
                 vc.picker.maxValue = 1
-                vc.value = desiredValue.title!
+                vc.value = desiredValue.title!.replacingOccurrences(of: "Ratio(x): ", with: "")
+                if let vc = destNav as? MenuViewController {
+                    vc.base = self
+                }
                 vc.callback = { [weak self] newValue in
                     guard let wself = self else { return }
                     wself.divider = Double(newValue) ?? 1
@@ -105,6 +108,10 @@ class DividerViewController: BaseViewController {
                     Resistors.active = newValue
                     wself.calculateOptimalValues()
                 }
+            }
+        case "showMenu":
+            if let vc = destNav as? MenuViewController {
+                vc.base = self
             }
         default: break
         }
