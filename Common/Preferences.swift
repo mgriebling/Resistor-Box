@@ -31,8 +31,8 @@ public extension ResistorImage {
     
     //// Colors
     
-    @objc dynamic public class var topGradientColor: Color { return ColorPicker.colors[preferences.color1]! }
-    @objc dynamic public class var midGradientColor: Color { return ColorPicker.colors[preferences.color2]! }
-    @objc dynamic public class var bottomGradientColor: Color { return ColorPicker.colors[preferences.color3]! }
+    @objc dynamic public class var topGradientColor: Color { return Store.colors[preferences.color1]! }
+    @objc dynamic public class var midGradientColor: Color { return Store.colors[preferences.color2]! }
+    @objc dynamic public class var bottomGradientColor: Color { return Store.colors[preferences.color3]! }
     
 }

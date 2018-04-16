@@ -25,9 +25,9 @@ public class ResistorImage : NSObject {
 
     //// Colors
 
-    @objc dynamic public class var topGradientColor: NSColor { return Cache.topGradientColor }
-    @objc dynamic public class var midGradientColor: NSColor { return Cache.midGradientColor }
-    @objc dynamic public class var bottomGradientColor: NSColor { return Cache.bottomGradientColor }
+//    @objc dynamic public class var topGradientColor: NSColor { return Cache.topGradientColor }
+//    @objc dynamic public class var midGradientColor: NSColor { return Cache.midGradientColor }
+//    @objc dynamic public class var bottomGradientColor: NSColor { return Cache.bottomGradientColor }
 
     //// Drawing Methods
 
@@ -51,9 +51,9 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let euroResistor: Bool = false
+        // let euroResistor: Bool = false
         let ameriResistor: Bool = !euroResistor
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Text Drawing
@@ -228,7 +228,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -372,7 +372,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -574,7 +574,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -758,7 +758,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -1064,7 +1064,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -1350,7 +1350,7 @@ public class ResistorImage : NSObject {
         shadow2.shadowBlurRadius = 4
 
         //// Variable Declarations
-        let euroResistor: Bool = false
+        // let euroResistor: Bool = false
         let ameriResistor: Bool = !euroResistor
 
         //// Group
@@ -1501,7 +1501,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle Drawing
@@ -1704,7 +1704,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle 2 Drawing
@@ -1999,7 +1999,7 @@ public class ResistorImage : NSObject {
         let shadow2 = NSShadow(color: NSColor.black.withAlphaComponent(0.48), offset: NSSize(width: 1, height: -1), blurRadius: 4)
 
         //// Variable Declarations
-        let drawShadows: Bool = true
+        // let drawShadows: Bool = true
         let optionalShadow: NSShadow = drawShadows ? shadow2 : shadow
 
         //// Rectangle 2 Drawing
@@ -2382,7 +2382,7 @@ public class ResistorImage : NSObject {
 
 
         //// Variable Declarations
-        let euroResistor: Bool = false
+        // let euroResistor: Bool = false
         let ameriResistor: Bool = !euroResistor
 
         //// Group
@@ -2696,7 +2696,7 @@ public class ResistorImage : NSObject {
         shadow2.shadowBlurRadius = 4
 
         //// Variable Declarations
-        let euroResistor: Bool = false
+        // let euroResistor: Bool = false
         let ameriResistor: Bool = !euroResistor
 
         //// Group
@@ -2769,7 +2769,7 @@ public class ResistorImage : NSObject {
         shadow2.shadowBlurRadius = 4
 
         //// Variable Declarations
-        let euroResistor: Bool = false
+        // let euroResistor: Bool = false
         let ameriResistor: Bool = !euroResistor
 
         //// Group

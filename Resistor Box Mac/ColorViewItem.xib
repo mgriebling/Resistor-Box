@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ColorViewItem" customModule="Resistor_Box" customModuleProvider="target">
+            <connections>
+                <outlet property="colorSwatch" destination="Z9r-Yo-rzs" id="dtU-SD-Zjt"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <collectionViewItem id="F2b-K9-Q3j" customClass="ColorViewItem" customModule="Resistor_Box" customModuleProvider="target"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="68"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z9r-Yo-rzs">
+                    <rect key="frame" x="0.0" y="0.0" width="379" height="68"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Idv-Mw-cJ3"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Z9r-Yo-rzs" secondAttribute="trailing" id="EUC-1j-1Ir"/>
+                <constraint firstItem="Z9r-Yo-rzs" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="GzR-HO-w2A"/>
+                <constraint firstAttribute="bottom" secondItem="Z9r-Yo-rzs" secondAttribute="bottom" id="UJR-y4-bCD"/>
+                <constraint firstItem="Z9r-Yo-rzs" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="vcZ-20-Ibk"/>
+            </constraints>
+            <point key="canvasLocation" x="88.5" y="131.5"/>
+        </customView>
+    </objects>
+</document>

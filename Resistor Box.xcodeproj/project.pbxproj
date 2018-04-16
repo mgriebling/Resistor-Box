@@ -20,6 +20,11 @@
 		2F2F2C5C2036156300DD98AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5B2036156300DD98AE /* Assets.xcassets */; };
 		2F2F2C5F2036156300DD98AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5D2036156300DD98AE /* LaunchScreen.storyboard */; };
 		2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F2C66203617B000DD98AE /* Resistors.swift */; };
+		2F3E5429208521A40082A119 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3E5427208521A40082A119 /* ColorPickerViewController.swift */; };
+		2F3E542C2085244F0082A119 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3E542B2085244F0082A119 /* Colors.swift */; };
+		2F3E542D208524540082A119 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3E542B2085244F0082A119 /* Colors.swift */; };
+		2F3E543420852AF00082A119 /* ColorViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3E543220852AF00082A119 /* ColorViewItem.swift */; };
+		2F3E54372085312E0082A119 /* ColorViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3E54362085312E0082A119 /* ColorViewItem.xib */; };
 		2F53F8CC2062838E00034789 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53F8CA2062838E00034789 /* BaseViewController.swift */; };
 		2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD9B5F206056AA00615394 /* BaseViewController.swift */; };
 		2FC933172056B2C700FE9688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC933162056B2C700FE9688 /* AppDelegate.swift */; };
@@ -64,6 +69,10 @@
 		2F2F2C5E2036156300DD98AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F2F2C602036156300DD98AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2F2C66203617B000DD98AE /* Resistors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resistors.swift; sourceTree = "<group>"; };
+		2F3E5427208521A40082A119 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		2F3E542B2085244F0082A119 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2F3E543220852AF00082A119 /* ColorViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewItem.swift; sourceTree = "<group>"; };
+		2F3E54362085312E0082A119 /* ColorViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorViewItem.xib; sourceTree = "<group>"; };
 		2F53F8CA2062838E00034789 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2F7F2409206A695B00D71148 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2FAD9B5F206056AA00615394 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +175,9 @@
 				470848BA20665090009A2C6F /* ResistorImage.swift */,
 				2FC933162056B2C700FE9688 /* AppDelegate.swift */,
 				2F53F8CA2062838E00034789 /* BaseViewController.swift */,
+				2F3E5427208521A40082A119 /* ColorPickerViewController.swift */,
+				2F3E543220852AF00082A119 /* ColorViewItem.swift */,
+				2F3E54362085312E0082A119 /* ColorViewItem.xib */,
 				2FC9332D2056C04F00FE9688 /* CalibrationViewController.swift */,
 				2FC9331A2056B2C700FE9688 /* Assets.xcassets */,
 				2FC9331C2056B2C700FE9688 /* Main.storyboard */,
@@ -178,6 +190,7 @@
 		2FC933242056B30600FE9688 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2F3E542B2085244F0082A119 /* Colors.swift */,
 				2F2F2C66203617B000DD98AE /* Resistors.swift */,
 				2F1573D4204EC48D00E948B5 /* String+Char.swift */,
 				2F1573D6204EC4F700E948B5 /* Decimal+Double.swift */,
@@ -317,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FC9331B2056B2C700FE9688 /* Assets.xcassets in Resources */,
+				2F3E54372085312E0082A119 /* ColorViewItem.xib in Resources */,
 				2FC9331E2056B2C700FE9688 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +348,7 @@
 				2F2F2C67203617B000DD98AE /* Resistors.swift in Sources */,
 				2F1573D9204EC7CD00E948B5 /* ResistancePickerViewController.swift in Sources */,
 				2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */,
+				2F3E542C2085244F0082A119 /* Colors.swift in Sources */,
 				47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */,
 				4785B0962072504900E338B2 /* MenuViewController.swift in Sources */,
 				2F23077E205BEBAF00B01CE1 /* DividerViewController.swift in Sources */,
@@ -360,13 +375,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FC9332E2056C04F00FE9688 /* CalibrationViewController.swift in Sources */,
+				2F3E542D208524540082A119 /* Colors.swift in Sources */,
 				2F53F8CC2062838E00034789 /* BaseViewController.swift in Sources */,
+				2F3E5429208521A40082A119 /* ColorPickerViewController.swift in Sources */,
 				2FC933262056B34B00FE9688 /* String+Char.swift in Sources */,
 				2FC933252056B31B00FE9688 /* Resistors.swift in Sources */,
 				2FC933172056B2C700FE9688 /* AppDelegate.swift in Sources */,
 				470848BB20665090009A2C6F /* ResistorImage.swift in Sources */,
 				47B7A32E2067A45E0004781E /* Preferences.swift in Sources */,
 				2FC933272056B34E00FE9688 /* Decimal+Double.swift in Sources */,
+				2F3E543420852AF00082A119 /* ColorViewItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,7 +578,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 6389FT2N69;
+				DEVELOPMENT_TEAM = 37VFB869JC;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -578,7 +596,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 6389FT2N69;
+				DEVELOPMENT_TEAM = 37VFB869JC;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
