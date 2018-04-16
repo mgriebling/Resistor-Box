@@ -19,10 +19,11 @@ class ColorPickerViewController: NSViewController {
         }
     }
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        colorCollection.reloadData()
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        self.preferredContentSize = NSSize(width: 524, height: 624)
     }
+    
     
 }
 

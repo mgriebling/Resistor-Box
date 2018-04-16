@@ -999,7 +999,7 @@
                 </viewController>
                 <customObject id="wiE-sa-8bs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="320"/>
+            <point key="canvasLocation" x="1521" y="478"/>
         </scene>
         <!--Edit Resistors-->
         <scene sceneID="Wj3-7P-Ufn">
