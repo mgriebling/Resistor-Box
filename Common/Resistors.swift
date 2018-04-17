@@ -83,7 +83,7 @@ class Resistors {
             for resistor in rpc {
                 let value = Double(resistor)*scale
                 if value > maximum { break outer }
-                if value >= minimum { r.append(Double(resistor)*scale) }
+                if value >= minimum { r.append(value) }
             }
             scale *= 10
         }

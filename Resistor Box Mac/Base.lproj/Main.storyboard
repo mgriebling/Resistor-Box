@@ -736,14 +736,14 @@
             <objects>
                 <viewController title="Calibration" id="jS1-Xf-pAW" customClass="CalibrationViewController" customModule="Resistor_Box" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fHr-z4-2cw">
-                        <rect key="frame" x="0.0" y="0.0" width="765" height="1040"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView distribution="fillProportionally" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2h-mH-Qkf">
-                                <rect key="frame" x="0.0" y="20" width="765" height="1000"/>
+                                <rect key="frame" x="0.0" y="20" width="500" height="600"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUB-ZG-kwb" userLabel="Desired Input">
-                                        <rect key="frame" x="20" y="960" width="725" height="40"/>
+                                        <rect key="frame" x="20" y="560" width="460" height="40"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rPm-C0-qx7">
                                                 <rect key="frame" x="-2" y="12" width="92" height="17"/>
@@ -754,7 +754,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iwc-0z-dUj">
-                                                <rect key="frame" x="96" y="9" width="493" height="22"/>
+                                                <rect key="frame" x="96" y="9" width="320" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="10" drawsBackground="YES" id="xyY-oo-3XE">
                                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="YGI-Is-gQe">
                                                         <real key="minimum" value="0.0"/>
@@ -769,7 +769,7 @@
                                                 </connections>
                                             </textField>
                                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vin-Ko-5ZI">
-                                                <rect key="frame" x="597" y="6" width="39" height="26"/>
+                                                <rect key="frame" x="424" y="6" width="3" height="26"/>
                                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Ω" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="0Mo-Ny-KQT">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -783,7 +783,7 @@
                                                 </comboBoxCell>
                                             </comboBox>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4q7-ts-vSb">
-                                                <rect key="frame" x="641" y="7" width="56" height="25"/>
+                                                <rect key="frame" x="432" y="7" width="0.0" height="25"/>
                                                 <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TrP-hH-l9b">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -793,7 +793,7 @@
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l61-vQ-2WO">
-                                                <rect key="frame" x="705" y="10" width="20" height="20"/>
+                                                <rect key="frame" x="440" y="10" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="XOC-TI-GaQ"/>
                                                 </constraints>
@@ -822,14 +822,14 @@
                                         </customSpacing>
                                     </stackView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="eO2-VW-DGa" userLabel="Series View">
-                                        <rect key="frame" x="0.0" y="698" width="765" height="262"/>
+                                        <rect key="frame" x="0.0" y="448" width="500" height="112"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DHp-5I-Cme">
-                                                <rect key="frame" x="0.0" y="0.0" width="765" height="262"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="500" height="112"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="00l-Us-yol"/>
                                             </imageView>
                                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="d2w-mN-PFK">
-                                                <rect key="frame" x="367" y="115" width="32" height="32"/>
+                                                <rect key="frame" x="234" y="40" width="32" height="32"/>
                                             </progressIndicator>
                                         </subviews>
                                         <constraints>
@@ -842,14 +842,14 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="mln-32-tM1" userLabel="Series Parallel View">
-                                        <rect key="frame" x="0.0" y="262" width="765" height="436"/>
+                                        <rect key="frame" x="0.0" y="261" width="500" height="187"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YhU-A2-qZ0">
-                                                <rect key="frame" x="0.0" y="0.0" width="765" height="436"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="500" height="187"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eqA-Vh-uTA"/>
                                             </imageView>
                                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-WI-1Yk">
-                                                <rect key="frame" x="367" y="202" width="32" height="32"/>
+                                                <rect key="frame" x="234" y="78" width="32" height="32"/>
                                             </progressIndicator>
                                         </subviews>
                                         <constraints>
@@ -862,14 +862,14 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="r8H-3b-62A" userLabel="Parallel View">
-                                        <rect key="frame" x="0.0" y="0.0" width="765" height="262"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="261"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i16-ck-V9a">
-                                                <rect key="frame" x="0.0" y="0.0" width="765" height="262"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="500" height="261"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="n8t-56-GL5"/>
                                             </imageView>
                                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="q7C-KH-ZhN">
-                                                <rect key="frame" x="367" y="115" width="32" height="32"/>
+                                                <rect key="frame" x="234" y="115" width="32" height="32"/>
                                             </progressIndicator>
                                         </subviews>
                                         <constraints>
@@ -884,7 +884,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eO2-VW-DGa" secondAttribute="trailing" id="6UD-bD-siJ"/>
-                                    <constraint firstAttribute="height" constant="1000" id="CGe-Gs-qdN"/>
+                                    <constraint firstAttribute="height" constant="600" id="CGe-Gs-qdN"/>
                                     <constraint firstItem="eO2-VW-DGa" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" id="CL1-4m-Y9v"/>
                                     <constraint firstItem="mln-32-tM1" firstAttribute="top" secondItem="eO2-VW-DGa" secondAttribute="bottom" id="Dcw-Ee-IKf"/>
                                     <constraint firstItem="pUB-ZG-kwb" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" constant="20" symbolic="YES" id="FI3-Lj-Nfq"/>
@@ -893,7 +893,8 @@
                                     <constraint firstItem="eO2-VW-DGa" firstAttribute="top" secondItem="pUB-ZG-kwb" secondAttribute="bottom" id="M8c-Ik-TvU"/>
                                     <constraint firstItem="eO2-VW-DGa" firstAttribute="height" secondItem="mln-32-tM1" secondAttribute="height" multiplier="3:5" id="Vgy-Oa-qWf"/>
                                     <constraint firstAttribute="trailing" secondItem="pUB-ZG-kwb" secondAttribute="trailing" constant="20" symbolic="YES" id="Wh5-S6-byx"/>
-                                    <constraint firstItem="eO2-VW-DGa" firstAttribute="height" secondItem="r8H-3b-62A" secondAttribute="height" id="X4b-Tc-ILj"/>
+                                    <constraint firstItem="eO2-VW-DGa" firstAttribute="height" secondItem="r8H-3b-62A" secondAttribute="height" multiplier="3:7" id="X4b-Tc-ILj"/>
+                                    <constraint firstAttribute="width" constant="500" id="fu6-r7-ajk"/>
                                     <constraint firstItem="r8H-3b-62A" firstAttribute="top" secondItem="mln-32-tM1" secondAttribute="bottom" id="jdP-8B-yN1"/>
                                     <constraint firstItem="r8H-3b-62A" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" id="jmU-Lz-WHB"/>
                                     <constraint firstItem="mln-32-tM1" firstAttribute="leading" secondItem="e2h-mH-Qkf" secondAttribute="leading" id="mMs-i2-mfx"/>
@@ -937,7 +938,7 @@
                 </viewController>
                 <customObject id="FaL-kq-tV2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802.5" y="421"/>
+            <point key="canvasLocation" x="730" y="705"/>
         </scene>
         <!--Color Picker View Controller-->
         <scene sceneID="AaW-2H-BjK">
