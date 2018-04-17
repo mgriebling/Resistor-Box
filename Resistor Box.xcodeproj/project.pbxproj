@@ -28,6 +28,7 @@
 		2F53F8CC2062838E00034789 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53F8CA2062838E00034789 /* BaseViewController.swift */; };
 		2FAD9B60206056AA00615394 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD9B5F206056AA00615394 /* BaseViewController.swift */; };
 		2FB80D8620861AEB0082C260 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB80D8520861AEB0082C260 /* UserSettingsViewController.swift */; };
+		2FB80D872086227A0082C260 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F2C5B2036156300DD98AE /* Assets.xcassets */; };
 		2FC933172056B2C700FE9688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC933162056B2C700FE9688 /* AppDelegate.swift */; };
 		2FC9331B2056B2C700FE9688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9331A2056B2C700FE9688 /* Assets.xcassets */; };
 		2FC9331E2056B2C700FE9688 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9331C2056B2C700FE9688 /* Main.storyboard */; };
@@ -334,6 +335,7 @@
 			files = (
 				2FC9331B2056B2C700FE9688 /* Assets.xcassets in Resources */,
 				2F3E54372085312E0082A119 /* ColorViewItem.xib in Resources */,
+				2FB80D872086227A0082C260 /* Assets.xcassets in Resources */,
 				2FC9331E2056B2C700FE9688 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +584,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 6389FT2N69;
+				DEVELOPMENT_TEAM = 37VFB869JC;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -600,7 +602,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 6389FT2N69;
+				DEVELOPMENT_TEAM = 37VFB869JC;
 				INFOPLIST_FILE = "Resistor Box Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
