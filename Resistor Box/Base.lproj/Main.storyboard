@@ -1575,9 +1575,9 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NSf-bW-c54"/>
-        <segue reference="Fkr-bb-YmD"/>
-        <segue reference="Dgs-rd-9FN"/>
+        <segue reference="COa-ef-3S0"/>
+        <segue reference="J1A-ky-7j9"/>
+        <segue reference="rRx-DY-fSd"/>
         <segue reference="ab2-QI-2hb"/>
         <segue reference="ixf-B0-nN7"/>
         <segue reference="Wy6-sa-LSC"/>
