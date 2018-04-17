@@ -931,7 +931,7 @@
                         <outlet property="parallelProgress" destination="q7C-KH-ZhN" id="MZM-zn-Qyx"/>
                         <outlet property="parallelResistors" destination="i16-ck-V9a" id="7Br-Ev-r6B"/>
                         <outlet property="seriesActivity" destination="d2w-mN-PFK" id="nmK-6m-etd"/>
-                        <outlet property="seriesParallelActivity" destination="d2w-mN-PFK" id="5bQ-XD-yOa"/>
+                        <outlet property="seriesParallelActivity" destination="z3z-WI-1Yk" id="iVG-9W-OQ4"/>
                         <outlet property="seriesParallelResistors" destination="YhU-A2-qZ0" id="XCc-ck-Ams"/>
                         <outlet property="seriesResistors" destination="DHp-5I-Cme" id="cx2-UF-AZp"/>
                     </connections>
