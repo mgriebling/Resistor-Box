@@ -10,7 +10,10 @@ import Foundation
 
 // parallel resistance operator definition
 infix operator ⧦ : MultiplicationPrecedence
-fileprivate func ⧦ (r1 : Double, r2 : Double) -> Double { return (r1*r2)/(r1+r2) }
+fileprivate func ⧦ (r1 : Double, r2 : Double) -> Double {
+    if r1 <= Resistors.SHORT && r2 <= Resistors.SHORT { return Resistors.SHORT }
+    return (r1*r2)/(r1+r2)
+}
 
 class Resistors {
     
@@ -435,24 +438,35 @@ class Resistors {
             // check for values that are too large
             done([rlast, rlast, OPEN, 2*rlast, 100.0*fabs(x-2*rlast)/x]); return
         }
+        
         // outer loop start from near x value
-        let sindex = rArray.index { value -> Bool in
-            // find index of next largest value
-            if value > x*0.9 { return true }
-            return false
+        var sindex = rArray.startIndex
+        if x < rArray.dropFirst().first! {
+            sindex = rArray.startIndex  // use SHORT
+        } else {
+            sindex = rArray.index { value -> Bool in
+                // find index of next largest value
+                if value > x*0.9 { return true }
+                return false
+                }!
         }
         let eindex = rArray.index { value -> Bool in
             // find index of next largest value
             if value > x*1.1 { return true }
             return false
-        }
-        let r = CountableRange(sindex!...eindex!)
+            }!
+
+        let r = CountableRange(sindex...eindex)
         let result = Resistors.compute(x, range: r, withAlgorithm: { (r1, r2, r3) -> (Double) in
             // using my parallel ⧦ operator 😀
             return r1 + r2 ⧦ r3
         }, abortAlgorithm: { (current, r1, r2, r3) -> Bool in
             // exit early if a solution is unlikely
-            return r1 > x || current > x
+            if r1 <= SHORT {
+                return false
+            } else {
+                return current > x
+            }
         }, callback: callback)
         done(result)
     }

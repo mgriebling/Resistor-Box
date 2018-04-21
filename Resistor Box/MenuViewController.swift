@@ -15,13 +15,12 @@ class MenuViewController: UIViewController {
     
     var base : BaseViewController?
     
-    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) {
-    }
+    @IBAction func returnToResistorView(_ segue: UIStoryboardSegue?) { /* stub */  }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         minResistance.title = base?.minResistance.title
-        collectionButton.title = base?.collectionButton.title
+        collectionButton.title = Resistors.active
     }
     
     override func viewWillDisappear(_ animated: Bool) {

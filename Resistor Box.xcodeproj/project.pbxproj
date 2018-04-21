@@ -49,9 +49,7 @@
 		47BFFF602068477E00DE0E13 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BFFF5F2068477E00DE0E13 /* ColorView.swift */; };
 		47C22D2B208B437A009786B5 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C22D2A208B437A009786B5 /* Purchase.swift */; };
 		47C22D2D208B5291009786B5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C22D2C208B5291009786B5 /* StoreKit.framework */; };
-		47C22D2F208B530F009786B5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C22D2E208B530F009786B5 /* CloudKit.framework */; };
 		47C22D30208B5332009786B5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C22D2C208B5291009786B5 /* StoreKit.framework */; };
-		47C22D31208B5341009786B5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C22D2E208B530F009786B5 /* CloudKit.framework */; };
 		47CE31D720547454007AB17B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D620547454007AB17B /* EditViewController.swift */; };
 		47CE31D9205476A5007AB17B /* ResistorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */; };
 		47CE31DB20556F8C007AB17B /* CollectionGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */; };
@@ -102,7 +100,6 @@
 		47BFFF5F2068477E00DE0E13 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		47C22D2A208B437A009786B5 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		47C22D2C208B5291009786B5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
-		47C22D2E208B530F009786B5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		47CE31D620547454007AB17B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		47CE31D8205476A5007AB17B /* ResistorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistorCollectionViewCell.swift; sourceTree = "<group>"; };
 		47CE31DA20556F8C007AB17B /* CollectionGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +114,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47C22D30208B5332009786B5 /* StoreKit.framework in Frameworks */,
-				47C22D2F208B530F009786B5 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +122,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47C22D2D208B5291009786B5 /* StoreKit.framework in Frameworks */,
-				47C22D31208B5341009786B5 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +170,6 @@
 		2F7F2408206A695B00D71148 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				47C22D2E208B530F009786B5 /* CloudKit.framework */,
 				47C22D2C208B5291009786B5 /* StoreKit.framework */,
 				2F7F2409206A695B00D71148 /* QuartzCore.framework */,
 			);

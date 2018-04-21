@@ -111,7 +111,7 @@ class CollectionGeneratorViewController: UIViewController {
 
 extension CollectionGeneratorViewController : UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // allows popover to appear for iPhone-style devices
         return .none
     }

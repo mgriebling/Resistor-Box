@@ -140,6 +140,7 @@ class BaseViewController: UIViewController {
             items[2].image = UIImage(named: preferences.useEuroSymbols ? "EDivider" : "Divider")
             items[2].selectedImage = UIImage(named: preferences.useEuroSymbols ? "EDivider" : "Divider")
         }
+        collectionButton?.title = Resistors.active
         refreshAll()  // user may have changed preferences
     }
     

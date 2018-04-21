@@ -43,16 +43,12 @@ class EditViewController: UIViewController {
         
         // check if sharing is allowed
         shareButton.isEnabled = true
+        
+        // unselect any selected resistors
+        selectedResistors = Set<IndexPath>()
     }
     
     @IBAction func shareCollection(_ sender: UIBarButtonItem) {
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        // save any changes made during editing
-        Resistors.writeInventory()
     }
     
     @IBAction func deleteResistors(_ sender: Any) {
@@ -64,11 +60,13 @@ class EditViewController: UIViewController {
             // Note: offset by one because we don't show SHORTs
             Resistors.rInv[Resistors.active]?.remove(at: r.row+1)
         }
+        Resistors.writeInventory()
 
         // remove the selected resistors from the collection
         resistors.deleteItems(at: resistorArray)
         resistorSets.reloadData()           // refresh resistor quantities
         deleteBarButton.isEnabled = false
+        selectedResistors = Set<IndexPath>()
     }
     
     func selectActiveResistorSet() {
@@ -98,6 +96,7 @@ class EditViewController: UIViewController {
                             self.resistors.performBatchUpdates({
                                 self.resistors.insertItems(at: path)
                             }, completion: { done in
+                                Resistors.writeInventory()
                                 self.resistors.reloadData()
                             })
                             break
@@ -118,7 +117,7 @@ class EditViewController: UIViewController {
 
 extension EditViewController : UIPopoverPresentationControllerDelegate {
 
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // allows popover to appear for iPhone-style devices
         return .none
     }
