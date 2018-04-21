@@ -22,7 +22,7 @@ class ColorPickerViewController: UIViewController {
         colorPicker.setPicker(pickerView, toCurrentValue: colorPicker.selectedColor)
         colorPicker.valueChangeCallback = { [weak self] picker in
             let value = picker.selectedColor
-            let color = ColorPicker.colors[value]!
+            let color = Store.colors[value]!
             self?.callback(value, color)
         }
     }

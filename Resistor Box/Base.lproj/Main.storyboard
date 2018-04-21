@@ -777,7 +777,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPM-xd-eSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1597" y="1258"/>
+            <point key="canvasLocation" x="-1026" y="1300"/>
         </scene>
         <!--Power Supply-->
         <scene sceneID="qsi-Q9-ND6">
@@ -922,7 +922,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjS-On-ubm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1639" y="785"/>
+            <point key="canvasLocation" x="-1194" y="785"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1327,6 +1327,11 @@
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </barButtonItem>
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="17n-TY-w8k"/>
+                                                    <barButtonItem systemItem="action" id="yPS-DI-1iK">
+                                                        <connections>
+                                                            <action selector="shareCollection:" destination="btv-rp-Zck" id="6lp-Ci-zWd"/>
+                                                        </connections>
+                                                    </barButtonItem>
                                                     <barButtonItem systemItem="add" id="e3Z-Rt-rZ4">
                                                         <connections>
                                                             <segue destination="9yz-r2-zyN" kind="popoverPresentation" identifier="AddCollection" popoverAnchorBarButtonItem="e3Z-Rt-rZ4" id="UDe-qf-znf">
@@ -1476,6 +1481,7 @@
                         <outlet property="resistorSets" destination="1IA-UK-Y7S" id="GTy-BE-fgq"/>
                         <outlet property="resistors" destination="Vq4-NG-Xaj" id="M9G-hx-UV9"/>
                         <outlet property="resistorsTitle" destination="wV5-wo-XVP" id="nuy-gh-Qlf"/>
+                        <outlet property="shareButton" destination="yPS-DI-1iK" id="9M8-OM-0J8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9N-A8-ecm" sceneMemberID="firstResponder"/>
@@ -1575,11 +1581,11 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="COa-ef-3S0"/>
-        <segue reference="J1A-ky-7j9"/>
-        <segue reference="rRx-DY-fSd"/>
-        <segue reference="ab2-QI-2hb"/>
+        <segue reference="sCD-pS-HKq"/>
+        <segue reference="hI6-Fe-dBt"/>
+        <segue reference="LJA-Bu-hNU"/>
+        <segue reference="aK6-3s-Yzn"/>
         <segue reference="ixf-B0-nN7"/>
-        <segue reference="Wy6-sa-LSC"/>
+        <segue reference="d3C-cc-pwm"/>
     </inferredMetricsTieBreakers>
 </document>

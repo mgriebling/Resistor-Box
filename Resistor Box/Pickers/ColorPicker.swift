@@ -9,13 +9,13 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     var valueChangeCallback: ColorChanged = { (picker) -> () in }
     
     init (_ color: String) {
-        if let _ = ColorPicker.colors.keys.sorted().index(of: color) {
+        if let _ = Store.colors.keys.sorted().index(of: color) {
             selectedColor = color
         }
     }
     
     func setPicker(_ picker: UIPickerView, toCurrentValue value: String) {
-        if let index = ColorPicker.colors.keys.sorted().index(of: value) {
+        if let index = Store.colors.keys.sorted().index(of: value) {
             selectedColor = value
             picker.selectRow(index, inComponent: 0, animated: true)
         }
@@ -32,7 +32,7 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
      
      ******************************************************************************** */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedColor = ColorPicker.colors.keys.sorted()[row]
+        selectedColor = Store.colors.keys.sorted()[row]
         valueChangeCallback(self)
     }
     
@@ -57,7 +57,7 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
      
      ******************************************************************************** */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return ColorPicker.colors.count
+        return Store.colors.count
     }
     
     //********************************************************************************
@@ -76,9 +76,9 @@ class ColorPicker: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
         } else {
             newView = ColorView()
         }
-        let key = ColorPicker.colors.keys.sorted()[row]
+        let key = Store.colors.keys.sorted()[row]
         newView.label = key
-        newView.color = ColorPicker.colors[key]!
+        newView.color = Store.colors[key]!
         return newView
     }
     

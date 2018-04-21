@@ -21,17 +21,17 @@ class CalibrationViewController: BaseViewController {
     
     
     func updateSeriesResistors (_ x : [Double], label: String) {
-        let color = ColorPicker.colors[preferences.color1]!
+        let color = Store.colors[preferences.color1]!
         update(x, prefix: label, image: seriesResistors, color: color, imageFunc: ResistorImage.imageOfSeriesResistors)
     }
     
     func updateSeriesParallelResistors (_ x : [Double], label: String) {
-        let color = ColorPicker.colors[preferences.color2]!
+        let color = Store.colors[preferences.color2]!
         update(x, prefix: label, image: seriesParallelResistors, color: color, imageFunc: ResistorImage.imageOfSeriesParallelResistors)
     }
     
     func updateParallelResistors (_ x : [Double], label: String) {
-        let color = ColorPicker.colors[preferences.color3]!
+        let color = Store.colors[preferences.color3]!
         update(x, prefix: label, image: parallelResistors, color: color, imageFunc: ResistorImage.imageOfParallelResistors)
     }
     

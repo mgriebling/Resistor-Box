@@ -23,7 +23,7 @@ class UserSettingsViewController : UIViewController {
     private func setButtonColor (_ color : String, button: UIButton) {
         let buttonSize = button.bounds.size
         UIGraphicsBeginImageContextWithOptions(buttonSize, false, 0)
-        ResistorImage.drawGradientButton(frame: button.bounds, resizing: .stretch, selectedGradientColor: ColorPicker.colors[color]!)
+        ResistorImage.drawGradientButton(frame: button.bounds, resizing: .stretch, selectedGradientColor: Store.colors[color]!)
         let imageOfGradientButton = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         button.setTitle(color, for: .normal)

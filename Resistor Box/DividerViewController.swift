@@ -23,12 +23,12 @@ class DividerViewController: BaseViewController {
     }
     
     func updateDivider1Resistors (_ x : [Double], label: String)  {
-        let color = ColorPicker.colors[preferences.color1]!
+        let color = Store.colors[preferences.color1]!
         update(x, prefix: label, image: divider1Image, color: color, imageFunc: ResistorImage.imageOfVoltageDivider)
     }
     
     func updateDivider2Resistors (_ x : [Double], label: String) {
-        let color = ColorPicker.colors[preferences.color2]!
+        let color = Store.colors[preferences.color2]!
         update(x, prefix: label, image: divider2Image, color: color, imageFunc: ResistorImage.imageOfVoltageDivider2)
     }
     

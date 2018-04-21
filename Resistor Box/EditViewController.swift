@@ -23,6 +23,7 @@ class EditViewController: UIViewController {
     }
     
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var selectedResistors = Set<IndexPath>()
     
@@ -39,6 +40,12 @@ class EditViewController: UIViewController {
         
         // delete is inactive
         deleteBarButton.isEnabled = selectedResistors.count > 0
+        
+        // check if sharing is allowed
+        shareButton.isEnabled = true
+    }
+    
+    @IBAction func shareCollection(_ sender: UIBarButtonItem) {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
