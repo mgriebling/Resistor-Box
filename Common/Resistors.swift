@@ -100,22 +100,6 @@ class Resistors {
     
     static func clearInventory() { rInv = [String: [Double]]() }
     
-    static func name() -> URL {
-        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileName = "ResistorBox"
-        return docPath.appendingPathComponent(fileName).appendingPathExtension("rbox")
-    }
-    
-    static public func writeInventory() {
-        let fname = name()
-        let data = NSKeyedArchiver.archivedData(withRootObject: rInv)
-        do {
-            try data.write(to: fname)
-        } catch {
-            print("Couldn't write file")
-        }
-    }
-    
     static func getNumber(_ s: String) -> Double? {
         return Double(s.filter({ ch -> Bool in
             return CharacterSet.decimalDigits.contains(ch.unicodeScalar)
@@ -139,10 +123,9 @@ class Resistors {
     
     static public func initInventory() {
         // attempt to read from the App's directory
-        let fname = name()
+        let fname = name("ResistorBox")
         if FileManager.default.fileExists(atPath: fname.path) {
             // read the resistor file
-            
             if let inventory = NSKeyedUnarchiver.unarchiveObject(withFile: fname.path) as? [String: [Double]] {
                 rInv = inventory
             }
@@ -470,5 +453,55 @@ class Resistors {
         }, callback: callback)
         done(result)
     }
+    
+}
+
+extension Resistors {
+    
+    // MARK: - Handle file import/export
+    
+    static public func importData(from url : URL) {
+        let filename = url.path
+        guard let inventory = NSKeyedUnarchiver.unarchiveObject(withFile: filename) as? [String: [Double]] else { return }
+        for collection in inventory {
+            rInv[collection.key] = collection.value
+        }
+        writeInventory()
+        
+        do {
+            try FileManager.default.removeItem(at: url)
+        } catch {
+            print("Failed to remove item from shared area")
+        }
+    }
+    
+    static public func exportToFileURL(_ name : String) -> URL? {
+        guard let resistors = rInv[name] else { return nil }
+        let collection = [name: resistors]
+        let data = NSKeyedArchiver.archivedData(withRootObject: collection)
+        let fname = Resistors.name(name)
+        do {
+            try data.write(to: fname)
+        } catch {
+            print("Couldn't write file")
+        }
+        return fname
+    }
+    
+    static func name(_ fileName: String) -> URL {
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        return docPath.appendingPathComponent(fileName).appendingPathExtension("rbox")
+    }
+    
+    static public func writeInventory() {
+        let fname = name("ResistorBox")
+        let data = NSKeyedArchiver.archivedData(withRootObject: rInv)
+        do {
+            try data.write(to: fname)
+        } catch {
+            print("Couldn't write file")
+        }
+    }
+    
     
 }

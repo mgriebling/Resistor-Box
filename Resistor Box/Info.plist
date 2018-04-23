@@ -7,6 +7,10 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string></string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>Resistor Box Collection</string>
 			<key>CFBundleTypeRole</key>
@@ -15,7 +19,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.c-inspirations.rbox</string>
+				<string>com.c-inspirations.Resistor-Box.rbox</string>
 			</array>
 		</dict>
 	</array>
@@ -82,13 +86,13 @@
 			<key>UTTypeDescription</key>
 			<string>Resistor Box Collection</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.c-inspirations.rbox</string>
+			<string>com.c-inspirations.Resistor-Box.rbox</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<array>
-					<string>rbox</string>
-				</array>
+				<string>rbox</string>
+				<key>public.mime.type</key>
+				<string>application/resistor-box</string>
 			</dict>
 		</dict>
 	</array>

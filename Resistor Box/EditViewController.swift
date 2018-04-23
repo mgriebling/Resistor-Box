@@ -49,6 +49,13 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func shareCollection(_ sender: UIBarButtonItem) {
+        guard let url = Resistors.exportToFileURL(Resistors.active) else { return }
+        
+        let activityController = UIActivityViewController(activityItems: ["Check out this", url], applicationActivities: nil)
+        if let popover = activityController.popoverPresentationController {
+            popover.barButtonItem = sender
+        }
+        present(activityController, animated: true, completion: nil)
     }
     
     @IBAction func deleteResistors(_ sender: Any) {

@@ -130,34 +130,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SKPaymentQueue.default().remove(paymentHandler)
     }
     
-    //********************************************************************************
-    /**
-     Called by an external App to open a Solinst XLE file.  We examine the XLE
-     file to see if it already exists in the database, and if it does, we show
-     the current file contents on a plot.  If the data doesnt' exist, it is
-     imported to the database and then displayed.
-     
-     - Author:   Michael Griebling
-     - Date:     7 Dec 2017
-     
-     ******************************************************************************** */
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         // Ensure the URL is a file URL
-        guard url.isFileURL else { return false }
+        guard url.isFileURL, url.pathExtension == "rbox" else { return false }
         
-        // Reveal / import the document at the URL
-        //        guard let documentBrowserViewController = window?.rootViewController as? DocumentBrowserViewController else { return false }
-        //
-        //        documentBrowserViewController.revealDocument(at: url, importIfNeeded: true) { (revealedDocumentURL, error) in
-        //            if let error = error {
-        //                // Handle the error appropriately
-        //                print("Failed to reveal the document at URL \(url) with error: '\(error)'")
-        //                return
-        //            }
-        //
-        //            // Present the Document View Controller for the revealed URL
-        //            documentBrowserViewController.presentDocument(at: revealedDocumentURL!)
-        //        }
+        Resistors.importData(from: url)
+        guard let top = window?.rootViewController as? UITabBarController else { return true }
+        top.selectedIndex = 4  // select the edit view controller
         return true
     }
 
